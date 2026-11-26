@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>签发交回演练后台</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>档案馆两站签发 / 交回演练后台</h1>
+        <p>只使用档案代号、站点代号、签发代次和虚构接收柜；镜像自我声明不是授权依据。</p>
+      </div>
+      <div class="header-actions">
+        <label>剧本
+          <select id="scenario">
+            <option value="empty">两个空柜</option>
+            <option value="branch">岔站：甲回乙失</option>
+          </select>
+        </label>
+        <button data-action="reset">重置</button>
+        <button data-action="advance">推进一拍</button>
+        <button data-action="restart">模拟重启复查</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="message" class="message" hidden></section>
+
+      <section class="grid two">
+        <article class="card">
+          <h2>柜格当前可签站</h2>
+          <div id="authority" class="authority"></div>
+        </article>
+        <article class="card">
+          <h2>切换边界调度建议</h2>
+          <div id="plan"></div>
+          <div class="replay-actions">
+            <button class="primary" data-plan-apply>执行当前建议切柜</button>
+            <button data-replay="empty">空柜走查</button>
+            <button data-replay="reconnect">回放：乙中途回联</button>
+            <button data-replay="offline">回放：乙一直离线</button>
+            <button data-replay="old-plan">旧站先办双柜</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>单据 / 领单 / 凭条</h2>
+        <div id="orders" class="orders"></div>
+      </section>
+
+      <section class="grid two">
+        <article class="card">
+          <h2>切站与柜线路</h2>
+          <div id="cabinet-actions" class="cabinet-actions"></div>
+        </article>
+        <article class="card">
+          <h2>待办与持久回执</h2>
+          <div id="todos"></div>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>回放时间线</h2>
+        <pre id="replay-output" class="replay-output">点击上方回放按钮，结果来自 GET /api/replay。</pre>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
