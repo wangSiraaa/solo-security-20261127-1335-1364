@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "watchdesk"
+version = "1.0.0"
+description = "证据优先的监测覆盖交班台与本地虚拟时钟 CLI"
+requires-python = ">=3.10"
+
+[project.scripts]
+watchdesk = "watchdesk.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["watchdesk*"]

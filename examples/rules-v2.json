@@ -1,0 +1,28 @@
+{
+  "file_id": "seal-rules",
+  "version": "2026.11.26-v2",
+  "rules": [
+    {
+      "id": "seal3",
+      "name": "连续三拍封存观察（换版）",
+      "kind": "continuous_span",
+      "start_event": "seal_start",
+      "beats": 3,
+      "handoff_priority": 90,
+      "owner": "ji-cheng",
+      "change_note": "新席接手，责任观察员改为接手人"
+    },
+    {
+      "id": "pair2",
+      "name": "三拍内松动-复位提醒（换版放宽）",
+      "kind": "pair_within_beats",
+      "first_event": "loose",
+      "second_event": "reset",
+      "pair_window_beats": 3,
+      "adjacent": false,
+      "handoff_priority": 100,
+      "owner": "ji-cheng",
+      "change_note": "窗口由相邻两拍放宽为三拍；已开始的 v1 上下文仍按 v1 判定"
+    }
+  ]
+}

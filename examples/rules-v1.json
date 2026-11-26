@@ -1,0 +1,28 @@
+{
+  "file_id": "seal-rules",
+  "version": "2026.11.26-v1",
+  "rules": [
+    {
+      "id": "seal3",
+      "name": "连续三拍封存观察",
+      "kind": "continuous_span",
+      "start_event": "seal_start",
+      "beats": 3,
+      "handoff_priority": 90,
+      "owner": "a-heng",
+      "description": "从封存开始一直观察到连续第三拍；缺中间拍处理回执即不能保证持续覆盖"
+    },
+    {
+      "id": "pair2",
+      "name": "两拍内相邻松动-复位提醒",
+      "kind": "pair_within_beats",
+      "first_event": "loose",
+      "second_event": "reset",
+      "pair_window_beats": 2,
+      "adjacent": true,
+      "handoff_priority": 100,
+      "owner": "xiao-song",
+      "description": "松动与下一相邻拍复位才及时提醒；第2拍松动的临界拍是第3拍，第4拍为临界拍外"
+    }
+  ]
+}

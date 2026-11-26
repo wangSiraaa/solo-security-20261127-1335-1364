@@ -1,0 +1,15 @@
+{
+  "old_seat": {
+    "desk": "old-seat",
+    "observers": {
+      "a-heng": ["continuous_span"],
+      "xiao-song": ["pair_within_beats"]
+    }
+  },
+  "new_seat": {
+    "desk": "new-seat",
+    "successor": "ji-cheng",
+    "qualifications": ["continuous_span", "pair_within_beats"],
+    "note": "新席和接手人可以处理两种规则；紧急离岗仍只有一个携带位"
+  }
+}
