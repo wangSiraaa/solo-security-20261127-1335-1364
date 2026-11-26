@@ -1,0 +1,23 @@
+{
+  "kind": "desk.queued_review_response/v1",
+  "message_id": "MSG-0003",
+  "review_id": "RV-0001",
+  "envelope": {
+    "schema": "desk.personal-envelope/v1",
+    "algorithm": "HS256-local-personal-device-simulation",
+    "signer_id": "n",
+    "key_id": "primary",
+    "payload": {
+      "kind": "desk.review_response/v1",
+      "message_id": "MSG-0003",
+      "review_id": "RV-0001",
+      "decision": "cancelled",
+      "scope": "review_appointment",
+      "reason": "口述人临时取消",
+      "responded_at": "2026-11-26T18:33:05+00:00",
+      "nonce": "c87e9895633254b6",
+      "issued_at": "2026-11-26T18:33:05+00:00"
+    },
+    "signature": "43b704b2ec7446928c0443d66c1da5720d5e007318fc5db42e8a55b52d95e114"
+  }
+}

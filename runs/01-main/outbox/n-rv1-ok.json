@@ -1,0 +1,26 @@
+{
+  "kind": "desk.queued_review_response/v1",
+  "message_id": "MSG-0004",
+  "review_id": "RV-0001",
+  "text": "后来三条驳船趁雾靠岸。脚夫扛着木箱上下跳板，一直忙到天快亮。",
+  "envelope": {
+    "schema": "desk.personal-envelope/v1",
+    "algorithm": "HS256-local-personal-device-simulation",
+    "signer_id": "n",
+    "key_id": "primary",
+    "payload": {
+      "kind": "desk.review_response/v1",
+      "message_id": "MSG-0004",
+      "review_id": "RV-0001",
+      "decision": "confirmed",
+      "scope": "review_appointment",
+      "reason": "乙读回全文，口述人点头确认",
+      "responded_at": "2026-11-26T18:33:02+00:00",
+      "nonce": "70d46098a36c8f88",
+      "segment_id": "seg-0003",
+      "segment_sha256": "147f69615d4c254cb19ffc1a41b72caece5e85f221598646826d237e1bb67810",
+      "issued_at": "2026-11-26T18:33:02+00:00"
+    },
+    "signature": "77d793e345cae1081fd074c7957869be0233304de25c30a28b372f90a855a101"
+  }
+}

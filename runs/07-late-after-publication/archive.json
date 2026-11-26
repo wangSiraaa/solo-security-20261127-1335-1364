@@ -1,0 +1,170 @@
+{
+  "ok": true,
+  "date": "2026-11-26",
+  "work_id": "oral-001",
+  "station_id": "station-01",
+  "unique_edition_key": "2026-11-26:oral-001",
+  "official_edition": {
+    "id": "ED-0001",
+    "key": "2026-11-26:oral-001",
+    "date": "2026-11-26",
+    "work_id": "oral-001",
+    "station_id": "station-01",
+    "body_path": "/workspace/runs/07-late-after-publication/editions/ED-0001.body.md",
+    "markdown_path": "/workspace/runs/07-late-after-publication/editions/ED-0001.md",
+    "json_path": "/workspace/runs/07-late-after-publication/editions/ED-0001.json",
+    "body_sha256": "f81fb2ee001c3e87519f8e68b3d3d4dfd355bb51e7dcf972749f292219058b03",
+    "segment_manifest": [
+      {
+        "segment_id": "seg-0001",
+        "signer_id": "a",
+        "segment_sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708",
+        "signature": "988c033991d38699bf49bd18d0e1502f6e4f9267c45a8b3b85c5001d5025134a"
+      }
+    ],
+    "publisher_id": "b",
+    "publisher_envelope": {
+      "schema": "desk.personal-envelope/v1",
+      "algorithm": "HS256-local-personal-device-simulation",
+      "signer_id": "b",
+      "key_id": "primary",
+      "payload": {
+        "kind": "desk.edition_publication/v1",
+        "edition_id": "ED-0001",
+        "date": "2026-11-26",
+        "work_id": "oral-001",
+        "station_id": "station-01",
+        "body_sha256": "f81fb2ee001c3e87519f8e68b3d3d4dfd355bb51e7dcf972749f292219058b03",
+        "segments": [
+          {
+            "segment_id": "seg-0001",
+            "signer_id": "a",
+            "segment_sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708",
+            "signature": "988c033991d38699bf49bd18d0e1502f6e4f9267c45a8b3b85c5001d5025134a"
+          }
+        ],
+        "published_at": "2026-11-26T18:33:06+00:00",
+        "nonce": "f9ab6cc102b4f85a",
+        "issued_at": "2026-11-26T18:33:06+00:00"
+      },
+      "signature": "9d748fe215521c716fd24d574c593f962b61f04375020e03385b942a48732224"
+    },
+    "published_at": "2026-11-26T18:33:06+00:00",
+    "errata_ids": [
+      "ER-0001"
+    ]
+  },
+  "official_edition_verification": {
+    "ok": true,
+    "checks": [
+      {
+        "name": "刊次正文未被改写",
+        "ok": true,
+        "detail": "sha256=f81fb2ee001c3e87519f8e68"
+      },
+      {
+        "name": "签发员个人签字有效",
+        "ok": true,
+        "detail": "signer=b"
+      },
+      {
+        "name": "签发签字指向所见全文哈希",
+        "ok": true,
+        "detail": "payload=f81fb2ee001c3e87519f8e68"
+      },
+      {
+        "name": "刊次号一致",
+        "ok": true,
+        "detail": "ED-0001"
+      },
+      {
+        "name": "段 seg-0001 本人签字",
+        "ok": true,
+        "detail": "OK"
+      },
+      {
+        "name": "段 seg-0001 哈希与刊次清单一致",
+        "ok": true,
+        "detail": "70bcfb2d8582d9c4"
+      }
+    ]
+  },
+  "segments": [
+    {
+      "segment_id": "seg-0001",
+      "seq": 1,
+      "kind": "transcription",
+      "text": "民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。",
+      "chars": 42,
+      "entered_by": "a",
+      "attributed_to": "a",
+      "attributed_label": "甲",
+      "signature_valid": true,
+      "signature_reason": "OK",
+      "signature_short": "988c033991d38699",
+      "signed_at": "2026-11-26T18:33:06+00:00",
+      "signing_visibility": {
+        "at": "2026-11-26T18:33:06+00:00",
+        "station_presence_receipt_id": "PR-0001",
+        "presence_kind": "station_presence_receipt",
+        "presence_says": "station occupied by at least one person; identity is not proven by presence",
+        "named_badges_at_station": [
+          "a"
+        ],
+        "named_viewers": [
+          "a"
+        ]
+      },
+      "accepted_via_handover": null,
+      "late_after_successor_arrival": false,
+      "narrator_review_required": false,
+      "narrator_review_ok": true,
+      "narrator_review_reason": "未要求口述人复核",
+      "publication_consent_blocked": false,
+      "include_in_named_draft": true,
+      "include_in_verified_edition": true,
+      "exclusion_reasons": [],
+      "private": false,
+      "status": "personally_confirmed"
+    },
+    {
+      "segment_id": "seg-0002",
+      "seq": 2,
+      "kind": "unfinished_buffer_fragment",
+      "text": "那天江雾很重，我刚写下“桐油二百",
+      "chars": 16,
+      "entered_by": "a",
+      "attributed_to": "a",
+      "attributed_label": "甲",
+      "signature_valid": true,
+      "signature_reason": "OK",
+      "signature_short": "6a172d38f9a81540",
+      "signed_at": "2026-11-26T18:33:06+00:00",
+      "signing_visibility": {
+        "at": "2026-11-26T18:33:06+00:00",
+        "station_presence_receipt_id": "PR-0001",
+        "presence_kind": "station_presence_receipt",
+        "presence_says": "station occupied by at least one person; identity is not proven by presence",
+        "named_badges_at_station": [
+          "a"
+        ],
+        "named_viewers": [
+          "a"
+        ]
+      },
+      "accepted_via_handover": "HO-0001",
+      "late_after_successor_arrival": true,
+      "narrator_review_required": false,
+      "narrator_review_ok": true,
+      "narrator_review_reason": "未要求口述人复核",
+      "publication_consent_blocked": false,
+      "include_in_named_draft": true,
+      "include_in_verified_edition": true,
+      "exclusion_reasons": [],
+      "private": false,
+      "status": "personally_confirmed"
+    }
+  ],
+  "named_draft_text": "# 可署名成稿（档案查询端生成）\n\n> 收录有效本人签字段；未完成口述人复核的乙录段会明确标注。\n\n民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。\n\n—— 甲（seg-0001；签字 988c033991d38699）\n\n那天江雾很重，我刚写下“桐油二百\n\n—— 甲（seg-0002；签字 6a172d38f9a81540）\n\n〔档案注：此为输入缓冲中封入的未完半句；本人签字只确认现存文字，程序未补写缺失原意。〕\n",
+  "verified_publishable_text": "# 可署名成稿（档案查询端生成）\n\n> 仅收录有效本人签字且满足复核要求的段。\n\n民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。\n\n—— 甲（seg-0001；签字 988c033991d38699）\n\n那天江雾很重，我刚写下“桐油二百\n\n—— 甲（seg-0002；签字 6a172d38f9a81540）\n\n〔档案注：此为输入缓冲中封入的未完半句；本人签字只确认现存文字，程序未补写缺失原意。〕\n"
+}

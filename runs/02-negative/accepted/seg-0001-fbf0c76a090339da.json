@@ -1,0 +1,50 @@
+{
+  "kind": "desk.queued_confirmation/v1",
+  "message_id": "MSG-0001",
+  "created_at": "2026-11-26T18:33:03+00:00",
+  "station_id": "station-01",
+  "segment_id": "seg-0001",
+  "text": "甲独自核对的原段：渡轮照例鸣笛三声。",
+  "review_text": "档案听打员个人签认审阅文本\n工作站：station-01；签字人：甲（a）\n以下为签字器向签字人展示的实际全文/封入占位；签字只及于哈希绑定的内容。\n\n===== 目标确认段 seg-0001（全文） =====\n甲独自核对的原段：渡轮照例鸣笛三声。\n\n目标段：seg-0001；目标段 sha256=17899919f073028cb11b56a4e4f84a8a634769b034fc29cc7c55ed21a286cacd",
+  "envelope": {
+    "schema": "desk.personal-envelope/v1",
+    "algorithm": "HS256-local-personal-device-simulation",
+    "signer_id": "a",
+    "key_id": "primary",
+    "payload": {
+      "kind": "desk.segment_confirmation/v1",
+      "message_id": "MSG-0001",
+      "station_id": "station-01",
+      "segment_id": "seg-0001",
+      "segment_seq": 1,
+      "segment_sha256": "17899919f073028cb11b56a4e4f84a8a634769b034fc29cc7c55ed21a286cacd",
+      "review_sha256": "400937df953c9c221fd4e3e6ab599445d6ba19ab7f41bb44779cf553ed82b884",
+      "review_manifest": [
+        {
+          "segment_id": "seg-0001",
+          "mode": "full_target",
+          "sha256": "17899919f073028cb11b56a4e4f84a8a634769b034fc29cc7c55ed21a286cacd"
+        }
+      ],
+      "signing_visibility": {
+        "at": "2026-11-26T18:33:03+00:00",
+        "station_presence_receipt_id": "PR-0001",
+        "presence_kind": "station_presence_receipt",
+        "presence_says": "station occupied by at least one person; identity is not proven by presence",
+        "named_badges_at_station": [
+          "a"
+        ],
+        "named_viewers": [
+          "a"
+        ]
+      },
+      "release": [
+        "named_official_edition"
+      ],
+      "signed_at": "2026-11-26T18:33:03+00:00",
+      "nonce": "9c10e0453e188224",
+      "issued_at": "2026-11-26T18:33:03+00:00"
+    },
+    "signature": "fbf0c76a090339da2e41351a5a92c847658e8a3001a436ca9de677ecf2d354f9"
+  }
+}

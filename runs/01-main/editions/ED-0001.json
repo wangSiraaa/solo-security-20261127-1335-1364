@@ -1,0 +1,72 @@
+{
+  "id": "ED-0001",
+  "key": "2026-11-26:oral-001",
+  "date": "2026-11-26",
+  "work_id": "oral-001",
+  "station_id": "station-01",
+  "body_path": "/workspace/runs/01-main/editions/ED-0001.body.md",
+  "markdown_path": "/workspace/runs/01-main/editions/ED-0001.md",
+  "json_path": "/workspace/runs/01-main/editions/ED-0001.json",
+  "body_sha256": "58a12b6428392f350b2e97f9d4d2b0e49063d04c6d986b4723c12f0c1cd7a268",
+  "segment_manifest": [
+    {
+      "segment_id": "seg-0001",
+      "signer_id": "a",
+      "segment_sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708",
+      "signature": "a19b30f99d3d266ee640a390982d87eb231fcd4fd546b3a6612805d29269baea"
+    },
+    {
+      "segment_id": "seg-0002",
+      "signer_id": "a",
+      "segment_sha256": "b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49",
+      "signature": "14fd5a290fdaaab1bd5fb814bddefa78c827dcc14b845d1a4805d4dfc0b0b163"
+    },
+    {
+      "segment_id": "seg-0003",
+      "signer_id": "b",
+      "segment_sha256": "147f69615d4c254cb19ffc1a41b72caece5e85f221598646826d237e1bb67810",
+      "signature": "d977eedfccde78be6d6808123762283d5f22098767f87e320852c11c2ba0dab5"
+    }
+  ],
+  "publisher_id": "b",
+  "publisher_envelope": {
+    "schema": "desk.personal-envelope/v1",
+    "algorithm": "HS256-local-personal-device-simulation",
+    "signer_id": "b",
+    "key_id": "primary",
+    "payload": {
+      "kind": "desk.edition_publication/v1",
+      "edition_id": "ED-0001",
+      "date": "2026-11-26",
+      "work_id": "oral-001",
+      "station_id": "station-01",
+      "body_sha256": "58a12b6428392f350b2e97f9d4d2b0e49063d04c6d986b4723c12f0c1cd7a268",
+      "segments": [
+        {
+          "segment_id": "seg-0001",
+          "signer_id": "a",
+          "segment_sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708",
+          "signature": "a19b30f99d3d266ee640a390982d87eb231fcd4fd546b3a6612805d29269baea"
+        },
+        {
+          "segment_id": "seg-0002",
+          "signer_id": "a",
+          "segment_sha256": "b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49",
+          "signature": "14fd5a290fdaaab1bd5fb814bddefa78c827dcc14b845d1a4805d4dfc0b0b163"
+        },
+        {
+          "segment_id": "seg-0003",
+          "signer_id": "b",
+          "segment_sha256": "147f69615d4c254cb19ffc1a41b72caece5e85f221598646826d237e1bb67810",
+          "signature": "d977eedfccde78be6d6808123762283d5f22098767f87e320852c11c2ba0dab5"
+        }
+      ],
+      "published_at": "2026-11-26T18:33:03+00:00",
+      "nonce": "0f5f838f08eca6c4",
+      "issued_at": "2026-11-26T18:33:03+00:00"
+    },
+    "signature": "f32126872316851839d0753dccfdbba755783105ccb4120746059100badb6963"
+  },
+  "published_at": "2026-11-26T18:33:03+00:00",
+  "errata_ids": []
+}

@@ -1,0 +1,19 @@
+{"seq": 1, "at": "2026-11-26T18:33:06+00:00", "type": "workspace.initialized", "root": "/workspace/runs/07-late-after-publication"}
+{"seq": 2, "at": "2026-11-26T18:33:06+00:00", "type": "presence.confirmed", "receipt_id": "PR-0001", "station_id": "station-01", "identity_proven": false}
+{"seq": 3, "at": "2026-11-26T18:33:06+00:00", "type": "badge.tapped", "badge_id": "BG-0001", "person_id": "a", "station_id": "station-01"}
+{"seq": 4, "at": "2026-11-26T18:33:06+00:00", "type": "segment.recorded", "segment_id": "seg-0001", "station_id": "station-01", "entered_by": "a", "kind": "transcription"}
+{"seq": 5, "at": "2026-11-26T18:33:06+00:00", "type": "signer.confirmation_created", "segment_id": "seg-0001", "signer_id": "a", "out": "/workspace/runs/07-late-after-publication/a-seg1.json"}
+{"seq": 6, "at": "2026-11-26T18:33:06+00:00", "type": "segment.personally_confirmed", "segment_id": "seg-0001", "signer_id": "a", "handover_id": null, "late": false, "signature": "988c033991d38699"}
+{"seq": 7, "at": "2026-11-26T18:33:06+00:00", "type": "buffer.updated", "station_id": "station-01", "by": "a", "chars": 16}
+{"seq": 8, "at": "2026-11-26T18:33:06+00:00", "type": "segment.recorded", "segment_id": "seg-0002", "station_id": "station-01", "entered_by": "a", "kind": "unfinished_buffer_fragment"}
+{"seq": 9, "at": "2026-11-26T18:33:06+00:00", "type": "buffer.sealed_private", "segment_id": "seg-0002", "owner": "a"}
+{"seq": 10, "at": "2026-11-26T18:33:06+00:00", "type": "signer.confirmation_created", "segment_id": "seg-0002", "signer_id": "a", "out": "/workspace/runs/07-late-after-publication/a-seg2-late.json"}
+{"seq": 11, "at": "2026-11-26T18:33:06+00:00", "type": "badge.left", "badge_id": "BG-0001", "person_id": "a", "station_id": "station-01"}
+{"seq": 12, "at": "2026-11-26T18:33:06+00:00", "type": "presence.confirmed", "receipt_id": "PR-0002", "station_id": "station-01", "identity_proven": false}
+{"seq": 13, "at": "2026-11-26T18:33:06+00:00", "type": "badge.tapped", "badge_id": "BG-0002", "person_id": "b", "station_id": "station-01"}
+{"seq": 14, "at": "2026-11-26T18:33:06+00:00", "type": "handover.signed_range_shared", "handover_id": "HO-0001", "segment_id": "seg-0001", "viewer": "b"}
+{"seq": 15, "at": "2026-11-26T18:33:06+00:00", "type": "handover.created", "handover_id": "HO-0001", "station_id": "station-01", "from_id": "a", "to_id": "b", "presence_id": "PR-0002", "signed_range": ["seg-0001"], "boundary": "seg-0001"}
+{"seq": 16, "at": "2026-11-26T18:33:06+00:00", "type": "edition.published", "edition_id": "ED-0001", "key": "2026-11-26:oral-001", "body_sha256": "f81fb2ee001c3e87519f8e68b3d3d4dfd355bb51e7dcf972749f292219058b03", "segments": ["seg-0001"]}
+{"seq": 17, "at": "2026-11-26T18:33:06+00:00", "type": "segment.personally_confirmed", "segment_id": "seg-0002", "signer_id": "a", "handover_id": "HO-0001", "late": true, "signature": "6a172d38f9a81540"}
+{"seq": 18, "at": "2026-11-26T18:33:06+00:00", "type": "handover.delivery_accepted", "handover_id": "HO-0001", "result": {"ok": true, "segment_id": "seg-0002", "signer_id": "a", "handover_id": "HO-0001", "late_after_handover": true, "signature": "6a172d38f9a81540ab49357db3760468cd89e4a7c35293cafc5e198b9dd19511"}}
+{"seq": 19, "at": "2026-11-26T18:33:06+00:00", "type": "erratum.issued", "erratum_id": "ER-0001", "edition_id": "ED-0001", "signer_id": "a"}

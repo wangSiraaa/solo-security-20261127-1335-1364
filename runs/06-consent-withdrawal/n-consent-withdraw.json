@@ -1,0 +1,23 @@
+{
+  "kind": "desk.queued_review_response/v1",
+  "message_id": "MSG-0004",
+  "review_id": "RV-0001",
+  "envelope": {
+    "schema": "desk.personal-envelope/v1",
+    "algorithm": "HS256-local-personal-device-simulation",
+    "signer_id": "n",
+    "key_id": "primary",
+    "payload": {
+      "kind": "desk.review_response/v1",
+      "message_id": "MSG-0004",
+      "review_id": "RV-0001",
+      "decision": "cancelled",
+      "scope": "publication_consent",
+      "reason": "口述人要求暂不公开这一段",
+      "responded_at": "2026-11-26T18:33:06+00:00",
+      "nonce": "711716f3918e41bf",
+      "issued_at": "2026-11-26T18:33:06+00:00"
+    },
+    "signature": "ed180397b025d82714ab900b843b1243c255abb71c67c7c6adec47862aa4983c"
+  }
+}

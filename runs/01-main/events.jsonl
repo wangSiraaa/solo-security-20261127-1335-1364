@@ -1,0 +1,28 @@
+{"seq": 1, "at": "2026-11-26T18:33:02+00:00", "type": "workspace.initialized", "root": "/workspace/runs/01-main"}
+{"seq": 2, "at": "2026-11-26T18:33:02+00:00", "type": "presence.confirmed", "receipt_id": "PR-0001", "station_id": "station-01", "identity_proven": false}
+{"seq": 3, "at": "2026-11-26T18:33:02+00:00", "type": "badge.tapped", "badge_id": "BG-0001", "person_id": "a", "station_id": "station-01"}
+{"seq": 4, "at": "2026-11-26T18:33:02+00:00", "type": "segment.recorded", "segment_id": "seg-0001", "station_id": "station-01", "entered_by": "a", "kind": "transcription"}
+{"seq": 5, "at": "2026-11-26T18:33:02+00:00", "type": "signer.confirmation_created", "segment_id": "seg-0001", "signer_id": "a", "out": "/workspace/runs/01-main/outbox/a-seg1.json"}
+{"seq": 6, "at": "2026-11-26T18:33:02+00:00", "type": "segment.personally_confirmed", "segment_id": "seg-0001", "signer_id": "a", "handover_id": null, "late": false, "signature": "a19b30f99d3d266e"}
+{"seq": 7, "at": "2026-11-26T18:33:02+00:00", "type": "buffer.updated", "station_id": "station-01", "by": "a", "chars": 16}
+{"seq": 8, "at": "2026-11-26T18:33:02+00:00", "type": "segment.recorded", "segment_id": "seg-0002", "station_id": "station-01", "entered_by": "a", "kind": "unfinished_buffer_fragment"}
+{"seq": 9, "at": "2026-11-26T18:33:02+00:00", "type": "buffer.sealed_private", "segment_id": "seg-0002", "owner": "a"}
+{"seq": 10, "at": "2026-11-26T18:33:02+00:00", "type": "signer.confirmation_created", "segment_id": "seg-0002", "signer_id": "a", "out": "/workspace/runs/01-main/outbox/a-seg2-late.json"}
+{"seq": 11, "at": "2026-11-26T18:33:02+00:00", "type": "badge.left", "badge_id": "BG-0001", "person_id": "a", "station_id": "station-01"}
+{"seq": 12, "at": "2026-11-26T18:33:02+00:00", "type": "presence.confirmed", "receipt_id": "PR-0002", "station_id": "station-01", "identity_proven": false}
+{"seq": 13, "at": "2026-11-26T18:33:02+00:00", "type": "badge.tapped", "badge_id": "BG-0002", "person_id": "b", "station_id": "station-01"}
+{"seq": 14, "at": "2026-11-26T18:33:02+00:00", "type": "handover.signed_range_shared", "handover_id": "HO-0001", "segment_id": "seg-0001", "viewer": "b"}
+{"seq": 15, "at": "2026-11-26T18:33:02+00:00", "type": "handover.created", "handover_id": "HO-0001", "station_id": "station-01", "from_id": "a", "to_id": "b", "presence_id": "PR-0002", "signed_range": ["seg-0001"], "boundary": "seg-0001"}
+{"seq": 16, "at": "2026-11-26T18:33:02+00:00", "type": "segment.viewed", "segment_id": "seg-0001", "viewer": "b"}
+{"seq": 17, "at": "2026-11-26T18:33:02+00:00", "type": "review.scheduled", "review_id": "RV-0001", "narrator_id": "n", "handover_id": "HO-0001"}
+{"seq": 18, "at": "2026-11-26T18:33:02+00:00", "type": "segment.recorded", "segment_id": "seg-0003", "station_id": "station-01", "entered_by": "b", "kind": "relief_dictation"}
+{"seq": 19, "at": "2026-11-26T18:33:02+00:00", "type": "signer.confirmation_created", "segment_id": "seg-0003", "signer_id": "b", "out": "/workspace/runs/01-main/outbox/b-seg3.json"}
+{"seq": 20, "at": "2026-11-26T18:33:02+00:00", "type": "segment.personally_confirmed", "segment_id": "seg-0003", "signer_id": "b", "handover_id": "HO-0001", "late": true, "signature": "d977eedfccde78be"}
+{"seq": 21, "at": "2026-11-26T18:33:02+00:00", "type": "handover.delivery_accepted", "handover_id": "HO-0001", "result": {"ok": true, "segment_id": "seg-0003", "signer_id": "b", "handover_id": "HO-0001", "late_after_handover": true, "signature": "d977eedfccde78be6d6808123762283d5f22098767f87e320852c11c2ba0dab5"}}
+{"seq": 22, "at": "2026-11-26T18:33:02+00:00", "type": "review.response_created", "review_id": "RV-0001", "decision": "confirmed", "out": "/workspace/runs/01-main/outbox/n-rv1-ok.json"}
+{"seq": 23, "at": "2026-11-26T18:33:03+00:00", "type": "review.confirmed", "review_id": "RV-0001", "segment_id": "seg-0003", "handover_id": "HO-0001"}
+{"seq": 24, "at": "2026-11-26T18:33:03+00:00", "type": "handover.delivery_accepted", "handover_id": "HO-0001", "result": {"ok": true, "review_id": "RV-0001", "decision": "confirmed", "segment_id": "seg-0003"}}
+{"seq": 25, "at": "2026-11-26T18:33:03+00:00", "type": "segment.personally_confirmed", "segment_id": "seg-0002", "signer_id": "a", "handover_id": "HO-0001", "late": true, "signature": "14fd5a290fdaaab1"}
+{"seq": 26, "at": "2026-11-26T18:33:03+00:00", "type": "handover.delivery_accepted", "handover_id": "HO-0001", "result": {"ok": true, "segment_id": "seg-0002", "signer_id": "a", "handover_id": "HO-0001", "late_after_handover": true, "signature": "14fd5a290fdaaab1bd5fb814bddefa78c827dcc14b845d1a4805d4dfc0b0b163"}}
+{"seq": 27, "at": "2026-11-26T18:33:03+00:00", "type": "edition.published", "edition_id": "ED-0001", "key": "2026-11-26:oral-001", "body_sha256": "58a12b6428392f350b2e97f9d4d2b0e49063d04c6d986b4723c12f0c1cd7a268", "segments": ["seg-0001", "seg-0002", "seg-0003"]}
+{"seq": 28, "at": "2026-11-26T18:33:03+00:00", "type": "erratum.issued", "erratum_id": "ER-0001", "edition_id": "ED-0001", "signer_id": "a"}

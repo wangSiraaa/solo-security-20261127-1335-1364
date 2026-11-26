@@ -1,0 +1,55 @@
+{
+  "kind": "desk.queued_confirmation/v1",
+  "message_id": "MSG-0002",
+  "created_at": "2026-11-26T18:33:02+00:00",
+  "station_id": "station-01",
+  "segment_id": "seg-0002",
+  "text": "那天江雾很重，我刚写下“桐油二百",
+  "review_text": "档案听打员个人签认审阅文本\n工作站：station-01；签字人：甲（a）\n以下为签字器向签字人展示的实际全文/封入占位；签字只及于哈希绑定的内容。\n\n===== 已签前序 seg-0001 / 甲 =====\n民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。\n===== 目标确认段 seg-0002（全文） =====\n那天江雾很重，我刚写下“桐油二百\n\n目标段：seg-0002；目标段 sha256=b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49",
+  "envelope": {
+    "schema": "desk.personal-envelope/v1",
+    "algorithm": "HS256-local-personal-device-simulation",
+    "signer_id": "a",
+    "key_id": "primary",
+    "payload": {
+      "kind": "desk.segment_confirmation/v1",
+      "message_id": "MSG-0002",
+      "station_id": "station-01",
+      "segment_id": "seg-0002",
+      "segment_seq": 2,
+      "segment_sha256": "b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49",
+      "review_sha256": "2ca7752a6bb81f1fd43c2bfb11ca84ccf398dd22ab842cfe5af4a0b20e7d159b",
+      "review_manifest": [
+        {
+          "segment_id": "seg-0001",
+          "mode": "full_signed_prefix",
+          "sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708"
+        },
+        {
+          "segment_id": "seg-0002",
+          "mode": "full_target",
+          "sha256": "b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49"
+        }
+      ],
+      "signing_visibility": {
+        "at": "2026-11-26T18:33:02+00:00",
+        "station_presence_receipt_id": "PR-0001",
+        "presence_kind": "station_presence_receipt",
+        "presence_says": "station occupied by at least one person; identity is not proven by presence",
+        "named_badges_at_station": [
+          "a"
+        ],
+        "named_viewers": [
+          "a"
+        ]
+      },
+      "release": [
+        "named_official_edition"
+      ],
+      "signed_at": "2026-11-26T18:33:02+00:00",
+      "nonce": "d153ccee1b0da389",
+      "issued_at": "2026-11-26T18:33:02+00:00"
+    },
+    "signature": "14fd5a290fdaaab1bd5fb814bddefa78c827dcc14b845d1a4805d4dfc0b0b163"
+  }
+}

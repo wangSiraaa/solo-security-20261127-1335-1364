@@ -1,0 +1,1518 @@
+#!/usr/bin/env python3
+"""共用听打台交班与具名刊次程序（本地模拟，无真实声音/笔迹）。
+
+所有状态均在 --root 指定的目录中：
+- state.json：当前聚合状态
+- events.jsonl：只追加审计事件
+- keys.json：模拟个人签认器密钥（HMAC，仅用于本地完整性演示）
+- outbox/ accepted/ editions/ errata/：电文、回执与刊次档案
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import hmac
+import json
+import os
+import secrets
+import shutil
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, Iterable, List, Optional, Tuple
+
+ENVELOPE_SCHEMA = "desk.personal-envelope/v1"
+CANONICAL_KWARGS = dict(ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+PEOPLE: Dict[str, Dict[str, Any]] = {
+    "a": {"label": "甲", "role": "档案听打员", "qualified_relief": True},
+    "b": {"label": "乙", "role": "档案听打员", "qualified_relief": True},
+    "n": {"label": "口述人", "role": "narrator", "qualified_relief": False},
+}
+
+ID_PREFIX = {
+    "segment": "seg",
+    "receipt": "PR",
+    "badge": "BG",
+    "handover": "HO",
+    "review": "RV",
+    "message": "MSG",
+    "edition": "ED",
+    "erratum": "ER",
+}
+
+
+class DeskError(Exception):
+    def __init__(self, code: str, message: str):
+        super().__init__(message)
+        self.code = code
+        self.message = message
+
+
+def now_iso() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
+
+def sha_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def short_hash(value: Optional[str], length: int = 12) -> str:
+    if not value:
+        return "-"
+    return value[:length]
+
+
+def canonical_bytes(payload: Dict[str, Any]) -> bytes:
+    return json.dumps(payload, **CANONICAL_KWARGS).encode("utf-8")
+
+
+class Desk:
+    def __init__(self, root: str | Path):
+        self.root = Path(root).resolve()
+        self.state_path = self.root / "state.json"
+        self.events_path = self.root / "events.jsonl"
+        self.keys_path = self.root / "keys.json"
+        self.state: Dict[str, Any] = {}
+        self.keys: Dict[str, str] = {}
+
+    # ---------- 基础持久化 ----------
+
+    def initialize(self, force: bool = False) -> None:
+        if self.state_path.exists():
+            if not force:
+                raise DeskError("ALREADY_INITIALIZED", f"工作站档案已存在：{self.root}（加 init --force 可重建）")
+            shutil.rmtree(self.root)
+        self.root.mkdir(parents=True, exist_ok=True)
+        for name in ("outbox", "accepted", "manifests", "editions", "errata", "archive"):
+            (self.root / name).mkdir(exist_ok=True)
+
+        self.keys = {pid: secrets.token_hex(32) for pid in PEOPLE}
+        self.keys_path.write_text(json.dumps(self.keys, ensure_ascii=False, indent=2), encoding="utf-8")
+        os.chmod(self.keys_path, 0o600)
+
+        self.state = {
+            "version": 1,
+            "created_at": now_iso(),
+            "station_id": "station-01",
+            "stations": {
+                "station-01": {
+                    "id": "station-01",
+                    "name": "共用听打台",
+                    "current_presence_id": None,
+                    "active_badges": {},
+                    "last_badges": {},
+                    "buffer": None,
+                }
+            },
+            "people": PEOPLE,
+            "counters": {},
+            "order": [],
+            "segments": {},
+            "presence_receipts": {},
+            "badge_receipts": {},
+            "handovers": {},
+            "reviews": {},
+            "editions": {},
+            "edition_index": {},
+            "errata": [],
+            "event_seq": 0,
+        }
+        self.event("workspace.initialized", root=str(self.root))
+        self.save()
+
+    def require(self) -> "Desk":
+        if not self.state_path.exists() or not self.keys_path.exists():
+            raise DeskError("NOT_INITIALIZED", f"尚未初始化：{self.root}；请先运行 desk --root {self.root} init")
+        self.state = json.loads(self.state_path.read_text(encoding="utf-8"))
+        self.keys = json.loads(self.keys_path.read_text(encoding="utf-8"))
+        return self
+
+    def save(self) -> None:
+        self.root.mkdir(parents=True, exist_ok=True)
+        tmp = self.state_path.with_suffix(".json.tmp")
+        tmp.write_text(json.dumps(self.state, ensure_ascii=False, indent=2), encoding="utf-8")
+        os.replace(tmp, self.state_path)
+
+    def event(self, event_type: str, **fields: Any) -> Dict[str, Any]:
+        self.state["event_seq"] = int(self.state.get("event_seq", 0)) + 1
+        ev = {"seq": self.state["event_seq"], "at": now_iso(), "type": event_type}
+        ev.update(fields)
+        with self.events_path.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(ev, ensure_ascii=False) + "\n")
+        return ev
+
+    def next_id(self, kind: str) -> str:
+        n = int(self.state["counters"].get(kind, 0)) + 1
+        self.state["counters"][kind] = n
+        return f"{ID_PREFIX[kind]}-{n:04d}"
+
+    def station(self, station_id: Optional[str] = None) -> Dict[str, Any]:
+        sid = station_id or self.state.get("station_id", "station-01")
+        if sid not in self.state["stations"]:
+            self.state["stations"][sid] = {
+                "id": sid,
+                "name": sid,
+                "current_presence_id": None,
+                "active_badges": {},
+                "last_badges": {},
+                "buffer": None,
+            }
+        return self.state["stations"][sid]
+
+    def person_label(self, person_id: Optional[str]) -> str:
+        if not person_id:
+            return "未具名"
+        return PEOPLE.get(person_id, {}).get("label", person_id)
+
+    # ---------- 模拟个人签认器 ----------
+
+    def sign_envelope(self, signer_id: str, payload: Dict[str, Any]) -> Dict[str, Any]:
+        if signer_id not in self.keys:
+            raise DeskError("UNKNOWN_SIGNER", f"未登记的个人签认器：{signer_id}")
+        payload = dict(payload)
+        payload.setdefault("issued_at", now_iso())
+        body = canonical_bytes(payload)
+        sig = hmac.new(self.keys[signer_id].encode("utf-8"), body, hashlib.sha256).hexdigest()
+        return {
+            "schema": ENVELOPE_SCHEMA,
+            "algorithm": "HS256-local-personal-device-simulation",
+            "signer_id": signer_id,
+            "key_id": "primary",
+            "payload": payload,
+            "signature": sig,
+        }
+
+    def verify_envelope(self, envelope: Any) -> Dict[str, Any]:
+        if not isinstance(envelope, dict) or envelope.get("schema") != ENVELOPE_SCHEMA:
+            raise DeskError("BAD_ENVELOPE", "不是本程序认可的个人签认器信封")
+        signer_id = envelope.get("signer_id")
+        if signer_id not in self.keys:
+            raise DeskError("UNKNOWN_SIGNER", f"签字人未登记：{signer_id}")
+        expected = hmac.new(
+            self.keys[signer_id].encode("utf-8"),
+            canonical_bytes(envelope.get("payload") or {}),
+            hashlib.sha256,
+        ).hexdigest()
+        supplied = str(envelope.get("signature") or "")
+        if not supplied or not hmac.compare_digest(expected, supplied):
+            raise DeskError("BAD_SIGNATURE", "个人签字与被签内容不匹配；原确认不能为改动后的文字背书")
+        return envelope["payload"]
+
+    # ---------- 在场与身份 ----------
+
+    def visibility_snapshot(self, station_id: str) -> Dict[str, Any]:
+        st = self.station(station_id)
+        pid = st.get("current_presence_id")
+        receipt = self.state["presence_receipts"].get(pid or "", {})
+        named = sorted(st.get("active_badges", {}).keys())
+        return {
+            "at": now_iso(),
+            "station_presence_receipt_id": pid,
+            "presence_kind": receipt.get("kind", "station_presence_receipt"),
+            "presence_says": "station occupied by at least one person; identity is not proven by presence",
+            "named_badges_at_station": named,
+            "named_viewers": named,
+        }
+
+    def confirm_presence(self, station_id: str) -> Dict[str, Any]:
+        st = self.station(station_id)
+        rid = self.next_id("receipt")
+        receipt = {
+            "id": rid,
+            "kind": "station_presence_receipt",
+            "station_id": station_id,
+            "result": "occupied",
+            "identity_proven": False,
+            "statement": "集体工位传感器/值班终端只能确认有人在场，不能证明是甲或乙",
+            "at": now_iso(),
+        }
+        self.state["presence_receipts"][rid] = receipt
+        st["current_presence_id"] = rid
+        self.event("presence.confirmed", receipt_id=rid, station_id=station_id, identity_proven=False)
+        return receipt
+
+    def tap_badge(self, signer_id: str, station_id: str) -> Dict[str, Any]:
+        if signer_id not in PEOPLE:
+            raise DeskError("UNKNOWN_PERSON", f"未登记人员：{signer_id}")
+        st = self.station(station_id)
+        bid = self.next_id("badge")
+        payload = {
+            "kind": "desk.badge_tap/v1",
+            "badge_id": bid,
+            "person_id": signer_id,
+            "station_id": station_id,
+            "at": now_iso(),
+        }
+        env = self.sign_envelope(signer_id, payload)
+        badge = {"id": bid, "person_id": signer_id, "station_id": station_id, "at": now_iso(), "envelope": env}
+        self.state["badge_receipts"][bid] = badge
+        st.setdefault("active_badges", {})[signer_id] = badge
+        st.setdefault("last_badges", {})[signer_id] = badge
+        self.event("badge.tapped", badge_id=bid, person_id=signer_id, station_id=station_id)
+        return badge
+
+    def leave_badge(self, signer_id: str, station_id: str) -> Dict[str, Any]:
+        st = self.station(station_id)
+        badge = st.get("active_badges", {}).pop(signer_id, None)
+        if not badge:
+            raise DeskError("NO_ACTIVE_BADGE", f"{self.person_label(signer_id)} 当前没有在 {station_id} 刷卡/插入签认器")
+        badge["left_at"] = now_iso()
+        st.setdefault("last_badges", {})[signer_id] = badge
+        self.event("badge.left", badge_id=badge["id"], person_id=signer_id, station_id=station_id)
+        return badge
+
+    # ---------- 输入段与缓冲 ----------
+
+    def add_segment(
+        self,
+        station_id: str,
+        by: str,
+        text: str,
+        kind: str = "transcription",
+        review_id: Optional[str] = None,
+        requires_narrator_review: bool = False,
+    ) -> Dict[str, Any]:
+        if by not in PEOPLE:
+            raise DeskError("UNKNOWN_PERSON", f"未登记录入人：{by}")
+        if not text:
+            raise DeskError("EMPTY_TEXT", "不能录入空段")
+        if review_id and review_id not in self.state["reviews"]:
+            raise DeskError("UNKNOWN_REVIEW", f"复核单不存在：{review_id}")
+        sid = self.next_id("segment")
+        seg = {
+            "id": sid,
+            "station_id": station_id,
+            "seq": int(self.state["counters"]["segment"]),
+            "kind": kind,
+            "text": text,
+            "text_sha256": sha_text(text),
+            "status": "recorded_unconfirmed",
+            "entered_by": by,
+            "attribution_lock": by,
+            "review_id": review_id,
+            "requires_narrator_review": bool(requires_narrator_review or review_id),
+            "narrator_review_status": "not_requested",
+            "private": False,
+            "handover_id": None,
+            "created_at": now_iso(),
+            "creation_visibility": self.visibility_snapshot(station_id),
+        }
+        if review_id:
+            seg["narrator_review_status"] = "scheduled"
+            self.state["reviews"][review_id].setdefault("segment_ids", []).append(sid)
+        self.state["segments"][sid] = seg
+        self.state["order"].append(sid)
+        self.event("segment.recorded", segment_id=sid, station_id=station_id, entered_by=by, kind=kind)
+        return seg
+
+    def set_buffer(self, station_id: str, by: str, text: str) -> Dict[str, Any]:
+        st = self.station(station_id)
+        st["buffer"] = {
+            "text": text,
+            "by": by,
+            "updated_at": now_iso(),
+            "visibility": self.visibility_snapshot(station_id),
+        }
+        self.event("buffer.updated", station_id=station_id, by=by, chars=len(text))
+        return st["buffer"]
+
+    def seal_buffer(self, station_id: str, owner: str) -> Dict[str, Any]:
+        st = self.station(station_id)
+        buf = st.get("buffer")
+        if not buf or not buf.get("text"):
+            raise DeskError("EMPTY_BUFFER", "输入缓冲为空，没有可封入的半句")
+        seg = self.add_segment(station_id, owner, buf["text"], kind="unfinished_buffer_fragment")
+        seg["status"] = "sealed_private_pending_signature"
+        seg["private"] = True
+        seg["sealed_at"] = now_iso()
+        seg["buffer_visibility_at_input"] = buf.get("visibility")
+        seg["editorial_note"] = "输入缓冲中的未完半句；只有所有人的合格签字能确认现有文字，程序不补写原意"
+        st["buffer"] = None
+        self.event("buffer.sealed_private", segment_id=seg["id"], owner=owner)
+        return seg
+
+    def visible_segment_for(self, segment_id: str, viewer: str) -> Tuple[Dict[str, Any], str]:
+        seg = self.state["segments"].get(segment_id)
+        if not seg:
+            raise DeskError("UNKNOWN_SEGMENT", f"输入段不存在：{segment_id}")
+        if seg.get("private") and seg.get("status") == "sealed_private_pending_signature":
+            if viewer not in (seg.get("attribution_lock"), "auditor"):
+                raise DeskError(
+                    "PRIVATE_DRAFT",
+                    f"{segment_id} 是 {self.person_label(seg.get('attribution_lock'))} 的待签私稿；"
+                    f"{self.person_label(viewer)} 不能调阅正文或冒作自己的笔录",
+                )
+        self.event("segment.viewed", segment_id=segment_id, viewer=viewer)
+        return seg, seg["text"]
+
+    # ---------- 签字时实际看见的全文清单 ----------
+
+    def build_review_text(self, target: Dict[str, Any], signer_id: str) -> Tuple[str, List[Dict[str, str]]]:
+        station_id = target["station_id"]
+        blocks: List[str] = [
+            "档案听打员个人签认审阅文本",
+            f"工作站：{station_id}；签字人：{self.person_label(signer_id)}（{signer_id}）",
+            "以下为签字器向签字人展示的实际全文/封入占位；签字只及于哈希绑定的内容。",
+            "",
+        ]
+        manifest: List[Dict[str, str]] = []
+        for sid in self.state["order"]:
+            seg = self.state["segments"][sid]
+            if seg["station_id"] != station_id or seg["seq"] > target["seq"]:
+                continue
+            h = seg["text_sha256"]
+            if sid == target["id"]:
+                manifest.append({"segment_id": sid, "mode": "full_target", "sha256": h})
+                blocks.append(f"===== 目标确认段 {sid}（全文） =====")
+                blocks.append(seg["text"])
+            elif seg.get("private") and seg.get("status") == "sealed_private_pending_signature" and seg.get("attribution_lock") != signer_id:
+                manifest.append({"segment_id": sid, "mode": "redacted_private_hash_only", "sha256": h})
+                blocks.append(f"===== 封入私稿 {sid}（无权看正文，仅指纹） =====")
+                blocks.append(f"［私稿已封入；sha256={h}］")
+            elif seg.get("status") == "personally_confirmed":
+                manifest.append({"segment_id": sid, "mode": "full_signed_prefix", "sha256": h})
+                blocks.append(f"===== 已签前序 {sid} / {self.person_label(seg.get('attribution_lock'))} =====")
+                blocks.append(seg["text"])
+            elif seg.get("entered_by") == signer_id:
+                manifest.append({"segment_id": sid, "mode": "full_own_draft", "sha256": h})
+                blocks.append(f"===== 本人草稿 {sid} =====")
+                blocks.append(seg["text"])
+            else:
+                manifest.append({"segment_id": sid, "mode": "redacted_unconfirmed", "sha256": h})
+                blocks.append(f"===== 未确认他人段 {sid}（仅指纹） =====")
+                blocks.append(f"［未纳入签字全文；sha256={h}］")
+        blocks.extend(["", f"目标段：{target['id']}；目标段 sha256={target['text_sha256']}"])
+        return "\n".join(blocks), manifest
+
+    def sign_segment(self, segment_id: str, signer_id: str, out: Optional[str]) -> Dict[str, Any]:
+        seg = self.state["segments"].get(segment_id)
+        if not seg:
+            raise DeskError("UNKNOWN_SEGMENT", f"输入段不存在：{segment_id}")
+        if signer_id not in PEOPLE:
+            raise DeskError("UNKNOWN_SIGNER", f"未登记签字人：{signer_id}")
+        if seg.get("attribution_lock") and seg["attribution_lock"] != signer_id:
+            raise DeskError(
+                "ATTRIBUTION_LOCK",
+                f"{segment_id} 的原始具名锁属于 {self.person_label(seg['attribution_lock'])}；"
+                f"{self.person_label(signer_id)} 的签字不能把旧私稿变成自己的笔录",
+            )
+        review_text, manifest = self.build_review_text(seg, signer_id)
+        vis = self.visibility_snapshot(seg["station_id"])
+        mid = self.next_id("message")
+        payload = {
+            "kind": "desk.segment_confirmation/v1",
+            "message_id": mid,
+            "station_id": seg["station_id"],
+            "segment_id": segment_id,
+            "segment_seq": seg["seq"],
+            "segment_sha256": seg["text_sha256"],
+            "review_sha256": sha_text(review_text),
+            "review_manifest": manifest,
+            "signing_visibility": vis,
+            "release": ["named_official_edition"],
+            "signed_at": now_iso(),
+            "nonce": secrets.token_hex(8),
+        }
+        env = self.sign_envelope(signer_id, payload)
+        message = {
+            "kind": "desk.queued_confirmation/v1",
+            "message_id": mid,
+            "created_at": now_iso(),
+            "station_id": seg["station_id"],
+            "segment_id": segment_id,
+            "text": seg["text"],
+            "review_text": review_text,
+            "envelope": env,
+        }
+        out_path = Path(out) if out else self.root / "outbox" / f"{segment_id}-{mid}.json"
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(json.dumps(message, ensure_ascii=False, indent=2), encoding="utf-8")
+        self.event("signer.confirmation_created", segment_id=segment_id, signer_id=signer_id, out=str(out_path))
+        self.save()
+        return {"ok": True, "out": str(out_path), "message_id": mid, "signature": env["signature"]}
+
+    # ---------- 接收个人确认/复核应答 ----------
+
+    def accept_message(self, message: Dict[str, Any], via_handover: Optional[str] = None) -> Dict[str, Any]:
+        kind = message.get("kind", "")
+        if kind == "station_presence_receipt" or (isinstance(message, dict) and message.get("result") == "occupied" and not message.get("envelope")):
+            raise DeskError(
+                "NOT_PERSONAL_CONFIRMATION",
+                "这只是集体工位的‘有人在’凭证，没有个人签认器签字，不能署名为甲/乙",
+            )
+        envelope = message.get("envelope")
+        if not isinstance(envelope, dict):
+            raise DeskError("MISSING_PERSONAL_ENVELOPE", "队列电文缺少个人签认器信封")
+        payload = self.verify_envelope(envelope)
+        pkind = payload.get("kind")
+        if pkind == "desk.segment_confirmation/v1":
+            return self._accept_segment_confirmation(message, envelope, payload, via_handover)
+        if pkind == "desk.review_response/v1":
+            return self._accept_review_response(message, envelope, payload, via_handover)
+        raise DeskError("UNKNOWN_PAYLOAD_KIND", f"不认识的签认内容类型：{pkind}")
+
+    def _accept_segment_confirmation(
+        self,
+        message: Dict[str, Any],
+        envelope: Dict[str, Any],
+        payload: Dict[str, Any],
+        via_handover: Optional[str],
+    ) -> Dict[str, Any]:
+        sid = payload.get("segment_id")
+        seg = self.state["segments"].get(sid)
+        if not seg:
+            raise DeskError("UNKNOWN_SEGMENT", f"签字指向不存在的段：{sid}")
+        signer = envelope.get("signer_id")
+        if seg.get("attribution_lock") != signer:
+            raise DeskError("ATTRIBUTION_LOCK", f"{sid} 只能由 {self.person_label(seg.get('attribution_lock'))} 本人签认")
+        if payload.get("station_id") != seg["station_id"]:
+            raise DeskError("STATION_MISMATCH", "签字的工作站与输入段不一致")
+
+        queued_text = message.get("text")
+        if not isinstance(queued_text, str):
+            raise DeskError("MISSING_QUEUED_TEXT", "队列电文缺少待发正文")
+        if sha_text(queued_text) != payload.get("segment_sha256"):
+            raise DeskError(
+                "SIGNED_TEXT_MISMATCH",
+                "队列里的这一段已在签字后被改动；签字哈希不匹配，原确认不能替改后文本背书",
+            )
+        if sha_text(queued_text) != seg["text_sha256"]:
+            raise DeskError("STORED_TEXT_MISMATCH", "队列文本与工作站封存档不一致")
+        review_text = message.get("review_text", "")
+        if not isinstance(review_text, str) or sha_text(review_text) != payload.get("review_sha256"):
+            raise DeskError("FULL_REVIEW_MISMATCH", "签字人实际看见的全文哈希不匹配")
+
+        if seg.get("status") == "personally_confirmed":
+            old_sig = seg.get("confirmation_envelope", {}).get("signature")
+            if old_sig == envelope.get("signature"):
+                return {"ok": True, "idempotent": True, "segment_id": sid, "signer_id": signer}
+            raise DeskError("SEGMENT_ALREADY_CONFIRMED", f"{sid} 已有不同的有效本人签字；不可覆盖")
+
+        seg["status"] = "personally_confirmed"
+        seg["private"] = False
+        seg["confirmed_at"] = now_iso()
+        seg["received_at"] = now_iso()
+        seg["confirmation_envelope"] = envelope
+        seg["review_text"] = review_text
+        seg["accepted_via_handover"] = via_handover
+        seg["late_after_successor_arrival"] = bool(via_handover and self._successor_was_present_before_delivery(via_handover, signer))
+
+        accepted_dir = self.root / "accepted"
+        accepted_dir.mkdir(exist_ok=True)
+        accepted_path = accepted_dir / f"{sid}-{short_hash(envelope['signature'], 16)}.json"
+        accepted_path.write_text(json.dumps(message, ensure_ascii=False, indent=2), encoding="utf-8")
+        seg["accepted_message_path"] = str(accepted_path)
+
+        self.event(
+            "segment.personally_confirmed",
+            segment_id=sid,
+            signer_id=signer,
+            handover_id=via_handover,
+            late=bool(via_handover),
+            signature=short_hash(envelope["signature"], 16),
+        )
+        return {
+            "ok": True,
+            "segment_id": sid,
+            "signer_id": signer,
+            "handover_id": via_handover,
+            "late_after_handover": bool(via_handover),
+            "signature": envelope["signature"],
+        }
+
+    def _successor_was_present_before_delivery(self, handover_id: str, signer: str) -> bool:
+        ho = self.state["handovers"].get(handover_id)
+        return bool(ho and ho.get("to") != signer and ho.get("created_at"))
+
+    def verify_stored_confirmation(self, seg: Dict[str, Any]) -> Tuple[bool, str]:
+        envelope = seg.get("confirmation_envelope")
+        if seg.get("status") != "personally_confirmed" or not envelope:
+            return False, "尚无合格本人签字"
+        try:
+            payload = self.verify_envelope(envelope)
+        except DeskError as exc:
+            return False, exc.code
+        if payload.get("segment_sha256") != seg.get("text_sha256"):
+            return False, "签字后正文哈希已改变"
+        if sha_text(seg.get("text", "")) != payload.get("segment_sha256"):
+            return False, "当前正文与签字哈希不一致"
+        if sha_text(seg.get("review_text", "")) != payload.get("review_sha256"):
+            return False, "签字指向的全文哈希不一致"
+        if envelope.get("signer_id") != seg.get("attribution_lock"):
+            return False, "签字人与原始具名锁不一致"
+        return True, "OK"
+
+    # ---------- 交班 ----------
+
+    def create_handover(self, station_id: str, from_id: str, to_id: str, presence_id: str) -> Dict[str, Any]:
+        st = self.station(station_id)
+        if to_id not in PEOPLE or not PEOPLE[to_id].get("qualified_relief"):
+            raise DeskError("NOT_QUALIFIED_RELIEF", f"{self.person_label(to_id)} 不具备接班资格")
+        if to_id not in st.get("active_badges", {}):
+            raise DeskError(
+                "SUCCESSOR_PERSONAL_BADGE_REQUIRED",
+                "集体在场凭证只能说明有人；合格后任还必须插入/刷过自己的个人签认器",
+            )
+        if presence_id == "latest":
+            presence_id = st.get("current_presence_id") or ""
+        receipt = self.state["presence_receipts"].get(presence_id)
+        if not receipt or receipt.get("kind") != "station_presence_receipt":
+            raise DeskError("PRESENCE_REQUIRED", "交班必须附交班时的集体工位‘有人在’确认")
+        if receipt.get("station_id") != station_id:
+            raise DeskError("PRESENCE_STATION_MISMATCH", "在场确认不属于这台工作站")
+
+        # 若缓冲未预先封入，交班程序在此按边界自动封入，绝不把缓冲误当成已签段。
+        if (st.get("buffer") or {}).get("text"):
+            self.seal_buffer(station_id, from_id)
+
+        hid = self.next_id("handover")
+        signed_range = self.contiguous_signed_range(station_id)
+        ho = {
+            "id": hid,
+            "kind": "desk.handover_request/v1",
+            "station_id": station_id,
+            "from": from_id,
+            "to": to_id,
+            "presence_receipt_id": presence_id,
+            "presence_is_identity_proof": False,
+            "successor_badge_id": st["active_badges"][to_id]["id"],
+            "predecessor_last_badge_id": (st.get("last_badges", {}).get(from_id) or {}).get("id"),
+            "created_at": now_iso(),
+            "signed_range": signed_range,
+            "boundary_after_segment": signed_range[-1] if signed_range else None,
+            "sealed_pending": [
+                sid
+                for sid in self.state["order"]
+                if self.state["segments"][sid].get("handover_id") == hid
+                or (
+                    self.state["segments"][sid].get("private")
+                    and self.state["segments"][sid].get("status") == "sealed_private_pending_signature"
+                )
+            ],
+            "rules": [
+                "边界停在连续有效本人签字范围之后",
+                "未完半句是前任私稿，未收到有效迟到签字前不得刊用",
+                "后任可用自己的身份新录、复核并署名，但不能把旧私稿改成自己的笔录",
+                "同一日同一口述 work_id 只允许一个正式具名刊次",
+                "刊次冻结后，新事实或改字只能另附勘误",
+            ],
+            "inbox": [],
+            "status": "open",
+        }
+        for sid in ho["sealed_pending"]:
+            self.state["segments"][sid]["handover_id"] = hid
+
+        self.state["handovers"][hid] = ho
+        for sid in signed_range:
+            self.event("handover.signed_range_shared", handover_id=hid, segment_id=sid, viewer=to_id)
+        self.event(
+            "handover.created",
+            handover_id=hid,
+            station_id=station_id,
+            from_id=from_id,
+            to_id=to_id,
+            presence_id=presence_id,
+            signed_range=signed_range,
+            boundary=ho["boundary_after_segment"],
+        )
+        self.save()
+        return ho
+
+    def contiguous_signed_range(self, station_id: str) -> List[str]:
+        result: List[str] = []
+        for sid in self.state["order"]:
+            seg = self.state["segments"][sid]
+            if seg["station_id"] != station_id:
+                continue
+            ok, _ = self.verify_stored_confirmation(seg)
+            if ok:
+                result.append(sid)
+            else:
+                break
+        return result
+
+    def refresh_handover_ranges(self, ho: Dict[str, Any]) -> None:
+        signed_range = self.contiguous_signed_range(ho["station_id"])
+        ho["signed_range"] = signed_range
+        ho["boundary_after_segment"] = signed_range[-1] if signed_range else None
+
+    def deliver_handover(self, handover_id: str, path: str) -> Dict[str, Any]:
+        ho = self.state["handovers"].get(handover_id)
+        if not ho:
+            raise DeskError("UNKNOWN_HANDOVER", f"交班请求不存在：{handover_id}")
+        p = Path(path)
+        message = json.loads(p.read_text(encoding="utf-8"))
+        record: Dict[str, Any] = {
+            "delivered_at": now_iso(),
+            "source_file": str(p.resolve()),
+            "message_kind": message.get("kind"),
+            "accepted": False,
+        }
+        try:
+            result = self.accept_message(message, via_handover=handover_id)
+            record["accepted"] = True
+            record["result"] = result
+            ho["inbox"].append(record)
+            self.refresh_handover_ranges(ho)
+            self.event("handover.delivery_accepted", handover_id=handover_id, result=result)
+            self.save()
+            return record
+        except DeskError as exc:
+            record.update(accepted=False, error_code=exc.code, error=exc.message)
+            ho["inbox"].append(record)
+            self.event("handover.delivery_rejected", handover_id=handover_id, code=exc.code, message=exc.message)
+            self.save()
+            raise
+
+    # ---------- 口述人复核/取消 ----------
+
+    def schedule_review(self, narrator_id: str, handover_id: Optional[str], segment_id: Optional[str] = None) -> Dict[str, Any]:
+        if narrator_id not in PEOPLE or PEOPLE[narrator_id]["role"] != "narrator":
+            raise DeskError("NOT_NARRATOR", "复核/取消必须来自登记的口述人签认器")
+        if handover_id and handover_id not in self.state["handovers"]:
+            raise DeskError("UNKNOWN_HANDOVER", f"交班请求不存在：{handover_id}")
+        rid = self.next_id("review")
+        review = {
+            "id": rid,
+            "kind": "desk.narrator_review/v1",
+            "narrator_id": narrator_id,
+            "handover_id": handover_id,
+            "segment_ids": [segment_id] if segment_id else [],
+            "status": "scheduled",
+            "created_at": now_iso(),
+        }
+        self.state["reviews"][rid] = review
+        if segment_id:
+            seg = self.state["segments"].get(segment_id)
+            if not seg:
+                raise DeskError("UNKNOWN_SEGMENT", segment_id)
+            seg["review_id"] = rid
+            seg["requires_narrator_review"] = True
+            seg["narrator_review_status"] = "scheduled"
+        self.event("review.scheduled", review_id=rid, narrator_id=narrator_id, handover_id=handover_id)
+        self.save()
+        return review
+
+    def respond_review(
+        self,
+        review_id: str,
+        signer_id: str,
+        decision: str,
+        out: str,
+        reason: Optional[str],
+        scope: str = "review_appointment",
+    ) -> Dict[str, Any]:
+        review = self.state["reviews"].get(review_id)
+        if not review:
+            raise DeskError("UNKNOWN_REVIEW", f"复核单不存在：{review_id}")
+        if signer_id != review["narrator_id"]:
+            raise DeskError("NOT_AUTHORIZED_NARRATOR", "只有该复核单上的口述人本人签认器能应答")
+        mid = self.next_id("message")
+        payload: Dict[str, Any] = {
+            "kind": "desk.review_response/v1",
+            "message_id": mid,
+            "review_id": review_id,
+            "decision": decision,
+            "scope": scope,
+            "reason": reason or "",
+            "responded_at": now_iso(),
+            "nonce": secrets.token_hex(8),
+        }
+        message: Dict[str, Any] = {
+            "kind": "desk.queued_review_response/v1",
+            "message_id": mid,
+            "review_id": review_id,
+        }
+        if decision == "confirmed":
+            sid = (review.get("segment_ids") or [None])[0]
+            if not sid:
+                raise DeskError("REVIEW_HAS_NO_SEGMENT", "复核确认必须指向具体新录段")
+            seg = self.state["segments"][sid]
+            payload["segment_id"] = sid
+            payload["segment_sha256"] = seg["text_sha256"]
+            message["text"] = seg["text"]
+        message["envelope"] = self.sign_envelope(signer_id, payload)
+        out_path = Path(out)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(json.dumps(message, ensure_ascii=False, indent=2), encoding="utf-8")
+        self.event("review.response_created", review_id=review_id, decision=decision, out=str(out_path))
+        self.save()
+        return {"ok": True, "out": str(out_path), "review_id": review_id, "decision": decision}
+
+    def _accept_review_response(
+        self,
+        message: Dict[str, Any],
+        envelope: Dict[str, Any],
+        payload: Dict[str, Any],
+        via_handover: Optional[str],
+    ) -> Dict[str, Any]:
+        rid = payload.get("review_id")
+        review = self.state["reviews"].get(rid)
+        if not review:
+            raise DeskError("UNKNOWN_REVIEW", f"签字指向不存在的复核单：{rid}")
+        if envelope.get("signer_id") != review["narrator_id"]:
+            raise DeskError("NOT_AUTHORIZED_NARRATOR", "复核应答不是指定口述人本人签的")
+        decision = payload.get("decision")
+        if decision == "confirmed":
+            sid = payload.get("segment_id")
+            seg = self.state["segments"].get(sid or "")
+            if not seg:
+                raise DeskError("UNKNOWN_SEGMENT", "复核确认指向不存在的段")
+            if message.get("text") != seg["text"] or sha_text(message.get("text", "")) != payload.get("segment_sha256"):
+                raise DeskError("REVIEW_TEXT_MISMATCH", "口述人复核签字与实际文本哈希不一致")
+            review["status"] = "confirmed"
+            review["confirmation_envelope"] = envelope
+            review["confirmed_at"] = now_iso()
+            seg["narrator_review_status"] = "confirmed"
+            self.event("review.confirmed", review_id=rid, segment_id=sid, handover_id=via_handover)
+            return {"ok": True, "review_id": rid, "decision": "confirmed", "segment_id": sid}
+        if decision == "cancelled":
+            scope = payload.get("scope", "review_appointment")
+            previously_confirmed = review.get("status") == "confirmed"
+            if scope == "publication_consent":
+                review["consent_withdrawn"] = True
+                review["consent_withdrawn_at"] = now_iso()
+            review["status"] = "retracted_after_confirmation" if previously_confirmed else "cancelled"
+            review["cancellation_scope"] = scope
+            review["cancellation_envelope"] = envelope
+            review["cancelled_at"] = now_iso()
+            review["cancellation_reason"] = payload.get("reason", "")
+            for sid in review.get("segment_ids", []):
+                seg = self.state["segments"].get(sid)
+                if seg:
+                    seg["narrator_review_status"] = "retracted" if previously_confirmed else "cancelled"
+                    if scope == "publication_consent":
+                        seg["publication_consent_withdrawn"] = True
+            self.event(
+                "review.cancelled",
+                review_id=rid,
+                scope=scope,
+                after_confirmation=previously_confirmed,
+                handover_id=via_handover,
+            )
+            return {"ok": True, "review_id": rid, "decision": review["status"], "scope": scope}
+        raise DeskError("BAD_REVIEW_DECISION", f"未知复核决定：{decision}")
+
+    # ---------- 档案视图与刊次 ----------
+
+    def review_is_confirmed(self, seg: Dict[str, Any]) -> Tuple[bool, str]:
+        rid = seg.get("review_id")
+        if not rid:
+            return not seg.get("requires_narrator_review", False), "未要求口述人复核"
+        review = self.state["reviews"].get(rid)
+        if not review:
+            return False, "复核单不存在"
+        if review.get("status") == "confirmed" and review.get("confirmation_envelope"):
+            try:
+                self.verify_envelope(review["confirmation_envelope"])
+                return True, "口述人已本人复核"
+            except DeskError as exc:
+                return False, f"复核签字无效：{exc.code}"
+        return False, f"口述人复核状态：{review.get('status')}"
+
+    def artifact_path(self, value: str | Path) -> Path:
+        path = Path(value)
+        if path.exists():
+            return path
+        candidate = self.root / path.parent.name / path.name
+        return candidate if candidate.exists() else path
+
+    def verify_edition(self, edition: Dict[str, Any]) -> Dict[str, Any]:
+        checks: List[Dict[str, Any]] = []
+
+        def add(name: str, ok: bool, detail: str) -> None:
+            checks.append({"name": name, "ok": bool(ok), "detail": detail})
+
+        body_path = self.artifact_path(edition["body_path"])
+        try:
+            body_text = body_path.read_text(encoding="utf-8")
+            actual_hash = sha_text(body_text)
+            add("刊次正文未被改写", actual_hash == edition.get("body_sha256"), f"sha256={short_hash(actual_hash, 24)}")
+        except OSError as exc:
+            actual_hash = None
+            add("刊次正文可读", False, str(exc))
+
+        envelope = edition.get("publisher_envelope") or {}
+        try:
+            payload = self.verify_envelope(envelope)
+            add("签发员个人签字有效", True, f"signer={envelope.get('signer_id')}")
+            add(
+                "签发签字指向所见全文哈希",
+                payload.get("body_sha256") == edition.get("body_sha256") == actual_hash,
+                f"payload={short_hash(payload.get('body_sha256'), 24)}",
+            )
+            add("刊次号一致", payload.get("edition_id") == edition.get("id"), str(edition.get("id")))
+        except DeskError as exc:
+            add("签发员个人签字有效", False, f"{exc.code}: {exc.message}")
+
+        for manifest in edition.get("segment_manifest", []):
+            sid = manifest["segment_id"]
+            seg = self.state["segments"].get(sid)
+            if not seg:
+                add(f"段 {sid} 存在", False, "missing")
+                continue
+            sig_ok, reason = self.verify_stored_confirmation(seg)
+            add(f"段 {sid} 本人签字", sig_ok, reason)
+            add(
+                f"段 {sid} 哈希与刊次清单一致",
+                seg.get("text_sha256") == manifest.get("segment_sha256"),
+                short_hash(seg.get("text_sha256"), 16),
+            )
+        return {"ok": all(c["ok"] for c in checks), "checks": checks}
+
+    def archive_view(self, date: str, station_id: Optional[str] = None, work_id: str = "oral-001") -> Dict[str, Any]:
+        items: List[Dict[str, Any]] = []
+        for sid in self.state["order"]:
+            seg = self.state["segments"][sid]
+            if station_id and seg["station_id"] != station_id:
+                continue
+            sig_ok, sig_reason = self.verify_stored_confirmation(seg)
+            review_ok, review_reason = self.review_is_confirmed(seg)
+            consent_blocked = bool(seg.get("publication_consent_withdrawn"))
+            reasons: List[str] = []
+            if not sig_ok:
+                reasons.append(sig_reason)
+            if consent_blocked:
+                reasons.append("口述人已在同一交班请求中撤回该段的刊布同意")
+            if seg.get("requires_narrator_review") and not review_ok:
+                reasons.append(review_reason)
+            attributable = sig_ok and not consent_blocked
+            verified = attributable and review_ok
+            items.append(
+                {
+                    "segment_id": sid,
+                    "seq": seg["seq"],
+                    "kind": seg["kind"],
+                    "text": seg["text"],
+                    "chars": len(seg["text"]),
+                    "entered_by": seg.get("entered_by"),
+                    "attributed_to": seg.get("attribution_lock") if attributable else None,
+                    "attributed_label": self.person_label(seg.get("attribution_lock")) if attributable else "暂不能署名",
+                    "signature_valid": sig_ok,
+                    "signature_reason": sig_reason,
+                    "signature_short": short_hash((seg.get("confirmation_envelope") or {}).get("signature"), 16),
+                    "signed_at": (seg.get("confirmation_envelope") or {}).get("payload", {}).get("signed_at"),
+                    "signing_visibility": (seg.get("confirmation_envelope") or {}).get("payload", {}).get("signing_visibility"),
+                    "accepted_via_handover": seg.get("accepted_via_handover"),
+                    "late_after_successor_arrival": seg.get("late_after_successor_arrival"),
+                    "narrator_review_required": bool(seg.get("requires_narrator_review")),
+                    "narrator_review_ok": review_ok,
+                    "narrator_review_reason": review_reason,
+                    "publication_consent_blocked": consent_blocked,
+                    "include_in_named_draft": attributable,
+                    "include_in_verified_edition": verified,
+                    "exclusion_reasons": reasons,
+                    "private": seg.get("private", False),
+                    "status": seg.get("status"),
+                }
+            )
+        key = f"{date}:{work_id}"
+        edition_id = self.state["edition_index"].get(key)
+        edition = self.state["editions"].get(edition_id) if edition_id else None
+        edition_verification = self.verify_edition(edition) if edition else None
+        return {
+            "ok": True,
+            "date": date,
+            "work_id": work_id,
+            "station_id": station_id or self.state.get("station_id"),
+            "unique_edition_key": key,
+            "official_edition": edition,
+            "official_edition_verification": edition_verification,
+            "segments": items,
+            "named_draft_text": self.render_named_draft(items, official=False),
+            "verified_publishable_text": self.render_named_draft(items, official=True),
+        }
+
+    def render_named_draft(self, items: Iterable[Dict[str, Any]], official: bool) -> str:
+        selected = [x for x in items if x["include_in_verified_edition" if official else "include_in_named_draft"]]
+        lines = ["# 可署名成稿（档案查询端生成）", ""]
+        if official:
+            lines.append("> 仅收录有效本人签字且满足复核要求的段。")
+        else:
+            lines.append("> 收录有效本人签字段；未完成口述人复核的乙录段会明确标注。")
+        lines.append("")
+        for item in selected:
+            lines.append(item["text"])
+            lines.append("")
+            lines.append(
+                f"—— {item['attributed_label']}（{item['segment_id']}；"
+                f"签字 {item['signature_short']}）"
+            )
+            if item["kind"] == "unfinished_buffer_fragment":
+                lines.append("")
+                lines.append("〔档案注：此为输入缓冲中封入的未完半句；本人签字只确认现存文字，程序未补写缺失原意。〕")
+            if item.get("narrator_review_required") and item.get("narrator_review_ok"):
+                lines.append("")
+                lines.append("〔口述人已本人复核〕")
+            lines.append("")
+        if not selected:
+            lines.append("（当前没有可收录的具名段。）")
+        excluded = [x for x in items if not (x["include_in_verified_edition" if official else "include_in_named_draft"])]
+        if excluded:
+            lines.extend(["---", "", "## 未收录/隔离内容", ""])
+            for x in excluded:
+                lines.append(f"- `{x['segment_id']}`：{'；'.join(x['exclusion_reasons']) or '不符合收录条件'}")
+        return "\n".join(lines).rstrip() + "\n"
+
+    def publish_edition(self, date: str, work_id: str, station_id: str, clerk_id: str) -> Dict[str, Any]:
+        key = f"{date}:{work_id}"
+        if key in self.state["edition_index"]:
+            eid = self.state["edition_index"][key]
+            raise DeskError(
+                "EDITION_ALREADY_PUBLISHED",
+                f"{date} 的 {work_id} 已有唯一正式刊次 {eid}；刊次冻结，之后只能提交勘误",
+            )
+        if clerk_id not in PEOPLE or not PEOPLE[clerk_id].get("qualified_relief"):
+            raise DeskError("NOT_AUTHORIZED_PUBLISHER", "签发必须由合格值班听打员的个人签认器完成")
+        view = self.archive_view(date, station_id, work_id)
+        items = [x for x in view["segments"] if x["include_in_named_draft"]]
+        if not items:
+            raise DeskError("NOTHING_PUBLISHABLE", "没有有效本人签字且未被口述人撤回同意、可进入正式具名刊次的段")
+
+        eid = self.next_id("edition")
+        body_lines = [
+            "# 口述档案当日具名刊次",
+            "",
+            f"- 刊次号：{eid}",
+            f"- 日期：{date}",
+            f"- 口述档案编号：{work_id}",
+            f"- 工作站：{station_id}",
+            "- 刊次规则：同一日同一口述档案只此一个正式具名版本",
+            "",
+            "---",
+            "",
+        ]
+        segment_manifest = []
+        for item in items:
+            seg = self.state["segments"][item["segment_id"]]
+            body_lines.extend([seg["text"], ""])
+            body_lines.append(
+                f"—— {item['attributed_label']} 具名（输入段 {item['segment_id']}；"
+                f"个人签字 {item['signature_short']}）"
+            )
+            if seg["kind"] == "unfinished_buffer_fragment":
+                body_lines.extend(["", "〔档案注：未完半句按甲签字时的现存原文收录，不代补原意。〕"])
+            if item.get("narrator_review_required") and item["narrator_review_ok"]:
+                body_lines.extend(["", "〔口述人已复核〕"])
+            elif item.get("narrator_review_required"):
+                body_lines.extend(["", f"〔口述人未完成复核：{item.get('narrator_review_reason')}；本段由具名听打员本人负责〕"])
+            body_lines.append("")
+            segment_manifest.append(
+                {
+                    "segment_id": item["segment_id"],
+                    "signer_id": item["attributed_to"],
+                    "segment_sha256": seg["text_sha256"],
+                    "signature": seg["confirmation_envelope"]["signature"],
+                }
+            )
+        body_lines.extend(
+            [
+                "---",
+                "",
+                f"当班签发员：{self.person_label(clerk_id)}（个人签认，非仅工位在场）",
+                f"签发时间：{now_iso()}",
+                "",
+            ]
+        )
+        body_text = "\n".join(body_lines)
+        body_hash = sha_text(body_text)
+
+        payload = {
+            "kind": "desk.edition_publication/v1",
+            "edition_id": eid,
+            "date": date,
+            "work_id": work_id,
+            "station_id": station_id,
+            "body_sha256": body_hash,
+            "segments": segment_manifest,
+            "published_at": now_iso(),
+            "nonce": secrets.token_hex(8),
+        }
+        publisher_envelope = self.sign_envelope(clerk_id, payload)
+
+        ed_dir = self.root / "editions"
+        body_path = ed_dir / f"{eid}.body.md"
+        final_path = ed_dir / f"{eid}.md"
+        json_path = ed_dir / f"{eid}.json"
+        body_path.write_text(body_text, encoding="utf-8")
+        final_text = body_text + "\n## 签发签字信封（本地模拟）\n\n```json\n" + json.dumps(publisher_envelope, ensure_ascii=False, indent=2) + "\n```\n"
+        final_path.write_text(final_text, encoding="utf-8")
+
+        edition = {
+            "id": eid,
+            "key": key,
+            "date": date,
+            "work_id": work_id,
+            "station_id": station_id,
+            "body_path": str(body_path),
+            "markdown_path": str(final_path),
+            "json_path": str(json_path),
+            "body_sha256": body_hash,
+            "segment_manifest": segment_manifest,
+            "publisher_id": clerk_id,
+            "publisher_envelope": publisher_envelope,
+            "published_at": now_iso(),
+            "errata_ids": [],
+        }
+        json_path.write_text(json.dumps(edition, ensure_ascii=False, indent=2), encoding="utf-8")
+        self.state["editions"][eid] = edition
+        self.state["edition_index"][key] = eid
+        self.event("edition.published", edition_id=eid, key=key, body_sha256=body_hash, segments=[x["segment_id"] for x in segment_manifest])
+        self.save()
+        return edition
+
+    def add_erratum(self, edition_id: str, signer_id: str, correction: str, target_segment: Optional[str], reason: Optional[str]) -> Dict[str, Any]:
+        edition = self.state["editions"].get(edition_id)
+        if not edition:
+            maybe = self.state["edition_index"].get(edition_id)
+            edition = self.state["editions"].get(maybe or "")
+        if not edition:
+            raise DeskError("UNKNOWN_EDITION", f"正式刊次不存在：{edition_id}")
+        eid = edition["id"]
+        erid = self.next_id("erratum")
+        payload = {
+            "kind": "desk.erratum/v1",
+            "erratum_id": erid,
+            "edition_id": eid,
+            "frozen_edition_body_sha256": edition["body_sha256"],
+            "target_segment_id": target_segment,
+            "correction_or_addendum": correction,
+            "reason": reason or "",
+            "signer_id": signer_id,
+            "issued_at": now_iso(),
+            "nonce": secrets.token_hex(8),
+        }
+        envelope = self.sign_envelope(signer_id, payload)
+        record = {"id": erid, "payload": payload, "envelope": envelope, "created_at": now_iso()}
+        path = self.root / "errata" / f"{erid}.md"
+        path.write_text(
+            "\n".join(
+                [
+                    f"# 勘误/补遗 {erid}",
+                    "",
+                    f"- 对应冻结刊次：{eid}",
+                    f"- 刊次正文 sha256：{edition['body_sha256']}",
+                    f"- 签字人：{self.person_label(signer_id)}（{signer_id}）",
+                    f"- 目标段：{target_segment or '未指定'}",
+                    "",
+                    "## 勘误/补遗内容",
+                    correction,
+                    "",
+                    f"原因：{reason or '（未填写）'}",
+                    "",
+                    "> 本件不改写已发出的正式刊次；档案查询端将原文与勘误并列展示。",
+                    "",
+                    "```json",
+                    json.dumps(envelope, ensure_ascii=False, indent=2),
+                    "```",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        record["path"] = str(path)
+        self.state["errata"].append(record)
+        edition.setdefault("errata_ids", []).append(erid)
+        self.event("erratum.issued", erratum_id=erid, edition_id=eid, signer_id=signer_id)
+        self.save()
+        return record
+
+    # ---------- 追溯 ----------
+
+    def trace(self, segment_id: str) -> Dict[str, Any]:
+        seg = self.state["segments"].get(segment_id)
+        if not seg:
+            raise DeskError("UNKNOWN_SEGMENT", f"输入段不存在：{segment_id}")
+        ok, reason = self.verify_stored_confirmation(seg)
+        related_events = []
+        for line in self.events_path.read_text(encoding="utf-8").splitlines():
+            ev = json.loads(line)
+            blob = json.dumps(ev, ensure_ascii=False)
+            if segment_id in blob:
+                related_events.append(ev)
+        return {
+            "segment": seg,
+            "attribution_valid": ok,
+            "attribution_reason": reason,
+            "creation_visibility": seg.get("creation_visibility"),
+            "input_buffer_visibility": seg.get("buffer_visibility_at_input"),
+            "signing_visibility": (seg.get("confirmation_envelope") or {}).get("payload", {}).get("signing_visibility"),
+            "accepted_via_handover": seg.get("accepted_via_handover"),
+            "related_events": related_events,
+        }
+
+
+# ---------- 命令行展示 ----------
+
+def print_json(obj: Any) -> None:
+    print(json.dumps(obj, ensure_ascii=False, indent=2))
+
+
+def ok_line(result: Dict[str, Any]) -> None:
+    if "out" in result:
+        print(f"已生成个人签认电文：{result['out']}")
+    elif "segment_id" in result:
+        print(f"已接收合格本人确认：{result['segment_id']} / {result.get('signer_id')}")
+    else:
+        print(json.dumps(result, ensure_ascii=False))
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(prog="desk", description="共用听打台交班、个人签认与档案刊次程序")
+    p.add_argument("--root", default=os.environ.get("DESK_ROOT", "/workspace/runs/default"), help="工作站数据目录")
+    p.add_argument("--json", action="store_true", help="输出 JSON")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    sp = sub.add_parser("init", help="初始化工位档案")
+    sp.add_argument("--force", action="store_true")
+
+    sp = sub.add_parser("presence", help="集体工位在场确认")
+    pres_sub = sp.add_subparsers(dest="subcmd", required=True)
+    x = pres_sub.add_parser("confirm")
+    x.add_argument("--station", default="station-01")
+
+    sp = sub.add_parser("badge", help="个人签认器/工牌")
+    badge_sub = sp.add_subparsers(dest="subcmd", required=True)
+    x = badge_sub.add_parser("tap")
+    x.add_argument("--signer", required=True, choices=sorted(PEOPLE))
+    x.add_argument("--station", default="station-01")
+    x = badge_sub.add_parser("leave")
+    x.add_argument("--signer", required=True, choices=sorted(PEOPLE))
+    x.add_argument("--station", default="station-01")
+
+    sp = sub.add_parser("segment", help="输入段")
+    seg_sub = sp.add_subparsers(dest="subcmd", required=True)
+    x = seg_sub.add_parser("add")
+    x.add_argument("--station", default="station-01")
+    x.add_argument("--by", required=True, choices=sorted(PEOPLE))
+    x.add_argument("--text", required=True)
+    x.add_argument("--kind", default="transcription")
+    x.add_argument("--review-id")
+    x.add_argument("--requires-narrator-review", action="store_true")
+    x = seg_sub.add_parser("list")
+    x.add_argument("--station", default="station-01")
+    x = seg_sub.add_parser("show")
+    x.add_argument("segment_id")
+    x.add_argument("--as", dest="viewer", required=True, choices=sorted(PEOPLE) + ["auditor", "archive"])
+
+    sp = sub.add_parser("buffer", help="输入缓冲")
+    buf_sub = sp.add_subparsers(dest="subcmd", required=True)
+    x = buf_sub.add_parser("set")
+    x.add_argument("--station", default="station-01")
+    x.add_argument("--by", required=True, choices=sorted(PEOPLE))
+    x.add_argument("--text", required=True)
+    x = buf_sub.add_parser("show")
+    x.add_argument("--station", default="station-01")
+    x = buf_sub.add_parser("seal")
+    x.add_argument("--station", default="station-01")
+    x.add_argument("--as", dest="owner", required=True, choices=["a"])
+
+    sp = sub.add_parser("sign", help="用模拟个人签认器签署某段，生成待发电文")
+    sp.add_argument("--segment", required=True)
+    sp.add_argument("--signer", required=True, choices=sorted(PEOPLE))
+    sp.add_argument("--out")
+
+    sp = sub.add_parser("receive", help="接收并核验队列电文")
+    sp.add_argument("file")
+
+    sp = sub.add_parser("handover", help="交班请求")
+    ho_sub = sp.add_subparsers(dest="subcmd", required=True)
+    x = ho_sub.add_parser("create")
+    x.add_argument("--station", default="station-01")
+    x.add_argument("--from", dest="from_id", required=True, choices=["a", "b"])
+    x.add_argument("--to", dest="to_id", required=True, choices=["a", "b"])
+    x.add_argument("--presence", required=True, help="PR-xxxx 或 latest")
+    x = ho_sub.add_parser("show")
+    x.add_argument("handover_id")
+    x = ho_sub.add_parser("deliver")
+    x.add_argument("handover_id")
+    x.add_argument("file")
+
+    sp = sub.add_parser("review", help="口述人复核")
+    rev_sub = sp.add_subparsers(dest="subcmd", required=True)
+    x = rev_sub.add_parser("schedule")
+    x.add_argument("--narrator", default="n")
+    x.add_argument("--handover")
+    x.add_argument("--segment")
+    x = rev_sub.add_parser("respond")
+    x.add_argument("review_id")
+    x.add_argument("--signer", default="n", choices=["n"])
+    x.add_argument("--decision", required=True, choices=["confirmed", "cancelled"])
+    x.add_argument("--scope", default="review_appointment", choices=["review_appointment", "publication_consent"])
+    x.add_argument("--reason")
+    x.add_argument("--out", required=True)
+
+    sp = sub.add_parser("archive", help="档案查询端")
+    ar_sub = sp.add_subparsers(dest="subcmd", required=True)
+    for name in ("query", "draft"):
+        x = ar_sub.add_parser(name)
+        x.add_argument("--date", default=now_iso()[:10])
+        x.add_argument("--work", default="oral-001")
+        x.add_argument("--station", default="station-01")
+        x.add_argument("--format", choices=["markdown", "json"], default="markdown")
+
+    sp = sub.add_parser("publish", help="签发当日唯一正式刊次")
+    sp.add_argument("--date", default=now_iso()[:10])
+    sp.add_argument("--work", default="oral-001")
+    sp.add_argument("--station", default="station-01")
+    sp.add_argument("--clerk", default="b", choices=["a", "b"])
+
+    sp = sub.add_parser("erratum", help="刊后勘误")
+    err_sub = sp.add_subparsers(dest="subcmd", required=True)
+    x = err_sub.add_parser("add")
+    x.add_argument("--edition", required=True)
+    x.add_argument("--signer", required=True, choices=sorted(PEOPLE))
+    x.add_argument("--target-segment")
+    x.add_argument("--correction", required=True)
+    x.add_argument("--reason")
+
+    sp = sub.add_parser("trace", help="追溯某段的签字与可见范围")
+    sp.add_argument("segment_id")
+    sp.add_argument("--format", choices=["pretty", "json"], default="pretty")
+    return p
+
+
+def main(argv: Optional[List[str]] = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    desk = Desk(args.root)
+
+    try:
+        if args.cmd == "init":
+            desk.initialize(force=args.force)
+            result = {"ok": True, "root": str(desk.root), "initialized": True}
+            print_json(result if args.json else result)
+            return 0
+
+        desk.require()
+
+        if args.cmd == "presence" and args.subcmd == "confirm":
+            receipt = desk.confirm_presence(args.station)
+            desk.save()
+            if args.json:
+                print_json(receipt)
+            else:
+                print(f"{receipt['id']}: 工位 {args.station} 确认‘有人在场’；此凭证不证明是甲还是乙，不能用于署名。")
+            return 0
+
+        if args.cmd == "badge":
+            if args.subcmd == "tap":
+                badge = desk.tap_badge(args.signer, args.station)
+                desk.save()
+                if args.json:
+                    print_json(badge)
+                else:
+                    print(f"{badge['id']}: 个人签认器 {desk.person_label(args.signer)} 已在 {args.station} 验明身份。")
+            else:
+                badge = desk.leave_badge(args.signer, args.station)
+                desk.save()
+                if args.json:
+                    print_json(badge)
+                else:
+                    print(f"{badge['id']}: {desk.person_label(args.signer)} 已退出工位个人身份。")
+            return 0
+
+        if args.cmd == "segment":
+            if args.subcmd == "add":
+                seg = desk.add_segment(args.station, args.by, args.text, args.kind, args.review_id, args.requires_narrator_review)
+                desk.save()
+                if args.json:
+                    print_json(seg)
+                else:
+                    print(f"{seg['id']}: 已按输入段录入 {len(args.text)} 字符；录入人 {desk.person_label(args.by)}，但尚未本人签字。")
+            elif args.subcmd == "list":
+                rows = [desk.state["segments"][sid] for sid in desk.state["order"] if desk.state["segments"][sid]["station_id"] == args.station]
+                if args.json:
+                    print_json(rows)
+                else:
+                    for seg in rows:
+                        print(f"{seg['id']} seq={seg['seq']} status={seg['status']} by={seg['entered_by']} :: {seg['text'][:36]}")
+            elif args.subcmd == "show":
+                seg, text = desk.visible_segment_for(args.segment_id, args.viewer)
+                desk.save()
+                if args.json:
+                    print_json(seg)
+                else:
+                    print(f"[{seg['id']} / viewer={args.viewer} / {seg['status']}]")
+                    print(text)
+            return 0
+
+        if args.cmd == "buffer":
+            st = desk.station(args.station)
+            if args.subcmd == "set":
+                buf = desk.set_buffer(args.station, args.by, args.text)
+                desk.save()
+                if args.json:
+                    print_json(buf)
+                else:
+                    print(f"输入缓冲已保存 {len(args.text)} 字符，尚未成为可签发输入段。")
+            elif args.subcmd == "show":
+                if args.json:
+                    print_json(st.get("buffer"))
+                else:
+                    print((st.get("buffer") or {}).get("text", "（缓冲为空）"))
+            elif args.subcmd == "seal":
+                seg = desk.seal_buffer(args.station, args.owner)
+                desk.save()
+                if args.json:
+                    print_json(seg)
+                else:
+                    print(f"{seg['id']}: 半句已封入 {desk.person_label(args.owner)} 的待签私稿；后任不能调阅正文或改署自己。")
+            return 0
+
+        if args.cmd == "sign":
+            result = desk.sign_segment(args.segment, args.signer, args.out)
+            if args.json:
+                print_json(result)
+            else:
+                ok_line(result)
+            return 0
+
+        if args.cmd == "receive":
+            path = Path(args.file)
+            message = json.loads(path.read_text(encoding="utf-8"))
+            try:
+                result = desk.accept_message(message)
+                desk.save()
+                if args.json:
+                    print_json(result)
+                else:
+                    ok_line(result)
+                return 0
+            except DeskError as exc:
+                desk.event("message.rejected", file=str(path), code=exc.code, message=exc.message)
+                desk.save()
+                raise
+
+        if args.cmd == "handover":
+            if args.subcmd == "create":
+                ho = desk.create_handover(args.station, args.from_id, args.to_id, args.presence)
+                if args.json:
+                    print_json(ho)
+                else:
+                    print(f"{ho['id']}: 交班边界={ho['boundary_after_segment'] or '尚未有连续已签段'}；已签范围={ho['signed_range']}；封入待签={ho['sealed_pending']}")
+            elif args.subcmd == "show":
+                ho = desk.state["handovers"].get(args.handover_id)
+                if not ho:
+                    raise DeskError("UNKNOWN_HANDOVER", args.handover_id)
+                if args.json:
+                    print_json(ho)
+                else:
+                    print_json(ho)
+            elif args.subcmd == "deliver":
+                record = desk.deliver_handover(args.handover_id, args.file)
+                if args.json:
+                    print_json(record)
+                else:
+                    r = record.get("result", {})
+                    print(f"已通过 {args.handover_id} 补送并接受：{r}")
+            return 0
+
+        if args.cmd == "review":
+            if args.subcmd == "schedule":
+                rv = desk.schedule_review(args.narrator, args.handover, args.segment)
+                if args.json:
+                    print_json(rv)
+                else:
+                    print(f"{rv['id']}: 已登记口述人复核/取消通道。")
+            elif args.subcmd == "respond":
+                result = desk.respond_review(
+                    args.review_id,
+                    args.signer,
+                    args.decision,
+                    args.out,
+                    args.reason,
+                    getattr(args, "scope", "review_appointment"),
+                )
+                if args.json:
+                    print_json(result)
+                else:
+                    ok_line(result)
+            return 0
+
+        if args.cmd == "archive":
+            view = desk.archive_view(args.date, args.station, args.work)
+            if args.json or args.format == "json":
+                print_json(view)
+            else:
+                if view.get("official_edition"):
+                    ed = view["official_edition"]
+                    print(desk.artifact_path(ed["markdown_path"]).read_text(encoding="utf-8"))
+                    print("\n## 档案查询端核验\n")
+                    print(f"- official_edition: {ed['id']}")
+                    print(f"- body_sha256: `{ed['body_sha256']}`")
+                    verification = view.get("official_edition_verification") or {}
+                    print(f"- 签发验证: {'全部通过' if verification.get('ok') else '存在失败项'}")
+                    for check in verification.get("checks", []):
+                        mark = "OK" if check.get("ok") else "FAIL"
+                        print(f"  - [{mark}] {check.get('name')}：{check.get('detail')}")
+                    print(f"- errata: {', '.join(ed.get('errata_ids', [])) or '无'}")
+                    for erid in ed.get("errata_ids", []):
+                        er = next((x for x in desk.state["errata"] if x["id"] == erid), None)
+                        if er:
+                            print(f"\n### {erid}\n")
+                            print(desk.artifact_path(er["path"]).read_text(encoding="utf-8"))
+                else:
+                    print(view["named_draft_text"])
+                    print("\n> 未发现已发出的正式刊次；以上为档案查询端生成的可署名成稿。严格‘口述人复核确证层’见 JSON 的 include_in_verified_edition。")
+            return 0
+
+        if args.cmd == "publish":
+            ed = desk.publish_edition(args.date, args.work, args.station, args.clerk)
+            if args.json:
+                print_json(ed)
+            else:
+                print(f"{ed['id']}: 当日唯一正式具名刊次已签发：{ed['markdown_path']}")
+                print(f"body_sha256={ed['body_sha256']}")
+            return 0
+
+        if args.cmd == "erratum" and args.subcmd == "add":
+            er = desk.add_erratum(args.edition, args.signer, args.correction, args.target_segment, args.reason)
+            if args.json:
+                print_json(er)
+            else:
+                print(f"{er['id']}: 刊后找回本人也只能形成勘误，冻结刊次未改：{er['path']}")
+            return 0
+
+        if args.cmd == "trace":
+            result = desk.trace(args.segment_id)
+            if args.json or args.format == "json":
+                print_json(result)
+            else:
+                seg = result["segment"]
+                print(f"段 {seg['id']}：{seg['text']}")
+                print(f"署名有效：{result['attribution_valid']}（{result['attribution_reason']}）")
+                print(f"原始具名：{desk.person_label(seg.get('attribution_lock'))} / 状态 {seg.get('status')}")
+                cv = result.get("creation_visibility") or {}
+                sv = result.get("signing_visibility") or {}
+                bv = result.get("input_buffer_visibility") or {}
+                print(f"录入时在场：presence={cv.get('station_presence_receipt_id')} named={cv.get('named_viewers')}")
+                if bv:
+                    print(f"缓冲时在场：presence={bv.get('station_presence_receipt_id')} named={bv.get('named_viewers')}")
+                print(f"签字时可见：presence={sv.get('station_presence_receipt_id')} named={sv.get('named_viewers')}")
+                print(f"经交班请求补送：{result.get('accepted_via_handover') or '否'}")
+                print("相关审计事件：")
+                for ev in result["related_events"]:
+                    extras = []
+                    for key in ("viewer", "signer_id", "entered_by", "handover_id", "code", "decision", "scope"):
+                        if key in ev and ev[key] not in (None, ""):
+                            extras.append(f"{key}={ev[key]}")
+                    suffix = ("；" + " ".join(extras)) if extras else ""
+                    print(f"  #{ev['seq']} {ev['at']} {ev['type']}{suffix}")
+            return 0
+
+        parser.error(f"未实现的命令：{args.cmd}")
+        return 2
+    except DeskError as exc:
+        print_json({"ok": False, "error": exc.code, "message": exc.message})
+        return 2
+    except FileNotFoundError as exc:
+        print_json({"ok": False, "error": "FILE_NOT_FOUND", "message": str(exc)})
+        return 2
+    except json.JSONDecodeError as exc:
+        print_json({"ok": False, "error": "INVALID_JSON_MESSAGE", "message": f"电文不是有效 JSON：{exc}"})
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,441 @@
+{
+  "version": 1,
+  "created_at": "2026-11-26T18:33:04+00:00",
+  "station_id": "station-01",
+  "stations": {
+    "station-01": {
+      "id": "station-01",
+      "name": "共用听打台",
+      "current_presence_id": "PR-0002",
+      "active_badges": {
+        "b": {
+          "id": "BG-0002",
+          "person_id": "b",
+          "station_id": "station-01",
+          "at": "2026-11-26T18:33:05+00:00",
+          "envelope": {
+            "schema": "desk.personal-envelope/v1",
+            "algorithm": "HS256-local-personal-device-simulation",
+            "signer_id": "b",
+            "key_id": "primary",
+            "payload": {
+              "kind": "desk.badge_tap/v1",
+              "badge_id": "BG-0002",
+              "person_id": "b",
+              "station_id": "station-01",
+              "at": "2026-11-26T18:33:05+00:00",
+              "issued_at": "2026-11-26T18:33:05+00:00"
+            },
+            "signature": "d631a0b384095f5af0acaae5e7387725164a5fb872edd3f26338ce2ed0f8897f"
+          }
+        }
+      },
+      "last_badges": {
+        "a": {
+          "id": "BG-0001",
+          "person_id": "a",
+          "station_id": "station-01",
+          "at": "2026-11-26T18:33:04+00:00",
+          "envelope": {
+            "schema": "desk.personal-envelope/v1",
+            "algorithm": "HS256-local-personal-device-simulation",
+            "signer_id": "a",
+            "key_id": "primary",
+            "payload": {
+              "kind": "desk.badge_tap/v1",
+              "badge_id": "BG-0001",
+              "person_id": "a",
+              "station_id": "station-01",
+              "at": "2026-11-26T18:33:04+00:00",
+              "issued_at": "2026-11-26T18:33:04+00:00"
+            },
+            "signature": "0e8b6697af8c9dab3f4f0cfc90d920df18dbe4eec210a42e5e8534c1190ed019"
+          },
+          "left_at": "2026-11-26T18:33:04+00:00"
+        },
+        "b": {
+          "id": "BG-0002",
+          "person_id": "b",
+          "station_id": "station-01",
+          "at": "2026-11-26T18:33:05+00:00",
+          "envelope": {
+            "schema": "desk.personal-envelope/v1",
+            "algorithm": "HS256-local-personal-device-simulation",
+            "signer_id": "b",
+            "key_id": "primary",
+            "payload": {
+              "kind": "desk.badge_tap/v1",
+              "badge_id": "BG-0002",
+              "person_id": "b",
+              "station_id": "station-01",
+              "at": "2026-11-26T18:33:05+00:00",
+              "issued_at": "2026-11-26T18:33:05+00:00"
+            },
+            "signature": "d631a0b384095f5af0acaae5e7387725164a5fb872edd3f26338ce2ed0f8897f"
+          }
+        }
+      },
+      "buffer": null
+    }
+  },
+  "people": {
+    "a": {
+      "label": "甲",
+      "role": "档案听打员",
+      "qualified_relief": true
+    },
+    "b": {
+      "label": "乙",
+      "role": "档案听打员",
+      "qualified_relief": true
+    },
+    "n": {
+      "label": "口述人",
+      "role": "narrator",
+      "qualified_relief": false
+    }
+  },
+  "counters": {
+    "receipt": 2,
+    "badge": 2,
+    "segment": 2,
+    "message": 3,
+    "handover": 1,
+    "review": 1
+  },
+  "order": [
+    "seg-0001",
+    "seg-0002"
+  ],
+  "segments": {
+    "seg-0001": {
+      "id": "seg-0001",
+      "station_id": "station-01",
+      "seq": 1,
+      "kind": "transcription",
+      "text": "民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。",
+      "text_sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708",
+      "status": "personally_confirmed",
+      "entered_by": "a",
+      "attribution_lock": "a",
+      "review_id": null,
+      "requires_narrator_review": false,
+      "narrator_review_status": "not_requested",
+      "private": false,
+      "handover_id": null,
+      "created_at": "2026-11-26T18:33:04+00:00",
+      "creation_visibility": {
+        "at": "2026-11-26T18:33:04+00:00",
+        "station_presence_receipt_id": "PR-0001",
+        "presence_kind": "station_presence_receipt",
+        "presence_says": "station occupied by at least one person; identity is not proven by presence",
+        "named_badges_at_station": [
+          "a"
+        ],
+        "named_viewers": [
+          "a"
+        ]
+      },
+      "confirmed_at": "2026-11-26T18:33:04+00:00",
+      "received_at": "2026-11-26T18:33:04+00:00",
+      "confirmation_envelope": {
+        "schema": "desk.personal-envelope/v1",
+        "algorithm": "HS256-local-personal-device-simulation",
+        "signer_id": "a",
+        "key_id": "primary",
+        "payload": {
+          "kind": "desk.segment_confirmation/v1",
+          "message_id": "MSG-0001",
+          "station_id": "station-01",
+          "segment_id": "seg-0001",
+          "segment_seq": 1,
+          "segment_sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708",
+          "review_sha256": "26fdd19aaebb423affae155e4428eb9fbbbcb0c04266f81ba8760afd80fb583b",
+          "review_manifest": [
+            {
+              "segment_id": "seg-0001",
+              "mode": "full_target",
+              "sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708"
+            }
+          ],
+          "signing_visibility": {
+            "at": "2026-11-26T18:33:04+00:00",
+            "station_presence_receipt_id": "PR-0001",
+            "presence_kind": "station_presence_receipt",
+            "presence_says": "station occupied by at least one person; identity is not proven by presence",
+            "named_badges_at_station": [
+              "a"
+            ],
+            "named_viewers": [
+              "a"
+            ]
+          },
+          "release": [
+            "named_official_edition"
+          ],
+          "signed_at": "2026-11-26T18:33:04+00:00",
+          "nonce": "82f5546715b88dfa",
+          "issued_at": "2026-11-26T18:33:04+00:00"
+        },
+        "signature": "95de27c005f05cbab4cf85147c8109c16a7e3850987f7c012950215d9bbbae5e"
+      },
+      "review_text": "档案听打员个人签认审阅文本\n工作站：station-01；签字人：甲（a）\n以下为签字器向签字人展示的实际全文/封入占位；签字只及于哈希绑定的内容。\n\n===== 目标确认段 seg-0001（全文） =====\n民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。\n\n目标段：seg-0001；目标段 sha256=70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708",
+      "accepted_via_handover": null,
+      "late_after_successor_arrival": false,
+      "accepted_message_path": "/workspace/runs/05-cmp-both/accepted/seg-0001-95de27c005f05cba.json"
+    },
+    "seg-0002": {
+      "id": "seg-0002",
+      "station_id": "station-01",
+      "seq": 2,
+      "kind": "unfinished_buffer_fragment",
+      "text": "那天江雾很重，我刚写下“桐油二百",
+      "text_sha256": "b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49",
+      "status": "personally_confirmed",
+      "entered_by": "a",
+      "attribution_lock": "a",
+      "review_id": null,
+      "requires_narrator_review": false,
+      "narrator_review_status": "not_requested",
+      "private": false,
+      "handover_id": "HO-0001",
+      "created_at": "2026-11-26T18:33:04+00:00",
+      "creation_visibility": {
+        "at": "2026-11-26T18:33:04+00:00",
+        "station_presence_receipt_id": "PR-0001",
+        "presence_kind": "station_presence_receipt",
+        "presence_says": "station occupied by at least one person; identity is not proven by presence",
+        "named_badges_at_station": [
+          "a"
+        ],
+        "named_viewers": [
+          "a"
+        ]
+      },
+      "sealed_at": "2026-11-26T18:33:04+00:00",
+      "buffer_visibility_at_input": {
+        "at": "2026-11-26T18:33:04+00:00",
+        "station_presence_receipt_id": "PR-0001",
+        "presence_kind": "station_presence_receipt",
+        "presence_says": "station occupied by at least one person; identity is not proven by presence",
+        "named_badges_at_station": [
+          "a"
+        ],
+        "named_viewers": [
+          "a"
+        ]
+      },
+      "editorial_note": "输入缓冲中的未完半句；只有所有人的合格签字能确认现有文字，程序不补写原意",
+      "confirmed_at": "2026-11-26T18:33:05+00:00",
+      "received_at": "2026-11-26T18:33:05+00:00",
+      "confirmation_envelope": {
+        "schema": "desk.personal-envelope/v1",
+        "algorithm": "HS256-local-personal-device-simulation",
+        "signer_id": "a",
+        "key_id": "primary",
+        "payload": {
+          "kind": "desk.segment_confirmation/v1",
+          "message_id": "MSG-0002",
+          "station_id": "station-01",
+          "segment_id": "seg-0002",
+          "segment_seq": 2,
+          "segment_sha256": "b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49",
+          "review_sha256": "2ca7752a6bb81f1fd43c2bfb11ca84ccf398dd22ab842cfe5af4a0b20e7d159b",
+          "review_manifest": [
+            {
+              "segment_id": "seg-0001",
+              "mode": "full_signed_prefix",
+              "sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708"
+            },
+            {
+              "segment_id": "seg-0002",
+              "mode": "full_target",
+              "sha256": "b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49"
+            }
+          ],
+          "signing_visibility": {
+            "at": "2026-11-26T18:33:04+00:00",
+            "station_presence_receipt_id": "PR-0001",
+            "presence_kind": "station_presence_receipt",
+            "presence_says": "station occupied by at least one person; identity is not proven by presence",
+            "named_badges_at_station": [
+              "a"
+            ],
+            "named_viewers": [
+              "a"
+            ]
+          },
+          "release": [
+            "named_official_edition"
+          ],
+          "signed_at": "2026-11-26T18:33:04+00:00",
+          "nonce": "88a36c20bc9be200",
+          "issued_at": "2026-11-26T18:33:04+00:00"
+        },
+        "signature": "440e422f0001539e5df8e8765351e1824477ba650c65adf78f9911fba1173490"
+      },
+      "review_text": "档案听打员个人签认审阅文本\n工作站：station-01；签字人：甲（a）\n以下为签字器向签字人展示的实际全文/封入占位；签字只及于哈希绑定的内容。\n\n===== 已签前序 seg-0001 / 甲 =====\n民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。\n===== 目标确认段 seg-0002（全文） =====\n那天江雾很重，我刚写下“桐油二百\n\n目标段：seg-0002；目标段 sha256=b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49",
+      "accepted_via_handover": "HO-0001",
+      "late_after_successor_arrival": true,
+      "accepted_message_path": "/workspace/runs/05-cmp-both/accepted/seg-0002-440e422f0001539e.json"
+    }
+  },
+  "presence_receipts": {
+    "PR-0001": {
+      "id": "PR-0001",
+      "kind": "station_presence_receipt",
+      "station_id": "station-01",
+      "result": "occupied",
+      "identity_proven": false,
+      "statement": "集体工位传感器/值班终端只能确认有人在场，不能证明是甲或乙",
+      "at": "2026-11-26T18:33:04+00:00"
+    },
+    "PR-0002": {
+      "id": "PR-0002",
+      "kind": "station_presence_receipt",
+      "station_id": "station-01",
+      "result": "occupied",
+      "identity_proven": false,
+      "statement": "集体工位传感器/值班终端只能确认有人在场，不能证明是甲或乙",
+      "at": "2026-11-26T18:33:04+00:00"
+    }
+  },
+  "badge_receipts": {
+    "BG-0001": {
+      "id": "BG-0001",
+      "person_id": "a",
+      "station_id": "station-01",
+      "at": "2026-11-26T18:33:04+00:00",
+      "envelope": {
+        "schema": "desk.personal-envelope/v1",
+        "algorithm": "HS256-local-personal-device-simulation",
+        "signer_id": "a",
+        "key_id": "primary",
+        "payload": {
+          "kind": "desk.badge_tap/v1",
+          "badge_id": "BG-0001",
+          "person_id": "a",
+          "station_id": "station-01",
+          "at": "2026-11-26T18:33:04+00:00",
+          "issued_at": "2026-11-26T18:33:04+00:00"
+        },
+        "signature": "0e8b6697af8c9dab3f4f0cfc90d920df18dbe4eec210a42e5e8534c1190ed019"
+      }
+    },
+    "BG-0002": {
+      "id": "BG-0002",
+      "person_id": "b",
+      "station_id": "station-01",
+      "at": "2026-11-26T18:33:05+00:00",
+      "envelope": {
+        "schema": "desk.personal-envelope/v1",
+        "algorithm": "HS256-local-personal-device-simulation",
+        "signer_id": "b",
+        "key_id": "primary",
+        "payload": {
+          "kind": "desk.badge_tap/v1",
+          "badge_id": "BG-0002",
+          "person_id": "b",
+          "station_id": "station-01",
+          "at": "2026-11-26T18:33:05+00:00",
+          "issued_at": "2026-11-26T18:33:05+00:00"
+        },
+        "signature": "d631a0b384095f5af0acaae5e7387725164a5fb872edd3f26338ce2ed0f8897f"
+      }
+    }
+  },
+  "handovers": {
+    "HO-0001": {
+      "id": "HO-0001",
+      "kind": "desk.handover_request/v1",
+      "station_id": "station-01",
+      "from": "a",
+      "to": "b",
+      "presence_receipt_id": "PR-0002",
+      "presence_is_identity_proof": false,
+      "successor_badge_id": "BG-0002",
+      "predecessor_last_badge_id": "BG-0001",
+      "created_at": "2026-11-26T18:33:05+00:00",
+      "signed_range": [
+        "seg-0001",
+        "seg-0002"
+      ],
+      "boundary_after_segment": "seg-0002",
+      "sealed_pending": [
+        "seg-0002"
+      ],
+      "rules": [
+        "边界停在连续有效本人签字范围之后",
+        "未完半句是前任私稿，未收到有效迟到签字前不得刊用",
+        "后任可用自己的身份新录、复核并署名，但不能把旧私稿改成自己的笔录",
+        "同一日同一口述 work_id 只允许一个正式具名刊次",
+        "刊次冻结后，新事实或改字只能另附勘误"
+      ],
+      "inbox": [
+        {
+          "delivered_at": "2026-11-26T18:33:05+00:00",
+          "source_file": "/workspace/runs/05-cmp-both/n-cancel.json",
+          "message_kind": "desk.queued_review_response/v1",
+          "accepted": true,
+          "result": {
+            "ok": true,
+            "review_id": "RV-0001",
+            "decision": "cancelled",
+            "scope": "review_appointment"
+          }
+        },
+        {
+          "delivered_at": "2026-11-26T18:33:05+00:00",
+          "source_file": "/workspace/runs/05-cmp-both/a-seg2-late.json",
+          "message_kind": "desk.queued_confirmation/v1",
+          "accepted": true,
+          "result": {
+            "ok": true,
+            "segment_id": "seg-0002",
+            "signer_id": "a",
+            "handover_id": "HO-0001",
+            "late_after_handover": true,
+            "signature": "440e422f0001539e5df8e8765351e1824477ba650c65adf78f9911fba1173490"
+          }
+        }
+      ],
+      "status": "open"
+    }
+  },
+  "reviews": {
+    "RV-0001": {
+      "id": "RV-0001",
+      "kind": "desk.narrator_review/v1",
+      "narrator_id": "n",
+      "handover_id": "HO-0001",
+      "segment_ids": [],
+      "status": "cancelled",
+      "created_at": "2026-11-26T18:33:05+00:00",
+      "cancellation_scope": "review_appointment",
+      "cancellation_envelope": {
+        "schema": "desk.personal-envelope/v1",
+        "algorithm": "HS256-local-personal-device-simulation",
+        "signer_id": "n",
+        "key_id": "primary",
+        "payload": {
+          "kind": "desk.review_response/v1",
+          "message_id": "MSG-0003",
+          "review_id": "RV-0001",
+          "decision": "cancelled",
+          "scope": "review_appointment",
+          "reason": "口述人临时取消",
+          "responded_at": "2026-11-26T18:33:05+00:00",
+          "nonce": "c87e9895633254b6",
+          "issued_at": "2026-11-26T18:33:05+00:00"
+        },
+        "signature": "43b704b2ec7446928c0443d66c1da5720d5e007318fc5db42e8a55b52d95e114"
+      },
+      "cancelled_at": "2026-11-26T18:33:05+00:00",
+      "cancellation_reason": "口述人临时取消"
+    }
+  },
+  "editions": {},
+  "edition_index": {},
+  "errata": [],
+  "event_seq": 21
+}

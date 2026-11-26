@@ -1,0 +1,131 @@
+
+$ desk --root /workspace/runs/01-main archive query --date 2026-11-26 --format markdown
+# 口述档案当日具名刊次
+
+- 刊次号：ED-0001
+- 日期：2026-11-26
+- 口述档案编号：oral-001
+- 工作站：station-01
+- 刊次规则：同一日同一口述档案只此一个正式具名版本
+
+---
+
+民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+
+—— 甲 具名（输入段 seg-0001；个人签字 a19b30f99d3d266e）
+
+那天江雾很重，我刚写下“桐油二百
+
+—— 甲 具名（输入段 seg-0002；个人签字 14fd5a290fdaaab1）
+
+〔档案注：未完半句按甲签字时的现存原文收录，不代补原意。〕
+
+后来三条驳船趁雾靠岸。脚夫扛着木箱上下跳板，一直忙到天快亮。
+
+—— 乙 具名（输入段 seg-0003；个人签字 d977eedfccde78be）
+
+〔口述人已复核〕
+
+---
+
+当班签发员：乙（个人签认，非仅工位在场）
+签发时间：2026-11-26T18:33:03+00:00
+
+## 签发签字信封（本地模拟）
+
+```json
+{
+  "schema": "desk.personal-envelope/v1",
+  "algorithm": "HS256-local-personal-device-simulation",
+  "signer_id": "b",
+  "key_id": "primary",
+  "payload": {
+    "kind": "desk.edition_publication/v1",
+    "edition_id": "ED-0001",
+    "date": "2026-11-26",
+    "work_id": "oral-001",
+    "station_id": "station-01",
+    "body_sha256": "58a12b6428392f350b2e97f9d4d2b0e49063d04c6d986b4723c12f0c1cd7a268",
+    "segments": [
+      {
+        "segment_id": "seg-0001",
+        "signer_id": "a",
+        "segment_sha256": "70bcfb2d8582d9c40d4410f416c92531d1f0c84e1db17aed9f978ae87abc5708",
+        "signature": "a19b30f99d3d266ee640a390982d87eb231fcd4fd546b3a6612805d29269baea"
+      },
+      {
+        "segment_id": "seg-0002",
+        "signer_id": "a",
+        "segment_sha256": "b007153e274d16017d0d52195c97d6df52c7e4337b04beb199478ae0a44dee49",
+        "signature": "14fd5a290fdaaab1bd5fb814bddefa78c827dcc14b845d1a4805d4dfc0b0b163"
+      },
+      {
+        "segment_id": "seg-0003",
+        "signer_id": "b",
+        "segment_sha256": "147f69615d4c254cb19ffc1a41b72caece5e85f221598646826d237e1bb67810",
+        "signature": "d977eedfccde78be6d6808123762283d5f22098767f87e320852c11c2ba0dab5"
+      }
+    ],
+    "published_at": "2026-11-26T18:33:03+00:00",
+    "nonce": "0f5f838f08eca6c4",
+    "issued_at": "2026-11-26T18:33:03+00:00"
+  },
+  "signature": "f32126872316851839d0753dccfdbba755783105ccb4120746059100badb6963"
+}
+```
+
+
+## 档案查询端核验
+
+- official_edition: ED-0001
+- body_sha256: `58a12b6428392f350b2e97f9d4d2b0e49063d04c6d986b4723c12f0c1cd7a268`
+- 签发验证: 全部通过
+  - [OK] 刊次正文未被改写：sha256=58a12b6428392f350b2e97f9
+  - [OK] 签发员个人签字有效：signer=b
+  - [OK] 签发签字指向所见全文哈希：payload=58a12b6428392f350b2e97f9
+  - [OK] 刊次号一致：ED-0001
+  - [OK] 段 seg-0001 本人签字：OK
+  - [OK] 段 seg-0001 哈希与刊次清单一致：70bcfb2d8582d9c4
+  - [OK] 段 seg-0002 本人签字：OK
+  - [OK] 段 seg-0002 哈希与刊次清单一致：b007153e274d1601
+  - [OK] 段 seg-0003 本人签字：OK
+  - [OK] 段 seg-0003 哈希与刊次清单一致：147f69615d4c254c
+- errata: ER-0001
+
+### ER-0001
+
+# 勘误/补遗 ER-0001
+
+- 对应冻结刊次：ED-0001
+- 刊次正文 sha256：58a12b6428392f350b2e97f9d4d2b0e49063d04c6d986b4723c12f0c1cd7a268
+- 签字人：甲（a）
+- 目标段：seg-0001
+
+## 勘误/补遗内容
+第一段中的“进出口货单”应勘为“进口货单”；甲签字时漏看了“出口”二字的误记。
+
+原因：刊次发出后甲重新核对原始纸片
+
+> 本件不改写已发出的正式刊次；档案查询端将原文与勘误并列展示。
+
+```json
+{
+  "schema": "desk.personal-envelope/v1",
+  "algorithm": "HS256-local-personal-device-simulation",
+  "signer_id": "a",
+  "key_id": "primary",
+  "payload": {
+    "kind": "desk.erratum/v1",
+    "erratum_id": "ER-0001",
+    "edition_id": "ED-0001",
+    "frozen_edition_body_sha256": "58a12b6428392f350b2e97f9d4d2b0e49063d04c6d986b4723c12f0c1cd7a268",
+    "target_segment_id": "seg-0001",
+    "correction_or_addendum": "第一段中的“进出口货单”应勘为“进口货单”；甲签字时漏看了“出口”二字的误记。",
+    "reason": "刊次发出后甲重新核对原始纸片",
+    "signer_id": "a",
+    "issued_at": "2026-11-26T18:33:03+00:00",
+    "nonce": "a3ab9f447309e596"
+  },
+  "signature": "1d4d64b51d00174434fe78e814d6d81ebe25ee94428984826ec2e21cb0e7a4dd"
+}
+```

@@ -1,0 +1,454 @@
+
+
+==================== 1. 主流程：甲独自录段并正常入档 ====================
+
+$ desk --root /workspace/runs/01-main init --force
+{
+  "ok": true,
+  "root": "/workspace/runs/01-main",
+  "initialized": true
+}
+
+$ desk --root /workspace/runs/01-main presence confirm
+PR-0001: 工位 station-01 确认‘有人在场’；此凭证不证明是甲还是乙，不能用于署名。
+
+$ desk --root /workspace/runs/01-main badge tap --signer a
+BG-0001: 个人签认器 甲 已在 station-01 验明身份。
+
+$ desk --root /workspace/runs/01-main segment add --by a --text 民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+seg-0001: 已按输入段录入 42 字符；录入人 甲，但尚未本人签字。
+
+$ desk --root /workspace/runs/01-main sign --segment seg-0001 --signer a --out /workspace/runs/01-main/outbox/a-seg1.json
+已生成个人签认电文：/workspace/runs/01-main/outbox/a-seg1.json
+
+$ desk --root /workspace/runs/01-main receive /workspace/runs/01-main/outbox/a-seg1.json
+已接收合格本人确认：seg-0001 / a
+
+
+==================== 2. 半句进入缓冲并封成甲的待签私稿；签字应答掉线 ====================
+
+$ desk --root /workspace/runs/01-main buffer set --by a --text 那天江雾很重，我刚写下“桐油二百
+输入缓冲已保存 16 字符，尚未成为可签发输入段。
+
+$ desk --root /workspace/runs/01-main buffer seal --as a
+seg-0002: 半句已封入 甲 的待签私稿；后任不能调阅正文或改署自己。
+
+$ desk --root /workspace/runs/01-main sign --segment seg-0002 --signer a --out /workspace/runs/01-main/outbox/a-seg2-late.json
+已生成个人签认电文：/workspace/runs/01-main/outbox/a-seg2-late.json
+
+$ desk --root /workspace/runs/01-main badge leave --signer a
+BG-0001: 甲 已退出工位个人身份。
+
+
+==================== 3. 乙到场：工位只证明有人，乙的个人签认器才证明是乙 ====================
+
+$ desk --root /workspace/runs/01-main presence confirm
+PR-0002: 工位 station-01 确认‘有人在场’；此凭证不证明是甲还是乙，不能用于署名。
+
+$ desk --root /workspace/runs/01-main badge tap --signer b
+BG-0002: 个人签认器 乙 已在 station-01 验明身份。
+
+$ desk --root /workspace/runs/01-main handover create --from a --to b --presence latest
+HO-0001: 交班边界=seg-0001；已签范围=['seg-0001']；封入待签=['seg-0002']
+
+$ desk --root /workspace/runs/01-main segment show seg-0002 --as b   # 预期被拒绝
+{
+  "ok": false,
+  "error": "PRIVATE_DRAFT",
+  "message": "seg-0002 是 甲 的待签私稿；乙 不能调阅正文或冒作自己的笔录"
+}
+[符合预期：拒绝码=2]
+
+$ desk --root /workspace/runs/01-main segment show seg-0001 --as b
+[seg-0001 / viewer=b / personally_confirmed]
+民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+
+$ desk --root /workspace/runs/01-main sign --segment seg-0002 --signer b --out /workspace/runs/01-main/outbox/try-b-as-a.json   # 预期被拒绝
+{
+  "ok": false,
+  "error": "ATTRIBUTION_LOCK",
+  "message": "seg-0002 的原始具名锁属于 甲；乙 的签字不能把旧私稿变成自己的笔录"
+}
+[符合预期：拒绝码=2]
+
+
+==================== 4. 乙趁口述人在场，以自己身份新录、签字并请口述人复核 ====================
+
+$ desk --root /workspace/runs/01-main review schedule --narrator n --handover HO-0001
+RV-0001: 已登记口述人复核/取消通道。
+
+$ desk --root /workspace/runs/01-main segment add --by b --kind relief_dictation --review-id RV-0001 --text 后来三条驳船趁雾靠岸。脚夫扛着木箱上下跳板，一直忙到天快亮。
+seg-0003: 已按输入段录入 30 字符；录入人 乙，但尚未本人签字。
+
+$ desk --root /workspace/runs/01-main sign --segment seg-0003 --signer b --out /workspace/runs/01-main/outbox/b-seg3.json
+已生成个人签认电文：/workspace/runs/01-main/outbox/b-seg3.json
+
+$ desk --root /workspace/runs/01-main handover deliver HO-0001 /workspace/runs/01-main/outbox/b-seg3.json
+已通过 HO-0001 补送并接受：{'ok': True, 'segment_id': 'seg-0003', 'signer_id': 'b', 'handover_id': 'HO-0001', 'late_after_handover': True, 'signature': 'd977eedfccde78be6d6808123762283d5f22098767f87e320852c11c2ba0dab5'}
+
+$ desk --root /workspace/runs/01-main review respond RV-0001 --signer n --decision confirmed --reason 乙读回全文，口述人点头确认 --out /workspace/runs/01-main/outbox/n-rv1-ok.json
+已生成个人签认电文：/workspace/runs/01-main/outbox/n-rv1-ok.json
+
+$ desk --root /workspace/runs/01-main handover deliver HO-0001 /workspace/runs/01-main/outbox/n-rv1-ok.json
+已通过 HO-0001 补送并接受：{'ok': True, 'review_id': 'RV-0001', 'decision': 'confirmed', 'segment_id': 'seg-0003'}
+
+
+==================== 5. 同一个交班请求 HO-0001 收到甲的迟到签字 ====================
+
+$ desk --root /workspace/runs/01-main handover deliver HO-0001 /workspace/runs/01-main/outbox/a-seg2-late.json
+已通过 HO-0001 补送并接受：{'ok': True, 'segment_id': 'seg-0002', 'signer_id': 'a', 'handover_id': 'HO-0001', 'late_after_handover': True, 'signature': '14fd5a290fdaaab1bd5fb814bddefa78c827dcc14b845d1a4805d4dfc0b0b163'}
+
+$ desk --root /workspace/runs/01-main --json handover show HO-0001
+{
+  "id": "HO-0001",
+  "kind": "desk.handover_request/v1",
+  "station_id": "station-01",
+  "from": "a",
+  "to": "b",
+  "presence_receipt_id": "PR-0002",
+  "presence_is_identity_proof": false,
+  "successor_badge_id": "BG-0002",
+  "predecessor_last_badge_id": "BG-0001",
+  "created_at": "2026-11-26T18:33:02+00:00",
+  "signed_range": [
+    "seg-0001",
+    "seg-0002",
+    "seg-0003"
+  ],
+  "boundary_after_segment": "seg-0003",
+  "sealed_pending": [
+    "seg-0002"
+  ],
+  "rules": [
+    "边界停在连续有效本人签字范围之后",
+    "未完半句是前任私稿，未收到有效迟到签字前不得刊用",
+    "后任可用自己的身份新录、复核并署名，但不能把旧私稿改成自己的笔录",
+    "同一日同一口述 work_id 只允许一个正式具名刊次",
+    "刊次冻结后，新事实或改字只能另附勘误"
+  ],
+  "inbox": [
+    {
+      "delivered_at": "2026-11-26T18:33:02+00:00",
+      "source_file": "/workspace/runs/01-main/outbox/b-seg3.json",
+      "message_kind": "desk.queued_confirmation/v1",
+      "accepted": true,
+      "result": {
+        "ok": true,
+        "segment_id": "seg-0003",
+        "signer_id": "b",
+        "handover_id": "HO-0001",
+        "late_after_handover": true,
+        "signature": "d977eedfccde78be6d6808123762283d5f22098767f87e320852c11c2ba0dab5"
+      }
+    },
+    {
+      "delivered_at": "2026-11-26T18:33:03+00:00",
+      "source_file": "/workspace/runs/01-main/outbox/n-rv1-ok.json",
+      "message_kind": "desk.queued_review_response/v1",
+      "accepted": true,
+      "result": {
+        "ok": true,
+        "review_id": "RV-0001",
+        "decision": "confirmed",
+        "segment_id": "seg-0003"
+      }
+    },
+    {
+      "delivered_at": "2026-11-26T18:33:03+00:00",
+      "source_file": "/workspace/runs/01-main/outbox/a-seg2-late.json",
+      "message_kind": "desk.queued_confirmation/v1",
+      "accepted": true,
+      "result": {
+        "ok": true,
+        "segment_id": "seg-0002",
+        "signer_id": "a",
+        "handover_id": "HO-0001",
+        "late_after_handover": true,
+        "signature": "14fd5a290fdaaab1bd5fb814bddefa78c827dcc14b845d1a4805d4dfc0b0b163"
+      }
+    }
+  ],
+  "status": "open"
+}
+
+
+==================== 6. 档案查询端调取可署名成稿，然后签发当日唯一刊次 ====================
+
+$ desk --root /workspace/runs/01-main archive query --date 2026-11-26 --format markdown
+# 可署名成稿（档案查询端生成）
+
+> 收录有效本人签字段；未完成口述人复核的乙录段会明确标注。
+
+民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+
+—— 甲（seg-0001；签字 a19b30f99d3d266e）
+
+那天江雾很重，我刚写下“桐油二百
+
+—— 甲（seg-0002；签字 14fd5a290fdaaab1）
+
+〔档案注：此为输入缓冲中封入的未完半句；本人签字只确认现存文字，程序未补写缺失原意。〕
+
+后来三条驳船趁雾靠岸。脚夫扛着木箱上下跳板，一直忙到天快亮。
+
+—— 乙（seg-0003；签字 d977eedfccde78be）
+
+〔口述人已本人复核〕
+
+
+> 未发现已发出的正式刊次；以上为档案查询端生成的可署名成稿。严格‘口述人复核确证层’见 JSON 的 include_in_verified_edition。
+
+$ desk --root /workspace/runs/01-main publish --date 2026-11-26 --work oral-001 --clerk b
+ED-0001: 当日唯一正式具名刊次已签发：/workspace/runs/01-main/editions/ED-0001.md
+body_sha256=58a12b6428392f350b2e97f9d4d2b0e49063d04c6d986b4723c12f0c1cd7a268
+
+$ desk --root /workspace/runs/01-main publish --date 2026-11-26 --work oral-001 --clerk b   # 预期被拒绝
+{
+  "ok": false,
+  "error": "EDITION_ALREADY_PUBLISHED",
+  "message": "2026-11-26 的 oral-001 已有唯一正式刊次 ED-0001；刊次冻结，之后只能提交勘误"
+}
+[符合预期：拒绝码=2]
+
+$ desk --root /workspace/runs/01-main erratum add --edition ED-0001 --signer a --target-segment seg-0001 --correction 第一段中的“进出口货单”应勘为“进口货单”；甲签字时漏看了“出口”二字的误记。 --reason 刊次发出后甲重新核对原始纸片
+ER-0001: 刊后找回本人也只能形成勘误，冻结刊次未改：/workspace/runs/01-main/errata/ER-0001.md
+完整查询结果已保存：/workspace/runs/01-main/archive-query-after-erratum.txt
+
+$ desk --root /workspace/runs/01-main archive query --date 2026-11-26 --format markdown
+# 口述档案当日具名刊次
+
+- 刊次号：ED-0001
+- 日期：2026-11-26
+- 口述档案编号：oral-001
+- 工作站：station-01
+- 刊次规则：同一日同一口述档案只此一个正式具名版本
+
+---
+
+民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+
+—— 甲 具名（输入段 seg-0001；个人签字 a19b30f99d3d266e）
+
+那天江雾很重，我刚写下“桐油二百
+
+—— 甲 具名（输入段 seg-0002；个人签字 14fd5a290fdaaab1）
+
+〔档案注：未完半句按甲签字时的现存原文收录，不代补原意。〕
+
+后来三条驳船趁雾靠岸。脚夫扛着木箱上下跳板，一直忙到天快亮。
+
+—— 乙 具名（输入段 seg-0003；个人签字 d977eedfccde78be）
+
+〔口述人已复核〕
+
+---
+
+当班签发员：乙（个人签认，非仅工位在场）
+签发时间：2026-11-26T18:33:03+00:00
+
+## 签发签字信封（本地模拟）
+
+```json
+{
+  "schema": "desk.personal-envelope/v1",
+  "algorithm": "HS256-local-personal-device-simulation",
+  "signer_id": "b",
+  "key_id": "primary",
+  "payload": {
+    "kind": "desk.edition_publication/v1",
+    "edition_id": "ED-0001",
+    "date": "2026-11-26",
+
+
+==================== 7. 追溯：甲的合格签字给了哪段、当时谁能看见 ====================
+
+$ desk --root /workspace/runs/01-main trace seg-0001
+段 seg-0001：民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+署名有效：True（OK）
+原始具名：甲 / 状态 personally_confirmed
+录入时在场：presence=PR-0001 named=['a']
+签字时可见：presence=PR-0001 named=['a']
+经交班请求补送：否
+相关审计事件：
+  #4 2026-11-26T18:33:02+00:00 segment.recorded；entered_by=a
+  #5 2026-11-26T18:33:02+00:00 signer.confirmation_created；signer_id=a
+  #6 2026-11-26T18:33:02+00:00 segment.personally_confirmed；signer_id=a
+  #14 2026-11-26T18:33:02+00:00 handover.signed_range_shared；viewer=b handover_id=HO-0001
+  #15 2026-11-26T18:33:02+00:00 handover.created；handover_id=HO-0001
+  #16 2026-11-26T18:33:02+00:00 segment.viewed；viewer=b
+  #27 2026-11-26T18:33:03+00:00 edition.published
+
+$ desk --root /workspace/runs/01-main trace seg-0002
+段 seg-0002：那天江雾很重，我刚写下“桐油二百
+署名有效：True（OK）
+原始具名：甲 / 状态 personally_confirmed
+录入时在场：presence=PR-0001 named=['a']
+缓冲时在场：presence=PR-0001 named=['a']
+签字时可见：presence=PR-0001 named=['a']
+经交班请求补送：HO-0001
+相关审计事件：
+  #8 2026-11-26T18:33:02+00:00 segment.recorded；entered_by=a
+  #9 2026-11-26T18:33:02+00:00 buffer.sealed_private
+  #10 2026-11-26T18:33:02+00:00 signer.confirmation_created；signer_id=a
+  #25 2026-11-26T18:33:03+00:00 segment.personally_confirmed；signer_id=a handover_id=HO-0001
+  #26 2026-11-26T18:33:03+00:00 handover.delivery_accepted；handover_id=HO-0001
+  #27 2026-11-26T18:33:03+00:00 edition.published
+结构化追溯已保存：/workspace/runs/01-main/trace-seg0001.json, /workspace/runs/01-main/trace-seg0002.json
+
+
+==================== 8. 安全反例：集体在场不能顶替甲；改一个字后原签字失效 ====================
+
+$ desk --root /workspace/runs/02-negative init --force
+{
+  "ok": true,
+  "root": "/workspace/runs/02-negative",
+  "initialized": true
+}
+
+$ desk --root /workspace/runs/02-negative presence confirm
+PR-0001: 工位 station-01 确认‘有人在场’；此凭证不证明是甲还是乙，不能用于署名。
+
+$ desk --root /workspace/runs/02-negative badge tap --signer a
+BG-0001: 个人签认器 甲 已在 station-01 验明身份。
+
+$ desk --root /workspace/runs/02-negative segment add --by a --text 甲独自核对的原段：渡轮照例鸣笛三声。
+seg-0001: 已按输入段录入 18 字符；录入人 甲，但尚未本人签字。
+
+$ desk --root /workspace/runs/02-negative sign --segment seg-0001 --signer a --out /workspace/runs/02-negative/a-seg1.json
+已生成个人签认电文：/workspace/runs/02-negative/a-seg1.json
+
+$ desk --root /workspace/runs/02-negative receive /workspace/runs/02-negative/a-seg1.json
+已接收合格本人确认：seg-0001 / a
+
+$ desk --root /workspace/runs/02-negative segment add --by a --text 这一段只补送集体在场凭证，不能变成甲的签字。
+seg-0002: 已按输入段录入 22 字符；录入人 甲，但尚未本人签字。
+
+$ desk --root /workspace/runs/02-negative --json presence confirm > presence.json
+
+$ desk --root /workspace/runs/02-negative receive /workspace/runs/02-negative/presence.json   # 预期被拒绝
+{
+  "ok": false,
+  "error": "NOT_PERSONAL_CONFIRMATION",
+  "message": "这只是集体工位的‘有人在’凭证，没有个人签认器签字，不能署名为甲/乙"
+}
+[符合预期：拒绝码=2]
+
+$ desk --root /workspace/runs/02-negative sign --segment seg-0002 --signer a --out /workspace/runs/02-negative/a-seg2-personal.json
+已生成个人签认电文：/workspace/runs/02-negative/a-seg2-personal.json
+/workspace/runs/02-negative/presence-instead-of-personal.json
+
+$ desk --root /workspace/runs/02-negative receive /workspace/runs/02-negative/presence-instead-of-personal.json   # 预期被拒绝
+{
+  "ok": false,
+  "error": "BAD_ENVELOPE",
+  "message": "不是本程序认可的个人签认器信封"
+}
+[符合预期：拒绝码=2]
+
+$ desk --root /workspace/runs/02-negative segment add --by a --text 签字队列原文：渡轮鸣笛三声，钟声也敲了三下。
+seg-0003: 已按输入段录入 22 字符；录入人 甲，但尚未本人签字。
+
+$ desk --root /workspace/runs/02-negative sign --segment seg-0003 --signer a --out /workspace/runs/02-negative/a-seg3-valid.json
+已生成个人签认电文：/workspace/runs/02-negative/a-seg3-valid.json
+/workspace/runs/02-negative/a-seg3-tampered-one-char.json
+
+$ desk --root /workspace/runs/02-negative receive /workspace/runs/02-negative/a-seg3-tampered-one-char.json   # 预期被拒绝
+{
+  "ok": false,
+  "error": "SIGNED_TEXT_MISMATCH",
+  "message": "队列里的这一段已在签字后被改动；签字哈希不匹配，原确认不能替改后文本背书"
+}
+[符合预期：拒绝码=2]
+
+$ desk --root /workspace/runs/02-negative receive /workspace/runs/02-negative/a-seg3-valid.json
+已接收合格本人确认：seg-0003 / a
+
+$ desk --root /workspace/runs/02-negative archive query --date 2026-11-26 --format markdown
+# 可署名成稿（档案查询端生成）
+
+> 收录有效本人签字段；未完成口述人复核的乙录段会明确标注。
+
+甲独自核对的原段：渡轮照例鸣笛三声。
+
+—— 甲（seg-0001；签字 fbf0c76a090339da）
+
+签字队列原文：渡轮鸣笛三声，钟声也敲了三下。
+
+—— 甲（seg-0003；签字 7591511266b606a0）
+
+---
+
+## 未收录/隔离内容
+
+- `seg-0002`：尚无合格本人签字
+
+
+> 未发现已发出的正式刊次；以上为档案查询端生成的可署名成稿。严格‘口述人复核确证层’见 JSON 的 include_in_verified_edition。
+
+
+==================== 9. 同一交班请求的分支比较：迟到甲签 vs 口述人取消 ====================
+
+--- 分支 L：只补送甲的迟到签字 ---
+已通过 HO-0001 补送并接受：{'ok': True, 'segment_id': 'seg-0002', 'signer_id': 'a', 'handover_id': 'HO-0001', 'late_after_handover': True, 'signature': 'cf4b94c56762c980489d8acc266da0794a08704a637dffe28bfa7782968c224e'}
+
+--- 分支 C：口述人临时取消复核，不产生乙的新复核段 ---
+RV-0001: 已登记口述人复核/取消通道。
+已生成个人签认电文：/workspace/runs/04-cmp-cancel/n-cancel.json
+已通过 HO-0001 补送并接受：{'ok': True, 'review_id': 'RV-0001', 'decision': 'cancelled', 'scope': 'review_appointment'}
+
+--- 分支 BOTH：同一个 HO-0001 分别收到甲迟到签字和口述人取消 ---
+RV-0001: 已登记口述人复核/取消通道。
+已生成个人签认电文：/workspace/runs/05-cmp-both/n-cancel.json
+已通过 HO-0001 补送并接受：{'ok': True, 'review_id': 'RV-0001', 'decision': 'cancelled', 'scope': 'review_appointment'}
+已通过 HO-0001 补送并接受：{'ok': True, 'segment_id': 'seg-0002', 'signer_id': 'a', 'handover_id': 'HO-0001', 'late_after_handover': True, 'signature': '440e422f0001539e5df8e8765351e1824477ba650c65adf78f9911fba1173490'}
+
+[L] /workspace/runs/03-cmp-late
+seg-0001	甲	true	true	42	民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+seg-0002	甲	true	true	16	那天江雾很重，我刚写下“桐油二百
+可进具名成稿字符数（含标点）: 58
+严格复核确证层字符数（含标点）: 58
+
+[CANCEL] /workspace/runs/04-cmp-cancel
+seg-0001	甲	true	true	42	民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+seg-0002	暂不能署名	false	false	16	那天江雾很重，我刚写下“桐油二百
+可进具名成稿字符数（含标点）: 42
+严格复核确证层字符数（含标点）: 42
+
+[BOTH] /workspace/runs/05-cmp-both
+seg-0001	甲	true	true	42	民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+seg-0002	甲	true	true	16	那天江雾很重，我刚写下“桐油二百
+可进具名成稿字符数（含标点）: 58
+严格复核确证层字符数（含标点）: 58
+
+
+==================== 10. 若“取消”是撤回刊布同意而非仅取消预约：乙的新录段也会被挡住 ====================
+已通过 HO-0001 补送并接受：{'ok': True, 'review_id': 'RV-0001', 'decision': 'cancelled', 'scope': 'publication_consent'}
+已通过 HO-0001 补送并接受：{'ok': True, 'segment_id': 'seg-0002', 'signer_id': 'a', 'handover_id': 'HO-0001', 'late_after_handover': True, 'signature': '8f0d1c5308adfb7b9936c1f7a58d8c9f818c072b4b15476da5590458b28b14d9'}
+seg-0001	甲	true	false	民国三十七年冬天，我在码头仓库里抄写进出口货单。江雾天天漫到门槛，油灯总被水汽打暗。
+seg-0002	甲	true	false	那天江雾很重，我刚写下“桐油二百
+seg-0003	暂不能署名	false	true	乙刚录下、尚待口述人同意刊布的一句。
+
+
+==================== 11. 若甲的签字在刊次发出后才到：签字可存档，但不能改写当日刊次，只能走勘误 ====================
+
+$ desk --root /workspace/runs/07-late-after-publication publish --date 2026-11-26 --work oral-001 --clerk b
+ED-0001: 当日唯一正式具名刊次已签发：/workspace/runs/07-late-after-publication/editions/ED-0001.md
+body_sha256=f81fb2ee001c3e87519f8e68b3d3d4dfd355bb51e7dcf972749f292219058b03
+
+$ desk --root /workspace/runs/07-late-after-publication handover deliver HO-0001 /workspace/runs/07-late-after-publication/a-seg2-late.json
+已通过 HO-0001 补送并接受：{'ok': True, 'segment_id': 'seg-0002', 'signer_id': 'a', 'handover_id': 'HO-0001', 'late_after_handover': True, 'signature': '6a172d38f9a81540ab49357db3760468cd89e4a7c35293cafc5e198b9dd19511'}
+
+$ desk --root /workspace/runs/07-late-after-publication publish --date 2026-11-26 --work oral-001 --clerk b   # 预期被拒绝
+{
+  "ok": false,
+  "error": "EDITION_ALREADY_PUBLISHED",
+  "message": "2026-11-26 的 oral-001 已有唯一正式刊次 ED-0001；刊次冻结，之后只能提交勘误"
+}
+[符合预期：拒绝码=2]
+
+$ desk --root /workspace/runs/07-late-after-publication erratum add --edition ED-0001 --signer a --target-segment seg-0002 --correction 甲在刊后才收到的签字确认残句：“那天江雾很重，我刚写下‘桐油二百”。该句作为勘误/补遗附于\ ED-0001，不插入已冻结正文，也不产生第二个当日正式刊次。 --reason 甲的个人签认应答在刊次发出后才送达
+ER-0001: 刊后找回本人也只能形成勘误，冻结刊次未改：/workspace/runs/07-late-after-publication/errata/ER-0001.md
+冻结刊次仍只含: seg-0001
+
+全部演练完成。数据与档案在 /workspace/runs；主档案：/workspace/runs/01-main/archive-query-after-erratum.txt
+断言全部通过：边界、迟到签字、取消、私稿锁、防顶替、防改字、唯一刊次与勘误均符合预期。

@@ -1,0 +1,18 @@
+{
+  "kind": "desk.queued_confirmation/v1",
+  "message_id": "MSG-0002",
+  "created_at": "2026-11-26T18:33:03+00:00",
+  "station_id": "station-01",
+  "segment_id": "seg-0002",
+  "text": "这一段只补送集体在场凭证，不能变成甲的签字。",
+  "review_text": "档案听打员个人签认审阅文本\n工作站：station-01；签字人：甲（a）\n以下为签字器向签字人展示的实际全文/封入占位；签字只及于哈希绑定的内容。\n\n===== 已签前序 seg-0001 / 甲 =====\n甲独自核对的原段：渡轮照例鸣笛三声。\n===== 目标确认段 seg-0002（全文） =====\n这一段只补送集体在场凭证，不能变成甲的签字。\n\n目标段：seg-0002；目标段 sha256=d104b11a63fdf307d28ace47f22388f1a48ca653838802cafda943ee6709af55",
+  "envelope": {
+    "id": "PR-0002",
+    "kind": "station_presence_receipt",
+    "station_id": "station-01",
+    "result": "occupied",
+    "identity_proven": false,
+    "statement": "集体工位传感器/值班终端只能确认有人在场，不能证明是甲或乙",
+    "at": "2026-11-26T18:33:03+00:00"
+  }
+}
