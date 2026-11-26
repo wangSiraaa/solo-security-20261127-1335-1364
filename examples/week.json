@@ -1,0 +1,12 @@
+{
+  "week_id": "W1",
+  "households": ["甲", "乙", "丙"],
+  "groups": {
+    "北翼": ["甲", "乙"],
+    "整层": ["甲", "乙", "丙"]
+  },
+  "answers": {"甲": 1, "乙": 0, "丙": 0},
+  "protected": ["甲", "乙", "丙"],
+  "policy": "arrival",
+  "reserved_groups": []
+}
