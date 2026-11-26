@@ -1,0 +1,33 @@
+{
+  "admitted": [
+    "第1至第7页前缀完整，逐页摘要、条目根、链接关系复核通过",
+    "东站 与 西站 分别对同一摘要 759e89de5cbc895f… 留有 VERIFIED 签收",
+    "两站在第7页及其之前的历史一致"
+  ],
+  "cert_id": "C-f18bfb57fd27",
+  "desk_key_id": "K0ff3ecf56fa1",
+  "desk_signature": "be8063d3f57b7c5d7b224488a7dcb394775fa61ebade491360781a89d005e85a43c8909257f7295c151deb9c07e0ab80c8d7671f5087455ce1ba02c6268b700f",
+  "facts": {
+    "page_digest": "759e89de5cbc895fbd7c449880fbfd5a32e2a7aeb8248404a371ba3f34fb4b4b",
+    "page_no": 7,
+    "prefix_digests": [
+      "21e4b7316e0c77d7d43e3b1a85c13060ca9b8547a35729d1c4f054d4724e7c01",
+      "80bd21b9be5dd45725377c908f3bf2da1818764fccfc1f6e5993c924d850082c",
+      "1d2524409e20093b56e4c6244394557dc6dc070dbc044848c0dab53c34cac77d",
+      "34a959573f4cf0d4b3960bc999cdc089c8f4230bc2ad9e6e4286ea01385e9d57",
+      "9227042756d0d998f5f542eedd06c0bc8ff9906c646f1c4e7afaae5109ea83b4",
+      "1c11e387e2e0a3c85a3bd8356b15af944deaa32039b3027584aaee5710bea6dd",
+      "759e89de5cbc895fbd7c449880fbfd5a32e2a7aeb8248404a371ba3f34fb4b4b"
+    ],
+    "receipts": {
+      "东站": "R-东站-f5c7a3c7e3",
+      "西站": "R-西站-8bcc9c253e"
+    }
+  },
+  "needs_other_station": [],
+  "not_claimed": [
+    "本证书只覆盖到第7页；不证明其后任何页的顺序",
+    "不排除该页之后出现分叉"
+  ],
+  "type": "CO_WITNESS"
+}

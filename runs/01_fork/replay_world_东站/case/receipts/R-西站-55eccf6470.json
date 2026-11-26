@@ -1,0 +1,11 @@
+{
+  "key_id": "K4f4627074fde",
+  "kind": "VERIFIED",
+  "note": "西站本地收件：乙的交接",
+  "page_digest": "861b74f049a354857d3ef546cd1ea9f599c42ec0266e5380fa6e65b460822048",
+  "page_no": 8,
+  "receipt_id": "R-西站-55eccf6470",
+  "signature": "a4a2881c8cca84f51269f4ec2b415b2a30e040e5820972b6b4d230290016020fb13ec31337c772457085a9edb53b79ee7a6658443ffa35754386ec9c92e5c90b",
+  "station_id": "西站",
+  "ts": "2026-11-26T22:15"
+}

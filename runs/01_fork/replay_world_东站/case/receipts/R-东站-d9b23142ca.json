@@ -1,0 +1,11 @@
+{
+  "key_id": "K5307e2478f77",
+  "kind": "VERIFIED",
+  "note": "东站本地收件：甲的交接",
+  "page_digest": "be75e9f20a0a0867a84587fa1678bab5f0e28943636a829c53b4c215f2cc35a0",
+  "page_no": 8,
+  "receipt_id": "R-东站-d9b23142ca",
+  "signature": "fc5917658f2dd5f69a45a49142a78e906586190abe3940ce1ef8dd24cd1852f59bbbcd9171661bd75eec0311ba148502469f0525a21580834bacd117fae15404",
+  "station_id": "东站",
+  "ts": "2026-11-26T21:15"
+}

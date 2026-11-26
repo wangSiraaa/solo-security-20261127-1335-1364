@@ -1,0 +1,12 @@
+{
+  "entries_root": "e1d4752f9241ab55a44076fd78661d5391bfd2f3839e67a00f9ad7529fa1b6ae",
+  "entry_digests": [
+    "2bea633061b39610e20c1110378f01a9a0d825ffb047b809c954f04f0bc563af",
+    "af3654932eb68b6b49cd4fb4fc2910e0a680406313d73e7c3b38e0462022695c"
+  ],
+  "page_digest": "21e4b7316e0c77d7d43e3b1a85c13060ca9b8547a35729d1c4f054d4724e7c01",
+  "page_no": 1,
+  "prev_digest": "GENESIS",
+  "shift": "班次1",
+  "ts": "2026-11-26T01:59"
+}

@@ -1,0 +1,25 @@
+{
+  "admitted": [
+    "东站 以钥匙 K5307e2478f77 对第8页（摘要 be75e9f20a0a0867…）出具过 VERIFIED 签收 R-东站-d9b23142ca",
+    "该页页内条目根与页摘要复核一致"
+  ],
+  "cert_id": "C-a3324a44c09f",
+  "desk_key_id": "Ke9de6a0992b6",
+  "desk_signature": "b8a83e98276315c6161b2694b5b0de58d961bd9ea271ecef996127917965f27a567488411ad267e3e9cce5f83510e9f8e7f71b7a9ec41762d26c0023636dee02",
+  "facts": {
+    "page_digest": "be75e9f20a0a0867a84587fa1678bab5f0e28943636a829c53b4c215f2cc35a0",
+    "page_no": 8,
+    "receipt_id": "R-东站-d9b23142ca",
+    "station_id": "东站"
+  },
+  "needs_other_station": [
+    "如需共同见证，仍须另一站对同一摘要 be75e9f20a0a0867… 出具 VERIFIED 签收"
+  ],
+  "not_claimed": [
+    "本证书不证明另一见证站见过第8页",
+    "不证明该页与其他站后续页之间存在任何全局先后顺序",
+    "不排除同一前页上存在另一支分叉"
+  ],
+  "purpose": "甲的局部交接举证",
+  "type": "LOCAL_RECEIPT"
+}

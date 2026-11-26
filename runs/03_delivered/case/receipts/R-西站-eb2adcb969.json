@@ -1,0 +1,11 @@
+{
+  "key_id": "K44afa5c311ce",
+  "kind": "VERIFIED",
+  "note": "补验升级",
+  "page_digest": "759e89de5cbc895fbd7c449880fbfd5a32e2a7aeb8248404a371ba3f34fb4b4b",
+  "page_no": 7,
+  "receipt_id": "R-西站-eb2adcb969",
+  "signature": "4a43b31be0c9529d89934ba9d82aa86e3649084902d669fa5c0a0bad4515c79f00dee49bf52fe4cdc0f7e7e80d0fa78c1f88f111ed6a2eeb195f10e539b8090a",
+  "station_id": "西站",
+  "ts": "2026-11-26T21:00"
+}

@@ -1,0 +1,11 @@
+{
+  "key_id": "K44afa5c311ce",
+  "kind": "DELIVERED",
+  "note": "包裹已送达、尚未验页",
+  "page_digest": "759e89de5cbc895fbd7c449880fbfd5a32e2a7aeb8248404a371ba3f34fb4b4b",
+  "page_no": 7,
+  "receipt_id": "R-西站-9f25e24db1",
+  "signature": "8c598badd528ab00f1290210fe99bd7f3f5a27402f1e657d4e00823c09ba5222282c8ac63697ab369c1caebee2270818513eaac67c886fc2df44f133ca7f7c0d",
+  "station_id": "西站",
+  "ts": "2026-11-26T20:00"
+}

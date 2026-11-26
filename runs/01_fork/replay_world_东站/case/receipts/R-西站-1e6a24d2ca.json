@@ -1,0 +1,11 @@
+{
+  "key_id": "K4f4627074fde",
+  "kind": "VERIFIED",
+  "note": "共同历史验页",
+  "page_digest": "9227042756d0d998f5f542eedd06c0bc8ff9906c646f1c4e7afaae5109ea83b4",
+  "page_no": 5,
+  "receipt_id": "R-西站-1e6a24d2ca",
+  "signature": "88bdb09af442b003d1d6ca7e384565769b5ecaaef558cdd774cc6edbbcfcd41898ec73f39e8df96b2c2f37a205faaf1b7f90dedef5da1548b40e09b7f53bf70c",
+  "station_id": "西站",
+  "ts": "2026-11-26T5:59"
+}

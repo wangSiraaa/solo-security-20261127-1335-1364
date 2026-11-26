@@ -1,0 +1,11 @@
+{
+  "key_id": "K581ec3b594e6",
+  "kind": "VERIFIED",
+  "note": "共同历史验页",
+  "page_digest": "1c11e387e2e0a3c85a3bd8356b15af944deaa32039b3027584aaee5710bea6dd",
+  "page_no": 6,
+  "receipt_id": "R-西站-a8aa5e836f",
+  "signature": "404b0c365cdbc66f1d90d3c9dac80e70fe3d81e50aeb5f6c170529c35d707fd53bdb778877ce978da9f0f60c57410389f9b6cf5eb408f2b79a9315b1217e4402",
+  "station_id": "西站",
+  "ts": "2026-11-26T6:59"
+}

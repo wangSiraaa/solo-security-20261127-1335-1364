@@ -1,0 +1,11 @@
+{
+  "key_id": "Ka3ad81ca2192",
+  "kind": "VERIFIED",
+  "note": "共同历史验页",
+  "page_digest": "1d2524409e20093b56e4c6244394557dc6dc070dbc044848c0dab53c34cac77d",
+  "page_no": 3,
+  "receipt_id": "R-东站-fd63f8320e",
+  "signature": "7f25d8e3483f7c2b4b144601f9b52fff8dda8c00810f0bede9d083b20444fd5a0d85fe5d261a0b9cbca33dc8a68d6fedac31424c5ec0dceb062f3ce3f01e710e",
+  "station_id": "东站",
+  "ts": "2026-11-26T3:59"
+}

@@ -1,0 +1,26 @@
+{
+  "admitted": [
+    "东站 对该页留有 VERIFIED 签收（签名复核通过）",
+    "前缀第1至第7页结构复核通过"
+  ],
+  "cert_id": "C-a913d89ed1f1",
+  "desk_key_id": "Ke9de6a0992b6",
+  "desk_signature": "bbc38a1c8ee930fd75688a1fe6e74cfc1174f390bd8d9989bae3733b747d5288f16ff2fe50bd9f742c6c4fa833abdb9265de3a3df447964b70bbca2edce6be0a",
+  "facts": {
+    "have": [
+      "东站"
+    ],
+    "lack": [
+      "西站"
+    ],
+    "page_digest": "759e89de5cbc895fbd7c449880fbfd5a32e2a7aeb8248404a371ba3f34fb4b4b"
+  },
+  "needs_other_station": [
+    "仍须 西站 对同一页摘要出具 VERIFIED 签收，方可换发 CO_WITNESS"
+  ],
+  "not_claimed": [
+    "本证书不是共同见证，不能当作双站一致的结论使用",
+    "不证明两站历史一致，也不证明全局顺序"
+  ],
+  "type": "PROVISIONAL_CO"
+}

@@ -1,0 +1,21 @@
+{
+  "admitted": [
+    "西站 在 2026-11-26T20:00 签收了包裹（签收 R-西站-9f25e24db1，签名有效）",
+    "原始备注：包裹已送达、尚未验页"
+  ],
+  "cert_id": "C-9232bd888969",
+  "desk_key_id": "K0157a61ec52f",
+  "desk_signature": "1d19282ee2f45bbac3ad0850912f91760153659333d77b1125173d18c2f07bc0a334d10f6a7232bc547d8974f431eda88217354708b22824457e66135f205d09",
+  "facts": {
+    "page_no": 7,
+    "receipt_id": "R-西站-9f25e24db1"
+  },
+  "needs_other_station": [
+    "须待该站拆包验页并出具 VERIFIED 签收后，事实才能升级"
+  ],
+  "not_claimed": [
+    "不证明包裹内任何页的摘要、条目根或链接关系",
+    "不能用于双站共同见证"
+  ],
+  "type": "DELIVERY_ONLY"
+}

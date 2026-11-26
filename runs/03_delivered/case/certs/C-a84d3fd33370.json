@@ -1,0 +1,25 @@
+{
+  "admitted": [
+    "东站 以钥匙 Kfc36ac548327 对第7页（摘要 759e89de5cbc895f…）出具过 VERIFIED 签收 R-东站-9bbc691d8b",
+    "该页页内条目根与页摘要复核一致"
+  ],
+  "cert_id": "C-a84d3fd33370",
+  "desk_key_id": "K0157a61ec52f",
+  "desk_signature": "83d76f78c3a0883e2645447fe085d15fa6253cb25e659e967545f7ca3011d7508566a1fa4467f1ec40ae13d06063baac49bfe149e2dd58d6742197ae70a24501",
+  "facts": {
+    "page_digest": "759e89de5cbc895fbd7c449880fbfd5a32e2a7aeb8248404a371ba3f34fb4b4b",
+    "page_no": 7,
+    "receipt_id": "R-东站-9bbc691d8b",
+    "station_id": "东站"
+  },
+  "needs_other_station": [
+    "如需共同见证，仍须另一站对同一摘要 759e89de5cbc895f… 出具 VERIFIED 签收"
+  ],
+  "not_claimed": [
+    "本证书不证明另一见证站见过第7页",
+    "不证明该页与其他站后续页之间存在任何全局先后顺序",
+    "不排除同一前页上存在另一支分叉"
+  ],
+  "purpose": "东站单站事实照常办理",
+  "type": "LOCAL_RECEIPT"
+}

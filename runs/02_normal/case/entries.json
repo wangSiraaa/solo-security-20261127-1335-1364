@@ -1,0 +1,114 @@
+{
+  "E0001": {
+    "author": "值班员2",
+    "digest": "2bea633061b39610e20c1110378f01a9a0d825ffb047b809c954f04f0bc563af",
+    "entry_id": "E0001",
+    "payload": "第1页日志A",
+    "shift": "班次1",
+    "ts": "2026-11-26T01:00"
+  },
+  "E0002": {
+    "author": "值班员2",
+    "digest": "af3654932eb68b6b49cd4fb4fc2910e0a680406313d73e7c3b38e0462022695c",
+    "entry_id": "E0002",
+    "payload": "第1页日志B",
+    "shift": "班次1",
+    "ts": "2026-11-26T01:30"
+  },
+  "E0003": {
+    "author": "值班员1",
+    "digest": "d1c393fbef907807c72f34df4987c0c8ac68b5b0a1124ddc6821f62ec4e40481",
+    "entry_id": "E0003",
+    "payload": "第2页日志A",
+    "shift": "班次2",
+    "ts": "2026-11-26T02:00"
+  },
+  "E0004": {
+    "author": "值班员1",
+    "digest": "114bebfe01f5b3a268e9db28c53f7398fe075b86d0c71044fd0129296454819c",
+    "entry_id": "E0004",
+    "payload": "第2页日志B",
+    "shift": "班次2",
+    "ts": "2026-11-26T02:30"
+  },
+  "E0005": {
+    "author": "值班员2",
+    "digest": "bc69d2e9851cd1190e640ce7798b5353f2134e415d2aced1ef297cf2433c7009",
+    "entry_id": "E0005",
+    "payload": "第3页日志A",
+    "shift": "班次3",
+    "ts": "2026-11-26T03:00"
+  },
+  "E0006": {
+    "author": "值班员2",
+    "digest": "10ad88c63f74e8e2525504db0c7d381ef6ac83169c97ceba5c11ac9486569341",
+    "entry_id": "E0006",
+    "payload": "第3页日志B",
+    "shift": "班次3",
+    "ts": "2026-11-26T03:30"
+  },
+  "E0007": {
+    "author": "值班员1",
+    "digest": "ce576346d95bb8ed0f084d0ee7a97a8ff621491e8e167317887f846791457ad4",
+    "entry_id": "E0007",
+    "payload": "第4页日志A",
+    "shift": "班次4",
+    "ts": "2026-11-26T04:00"
+  },
+  "E0008": {
+    "author": "值班员1",
+    "digest": "aa2d55c68cd3052675aea775409b428112795b45e38770d671f617eb897092ef",
+    "entry_id": "E0008",
+    "payload": "第4页日志B",
+    "shift": "班次4",
+    "ts": "2026-11-26T04:30"
+  },
+  "E0009": {
+    "author": "值班员2",
+    "digest": "e921e02102450548e8aa1ade1e437f0d953cc09f47b4bfe2f87d4e5b556d68b4",
+    "entry_id": "E0009",
+    "payload": "第5页日志A",
+    "shift": "班次5",
+    "ts": "2026-11-26T05:00"
+  },
+  "E0010": {
+    "author": "值班员2",
+    "digest": "f21cd45b15fa5a11b9bdf40882323f34aa0419c1ec2e70cb1ca090f7e59c44d1",
+    "entry_id": "E0010",
+    "payload": "第5页日志B",
+    "shift": "班次5",
+    "ts": "2026-11-26T05:30"
+  },
+  "E0011": {
+    "author": "值班员1",
+    "digest": "a128d26514ec9a32db2ded607973e5629d50d9ab0c520651a9243030e2f01d82",
+    "entry_id": "E0011",
+    "payload": "第6页日志A",
+    "shift": "班次6",
+    "ts": "2026-11-26T06:00"
+  },
+  "E0012": {
+    "author": "值班员1",
+    "digest": "6fe02514dc730bc64b787abd83d3b2529f5d8eeac8f4579a5aca7be02c625695",
+    "entry_id": "E0012",
+    "payload": "第6页日志B",
+    "shift": "班次6",
+    "ts": "2026-11-26T06:30"
+  },
+  "E0013": {
+    "author": "值班员2",
+    "digest": "44fd95cca66c322d57357706b4fc7104f8ef100fc2923f594c78b9b4ec51af40",
+    "entry_id": "E0013",
+    "payload": "第7页日志A",
+    "shift": "班次7",
+    "ts": "2026-11-26T07:00"
+  },
+  "E0014": {
+    "author": "值班员2",
+    "digest": "9d0d71197978ab4bf7ca91c816cc625105a67b09c79eb83caa9292a925903876",
+    "entry_id": "E0014",
+    "payload": "第7页日志B",
+    "shift": "班次7",
+    "ts": "2026-11-26T07:30"
+  }
+}

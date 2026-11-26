@@ -1,0 +1,12 @@
+{
+  "entries_root": "3635408e9de9138981ebda0d7a8e52578a968a139d82a63592dce2409f798e95",
+  "entry_digests": [
+    "a128d26514ec9a32db2ded607973e5629d50d9ab0c520651a9243030e2f01d82",
+    "6fe02514dc730bc64b787abd83d3b2529f5d8eeac8f4579a5aca7be02c625695"
+  ],
+  "page_digest": "1c11e387e2e0a3c85a3bd8356b15af944deaa32039b3027584aaee5710bea6dd",
+  "page_no": 6,
+  "prev_digest": "9227042756d0d998f5f542eedd06c0bc8ff9906c646f1c4e7afaae5109ea83b4",
+  "shift": "班次6",
+  "ts": "2026-11-26T06:59"
+}
