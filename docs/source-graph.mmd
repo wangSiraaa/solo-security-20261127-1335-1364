@@ -1,0 +1,50 @@
+flowchart LR
+  classDef paper fill:#fff4ce,stroke:#8a6d00;
+  classDef witness fill:#e3f2fd,stroke:#1565c0;
+  classDef key fill:#e8f5e9,stroke:#2e7d32;
+  classDef oldkey fill:#ffebee,stroke:#c62828;
+  classDef person fill:#f3e5f5,stroke:#6a1b9a;
+  classDef source fill:#f5f5f5,stroke:#666;
+  subgraph acct_alice["Alice Example (acct-alice)"]
+    src_alice_paper["A-7 纸质恢复册"]
+    class src_alice_paper paper;
+    src_alice_witness["社区见证席 W-1"]
+    class src_alice_witness witness;
+  end
+  subgraph acct_bob["Bob Example (acct-bob)"]
+    src_bob_paper["B-2 纸质恢复册"]
+    class src_bob_paper paper;
+    src_bob_witness["夜间见证席 W-2"]
+    class src_bob_witness witness;
+  end
+  subgraph acct_carol["Carol Example (acct-carol)"]
+    src_carol_paper["C-9 纸册"]
+    class src_carol_paper paper;
+    src_carol_witness["见证席 W-9"]
+    class src_carol_witness witness;
+  end
+  subgraph acct_dana["Dana Example (acct-dana)"]
+    src_dana_key["可留到次晨的 K-17 设备钥匙"]
+    class src_dana_key key;
+    src_dana_oldkey["K-17 补发所依赖的旧钥匙根"]
+    class src_dana_oldkey oldkey;
+    src_dana_paper["随人出差的 D-7 纸册"]
+    class src_dana_paper paper;
+    src_dana_witness["晚间换班 W-3 见证席"]
+    class src_dana_witness witness;
+  end
+  subgraph acct_eric["Eric Example (acct-eric)"]
+    src_eric_laptop["补发后的笔电钥匙"]
+    class src_eric_laptop key;
+    src_eric_oldkey["2025 旧主钥匙"]
+    class src_eric_oldkey oldkey;
+    src_eric_phone["从平板同步出的手机钥匙"]
+    class src_eric_phone key;
+    src_eric_tablet["平板本地钥匙"]
+    class src_eric_tablet key;
+  end
+  src_bob_witness -.->|同步副本| src_bob_paper
+  src_eric_phone -.->|同步副本| src_eric_tablet
+  src_dana_key -->|补发凭据依赖旧凭据| src_dana_oldkey
+  src_eric_laptop -->|补发凭据依赖旧凭据| src_eric_oldkey
+
