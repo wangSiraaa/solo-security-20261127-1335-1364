@@ -1,0 +1,7 @@
+{
+  "order_id": "TICKET-M3-G6-001",
+  "package_order_id": "ORD-G6-001",
+  "machine": "M3",
+  "package": "packages/gen6",
+  "target_slot": "b"
+}

@@ -1,0 +1,2 @@
+simulated self-test descriptor
+checks=hash-tree,peripheral-probe,archive-service

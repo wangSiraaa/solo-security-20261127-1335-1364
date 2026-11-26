@@ -1,0 +1,6 @@
+{
+  "machine": "M3",
+  "slot": "b",
+  "result": "fail",
+  "note": "可把 result 改成 pass，或修改 note；然后运行 boot --input inputs/boot-m3.example.json"
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "museum-update-approval/v1",
+  "order_id": "ORD-G6-001",
+  "generation": 6,
+  "manifest_digest": "sha256:f8c2d76925cd08e49831e7b4bc4388f6e9543d48e54148bcb80f8ed2a7a7c0b9",
+  "file_digests": {
+    "system/core.bin": "sha256:80fe309275dffc67802278351a91e215fde72a3fe153e5294513f29f2f268c75",
+    "system/selftest.bin": "sha256:76818d6b838e73fdc82b3f1a4dc1f5350ff347180ff32477e4210ed6b7853380",
+    "components/reader.pack": "sha256:3cd4bbcf18c7155619a2eebd55db1f6692934ab1f338c01566dca803f982b329",
+    "components/index.pack": "sha256:c180f41fd896e3a72aa0c818be54d91eb65e7cd69be2e8e8b876e196f2370c7f",
+    "components/fonts.pack": "sha256:f0dba7aed75e0bb6f2829239dd2e8bd48668095cbd017d4b0eff039377899202"
+  },
+  "components": [
+    {
+      "name": "core",
+      "path": "system/core.bin",
+      "role": "system"
+    },
+    {
+      "name": "selftest",
+      "path": "system/selftest.bin",
+      "role": "system"
+    },
+    {
+      "name": "reader",
+      "path": "components/reader.pack",
+      "role": "companion"
+    },
+    {
+      "name": "archive-index",
+      "path": "components/index.pack",
+      "role": "companion"
+    },
+    {
+      "name": "fonts",
+      "path": "components/fonts.pack",
+      "role": "companion"
+    }
+  ],
+  "component_set_digest": "sha256:544600e2281edbb612295ec0d3011d425e9d8b31f45b77fdbb240019970230bc",
+  "approved_set_digest": "sha256:c168f6d09fc1ba24326da1b000bb264f02204193d784e0d68d77e3b29436e0eb",
+  "note": "Fictional publisher approval. Digests, not filenames alone, authorize bytes."
+}

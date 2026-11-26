@@ -1,0 +1,8 @@
+{
+  "order_id": "TICKET-M2-G6-001",
+  "package_order_id": "ORD-G6-001",
+  "machine": "M2",
+  "package": "packages/gen6",
+  "target_slot": "b",
+  "note": "可修改本文件或复制为新安装单；控制器只按实际字节和持久状态推进。"
+}
