@@ -1,0 +1,11 @@
+{
+  "name": "anonymous-relay",
+  "version": "1.0.0",
+  "description": "Privacy-preserving anonymous letter relay: local post station + two unlinkable reply rooms.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test",
+    "demo": "node demo/run.js"
+  },
+  "license": "MIT"
+}
