@@ -1,0 +1,15 @@
+{
+  "name": "data-only-rule-publisher",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "微型数据规则发布器：比较公共观察、核准去密范围与离线出单兑现",
+  "scripts": {
+    "start": "node server.mjs",
+    "demo": "node scripts/demo.mjs",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

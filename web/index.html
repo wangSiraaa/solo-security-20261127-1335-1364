@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>无密规则发布器｜公共观察与离线兑现演示</title>
+  <link rel="stylesheet" href="/web/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>含保密条件的微型规则发布器</h1>
+      <p>规则树只接受 JSON 数据：整数、比较、条件选择、字段读取、生成单据。公共端只能看到已签发的公开投影。</p>
+    </div>
+    <div class="route-badge">
+      <strong>采用路线二</strong>
+      <span>求值留在馆内受托端 · 私有产物分开保存 · 站点只认已签发编号</span>
+    </div>
+  </header>
+
+  <section class="script-bar card">
+    <div class="script-head">
+      <div>
+        <h2>六步演示剧本</h2>
+        <p class="hint">两条记录的公开输入完全相同，只有私有字段不同。可逐步执行，也可一键跑完后再改输入或模板。</p>
+      </div>
+      <div class="script-actions">
+        <button class="primary" data-action="run-full-scenario">一键完整演示</button>
+        <button data-action="reset-all">重置</button>
+      </div>
+    </div>
+    <ol class="steps">
+      <li><button data-action="step-baseline">1 载入双记录/v1 并比对</button></li>
+      <li><button data-action="step-issue-v1">2 签发 v1 并在社区站办理</button></li>
+      <li><button data-action="step-approval-v2">3 签发 v2 限定组去密决定</button></li>
+      <li><button data-action="step-supplement">4 添私有补件分叉（核准缺席）</button></li>
+      <li><button data-action="step-restore">5 恢复两边一致</button></li>
+      <li><button data-action="step-old-book">6 旧编号底册拒绝正确 v2 投影</button></li>
+    </ol>
+    <div id="timeline" class="timeline" aria-live="polite"></div>
+  </section>
+
+  <main class="layout">
+    <section class="column card publisher-col">
+      <h2>① 仅数据规则出版器</h2>
+
+      <label class="field-label" for="templatePreset">换模板预设</label>
+      <select id="templatePreset">
+        <option value="baselineV1">community-fee@1.0.0 基线：私有条件但公共形状不变</option>
+        <option value="coincidenceV11">community-fee@1.1.0 偶然同额：本对相同但不保证全部取值</option>
+        <option value="declassifiedV2">community-fee@2.0.0 困难等级进入金额（需去密核准）</option>
+        <option value="errorForkV3">community-fee@3.0.0 私有错误回单分叉</option>
+        <option value="custom">当前 JSON（可自行修改）</option>
+      </select>
+
+      <div class="editor-head">
+        <label class="field-label" for="templateEditor">模板规则树 JSON</label>
+        <div class="mini-actions">
+          <button data-action="apply-template">应用模板</button>
+          <button data-action="toggle-supplement">添加/移除补件分叉</button>
+        </div>
+      </div>
+      <textarea id="templateEditor" class="code-editor" spellcheck="false"></textarea>
+      <div id="templateValidation" class="validation"></div>
+
+      <div class="editor-head">
+        <label class="field-label" for="recordsEditor">自造记录 JSON（public/private）</label>
+        <button data-action="apply-records">应用记录</button>
+      </div>
+      <textarea id="recordsEditor" class="code-editor records" spellcheck="false"></textarea>
+      <div id="recordsValidation" class="validation"></div>
+
+      <fieldset class="approval-form">
+        <legend>独立核准席：签发去密决定</legend>
+        <div class="form-grid">
+          <label>核准单号<input id="approvalId" type="text" /></label>
+          <label>指定字段（逗号分隔）<input id="approvalFields" type="text" placeholder="private.hardship" /></label>
+          <label>模板 ID<input id="approvalTemplateId" type="text" /></label>
+          <label>模板版本<input id="approvalTemplateVersion" type="text" /></label>
+          <label>限定收件组
+            <select id="approvalRecipientGroup">
+              <option value="priority-group">priority-group（限定优先收件组）</option>
+              <option value="public-desk">public-desk（公开办事台）</option>
+            </select>
+          </label>
+          <label class="checkbox-label"><input id="seatPresent" type="checkbox" checked /> 承认核准席已到场签发的决定</label>
+        </div>
+        <label>决定说明<input id="approvalNote" type="text" /></label>
+        <div class="mini-actions">
+          <button class="primary" data-action="issue-approval">实际签发模拟核准单</button>
+          <button data-action="fill-approval-v2">填入 v2 核准内容</button>
+        </div>
+      </fieldset>
+
+      <div class="publish-controls">
+        <label class="field-label" for="recipientGroup">本次发行/审核的收件组</label>
+        <select id="recipientGroup">
+          <option value="public-desk">public-desk｜公开社区站</option>
+          <option value="priority-group">priority-group｜核准决定限定收件组</option>
+        </select>
+        <div class="mini-actions">
+          <button class="primary" data-action="run-audit">运行发行前检查</button>
+          <button class="primary" data-action="issue-docs">实际签发可放行单据</button>
+        </div>
+      </div>
+
+      <h3>已签发核准单</h3>
+      <div id="approvalList" class="approval-list"></div>
+    </section>
+
+    <section class="column hall-col">
+      <div class="card trust-boundary hall">
+        <h2>② 馆内受托端 / 原录入端可见</h2>
+        <p class="hint">这里能读私有字段、私有校对分支、扣留原因和全部签发底账；这些内容不会整体交给社区站。</p>
+        <div id="comparisonTable"></div>
+      </div>
+
+      <div class="card trust-boundary hall">
+        <h3>发行时公共观察审计</h3>
+        <div id="slotAudit"></div>
+      </div>
+
+      <div class="card trust-boundary hall">
+        <h3>逐笔私有产物与公开投影</h3>
+        <div id="hallRecords"></div>
+      </div>
+
+      <div class="card trust-boundary hall">
+        <div class="editor-head">
+          <h3>馆内签发底账</h3>
+          <button data-action="transfer-group-to-station">把当前收件组已签发单拷入所选站</button>
+        </div>
+        <div id="issuedRegistry"></div>
+      </div>
+    </section>
+
+    <section class="column station-col">
+      <div class="card trust-boundary station">
+        <h2>③ 公共社区站实际可见</h2>
+      <div class="station-switch">
+        <label class="field-label" for="stationSelect">当前站点/收件组</label>
+        <div class="mini-actions">
+          <select id="stationSelect">
+            <option value="public-desk">public-desk｜栖霞社区公开站</option>
+            <option value="priority-group">priority-group｜限定收件组离线站</option>
+          </select>
+          <button data-action="toggle-public-view">切换纯公共站视角</button>
+        </div>
+      </div>
+      <div class="public-view-banner timeline-item ok">纯公共站视角：界面只保留站点底册、出示区和兑现记录；真实部署中馆内面板/私有存储不部署到社区站。再次点击按钮可退出。</div>
+      <div id="stationPolicy" class="station-policy"></div>
+        <div class="mini-actions">
+          <button data-action="load-v1-book">只装入上一版 v1 编号底册</button>
+          <button data-action="update-versions">应用版本策略输入框</button>
+        </div>
+
+        <h3>客户出示的单据 JSON</h3>
+        <textarea id="presentedEditor" class="code-editor presented" spellcheck="false" placeholder="从馆内底账或本站底册点击“客户出示此单”"></textarea>
+        <div class="mini-actions">
+          <button class="primary" data-action="redeem-doc">兑换/兑现出示单据</button>
+          <button data-action="clear-presented">清空</button>
+        </div>
+
+        <h3>本站离线底册与单据</h3>
+        <div id="stationDocs"></div>
+
+        <h3>兑现记录</h3>
+        <div id="redemptionLog"></div>
+
+        <details class="package-box">
+          <summary>离线介质包（模拟 U 盘导出/导入）</summary>
+          <textarea id="packageEditor" class="code-editor package" spellcheck="false"></textarea>
+          <div class="mini-actions">
+            <button data-action="export-package">从当前站导出底册包</button>
+            <button data-action="import-package">导入到底册当前站</button>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="card explanation">
+    <h2>观察者能从哪里读出区别？本演示如何封口？</h2>
+    <div class="explain-grid">
+      <div>
+        <h3>已纳入比对的通道</h3>
+        <ul>
+          <li><strong>金额：</strong>逐张比较 <code>amount</code> 与总金额。</li>
+          <li><strong>单据种类：</strong>比较 <code>docType</code> 计数。</li>
+          <li><strong>张数：</strong>展开 <code>copies</code> 后比较实际 sheet 数。</li>
+          <li><strong>错误回单：</strong>比较 <code>ERROR_RECEIPT</code> 的数量和错误码。</li>
+          <li><strong>版本/编号/兑现结果：</strong>不在内容指纹里抹掉，而由离线底册显式授权；未入册的正确投影也拒绝。</li>
+        </ul>
+      </div>
+      <div>
+        <h3>含私有条件但可保证一致的表达</h3>
+        <ul>
+          <li>只读公开字段，或私有字段不出现在依赖中。</li>
+          <li><code>if 私有条件 then X else X</code>：两枝公共形状完全相同。</li>
+          <li><code>private.x eq private.x</code> 这类恒等比较。</li>
+          <li>私有读取只进入 <code>audience:"hall"</code> 的私有校对单。</li>
+        </ul>
+      </div>
+      <div>
+        <h3>必须留在信任边界内的表达</h3>
+        <ul>
+          <li>私有条件决定是否出单、单据种类、张数、金额或错误码。</li>
+          <li>私有字段直接进入金额/张数/错误码。</li>
+          <li>只有一对自造记录偶然同额，但抽象判定不能覆盖所有私有整数取值。</li>
+        </ul>
+        <p class="hint">这些槽位若无范围匹配的核准单，馆内会整组扣留，不向任一公共分支发出差异单，也不发只给一边的“扣留错误回单”。</p>
+      </div>
+    </div>
+    <p class="hint">残余运维通道（响应耗时、包体大小、发送时刻、全局连号、错误文案语言等）也需要统一塑形；本微型模型不把它们当作规则树输出。模拟签章使用浏览器/Node 内置 SHA-256，仅防误改，不替代真实机构签名。</p>
+  </footer>
+
+  <script type="module" src="/web/app.js"></script>
+</body>
+</html>
