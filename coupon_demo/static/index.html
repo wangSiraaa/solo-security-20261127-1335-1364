@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>制券机恢复、库存交割与兑换演练</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div>
+    <h1>福利社刮刮券：来历、交割与更正</h1>
+    <p class="sub">本地密封随机源测试适配器 · 公开票号可展示 · 顾客暗码不落公开状态</p>
+  </div>
+  <div class="top-actions">
+    <button class="primary" id="seedDemo">一键完整演练</button>
+    <button id="refresh">刷新状态</button>
+  </div>
+</header>
+
+<main>
+  <section id="decision" class="card decision"></section>
+  <section id="manifestPanel" class="card manifest hidden">
+    <div class="card-h">
+      <h2>一次性印制清单（本地演示暗码）</h2>
+      <button id="hideManifest">收起</button>
+    </div>
+    <p class="warn">这些是封包印制结果中仅显示一次的测试暗码；服务只保存哈希。顾客在兑换框提交的暗码不会回显。</p>
+    <div id="manifest"></div>
+  </section>
+
+  <div class="grid two">
+    <section class="card">
+      <h2>1. 新来料登记</h2>
+      <form data-post="/api/materials" class="form">
+        <label>批次号 <input name="lot_id" placeholder="LOT-NEW" /></label>
+        <label>数量 <input name="quantity" type="number" value="20" min="1" /></label>
+        <label>备注 <input name="note" value="新到刮刮券纸与封条" /></label>
+        <button type="submit">登记材料</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>2. 备份 / 独立来源 / 站点</h2>
+      <div class="button-row">
+        <button data-action="sharedBackup">建立演示共用备份</button>
+        <button data-action="restoreA">恢复到甲机</button>
+        <button data-action="restoreB">恢复到乙机</button>
+      </div>
+      <form data-post="/api/station/new-seed" class="form inline-form">
+        <label>新种子站：装机机器 <input name="machine_id" value="printer-b" /></label>
+        <button type="submit">见证装入独立源并冻结旧段</button>
+      </form>
+      <form data-post="/api/station/old-cabinet" class="form inline-form">
+        <label>旧柜复核叠号 <input name="stack_id" value="STACK-A-RESERVED" /></label>
+        <label>保管人 <input name="inspector" value="本班保管人" /></label>
+        <button type="submit">核验封条与旧机专属连续记录</button>
+      </form>
+      <form data-post="/api/sources/independent" class="form inline-form">
+        <label>其他机器独立源 <input name="machine_id" placeholder="printer-c" /></label>
+        <button type="submit">仅装入独立来源</button>
+      </form>
+      <form id="reseedForm" class="form inline-form">
+        <label>密封源补种：来源 ID <input name="source_id" placeholder="SRC-..." required /></label>
+        <label>新种子（可空，本地测试可固定） <input name="new_seed" placeholder="new-seed" /></label>
+        <button type="submit">验签补种并把游标归零</button>
+      </form>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2>3. 封包印制</h2>
+    <form data-post="/api/packets/print" class="form grid-form">
+      <label>叠号（可空） <input name="stack_id" placeholder="STACK-X" /></label>
+      <label>来源 ID <input name="source_id" required placeholder="SRC-..." /></label>
+      <label>材料批次 <input name="material_lot_id" required placeholder="LOT-..." /></label>
+      <label>张数 <input name="count" type="number" value="3" min="1" /></label>
+      <label>公开票号前缀 <input name="ticket_prefix" value="PUB" /></label>
+      <label>封条号 <input name="seal_id" placeholder="SEAL-..." /></label>
+      <label>用途 <input name="purpose" value="ordinary" /></label>
+      <label>标题 <input name="title" value="普通刮刮券叠" /></label>
+      <label>实名持有人（逗号分隔，可空） <input name="holder_names" placeholder="张三,李四" /></label>
+      <button type="submit">封包印制并签发使用见证</button>
+    </form>
+  </section>
+
+  <div class="grid two">
+    <section class="card">
+      <h2>4. 库存交割 / 柜台回执更正</h2>
+      <form data-post="/api/deliver" class="form">
+        <label>叠号 <input name="stack_id" required placeholder="STACK-HAPPY" /></label>
+        <label>柜台 <input name="counter_id" value="COUNTER-1" /></label>
+        <label>签收人 <input name="signed_by" value="柜台签收员" /></label>
+        <button type="submit">封条/来历核验后交割并签收</button>
+      </form>
+      <form data-post-dynamic="/api/handoffs/HANDOFF-A-OLD/complete" class="form">
+        <label>旧交接单 ID <input name="__action_path" value="/api/handoffs/HANDOFF-A-OLD/complete" /></label>
+        <label>补签人 <input name="signed_by" value="库房值班员" /></label>
+        <label>柜台号（可空则只补交接） <input name="counter_id" value="COUNTER-2" /></label>
+        <button type="submit">旧交接单后来齐全</button>
+      </form>
+      <form id="retargetForm" class="form">
+        <label>原回执 ID <input name="receipt_id" placeholder="RCPT-..." required /></label>
+        <label>改成另一叠 <input name="new_stack_id" placeholder="STACK-B-NEW" required /></label>
+        <label>原因 <input name="reason" value="柜台收货回执更正：实际收到另一叠" /></label>
+        <button type="submit">只更正回执指向</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>5. 顾客领取 / 兑换</h2>
+      <form id="claimForm" class="form">
+        <label>公开票号 <input name="ticket_no" required placeholder="H-001" /></label>
+        <label>柜台 <input name="counter_id" value="COUNTER-1" /></label>
+        <label>顾客/预订姓名 <input name="holder_name" placeholder="顾客姓名" /></label>
+        <label class="check"><input type="checkbox" name="legacy" /> 回执未全前已领取（补录历史事实）</label>
+        <button type="submit">确认顾客已领取实物券</button>
+      </form>
+      <form id="redeemForm" class="form">
+        <label>公开票号 <input name="ticket_no" required placeholder="H-001" /></label>
+        <label>柜台 <input name="counter_id" value="COUNTER-1" /></label>
+        <label>覆盖层暗码 <input name="secret" type="password" autocomplete="off" required placeholder="SCR-...." /></label>
+        <button class="primary" type="submit">揭开后兑换</button>
+      </form>
+      <div id="redeemResult" class="result"></div>
+    </section>
+  </div>
+
+  <section class="card danger-border">
+    <h2>6. 段见证更正 / 重印核查</h2>
+    <div class="grid two">
+      <form id="witnessForm" class="form">
+        <label>段 ID <input name="segment_id" value="SEG-OLD-SHARED" required /></label>
+        <label>见证范围
+          <select name="witness_scope">
+            <option value="two_machines_shared">两机共用</option>
+            <option value="single_machine">一机连续独有</option>
+            <option value="unresolved">未确定</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" name="reprint_confirmed" checked /> 已确认发生同段重印</label>
+        <label>情况说明 <input name="note" value="只把该段见证改成两机共用且确认重印" /></label>
+        <button class="danger" type="submit">更正见证并对原券办核查</button>
+      </form>
+      <div class="form">
+        <p>或根据两份已签名使用见证和重复暗码哈希自动认定：</p>
+        <label>段 ID <input id="confirmSegment" value="SEG-OLD-SHARED" /></label>
+        <button class="danger" id="confirmWitnesses">从双机见证确认重印</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>当前库存叠与券状态</h2>
+    <div id="stacks"></div>
+  </section>
+
+  <div class="grid two">
+    <section class="card"><h2>柜台回执 / 交接单</h2><div id="receipts"></div><div id="handoffs"></div></section>
+    <section class="card"><h2>兑换记录（无暗码）</h2><div id="redemptions"></div></section>
+  </div>
+
+  <section class="card">
+    <h2>服务更正记录</h2>
+    <h3 class="small">更正/换发单</h3>
+    <div id="replacements"></div>
+    <h3 class="small">更正审计</h3>
+    <div id="corrections"></div>
+  </section>
+
+  <div class="grid two">
+    <section class="card"><h2>来源与段见证</h2><div id="sources"></div><div id="segments"></div><div id="witnesses"></div></section>
+    <section class="card"><h2>来料 / 审计</h2><div id="materials"></div><div id="audit"></div></section>
+  </div>
+
+  <section class="card">
+    <h2>最近 API 结果</h2>
+    <pre id="apiResult" class="json"></pre>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>
