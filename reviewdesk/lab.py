@@ -11,8 +11,8 @@ from urllib.request import urlopen
 
 from .bundle import build_bundle
 from .cabinet import read_events
-from .gitutil import git, head_commit
-from .hashing import canonical_hash, sha256_file
+from .gitutil import head_commit
+from .hashing import canonical_hash, hash_python_tree, sha256_file
 from .ledger import append_record, verify_chain
 from .probe import audit_cabinets, cabinet_counts, inspect_entrypoint, run_lookup
 from .seals import PUBLIC_KEY, ensure_keypair, seal_payload
@@ -34,6 +34,19 @@ EXPECTED_OLD_IDS = {
     "1002": "图像",
     "1003": "订正",
 }
+
+
+def wordlist_artifact(root: Path, rel: str) -> dict[str, Any]:
+    path = root / rel
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {
+        "path": rel,
+        "sha256": sha256_file(path),
+        "list_id": payload.get("list_id"),
+        "version": str(payload.get("version")),
+        "format": payload.get("format"),
+        "promised": bool(payload.get("promised", False)),
+    }
 
 
 class CabinetService:
@@ -108,13 +121,14 @@ def _check_old_id_cases(
 
 
 def ensure_branches() -> None:
-    required = ["maint/qianzi-native", "maint/bihe-sealed-component"]
-    missing = [name for name in required if git("show-ref", "--verify", "--quiet", f"refs/heads/{name}", check=False) is None]
-    # gitutil.git with check=False returns stdout/stderr? Our wrapper always returns stdout and doesn't expose rc.
-    # Use branch existence helper indirectly.
     from .gitutil import branch_exists
 
-    if any(not branch_exists(name) for name in required):
+    required = [
+        ("maint/qianzi-native", WORKTREES / "qianzi" / "branch-manifest.json"),
+        ("maint/bihe-sealed-component", WORKTREES / "bihe" / "branch-manifest.json"),
+        ("trial/swapped-called-impl", WORKTREES / "swapped" / "candidate-manifest.json"),
+    ]
+    if any((not branch_exists(name)) or (not marker.exists()) for name, marker in required):
         bootstrap_branches_main()
 
 
@@ -125,7 +139,7 @@ def record_mainline() -> dict[str, Any]:
     call_path = inspect_entrypoint(ROOT, entrypoint)
     artifacts = [
         {"path": "mojiao/reviewed_resolver.py", "sha256": sha256_file(ROOT / "mojiao/reviewed_resolver.py")},
-        {"path": "wordlists/school-promised-modern-2.1.0.json", "sha256": sha256_file(ROOT / "wordlists/school-promised-modern-2.1.0.json")},
+        wordlist_artifact(ROOT, "wordlists/school-promised-modern-2.1.0.json"),
         {"path": "contracts/caller-modern-v2.json", "sha256": sha256_file(ROOT / "contracts/caller-modern-v2.json")},
     ]
     observations = []
@@ -188,10 +202,11 @@ def evaluate_qianzi() -> dict[str, Any]:
     call_path = inspect_entrypoint(source, entrypoint)
     artifacts = [
         {"path": "mojiao/native_legacy.py", "sha256": sha256_file(source / "mojiao/native_legacy.py")},
-        {"path": "wordlists/school-promised-legacy-1.4.0.json", "sha256": sha256_file(source / "wordlists/school-promised-legacy-1.4.0.json")},
+        wordlist_artifact(source, "wordlists/school-promised-legacy-1.4.0.json"),
         {"path": "contracts/caller-legacy-wordid-v1.json", "sha256": sha256_file(source / "contracts/caller-legacy-wordid-v1.json")},
     ]
-    observations = _check_old_id_cases(source, wordlists=["wordlists/school-promised-legacy-1.4.0.json"])
+    python_tree = hash_python_tree(source)
+    observations = _check_old_id_cases(source, entrypoint=entrypoint, wordlists=["wordlists/school-promised-legacy-1.4.0.json"])
     contract_error = run_lookup(source, "W-NEW-017", mode="old-id", wordlists=["wordlists/school-promised-legacy-1.4.0.json"])
     all_pass = all(item["pass"] for item in observations)
     payload = {
@@ -204,6 +219,7 @@ def evaluate_qianzi() -> dict[str, Any]:
         "actually_used_entrypoint": entrypoint,
         "call_path": call_path,
         "artifacts": artifacts,
+        "all_mojiao_python_files": python_tree,
         "caller_contract": json.loads((source / "contracts/caller-legacy-wordid-v1.json").read_text(encoding="utf-8")),
         "observations": observations,
         "outside_contract_modern_id_probe": {"returncode": contract_error["returncode"], "observed": contract_error.get("json")},
@@ -218,6 +234,7 @@ def evaluate_qianzi() -> dict[str, Any]:
             "git_commit": commit,
             "entrypoint": entrypoint,
             "covered_artifacts": artifacts,
+            "covered_python_tree": python_tree,
             "caller_contract_id": "caller/legacy-wordid-v1",
             "claims": [
                 "old-four-digit-ids-resolve",
@@ -249,7 +266,7 @@ def evaluate_bihe(main_info: dict[str, Any]) -> dict[str, Any]:
     verbatim_match = main_resolver_hash == branch_resolver_hash and main_wordlist_hash == branch_wordlist_hash
     entrypoint = manifest["entrypoint"]
     call_path = inspect_entrypoint(source, entrypoint)
-    observations = _check_old_id_cases(source, wordlists=["wordlists/school-promised-modern-2.1.0.json"])
+    observations = _check_old_id_cases(source, entrypoint=entrypoint, wordlists=["wordlists/school-promised-modern-2.1.0.json"])
     compat_hash = sha256_file(source / "mojiao/compat_oldid.py")
     all_pass = verbatim_match and all(item["pass"] for item in observations)
 
@@ -307,9 +324,9 @@ def evaluate_bihe(main_info: dict[str, Any]) -> dict[str, Any]:
 
 
 def swapped_impl_drill(qianzi: dict[str, Any]) -> dict[str, Any]:
-    source = RUNS / "swapped-called-impl"
-    _copy_tree(WORKTREES / "qianzi", source)
-    shutil.copy2(ROOT / "lab/overlays/swapped/mojiao/other_native.py", source / "mojiao/other_native.py")
+    branch = "trial/swapped-called-impl"
+    source = WORKTREES / "swapped"
+    commit = head_commit(branch)
     entrypoint = "mojiao.other_native:resolve"
     call_path = inspect_entrypoint(source, entrypoint)
     observations = _check_old_id_cases(source, entrypoint=entrypoint)
@@ -318,6 +335,8 @@ def swapped_impl_drill(qianzi: dict[str, Any]) -> dict[str, Any]:
     mismatch = actual_module_hash != endorsed_native_hash
     decision = {
         "case_id": "SWAPPED-IMPL-1396",
+        "branch": branch,
+        "git_commit": commit,
         "same_patch_name": True,
         "actually_used_entrypoint": entrypoint,
         "call_path": call_path,
@@ -360,7 +379,7 @@ def build_and_install_school(qianzi: dict[str, Any]) -> dict[str, Any]:
     return {"bundle": bundle, "install_dir": str(install_dir), "classroom": classroom}
 
 
-def school_acceptance(install: dict[str, Any]) -> dict[str, Any]:
+def school_acceptance(install: dict[str, Any], update: dict[str, Any] | None = None) -> dict[str, Any]:
     install_dir = Path(install["install_dir"])
     cabinet_state = CABINET_DIR / "school-delivery.jsonl"
     if cabinet_state.exists():
@@ -386,6 +405,7 @@ def school_acceptance(install: dict[str, Any]) -> dict[str, Any]:
             "classroom_id": install["classroom"]["classroom_id"],
             "installed_path": str(install_dir),
             "archive_sha256": install["bundle"]["archive_sha256"],
+            "post_delivery_wordlist_update_sha256": (update or {}).get("record", {}).get("sha256"),
             "mock_service_started_then_disconnected": True,
             "disconnected_endpoint": disconnected_url,
             "required_word_ids": list(EXPECTED_OLD_IDS),
@@ -471,8 +491,20 @@ def missing_wordlist_negative(install: dict[str, Any]) -> dict[str, Any]:
     if negative_dir.exists():
         shutil.rmtree(negative_dir)
     shutil.copytree(install["bundle"]["directory"], negative_dir, ignore=shutil.ignore_patterns("__pycache__"))
+
+    # Explicitly replay the two-step temptation: swap the called file, restore
+    # the endorsed implementation byte-for-byte, then remove only the word list.
+    called_native = negative_dir / "mojiao" / "native_legacy.py"
+    restored_bytes = called_native.read_bytes()
+    restored_hash = sha256_file(called_native)
+    shutil.copy2(ROOT / "lab/overlays/swapped/mojiao/other_native.py", called_native)
+    swapped_in_place_hash = sha256_file(called_native)
+    called_native.write_bytes(restored_bytes)
+    final_implementation_hash = sha256_file(called_native)
+
     removed = negative_dir / "wordlists/school-promised-legacy-1.4.0.json"
     removed.unlink()
+    source_verify = _run_verify(Path(install["bundle"]["directory"]))
     verify = _run_verify(negative_dir)
     observations = _check_old_id_cases(negative_dir)
     original_archive_verify = {
@@ -482,10 +514,14 @@ def missing_wordlist_negative(install: dict[str, Any]) -> dict[str, Any]:
     }
     decision = {
         "case_id": "MISSING-WORDLIST-1396",
-        "sequence": "Original native implementation restored/used; only the target classroom's recognizable word list was removed.",
+        "sequence": "Swapped the actually called native_legacy.py, refused that old endorsement, restored the endorsed bytes, then removed only the target classroom's recognizable word list.",
         "negative_dir": str(negative_dir),
-        "original_archive_provenance": "AUTHENTIC",
+        "swapped_in_place_hash": swapped_in_place_hash,
+        "restored_implementation_hash": final_implementation_hash,
+        "implementation_restored_to_endorsed_hash": final_implementation_hash == restored_hash,
+        "original_archive_provenance": "AUTHENTIC" if source_verify.get("ok") else "CHECK_FAILED",
         "original_archive": original_archive_verify,
+        "untouched_source_bundle_verify": {"returncode": source_verify["returncode"], "ok": source_verify.get("ok"), "report": source_verify.get("json")},
         "installed_copy_verify": {"returncode": verify["returncode"], "report": verify["json"]},
         "observations": observations,
         "provenance_alone_passes_delivery": False,
@@ -517,6 +553,7 @@ def leaky_drill() -> dict[str, Any]:
         "case_id": "LEAKY-COMPAT-1396",
         "actually_used_entrypoint": "mojiao.leaky_compat:resolve",
         "local_outputs_all_correct": all(x["pass"] for x in observations),
+        "all_results_self_report_no_egress": all(x["egress_reported_by_result"] is False for x in observations),
         "observations": observations,
         "cabinet_audit": audit,
         "no_exfiltration_statement_allowed": False,
@@ -550,8 +587,8 @@ def run_all() -> dict[str, Any]:
     bihe = evaluate_bihe(main_info)
     swapped = swapped_impl_drill(qianzi)
     install = build_and_install_school(qianzi)
-    acceptance = school_acceptance(install)
     update = dictionary_update(install)
+    acceptance = school_acceptance(install, update)
     missing = missing_wordlist_negative(install)
     leaky = leaky_drill()
     registry = write_cabinet_registry()
@@ -560,11 +597,11 @@ def run_all() -> dict[str, Any]:
     report = {
         "exercise": "maintenance-port-endorsement-and-review-desk",
         "decision": {
-            "question": "Which release endorsement can a maintenance branch reuse?",
-            "answer": "Only an endorsement whose exact covered module/wordlist/contract hashes match the actually called path. Same patch names do not transfer trust.",
-            "qianzi": "Native implementation: END-MAIN-1396 cannot be signed as-is; END-QIANZI-BRANCH-1396 covers only that branch/commit.",
-            "bihe": "END-MAIN-1396 is inherited only by CARRY-BIHE-VERBATIM-1396 for the byte-identical resolver and word list; compat changes require composition re-review.",
-            "school_choice": "XIAN-GE-ROOM-01 receives the Qianzi native branch bundle because it keeps old ids and independent word-list updates.",
+            "question": "维护分支可以沿用哪一张发布背书？",
+            "answer": "只能沿用其明确覆盖、且实际调用路径的模块/词表/契约哈希完全一致的背书；同名补丁或合并记录不转移信任。",
+            "qianzi": "千字社走原生重写：不能照签 END-MAIN-1396；重验后只签发仅覆盖 maint/qianzi-native 指定提交的 END-QIANZI-BRANCH-1396。",
+            "bihe": "碧荷社走原样封存：END-MAIN-1396 仅能通过 CARRY-BIHE-VERBATIM-1396 沿用于哈希一致的 reviewed_resolver.py 与 2.1.0 词表；compat 边界和组合包由 END-BIHE-COMPOSITION-1396 覆盖，边界改版须重审。",
+            "school_choice": "XIAN-GE-ROOM-01 安装千字社原生分支包，因为它保住四位旧词号，并允许词表独立更新。",
         },
         "mainline_observation_pass": all(o["pass"] for o in main_info["review"]["observations"]),
         "qianzi_pass": qianzi["review"]["functional_pass"],
@@ -597,14 +634,16 @@ def run_all() -> dict[str, Any]:
 
 
 def render_markdown(report, acceptance, leaky, missing, swapped, update) -> str:
+    chain = report["ledger_chain"]
+    chain_text = f"ok={chain.get('ok')}, records={chain.get('records')}, head={chain.get('head')}"
     return f"""# 维护分支移植与复核台报告
 
 ## 结论
 
 {report['decision']['answer']}
 
-- 千字社原生实现：{report['decision']['qianzi']}
-- 碧荷社封存路线：{report['decision']['bihe']}
+- {report['decision']['qianzi']}
+- {report['decision']['bihe']}
 - 学校交付选择：{report['decision']['school_choice']}
 
 ## 正向交付
@@ -640,13 +679,13 @@ python3 verify.py --human
 2. **来历真实但撤走目标词表**：{missing['verdict']}
    - 原始压缩包来历仍真实，但安装副本的旧词号探针失败；来源证明不能代替离线覆盖验收。
 3. **本地答案正确、兼容层投递接收柜**：{leaky['verdict']}
-   - 本地输出全部正确：`{leaky['local_outputs_all_correct']}`
+   - 本地输出全部正确：`{leaky['local_outputs_all_correct']}`；返回值还都自称无外传：`{leaky['all_results_self_report_no_egress']}`
    - 接收柜新增事件：`{leaky['cabinet_audit']['total_new_events']}`
    - 因此不能签署“不外传”。
 
 ## 账本
 
-- 哈希链：`{report['ledger_chain']}`
+- 哈希链校验：`{chain_text}`
 - 柜登记：`{report['cabinet_registry']}`
 - 单独查柜：`python3 -m reviewdesk.cli cabinet query --all`
 """

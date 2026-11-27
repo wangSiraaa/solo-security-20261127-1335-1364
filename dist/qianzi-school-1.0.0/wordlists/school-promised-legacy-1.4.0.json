@@ -1,0 +1,13 @@
+{
+  "format": "mojiao-legacy-wordtable/1",
+  "list_id": "school-promised-2026Q4",
+  "publisher": "虚构·千字出版社",
+  "version": "1.4.0",
+  "released_at": "2026-11-20",
+  "promised": true,
+  "words": {
+    "1001": {"query": "按装", "output": "安装", "card": "P-001"},
+    "1002": {"query": "图象", "output": "图像", "card": "P-002"},
+    "1003": {"query": "订正", "output": "订正", "card": "P-003"}
+  }
+}

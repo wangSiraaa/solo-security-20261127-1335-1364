@@ -1,0 +1,88 @@
+{
+  "actual_module_sha256": "5cb5974bf571dc77814b36bf890b4ed96570c44836a0fe92d82736a8253a5e3e",
+  "actually_used_entrypoint": "mojiao.other_native:resolve",
+  "branch": "trial/swapped-called-impl",
+  "call_path": {
+    "function_source": "def resolve(request: dict[str, Any], dictionaries=None) -> dict[str, Any]:\n    code = str(request.get(\"word_id\") or request.get(\"id\") or \"\")\n    canonical = _HARD_CODED.get(code)\n    if canonical is None:\n        return {\"status\": \"old_id_not_found\", \"word_id\": code, \"canonical\": None, \"egress_performed\": False}\n    return {\n        \"status\": \"ok\",\n        \"word_id\": code,\n        \"canonical\": canonical,\n        \"egress_performed\": False,\n        \"implementation\": \"unreviewed_hardcoded_swap\",\n    }\n",
+    "function_source_file": "/workspace/.worktrees/swapped/mojiao/other_native.py",
+    "function_source_file_relative": "mojiao/other_native.py",
+    "function_source_file_sha256": "5cb5974bf571dc77814b36bf890b4ed96570c44836a0fe92d82736a8253a5e3e",
+    "function_source_sha256": "7b59da81520cae7fcd22c5d9d4d09c6430af2959064cbf199a5ea0bf9fe64c36",
+    "module": "mojiao.other_native",
+    "module_source_file": "/workspace/.worktrees/swapped/mojiao/other_native.py",
+    "module_source_file_relative": "mojiao/other_native.py",
+    "module_source_file_sha256": "5cb5974bf571dc77814b36bf890b4ed96570c44836a0fe92d82736a8253a5e3e",
+    "module_source_text": "\"\"\"Negative-control swap: same patch title, different actually-called code.\"\"\"\nfrom __future__ import annotations\n\nfrom typing import Any\n\n_HARD_CODED = {\n    \"1001\": \"安装\",\n    \"1002\": \"图像\",\n    \"1003\": \"订正\",\n}\n\n\ndef resolve(request: dict[str, Any], dictionaries=None) -> dict[str, Any]:\n    code = str(request.get(\"word_id\") or request.get(\"id\") or \"\")\n    canonical = _HARD_CODED.get(code)\n    if canonical is None:\n        return {\"status\": \"old_id_not_found\", \"word_id\": code, \"canonical\": None, \"egress_performed\": False}\n    return {\n        \"status\": \"ok\",\n        \"word_id\": code,\n        \"canonical\": canonical,\n        \"egress_performed\": False,\n        \"implementation\": \"unreviewed_hardcoded_swap\",\n    }\n",
+    "ok": true,
+    "qualname": "resolve",
+    "spec": "mojiao.other_native:resolve"
+  },
+  "case_id": "SWAPPED-IMPL-1396",
+  "endorsed_native_sha256": "0b44ad18beb3864a072f40331c16b960c347daffa54b5008d4d5839d96c2ce51",
+  "functional_pass": true,
+  "git_commit": "978e299631b48855edbc9b0659992e2be2d30725",
+  "hash_mismatch": true,
+  "observations": [
+    {
+      "egress_reported_by_result": false,
+      "expected_canonical": "安装",
+      "observed_canonical": "安装",
+      "pass": true,
+      "result": {
+        "canonical": "安装",
+        "classroom_id": "unconfigured-local",
+        "egress_performed": false,
+        "entrypoint": "mojiao.other_native:resolve",
+        "implementation": "unreviewed_hardcoded_swap",
+        "status": "ok",
+        "word_id": "1001"
+      },
+      "returncode": 0,
+      "status": "ok",
+      "stderr": "",
+      "word_id": "1001"
+    },
+    {
+      "egress_reported_by_result": false,
+      "expected_canonical": "图像",
+      "observed_canonical": "图像",
+      "pass": true,
+      "result": {
+        "canonical": "图像",
+        "classroom_id": "unconfigured-local",
+        "egress_performed": false,
+        "entrypoint": "mojiao.other_native:resolve",
+        "implementation": "unreviewed_hardcoded_swap",
+        "status": "ok",
+        "word_id": "1002"
+      },
+      "returncode": 0,
+      "status": "ok",
+      "stderr": "",
+      "word_id": "1002"
+    },
+    {
+      "egress_reported_by_result": false,
+      "expected_canonical": "订正",
+      "observed_canonical": "订正",
+      "pass": true,
+      "result": {
+        "canonical": "订正",
+        "classroom_id": "unconfigured-local",
+        "egress_performed": false,
+        "entrypoint": "mojiao.other_native:resolve",
+        "implementation": "unreviewed_hardcoded_swap",
+        "status": "ok",
+        "word_id": "1003"
+      },
+      "returncode": 0,
+      "status": "ok",
+      "stderr": "",
+      "word_id": "1003"
+    }
+  ],
+  "old_endorsement_transferable": false,
+  "required_next_step": "If this implementation ships, review it as a new actual call path and issue a new scoped statement.",
+  "same_patch_name": true,
+  "verdict": "REFUSE_OLD_ENDORSEMENT_SIGN_AS_IS"
+}

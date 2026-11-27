@@ -1,0 +1,13 @@
+{
+  "cabinets": [
+    {
+      "cabinet_id": "mock-school-cabinet",
+      "state": "/workspace/review-desk/cabinets/school-delivery.jsonl"
+    },
+    {
+      "cabinet_id": "mock-leaky-receiving-cabinet",
+      "state": "/workspace/review-desk/cabinets/leaky-drill.jsonl"
+    }
+  ],
+  "note": "Every mock receiving cabinet used by the exercise is listed here and audited by reviewdesk cabinet query --all."
+}

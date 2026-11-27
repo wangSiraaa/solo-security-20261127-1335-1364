@@ -1,0 +1,29 @@
+{
+  "bundle_id": "qianzi-school-1.0.0",
+  "classroom_id": "XIAN-GE-ROOM-01",
+  "created_at": "2026-11-27T04:53:27+00:00",
+  "endorsement_files": [
+    "endorsements/END-QIANZI-BRANCH-1396.json"
+  ],
+  "entrypoint": "mojiao.native_legacy:resolve",
+  "files": {
+    "PUBLISHER.pub": "1ea86de85d29d4e7e3d73bf7934e8ab51b11a06ff03274b6d81b3e1626f78d63",
+    "classroom.json": "eca27dda60a9bac2bc3f23b3b4af9a062d926c9317c3014b2a8c526013a1ca2e",
+    "contracts/caller-legacy-wordid-v1.json": "14ccd31d105a01cc9d5bb49c298977b8b2debf31fad677dd89686c432abaf01f",
+    "contracts/caller-modern-v2.json": "96e1b1b04a1424e6e6d20838bce453879475a0a7fb42acc3933d298bc8ea1048",
+    "endorsements/END-QIANZI-BRANCH-1396.json": "90bfb48a916b972a1562a7f076c34d228cc5c16b21b5057c9d82566606c70b1b",
+    "mojiao/__init__.py": "7e3999b274d49478e8fffbffcf05bcb10d6d2c7325e49da1f3b7c169ef3264d5",
+    "mojiao/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "mojiao/cli.py": "631297e19a9fee2be35d57afac78e0337d226b424bce332b88467cf29d26dd7a",
+    "mojiao/config.py": "8f04c01640ce336f09971d0ffeaecceec0e7d4f54017f1e5d8b6e6b86779c75b",
+    "mojiao/dictionary.py": "d5b1b9a799738f9d92e74e2d0a43fa7306fb73cdb87f5c093753ee1a969c687c",
+    "mojiao/legacy_bundled.py": "90508acb747f66f4e89065d035517439767646934aafb3d0b22cbe92371268f4",
+    "mojiao/native_legacy.py": "0b44ad18beb3864a072f40331c16b960c347daffa54b5008d4d5839d96c2ce51",
+    "verify.py": "d5e32d3f9e74e536ad58715bd2a1c504156804619f55c15b0d0b386d04d86fd3",
+    "wordlists/school-promised-legacy-1.4.0.json": "d0ec97845829578ced454272b5677cb7a3bd78f17c5205548cf14f430b35ccd0",
+    "ww": "954fc8db4b1df8154a17b2b39540d8734cddf43dd3957ceef615a487bd108505"
+  },
+  "key_id": "fictional-publisher-ed25519-2026Q4",
+  "signature": "ZIgBK5lv3Eg5ySGYYOwiwX5A5xX/mleBwAQwf8ooPl3C5ZG2Pb9lpxEaf0DR75r5XpMXavsf7Je/JpR8HsdzBg==",
+  "signature_algorithm": "Ed25519"
+}

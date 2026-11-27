@@ -1,0 +1,4 @@
+#!/bin/sh
+# Reviewer/classroom entrypoint for a delivered Mojiao bundle.
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+PYTHONPATH="$SCRIPT_DIR${PYTHONPATH:+:$PYTHONPATH}" exec python3 -m mojiao.cli --bundle-root "$SCRIPT_DIR" "$@"

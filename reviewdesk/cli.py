@@ -27,17 +27,30 @@ def cmd_verify_ledger(_args: argparse.Namespace) -> int:
 
 def cmd_cabinet_query(args: argparse.Namespace) -> int:
     if args.all:
-        registry_path = ROOT / "review-desk" / "cabinets" / "registry.json"
-        if not registry_path.exists():
-            print(json.dumps({"ok": False, "reason": "cabinet registry missing; run demo first"}, ensure_ascii=False))
-            return 2
-        registry = json.loads(registry_path.read_text(encoding="utf-8"))
-        result = {"cabinets": []}
+        cabinet_dir = ROOT / "review-desk" / "cabinets"
+        registry_path = cabinet_dir / "registry.json"
+        id_by_state: dict[str, str] = {}
+        registered_states: set[Path] = set()
+        if registry_path.exists():
+            registry = json.loads(registry_path.read_text(encoding="utf-8"))
+            for cabinet in registry.get("cabinets", []):
+                state = Path(cabinet["state"])
+                id_by_state[str(state)] = cabinet["cabinet_id"]
+                registered_states.add(state)
+        state_paths = sorted(set(cabinet_dir.glob("*.jsonl")) | registered_states)
+        result = {"scope": "every registered cabinet plus every *.jsonl state under review-desk/cabinets", "cabinets": []}
         any_word = False
-        for cabinet in registry["cabinets"]:
-            events = query_word(cabinet["state"], args.word)
+        for state_path in state_paths:
+            events = query_word(state_path, args.word)
             any_word = any_word or bool(events)
-            result["cabinets"].append({**cabinet, "count": len(events), "events": events})
+            result["cabinets"].append(
+                {
+                    "cabinet_id": id_by_state.get(str(state_path), f"unregistered:{state_path.stem}"),
+                    "state": str(state_path),
+                    "count": len(events),
+                    "events": events,
+                }
+            )
         result["queried_word"] = args.word
         result["received_any_matching_word"] = any_word
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))

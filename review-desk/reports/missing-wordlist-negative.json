@@ -1,0 +1,119 @@
+{
+  "case_id": "MISSING-WORDLIST-1396",
+  "implementation_restored_to_endorsed_hash": true,
+  "installed_copy_verify": {
+    "report": {
+      "bundle_id": "qianzi-school-1.0.0",
+      "endorsements": [
+        {
+          "endorsement_id": "END-QIANZI-BRANCH-1396",
+          "ok": true,
+          "path": "endorsements/END-QIANZI-BRANCH-1396.json"
+        }
+      ],
+      "extra_files_not_in_manifest": [],
+      "file_hashes_ok": false,
+      "hint": null,
+      "key_id": "fictional-publisher-ed25519-2026Q4",
+      "manifest_signature_ok": true,
+      "missing_or_changed": [
+        {
+          "ok": false,
+          "path": "wordlists/school-promised-legacy-1.4.0.json",
+          "reason": "missing"
+        }
+      ],
+      "ok": false
+    },
+    "returncode": 3
+  },
+  "negative_dir": "/workspace/classrooms/negative-missing-target-wordlist",
+  "observations": [
+    {
+      "egress_reported_by_result": false,
+      "expected_canonical": "安装",
+      "observed_canonical": null,
+      "pass": false,
+      "result": {
+        "canonical": null,
+        "classroom_id": "XIAN-GE-ROOM-01",
+        "egress_performed": false,
+        "entrypoint": "mojiao.native_legacy:resolve",
+        "status": "old_id_not_found",
+        "word_id": "1001"
+      },
+      "returncode": 4,
+      "status": "old_id_not_found",
+      "stderr": "",
+      "word_id": "1001"
+    },
+    {
+      "egress_reported_by_result": false,
+      "expected_canonical": "图像",
+      "observed_canonical": null,
+      "pass": false,
+      "result": {
+        "canonical": null,
+        "classroom_id": "XIAN-GE-ROOM-01",
+        "egress_performed": false,
+        "entrypoint": "mojiao.native_legacy:resolve",
+        "status": "old_id_not_found",
+        "word_id": "1002"
+      },
+      "returncode": 4,
+      "status": "old_id_not_found",
+      "stderr": "",
+      "word_id": "1002"
+    },
+    {
+      "egress_reported_by_result": false,
+      "expected_canonical": "订正",
+      "observed_canonical": null,
+      "pass": false,
+      "result": {
+        "canonical": null,
+        "classroom_id": "XIAN-GE-ROOM-01",
+        "egress_performed": false,
+        "entrypoint": "mojiao.native_legacy:resolve",
+        "status": "old_id_not_found",
+        "word_id": "1003"
+      },
+      "returncode": 4,
+      "status": "old_id_not_found",
+      "stderr": "",
+      "word_id": "1003"
+    }
+  ],
+  "original_archive": {
+    "archive": "/workspace/dist/qianzi-school-1.0.0.tar.gz",
+    "archive_sha256": "41ad7701dc8eea15de5286e1dbc4ce540d4c0bca03e1a0e3456cc08381a24d26",
+    "publisher_signature_process": "MANIFEST signature remains verifiable inside the untouched source bundle"
+  },
+  "original_archive_provenance": "AUTHENTIC",
+  "provenance_alone_passes_delivery": false,
+  "restored_implementation_hash": "0b44ad18beb3864a072f40331c16b960c347daffa54b5008d4d5839d96c2ce51",
+  "sequence": "Swapped the actually called native_legacy.py, refused that old endorsement, restored the endorsed bytes, then removed only the target classroom's recognizable word list.",
+  "swapped_in_place_hash": "5cb5974bf571dc77814b36bf890b4ed96570c44836a0fe92d82736a8253a5e3e",
+  "untouched_source_bundle_verify": {
+    "ok": true,
+    "report": {
+      "bundle_id": "qianzi-school-1.0.0",
+      "endorsements": [
+        {
+          "endorsement_id": "END-QIANZI-BRANCH-1396",
+          "ok": true,
+          "path": "endorsements/END-QIANZI-BRANCH-1396.json"
+        }
+      ],
+      "extra_files_not_in_manifest": [],
+      "file_hashes_ok": true,
+      "hint": null,
+      "key_id": "fictional-publisher-ed25519-2026Q4",
+      "manifest_signature_ok": true,
+      "missing_or_changed": [],
+      "ok": true
+    },
+    "returncode": 0
+  },
+  "verdict": "FAIL_OFFLINE_DELIVERY_OLD_ID_COVERAGE"
+}

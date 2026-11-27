@@ -22,6 +22,10 @@ try:
     source = inspect.getsource(fn)
 except (OSError, TypeError):
     source = ''
+try:
+    module_source = inspect.getsource(module)
+except (OSError, TypeError):
+    module_source = ''
 print(json.dumps({
   'spec': spec,
   'module': module_name,
@@ -29,6 +33,8 @@ print(json.dumps({
   'function_source_file': source_file,
   'module_source_file': module_file,
   'function_source_sha256': hashlib.sha256(source.encode('utf-8')).hexdigest() if source else None,
+  'function_source': source,
+  'module_source_text': module_source,
 }))
 """
 

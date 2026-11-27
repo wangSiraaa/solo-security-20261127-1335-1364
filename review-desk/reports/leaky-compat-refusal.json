@@ -1,0 +1,127 @@
+{
+  "actually_used_entrypoint": "mojiao.leaky_compat:resolve",
+  "all_results_self_report_no_egress": true,
+  "cabinet_audit": {
+    "cabinets": [
+      {
+        "new_count": 3,
+        "new_events": [
+          {
+            "at": "2026-11-27T04:53:28+00:00",
+            "cabinet_id": "mock-leaky-receiving-cabinet",
+            "extra": {
+              "layer": "compatibility"
+            },
+            "source": "leaky-compat-oldid-v0",
+            "word": "1001"
+          },
+          {
+            "at": "2026-11-27T04:53:28+00:00",
+            "cabinet_id": "mock-leaky-receiving-cabinet",
+            "extra": {
+              "layer": "compatibility"
+            },
+            "source": "leaky-compat-oldid-v0",
+            "word": "1002"
+          },
+          {
+            "at": "2026-11-27T04:53:28+00:00",
+            "cabinet_id": "mock-leaky-receiving-cabinet",
+            "extra": {
+              "layer": "compatibility"
+            },
+            "source": "leaky-compat-oldid-v0",
+            "word": "1003"
+          }
+        ],
+        "received_words": [
+          "1001",
+          "1002",
+          "1003"
+        ],
+        "state_path": "/workspace/review-desk/cabinets/leaky-drill.jsonl",
+        "total_events": 3
+      }
+    ],
+    "no_egress_observed": false,
+    "total_new_events": 3
+  },
+  "case_id": "LEAKY-COMPAT-1396",
+  "local_outputs_all_correct": true,
+  "no_exfiltration_statement_allowed": false,
+  "observations": [
+    {
+      "egress_reported_by_result": false,
+      "expected_canonical": "安装",
+      "observed_canonical": "安装",
+      "pass": true,
+      "result": {
+        "boundary": "leaky_compat_oldid_v0",
+        "canonical": "安装",
+        "classroom_id": "unconfigured-local",
+        "dictionary_version": "2.1.0",
+        "egress_performed": false,
+        "entrypoint": "mojiao.leaky_compat:resolve",
+        "legacy_id": "1001",
+        "lookup_kind": "legacy_id",
+        "query": "按装",
+        "source_list": "school-promised-2026Q4",
+        "status": "ok",
+        "word_id": "W-1001"
+      },
+      "returncode": 0,
+      "status": "ok",
+      "stderr": "",
+      "word_id": "1001"
+    },
+    {
+      "egress_reported_by_result": false,
+      "expected_canonical": "图像",
+      "observed_canonical": "图像",
+      "pass": true,
+      "result": {
+        "boundary": "leaky_compat_oldid_v0",
+        "canonical": "图像",
+        "classroom_id": "unconfigured-local",
+        "dictionary_version": "2.1.0",
+        "egress_performed": false,
+        "entrypoint": "mojiao.leaky_compat:resolve",
+        "legacy_id": "1002",
+        "lookup_kind": "legacy_id",
+        "query": "图象",
+        "source_list": "school-promised-2026Q4",
+        "status": "ok",
+        "word_id": "W-1002"
+      },
+      "returncode": 0,
+      "status": "ok",
+      "stderr": "",
+      "word_id": "1002"
+    },
+    {
+      "egress_reported_by_result": false,
+      "expected_canonical": "订正",
+      "observed_canonical": "订正",
+      "pass": true,
+      "result": {
+        "boundary": "leaky_compat_oldid_v0",
+        "canonical": "订正",
+        "classroom_id": "unconfigured-local",
+        "dictionary_version": "2.1.0",
+        "egress_performed": false,
+        "entrypoint": "mojiao.leaky_compat:resolve",
+        "legacy_id": "1003",
+        "lookup_kind": "legacy_id",
+        "query": "订正",
+        "source_list": "school-promised-2026Q4",
+        "status": "ok",
+        "word_id": "W-1003"
+      },
+      "returncode": 0,
+      "status": "ok",
+      "stderr": "",
+      "word_id": "1003"
+    }
+  ],
+  "verdict": "FUNCTIONAL_PASS_BUT_REFUSE_NO_EGRESS_OR_NON_DISCLOSURE_ENDORSEMENT"
+}

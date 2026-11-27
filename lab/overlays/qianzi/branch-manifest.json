@@ -5,6 +5,8 @@
   "patch_name": "fix(offline): resolve promised entries without external query",
   "caller_contract": "caller/legacy-wordid-v1",
   "entrypoint": "mojiao.native_legacy:resolve",
+  "historical_bundled_entrypoint": "mojiao.legacy_bundled:lookup_bundled",
+  "actual_school_entrypoint_note": "classroom.json selects native_legacy; legacy_bundled is retained only as historical code and is not called by the school launcher.",
   "carries_mainline_component_verbatim": false,
   "rationale": "Preserve four-digit classroom word numbers and allow independent local word-list releases. The branch must be revalidated and receive only a branch-scoped statement."
 }

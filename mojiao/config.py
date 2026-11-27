@@ -33,8 +33,11 @@ def load_classroom(root: Path) -> dict[str, Any]:
 
 
 def resolve_wordlist_paths(root: Path, classroom: dict[str, Any]) -> list[Path]:
-    paths = classroom.get("wordlists")
-    if paths:
-        return [root / p if not Path(p).is_absolute() else Path(p) for p in paths]
-    wordlist_dir = root / "wordlists"
-    return sorted(wordlist_dir.glob("*.json")) if wordlist_dir.exists() else []
+    explicit = classroom.get("wordlists")
+    if explicit:
+        return [root / p if not Path(p).is_absolute() else Path(p) for p in explicit]
+    patterns = classroom.get("wordlist_globs") or ["wordlists/*.json"]
+    paths: list[Path] = []
+    for pattern in patterns:
+        paths.extend(sorted(root.glob(pattern)))
+    return paths

@@ -19,13 +19,22 @@ BRANCHES = [
     {
         "branch": "maint/qianzi-native",
         "slug": "qianzi",
+        "base": "main",
         "overlay": ROOT / "lab" / "overlays" / "qianzi",
         "remove": ["mojiao/reviewed_resolver.py"],
     },
     {
         "branch": "maint/bihe-sealed-component",
         "slug": "bihe",
+        "base": "main",
         "overlay": ROOT / "lab" / "overlays" / "bihe",
+        "remove": [],
+    },
+    {
+        "branch": "trial/swapped-called-impl",
+        "slug": "swapped",
+        "base": "maint/qianzi-native",
+        "overlay": ROOT / "lab" / "overlays" / "swapped",
         "remove": [],
     },
 ]
@@ -61,7 +70,8 @@ def main() -> int:
         if worktree.exists():
             run(["git", "worktree", "remove", "--force", str(worktree)], ROOT)
         run(["git", "worktree", "prune"], ROOT)
-        run(["git", "worktree", "add", "-B", branch, str(worktree), "main"], ROOT)
+        base = spec.get("base", "main")
+        run(["git", "worktree", "add", "-B", branch, str(worktree), base], ROOT)
 
         for rel in spec["remove"]:
             path = worktree / rel

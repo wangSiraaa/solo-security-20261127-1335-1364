@@ -1,0 +1,27 @@
+{
+  "branch": "maint/bihe-sealed-component",
+  "case_id": "BIHE-BRANCH-1396",
+  "decision": "END-MAIN-1396 remains usable only for the byte-identical resolver and reviewed word list below.",
+  "endorsement_id": "CARRY-BIHE-VERBATIM-1396",
+  "git_commit": "8e9f6321a9023a6aff0d9ffc50631acafc114371",
+  "inherited_endorsement_id": "END-MAIN-1396",
+  "inherited_subject": [
+    {
+      "path": "mojiao/reviewed_resolver.py",
+      "sha256": "0ae44c6c251333fc03cb35e682add40fa8f4a5241d776ecfac1d96e2b5ce42c9"
+    },
+    {
+      "path": "wordlists/school-promised-modern-2.1.0.json",
+      "sha256": "f385a749c920991c77dd3fbd81521e1a5bf1f1b635f9105104fbf79fb1907076"
+    }
+  ],
+  "key_id": "fictional-publisher-ed25519-2026Q4",
+  "not_inherited_by": [
+    "mojiao/compat_oldid.py",
+    "classroom packaging",
+    "changed word lists"
+  ],
+  "signature": "rbNAqSBGMyse5ZGgGHUxXDm/FqlaNOlDuZy4DNr4UC/49/MfEwQvVADJBWQTTKM663WZOFx4v6Lxfq0QImdHDQ==",
+  "signature_algorithm": "Ed25519",
+  "verbatim_match": true
+}

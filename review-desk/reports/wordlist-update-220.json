@@ -1,0 +1,63 @@
+{
+  "case_id": "INDEPENDENT-WORDLIST-UPDATE",
+  "installed_dictionary": "school-promised-modern-2.2.0.json",
+  "key_id": "fictional-publisher-ed25519-2026Q4",
+  "loader_code_unchanged_hashes": [
+    {
+      "path": "mojiao/__init__.py",
+      "sha256": "7e3999b274d49478e8fffbffcf05bcb10d6d2c7325e49da1f3b7c169ef3264d5"
+    },
+    {
+      "path": "mojiao/__main__.py",
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "mojiao/cli.py",
+      "sha256": "631297e19a9fee2be35d57afac78e0337d226b424bce332b88467cf29d26dd7a"
+    },
+    {
+      "path": "mojiao/config.py",
+      "sha256": "8f04c01640ce336f09971d0ffeaecceec0e7d4f54017f1e5d8b6e6b86779c75b"
+    },
+    {
+      "path": "mojiao/dictionary.py",
+      "sha256": "d5b1b9a799738f9d92e74e2d0a43fa7306fb73cdb87f5c093753ee1a969c687c"
+    },
+    {
+      "path": "mojiao/legacy_bundled.py",
+      "sha256": "90508acb747f66f4e89065d035517439767646934aafb3d0b22cbe92371268f4"
+    },
+    {
+      "path": "mojiao/native_legacy.py",
+      "sha256": "0b44ad18beb3864a072f40331c16b960c347daffa54b5008d4d5839d96c2ce51"
+    }
+  ],
+  "modern_only_id_under_legacy_contract": {
+    "canonical": null,
+    "classroom_id": "XIAN-GE-ROOM-01",
+    "egress_performed": false,
+    "entrypoint": "mojiao.native_legacy:resolve",
+    "error": "caller/legacy-wordid-v1 requires a four-digit word_id",
+    "status": "contract_error",
+    "word_id": "W-NEW-017"
+  },
+  "new_old_id_1004": {
+    "canonical": "预演",
+    "classroom_id": "XIAN-GE-ROOM-01",
+    "dictionary_version": "2.2.0",
+    "egress_performed": false,
+    "entrypoint": "mojiao.native_legacy:resolve",
+    "implementation": "native_legacy",
+    "internal_word_id": "W-1004",
+    "query": "预演",
+    "source_list": "school-promised-2026Q4",
+    "status": "ok",
+    "word_id": "1004"
+  },
+  "old_ids_still_pass": true,
+  "promise_boundary": "Independent data update can add entries; only ids recognized by caller/legacy-wordid-v1 are addressable by the old classroom.",
+  "sha256": "0369626dc29e8e874c723861a7b2701dedb238cbff0147a0a9a2ad46db68a594",
+  "signature": "tB0yfvYi99iZDJx6jGF8JXatZ6Nr6X5uhiQDwAs9nOaa/gC4iTqbUaDgdiOmfxjvg5eRhhJagPDCxWh7oFrBDw==",
+  "signature_algorithm": "Ed25519",
+  "update_id": "WORDLIST-UPDATE-220-1396"
+}

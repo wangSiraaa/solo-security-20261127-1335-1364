@@ -1,0 +1,12 @@
+{
+  "contract_id": "caller/legacy-wordid-v1",
+  "version": "1.0.0",
+  "entrypoint": "mojiao.native_legacy:resolve_code",
+  "argument": {
+    "word_id": "four-digit legacy word number as string, e.g. 1001"
+  },
+  "returns": ["status", "word_id", "canonical", "source_list", "dictionary_version", "egress_performed"],
+  "external_lookup": "forbidden_in_school_mode",
+  "network_policy": "deny",
+  "classroom_behavior": "The classroom launcher only emits legacy word numbers; modern W- ids are outside this contract."
+}

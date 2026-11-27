@@ -1,0 +1,16 @@
+{
+  "caller_contract": "caller/legacy-wordid-v1",
+  "classroom_id": "XIAN-GE-ROOM-01",
+  "display_name": "虚构·弦歌小学一号机房",
+  "entrypoint": "mojiao.native_legacy:resolve",
+  "external_lookup_enabled": false,
+  "network_policy": "deny",
+  "promised_word_ids": [
+    "1001",
+    "1002",
+    "1003"
+  ],
+  "wordlist_globs": [
+    "wordlists/*.json"
+  ]
+}

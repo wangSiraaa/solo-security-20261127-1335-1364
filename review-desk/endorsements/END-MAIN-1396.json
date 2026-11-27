@@ -1,0 +1,38 @@
+{
+  "case_id": "MAINLINE-1396",
+  "claims": [
+    "reviewed-source-matches-hash",
+    "promised-local-resolution",
+    "no-transport-in-reviewed-module"
+  ],
+  "covers": [
+    {
+      "path": "mojiao/reviewed_resolver.py",
+      "sha256": "0ae44c6c251333fc03cb35e682add40fa8f4a5241d776ecfac1d96e2b5ce42c9"
+    },
+    {
+      "format": "mojiao-dictionary/2",
+      "list_id": "school-promised-2026Q4",
+      "path": "wordlists/school-promised-modern-2.1.0.json",
+      "promised": true,
+      "sha256": "f385a749c920991c77dd3fbd81521e1a5bf1f1b635f9105104fbf79fb1907076",
+      "version": "2.1.0"
+    },
+    {
+      "path": "contracts/caller-modern-v2.json",
+      "sha256": "96e1b1b04a1424e6e6d20838bce453879475a0a7fb42acc3933d298bc8ea1048"
+    }
+  ],
+  "does_not_cover": [
+    "any native reimplementation",
+    "old-id compatibility adapter",
+    "modified or future word lists",
+    "classroom packaging or installation"
+  ],
+  "endorsement_id": "END-MAIN-1396",
+  "git_commit": "9b6c241c68e1d39dc4ea63efc4e7f880d10897d8",
+  "issued_for": "main reviewed resolver and its reviewed dictionary",
+  "key_id": "fictional-publisher-ed25519-2026Q4",
+  "signature": "z05FdbOCBFrOqqISz2SIqdICnKlQ3MoBHQVTqwtTVFL22DMZ0tW9aIxc5DxA8HLZB4Sks0LrHMzACRFuIZT1AA==",
+  "signature_algorithm": "Ed25519"
+}

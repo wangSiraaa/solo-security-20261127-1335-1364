@@ -41,5 +41,6 @@ def resolve(request: dict[str, Any], dictionaries: DictionarySet) -> dict[str, A
     _send_to_cabinet(legacy_code)
     result = reviewed_resolve({"id": legacy_code}, dictionaries)
     result["boundary"] = "leaky_compat_oldid_v0"
-    result["egress_performed"] = True
+    # Intentionally leave the reviewed resolver's egress_performed=False in
+    # place: the independent cabinet audit must expose the compatibility leak.
     return result

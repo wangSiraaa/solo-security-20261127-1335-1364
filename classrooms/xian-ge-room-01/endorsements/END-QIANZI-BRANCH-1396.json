@@ -1,0 +1,71 @@
+{
+  "caller_contract_id": "caller/legacy-wordid-v1",
+  "case_id": "QIANZI-BRANCH-1396",
+  "claims": [
+    "old-four-digit-ids-resolve",
+    "all-school-promised-ids-pass-offline-probe",
+    "native-implementation-revalidated"
+  ],
+  "covered_artifacts": [
+    {
+      "path": "mojiao/native_legacy.py",
+      "sha256": "0b44ad18beb3864a072f40331c16b960c347daffa54b5008d4d5839d96c2ce51"
+    },
+    {
+      "format": "mojiao-legacy-wordtable/1",
+      "list_id": "school-promised-2026Q4",
+      "path": "wordlists/school-promised-legacy-1.4.0.json",
+      "promised": true,
+      "sha256": "d0ec97845829578ced454272b5677cb7a3bd78f17c5205548cf14f430b35ccd0",
+      "version": "1.4.0"
+    },
+    {
+      "path": "contracts/caller-legacy-wordid-v1.json",
+      "sha256": "14ccd31d105a01cc9d5bb49c298977b8b2debf31fad677dd89686c432abaf01f"
+    }
+  ],
+  "covered_python_tree": [
+    {
+      "path": "mojiao/__init__.py",
+      "sha256": "7e3999b274d49478e8fffbffcf05bcb10d6d2c7325e49da1f3b7c169ef3264d5"
+    },
+    {
+      "path": "mojiao/__main__.py",
+      "sha256": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    },
+    {
+      "path": "mojiao/cli.py",
+      "sha256": "631297e19a9fee2be35d57afac78e0337d226b424bce332b88467cf29d26dd7a"
+    },
+    {
+      "path": "mojiao/config.py",
+      "sha256": "8f04c01640ce336f09971d0ffeaecceec0e7d4f54017f1e5d8b6e6b86779c75b"
+    },
+    {
+      "path": "mojiao/dictionary.py",
+      "sha256": "d5b1b9a799738f9d92e74e2d0a43fa7306fb73cdb87f5c093753ee1a969c687c"
+    },
+    {
+      "path": "mojiao/legacy_bundled.py",
+      "sha256": "90508acb747f66f4e89065d035517439767646934aafb3d0b22cbe92371268f4"
+    },
+    {
+      "path": "mojiao/native_legacy.py",
+      "sha256": "0b44ad18beb3864a072f40331c16b960c347daffa54b5008d4d5839d96c2ce51"
+    }
+  ],
+  "does_not_cover": [
+    "mainline END-MAIN-1396 source identity",
+    "other branches",
+    "future compatibility changes",
+    "future word-list contents unless separately accepted"
+  ],
+  "endorsement_id": "END-QIANZI-BRANCH-1396",
+  "entrypoint": "mojiao.native_legacy:resolve",
+  "git_commit": "83a304a76bf765bf578879dee1db6e6881cd090f",
+  "key_id": "fictional-publisher-ed25519-2026Q4",
+  "main_endorsement_reused": "NONE_BECAUSE_IMPLEMENTATION_IS_NATIVE",
+  "scope": "branch-only: maint/qianzi-native at the recorded commit",
+  "signature": "mpdyEKCCahxU3cumRkUjtoKV5bDLP+NXVfDzebgO8eTNTHFSFvxZZb0Ni7KVpTJFLzZOC3kGoyBrGEGCCHxNCQ==",
+  "signature_algorithm": "Ed25519"
+}

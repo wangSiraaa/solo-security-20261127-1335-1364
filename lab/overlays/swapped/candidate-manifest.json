@@ -1,0 +1,7 @@
+{
+  "case_id": "SWAPPED-IMPL-1396",
+  "note": "Negative-control branch: the merge/patch name is unchanged, but review must use this actually-called entrypoint.",
+  "entrypoint": "mojiao.other_native:resolve",
+  "caller_contract": "caller/legacy-wordid-v1",
+  "wordlists": ["wordlists/school-promised-legacy-1.4.0.json"]
+}

@@ -38,14 +38,22 @@ def ensure_keypair() -> None:
 
 def sign_bytes(data: bytes) -> str:
     ensure_keypair()
-    proc = subprocess.run(
-        ["openssl", "pkeyutl", "-sign", "-inkey", str(PRIVATE_KEY), "-rawin"],
-        input=data,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=True,
-    )
-    return base64.b64encode(proc.stdout).decode("ascii")
+    import tempfile
+
+    with tempfile.TemporaryDirectory() as tmp:
+        payload_path = Path(tmp) / "payload"
+        payload_path.write_bytes(data)
+        proc = subprocess.run(
+            [
+                "openssl", "pkeyutl", "-sign", "-inkey", str(PRIVATE_KEY),
+                "-rawin", "-in", str(payload_path),
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+        )
+        signature = proc.stdout
+    return base64.b64encode(signature).decode("ascii")
 
 
 def verify_bytes(data: bytes, signature_b64: str, public_key: str | Path = PUBLIC_KEY) -> bool:

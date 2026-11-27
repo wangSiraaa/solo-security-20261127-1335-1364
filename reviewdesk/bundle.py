@@ -55,6 +55,7 @@ def build_bundle(
 
     assets = ROOT / "bundle-assets"
     shutil.copy2(assets / "verify.py", bundle_dir / "verify.py")
+    (bundle_dir / "verify.py").chmod(0o755)
     ww = bundle_dir / "ww"
     shutil.copy2(assets / "ww", ww)
     ww.chmod(0o755)
@@ -96,7 +97,7 @@ def build_bundle(
     manifest = dict(manifest_payload)
     manifest["key_id"] = "fictional-publisher-ed25519-2026Q4"
     manifest["signature_algorithm"] = "Ed25519"
-    manifest["signature"] = sign_bytes(canonical_json(manifest_payload))
+    manifest["signature"] = sign_bytes(canonical_json(manifest))
     (bundle_dir / "MANIFEST.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8"
     )

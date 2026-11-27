@@ -1,0 +1,22 @@
+{
+  "case_id": "BIHE-BRANCH-1396",
+  "claims": [
+    "old-id-boundary-functional",
+    "promised-entries-local"
+  ],
+  "compat_sha256": "c76972e6d57af96bd01bd571a8a73a1ee1dbfeb9b01f85ff24dbd7a55b414b47",
+  "endorsement_id": "END-BIHE-COMPOSITION-1396",
+  "entrypoint": "mojiao.compat_oldid:resolve",
+  "functional_pass": true,
+  "git_commit": "8e9f6321a9023a6aff0d9ffc50631acafc114371",
+  "key_id": "fictional-publisher-ed25519-2026Q4",
+  "re_review_triggers": [
+    "mojiao/compat_oldid.py hash changes",
+    "caller contract changes",
+    "word-list version/hash changes",
+    "observed cabinet/egress behavior changes"
+  ],
+  "scope": "branch-only composition at recorded commit; reviewed component inheritance is separately recorded",
+  "signature": "YoEPwLpeJOSRG8FZvlwciH3f1OBU0Z6WOov9DBDWV7rPhyS69JgnaRKxHg5Gwg8L7+LbQZnnXKf+sgdo9KpXAA==",
+  "signature_algorithm": "Ed25519"
+}

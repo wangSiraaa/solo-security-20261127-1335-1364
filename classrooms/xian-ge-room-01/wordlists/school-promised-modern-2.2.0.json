@@ -1,0 +1,45 @@
+{
+  "format": "mojiao-dictionary/2",
+  "list_id": "school-promised-2026Q4",
+  "publisher": "虚构·文枢出版社",
+  "version": "2.2.0",
+  "released_at": "2026-11-27",
+  "update_type": "independent-wordlist-release",
+  "entries": [
+    {
+      "id": "W-1001",
+      "legacy_id": "1001",
+      "query": "按装",
+      "canonical": "安装",
+      "note": "承诺词表 P-001"
+    },
+    {
+      "id": "W-1002",
+      "legacy_id": "1002",
+      "query": "图象",
+      "canonical": "图像",
+      "note": "承诺词表 P-002"
+    },
+    {
+      "id": "W-1003",
+      "legacy_id": "1003",
+      "query": "订正",
+      "canonical": "订正",
+      "note": "承诺词表 P-003"
+    },
+    {
+      "id": "W-1004",
+      "legacy_id": "1004",
+      "query": "预演",
+      "canonical": "预演",
+      "note": "2.2.0 独立词表新增，仍带旧词号"
+    },
+    {
+      "id": "W-NEW-017",
+      "legacy_id": null,
+      "query": "云砚台",
+      "canonical": "云砚台",
+      "note": "2.2.0 新版专用条目，不分配旧词号"
+    }
+  ]
+}
