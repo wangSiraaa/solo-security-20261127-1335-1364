@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anon-station"
+version = "1.0.0"
+description = "Anonymous image-report access layer with durable staging slots"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+anon-station = "anon_station.cli:main"
+
+[tool.setuptools]
+packages = ["anon_station"]
