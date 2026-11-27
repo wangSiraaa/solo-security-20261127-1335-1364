@@ -1,0 +1,18 @@
+{
+  "name": "offline-recorder-upgrade",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Authorization-safe upgrade service and simulated recording device for a fictional offline broadcast console.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/up.mjs",
+    "service": "node src/service-server.mjs",
+    "device": "node src/device-server.mjs",
+    "accept": "node src/acceptance.mjs",
+    "test": "node --test test/"
+  },
+  "license": "UNLICENSED"
+}

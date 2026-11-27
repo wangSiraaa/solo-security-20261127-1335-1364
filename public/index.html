@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>无网播音台 · 录音授权升级验收台</title>
+  <style>
+    :root { color-scheme: light dark; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+    body { margin: 0; background: #0f172a; color: #e2e8f0; }
+    header { padding: 20px 28px; background: #111827; border-bottom: 1px solid #334155; }
+    h1 { margin: 0 0 6px; font-size: 22px; }
+    main { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 16px; padding: 20px; }
+    section { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 16px; box-shadow: 0 8px 24px #02061755; }
+    h2 { margin-top: 0; font-size: 17px; color: #93c5fd; }
+    p, label { font-size: 13px; line-height: 1.55; }
+    button { border: 0; border-radius: 8px; padding: 8px 12px; margin: 4px 6px 4px 0; background: #2563eb; color: white; cursor: pointer; font-weight: 650; }
+    button.secondary { background: #475569; }
+    button.danger { background: #dc2626; }
+    button.good { background: #16a34a; }
+    button:disabled { opacity: .45; cursor: not-allowed; }
+    input[type=text], select, textarea { width: 100%; box-sizing: border-box; border-radius: 8px; border: 1px solid #475569; background: #0f172a; color: #e2e8f0; padding: 8px; margin: 4px 0 10px; }
+    textarea { min-height: 70px; }
+    code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .pill { display: inline-block; border-radius: 999px; padding: 2px 9px; font-size: 12px; background: #334155; margin: 2px; }
+    .ok { color: #86efac; } .bad { color: #fca5a5; } .warn { color: #fde68a; }
+    pre { white-space: pre-wrap; word-break: break-word; background: #020617; border: 1px solid #1e293b; border-radius: 10px; padding: 12px; max-height: 360px; overflow: auto; font-size: 12px; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    .row > * { flex: 1; }
+    .checks label { display: block; margin: 6px 0; }
+    #tracks { font-size: 13px; }
+    .clip { border-left: 3px solid #60a5fa; padding: 6px 10px; margin: 8px 0; background: #0f172a; border-radius: 0 8px 8px 0; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>无网播音台 · 录音插件升级验收台</h1>
+  <p>旧“录一段”只还原为：按钮开段 → 文本帧替代音频 → 停采/故障清理绑定 → 设备签名回执。预听、定时采集、保留原声、分轨均为另行授权。展示新说明不会授予常驻监听。</p>
+  <div>
+    <span class="pill" id="health">检查服务中…</span>
+    <span class="pill" id="presence">未建立在场会话</span>
+    <span class="pill" id="current">尚无活动段</span>
+  </div>
+</header>
+
+<main>
+  <section>
+    <h2>1. 启动数据与在场</h2>
+    <p>首次打开会自动导入虚构的老用户、旧同意、设备和两个工程。</p>
+    <button class="secondary" onclick="bootstrap()">重新幂等引导</button>
+    <button class="secondary" onclick="assessment()">查看升级评估</button>
+    <button class="good" onclick="establishPresence()">我在播音台前，建立在场会话</button>
+    <p class="warn">重启服务后内存中的在场令牌消失；昨天的在场不能用于今天的迁移、编辑或新开段。</p>
+  </section>
+
+  <section>
+    <h2>2. 同意范围试验</h2>
+    <button class="secondary" onclick="showNotice()">展示新版设备说明（仅展示，不授权）</button>
+    <button onclick="previewOnly()">把旧同意改成仅试听/禁保存</button>
+    <button class="good" onclick="restoreConsent()">恢复实际旧同意</button>
+    <button class="danger" onclick="revokeAll()">撤回全部同意</button>
+    <button class="secondary" onclick="refreshAuth()">刷新授权还原</button>
+    <pre id="authView">尚未查询</pre>
+  </section>
+
+  <section>
+    <h2>3. 实际开一段 / 写文本 / 停一段</h2>
+    <label>工程</label>
+    <select id="projectId">
+      <option value="proj_new_multitrack">proj_new_multitrack（新分轨工程）</option>
+      <option value="proj_old_button_only">proj_old_button_only（只有旧按钮标号）</option>
+    </select>
+    <label>轨道</label>
+    <select id="trackId">
+      <option value="trk_take">trk_take · 录段主轨</option>
+      <option value="trk_voice">trk_voice · 人声分轨</option>
+      <option value="trk_room">trk_room · 环境分轨</option>
+    </select>
+    <label><input type="checkbox" id="autoAdmit" checked /> 收到停采回执后按当前同意自动准入</label>
+    <button class="good" onclick="press()">开一段（旧按钮代理）</button>
+    <label>小文本帧（替代音频；可写 <code>voice:</code> / <code>room:</code> 前缀供分轨）</label>
+    <textarea id="frameText">voice: 验收人实际开了一段
+room: 停段后去新工程查询轨道片段</textarea>
+    <button onclick="sendFrame()">写入文本帧</button>
+    <button class="danger" onclick="stopSegment()">停一段</button>
+    <button class="danger" onclick="revokeSession()">中途撤销本会话并停采</button>
+    <button class="secondary" onclick="injectFault()">注入故障并由代理清理</button>
+  </section>
+
+  <section>
+    <h2>4. 准入、后台状态与完结证明</h2>
+    <button class="good" onclick="admit()">申请把同一包准作可存录音</button>
+    <button class="secondary" onclick="backendStopped()">后台写“已停”</button>
+    <button onclick="certificate()">申请完结证明</button>
+    <label><input type="checkbox" id="holdReceipt" /> 让设备滞留停采签名回执</label>
+    <button class="secondary" onclick="setHold()">应用滞留开关</button>
+    <button class="good" onclick="releaseReceipt()">放行设备回执并对账</button>
+    <p class="warn">后台“已停”或恢复同意都不能代替设备签名停采回执；回执滞留时完结证明必须返回 409。</p>
+  </section>
+
+  <section>
+    <h2>5. 新能力逐项征求</h2>
+    <div class="checks">
+      <label><input type="checkbox" id="capPrelisten" /> 预听 <code>monitor.prelisten</code></label>
+      <label><input type="checkbox" id="capSchedule" /> 定时采集 <code>capture.scheduled</code></label>
+      <label><input type="checkbox" id="capOriginal" /> 保留原声/原始包 <code>retain.original</code></label>
+      <label><input type="checkbox" id="capSplit" /> 分轨 <code>organize.split_tracks</code>（项目范围）</label>
+    </div>
+    <label>授权项目（分轨建议选新工程）</label>
+    <input type="text" id="grantProject" value="proj_new_multitrack" />
+    <button class="good" onclick="grantCapabilities()">由在场本人逐项授予</button>
+    <button class="secondary" onclick="tryPrelisten()">试用预听</button>
+    <button class="secondary" onclick="trySchedule()">建立定时采集</button>
+    <button onclick="splitLatest()">把最新片段按文本前缀分轨</button>
+    <button onclick="retainOriginal()">保留当前段原始包</button>
+  </section>
+
+  <section>
+    <h2>6. 新工程轨道查询</h2>
+    <button onclick="queryTracks()">查询所选工程轨道片段</button>
+    <div id="tracks">尚未查询。</div>
+  </section>
+
+  <section style="grid-column: 1 / -1;">
+    <h2>服务/设备输出</h2>
+    <div class="row">
+      <button class="secondary" onclick="deviceState()">读取模拟设备真实状态</button>
+      <button class="secondary" onclick="clearLog()">清空输出</button>
+      <span class="mono" id="ids"></span>
+    </div>
+    <pre id="out">就绪。验收命令：npm run accept；HTTP 全流程见 README。</pre>
+  </section>
+</main>
+
+<script>
+let presenceToken = null;
+let currentSegment = null;
+
+const $ = (id) => document.getElementById(id);
+function log(value) {
+  $('out').textContent = typeof value === 'string' ? value : JSON.stringify(value, null, 2);
+}
+function clearLog() { $('out').textContent = ''; }
+function setCurrent(seg) {
+  currentSegment = seg;
+  $('current').textContent = seg ? `段 ${seg.segmentId} · ${seg.status} · 帧 ${seg.frameCount}` : '尚无活动段';
+  $('ids').textContent = seg ? `session=${seg.sessionId} operation=${seg.operationId}` : '';
+}
+async function api(path, body, method) {
+  const headers = { 'content-type': 'application/json' };
+  if (presenceToken) headers['x-presence-id'] = presenceToken;
+  let res;
+  try {
+    res = await fetch(path, {
+      method: method || (body === undefined ? 'GET' : 'POST'),
+      headers,
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+  } catch (error) {
+    log({ networkError: String(error) });
+    throw error;
+  }
+  const data = await res.json().catch(() => ({}));
+  log({ httpStatus: res.status, ...data });
+  if (!res.ok) throw new Error(data.code || res.status);
+  return data;
+}
+async function boot() {
+  try {
+    const health = await fetch('/health').then((r) => r.json());
+    $('health').textContent = health.ok ? `服务 ${health.service}` : '服务异常';
+    if (!health.bootstrapped) await api('/api/bootstrap', {});
+    await refreshAuth();
+    await queryTracks();
+  } catch (error) {
+    $('health').textContent = '服务未启动；请运行 npm start';
+  }
+}
+async function bootstrap() { await api('/api/bootstrap', {}); await boot(); }
+async function assessment() { await api('/api/upgrade/assessment?userId=u_legacy&deviceId=dev_studio', undefined, 'GET'); }
+async function establishPresence() {
+  const data = await api('/api/presence', { userId: 'u_legacy', source: 'browser_console' });
+  presenceToken = data.token;
+  $('presence').textContent = `在场令牌 ${presenceToken.slice(0, 18)}…（重启失效）`;
+}
+async function refreshAuth() {
+  const data = await api('/api/authorization?userId=u_legacy&deviceId=dev_studio');
+  $('authView').textContent = JSON.stringify(data.scopes, null, 2);
+}
+async function showNotice() {
+  await api('/api/notices/new-device-capabilities/shown', { acknowledged: true });
+  await refreshAuth();
+}
+async function previewOnly() { await api('/api/consent/preview-only', {}); await refreshAuth(); }
+async function restoreConsent() { await api('/api/consent/restore', {}); await refreshAuth(); }
+async function revokeAll() { await api('/api/consent/revoke-all', { userId: 'u_legacy' }); await refreshAuth(); }
+async function press() {
+  const data = await api('/api/agent/old-button/press', {
+    userId: 'u_legacy',
+    deviceId: 'dev_studio',
+    projectId: $('projectId').value,
+    trackId: $('trackId').value,
+    autoAdmit: $('autoAdmit').checked,
+  });
+  setCurrent(data.segment);
+}
+async function sendFrame() {
+  if (!currentSegment) throw new Error('先开一段');
+  const lines = $('frameText').value.split('\n').filter(Boolean);
+  let last;
+  for (const text of lines) last = await api(`/api/segments/${currentSegment.segmentId}/frames`, { text });
+  if (last?.segment) setCurrent(last.segment);
+}
+async function stopSegment() {
+  if (!currentSegment) throw new Error('先开一段');
+  const data = await api(`/api/segments/${currentSegment.segmentId}/stop`, {});
+  if (data.segment) setCurrent(data.segment);
+  await queryTracks();
+}
+async function revokeSession() {
+  if (!currentSegment) throw new Error('先开一段');
+  const data = await api(`/api/sessions/${currentSegment.sessionId}/revoke`, { discard: true });
+  if (data.stop?.segment) setCurrent(data.stop.segment);
+  await queryTracks();
+}
+async function injectFault() {
+  if (!currentSegment) throw new Error('先开一段');
+  const data = await api(`/api/segments/${currentSegment.segmentId}/fault`, {});
+  if (data.segment) setCurrent(data.segment);
+}
+async function admit() {
+  if (!currentSegment) throw new Error('先选择/创建一段');
+  await api(`/api/segments/${currentSegment.segmentId}/admit`, {});
+  await queryTracks();
+}
+async function backendStopped() {
+  if (!currentSegment) throw new Error('先选择/创建一段');
+  await api(`/api/segments/${currentSegment.segmentId}/backend-stopped`, { note: 'UI manual marker' });
+}
+async function certificate() {
+  if (!currentSegment) throw new Error('先选择/创建一段');
+  await api(`/api/segments/${currentSegment.segmentId}/completion-certificate`, {});
+}
+async function setHold() {
+  await api('/api/device/hold-receipt', {
+    hold: $('holdReceipt').checked,
+    operationId: currentSegment?.operationId,
+  });
+}
+async function releaseReceipt() {
+  await api('/api/device/release-receipt', { operationId: currentSegment?.operationId });
+  if (currentSegment) await api(`/api/segments/${currentSegment.segmentId}/reconcile`, {});
+}
+async function grantCapabilities() {
+  await api('/api/migration/capabilities', {
+    userId: 'u_legacy',
+    projectId: $('grantProject').value || null,
+    prelisten: $('capPrelisten').checked,
+    scheduledCapture: $('capSchedule').checked,
+    retainOriginal: $('capOriginal').checked,
+    splitTracks: $('capSplit').checked,
+  });
+  await refreshAuth();
+}
+async function tryPrelisten() { await api('/api/monitor/prelisten', { userId: 'u_legacy' }); }
+async function trySchedule() { await api('/api/schedules', { userId: 'u_legacy', projectId: $('grantProject').value }); }
+async function retainOriginal() {
+  if (!currentSegment) throw new Error('先选择/创建一段');
+  await api(`/api/segments/${currentSegment.segmentId}/retain-original`, {});
+}
+async function splitLatest() {
+  const projectId = $('projectId').value;
+  const state = await api('/api/state', undefined, 'GET');
+  const clips = Object.values(state.clips).filter((c) => c.projectId === projectId);
+  const clipId = clips.at(-1)?.clipId;
+  if (!clipId) throw new Error('该工程还没有已准入片段');
+  await api(`/api/projects/${projectId}/split`, { clipId });
+  await queryTracks();
+}
+async function queryTracks() {
+  const projectId = $('projectId').value;
+  const data = await api(`/api/projects/${projectId}/tracks`, undefined, 'GET');
+  $('tracks').innerHTML = data.tracks.map((track) => `
+    <div>
+      <strong>${track.name}</strong> <span class="pill">${track.trackId}</span>
+      ${track.clips.length === 0 ? '<p class="warn">无片段</p>' : track.clips.map((clip) => `
+        <div class="clip">
+          <div><strong>${clip.label}</strong> <span class="pill">${clip.origin}</span></div>
+          <div class="mono">${clip.text.replaceAll('<', '&lt;')}</div>
+          <small>${clip.clipId} · hash ${clip.packageHash.slice(0, 12)}…</small>
+        </div>`).join('')}
+    </div>`).join('');
+}
+async function deviceState() { await api('/api/device/state', undefined, 'GET'); }
+boot();
+</script>
+</body>
+</html>
