@@ -1,0 +1,3 @@
+# 换机恢复手续单（会话 S-EPH / 终端 bob）
+# 归档策略：EPHEMERAL；凭此单可开柜内 setup 包裹
+ARK_SHARE=aoX/WXrVvQ+VJx+WctWMUH4tbe5JeEE7YK4V/Ctc358UGmi9z3d6wPNyTMdebLbopjbg4nazOzOsFIQa3YwPag==

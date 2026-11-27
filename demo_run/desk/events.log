@@ -1,0 +1,52 @@
+2026-11-27 03:22:18 | REGISTER_TERMINAL | term=alice
+2026-11-27 03:22:18 | REGISTER_TERMINAL | term=bob
+2026-11-27 03:22:18 | REGISTER_SESSION | peers=alice,bob policy=EPHEMERAL sid=S-EPH
+2026-11-27 03:22:18 | DEPOSIT_PARCEL | kind=setup parcel=setup:S-EPH:alice sid=S-EPH target=alice
+2026-11-27 03:22:18 | DEPOSIT_PARCEL | kind=setup parcel=setup:S-EPH:bob sid=S-EPH target=bob
+2026-11-27 03:22:18 | REGISTER_SESSION | peers=alice,bob policy=ARCHIVE_ALL sid=S-ARC
+2026-11-27 03:22:18 | DEPOSIT_PARCEL | kind=setup parcel=setup:S-ARC:alice sid=S-ARC target=alice
+2026-11-27 03:22:18 | DEPOSIT_PARCEL | kind=setup parcel=setup:S-ARC:bob sid=S-ARC target=bob
+2026-11-27 03:22:18 | REGISTER_SESSION | peers=alice,bob policy=ARCHIVE_ALL sid=S-OTHER
+2026-11-27 03:22:18 | DEPOSIT_PARCEL | kind=setup parcel=setup:S-OTHER:alice sid=S-OTHER target=alice
+2026-11-27 03:22:18 | DEPOSIT_PARCEL | kind=setup parcel=setup:S-OTHER:bob sid=S-OTHER target=bob
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=0 sid=S-ARC
+2026-11-27 03:22:19 | READ_RECEIPT_LOGGED | reader=bob seq=0 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=1 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=2 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=3 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=4 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_PARCEL | kind=continuation parcel=cont:S-ARC:bob:0 sid=S-ARC target=bob
+2026-11-27 03:22:19 | DEPOSIT_PARCEL | kind=continuation parcel=cont:S-EPH:bob:0 sid=S-EPH target=bob
+2026-11-27 03:22:19 | TERMINAL_KEY_ROTATED | old_vk=Ozzu7dnt3vQG term=bob
+2026-11-27 03:22:19 | CHECKOUT_PARCEL | parcel=cont:S-ARC:bob:0 receipt=eb27c90ededdf6f9 requester=bob
+2026-11-27 03:22:19 | TERMINAL_KEY_ROTATED | old_vk=Vtwyhhn/GeH9 term=bob
+2026-11-27 03:22:19 | OPEN_LETTER | kind=sender-archive receipt=7da7fa472ba57f06 requester=bob seq=1 sid=S-ARC
+2026-11-27 03:22:19 | OPEN_LETTER | kind=sender-archive receipt=42b49d59e8537010 requester=bob seq=2 sid=S-ARC
+2026-11-27 03:22:19 | OPEN_LETTER | kind=sender-archive receipt=44f05aa3b76c58ff requester=bob seq=3 sid=S-ARC
+2026-11-27 03:22:19 | OPEN_LETTER | kind=sender-archive receipt=38b091095ab800c1 requester=bob seq=4 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=5 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_DUP_IGNORED | kind=sender-archive seq=0 sid=S-ARC
+2026-11-27 03:22:19 | TERMINAL_KEY_ROTATED | old_vk=Ozzu7dnt3vQG term=bob
+2026-11-27 03:22:19 | CHECKOUT_PARCEL | parcel=cont:S-EPH:bob:0 receipt=a7b9a5b8694c6031 requester=bob
+2026-11-27 03:22:19 | TERMINAL_KEY_ROTATED | old_vk=aGuopIyuOl/T term=bob
+2026-11-27 03:22:19 | OPEN_DENIED_MISSING | requester=bob seq=3 sid=S-EPH
+2026-11-27 03:22:19 | OPEN_DENIED_MISSING | requester=bob seq=4 sid=S-EPH
+2026-11-27 03:22:19 | OPEN_DENIED_MISSING | requester=bob seq=5 sid=S-EPH
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=6 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=7 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=8 sid=S-ARC
+2026-11-27 03:22:19 | TOMBSTONE_ACCEPTED | counter=1 ranges=[[6, 8]] sid=S-ARC term=bob
+2026-11-27 03:22:19 | TERMINAL_KEY_ROTATED | old_vk=Ozzu7dnt3vQG term=bob
+2026-11-27 03:22:19 | CHECKOUT_PARCEL | parcel=setup:S-ARC:bob receipt=96dc14070896bb74 requester=bob
+2026-11-27 03:22:19 | OPEN_DENIED_FORGOTTEN | requester=bob seq=6 sid=S-ARC
+2026-11-27 03:22:19 | OPEN_DUPLICATE_HANDOVER | receipt=7da7fa472ba57f06 requester=bob seq=1 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=9 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=10 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=11 sid=S-ARC
+2026-11-27 03:22:19 | OPEN_LETTER | kind=sender-archive receipt=23827a6eb9ab41c1 requester=bob seq=10 sid=S-ARC
+2026-11-27 03:22:19 | OPEN_DUPLICATE_HANDOVER | receipt=23827a6eb9ab41c1 requester=bob seq=10 sid=S-ARC
+2026-11-27 03:22:19 | DEPOSIT_LETTER | kind=sender-archive seq=0 sid=S-OTHER
+2026-11-27 03:22:19 | OPEN_DUPLICATE_HANDOVER | receipt=23827a6eb9ab41c1 requester=bob seq=10 sid=S-ARC
+2026-11-27 03:22:19 | RESTORE_LETTER | kind=recv-archive requester=bob seq=10 sid=S-ARC
+2026-11-27 03:22:19 | OPEN_LETTER | kind=recv-archive receipt=c235f26450a5d79e requester=bob seq=10 sid=S-ARC
+2026-11-27 03:22:19 | REGISTER_TERMINAL | term=mallory

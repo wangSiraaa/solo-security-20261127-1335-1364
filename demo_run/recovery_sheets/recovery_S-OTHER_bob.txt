@@ -1,0 +1,3 @@
+# 换机恢复手续单（会话 S-OTHER / 终端 bob）
+# 归档策略：ARCHIVE_ALL；凭此单可开柜内 setup 包裹
+ARK_SHARE=nYHnJurLxP2OfxdSPClxt1IxdStOgeoC3KjJyORAJ0KNy2f6WxvKCDpfrdlpZyHCHJQ8ufv2jyIwR0wycviCVg==
