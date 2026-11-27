@@ -1,0 +1,207 @@
+{
+  "exportedAt": "2026-11-27T01:56:16.816Z",
+  "post": "archive-b",
+  "architecture": "ONE_TIME_LOCAL_LEDGER",
+  "postName": "西潮影像馆",
+  "originalCatalog": [
+    {
+      "id": "B-CAT-01",
+      "workKey": "HB",
+      "title": "《夜航雾港》",
+      "aliases": [
+        "Fog Night Harbor"
+      ],
+      "receiptId": "RCPT-B-HB-C2"
+    },
+    {
+      "id": "B-CAT-02",
+      "workKey": "LT",
+      "title": "《午夜信札》",
+      "aliases": [
+        "Midnight Letter"
+      ],
+      "receiptId": "RCPT-B-LT"
+    },
+    {
+      "id": "B-CAT-03",
+      "workKey": "SP",
+      "title": "《春分列车》",
+      "aliases": [
+        "Train at Spring Equinox"
+      ],
+      "receiptId": "RCPT-B-SP"
+    }
+  ],
+  "ownReceipts": [
+    {
+      "id": "RCPT-B-HB",
+      "archive": "b",
+      "alias": "夜航雾港 / Fog Night Harbor",
+      "status": "CORRECTED",
+      "issuedAt": "2026-08-25T11:20:00+08:00",
+      "statement": "卖方回执：旧别名等价回执，等待本地相等性接口核验。",
+      "supersededBy": "RCPT-B-HB-C2",
+      "correctionOrderId": "CR-2026-011"
+    },
+    {
+      "id": "RCPT-B-LT",
+      "archive": "b",
+      "alias": "Midnight Letter",
+      "status": "VALID",
+      "issuedAt": "2026-08-26T15:00:00+08:00",
+      "statement": "卖方回执：《午夜信札》别名；书名近似不构成同版见证。"
+    },
+    {
+      "id": "RCPT-B-SP",
+      "archive": "b",
+      "alias": "Train at Spring Equinox",
+      "status": "VALID",
+      "issuedAt": "2026-07-12T10:00:00+08:00",
+      "statement": "卖方回执：《春分列车》。"
+    },
+    {
+      "id": "RCPT-B-HB-C2",
+      "archive": "b",
+      "alias": "夜航雾港（导演剪辑版）",
+      "status": "VALID",
+      "issuedAt": "2026-11-27T01:56:16.813Z",
+      "correctionOrderId": "CR-2026-011",
+      "statement": "卖方订正回执：旧别名误挂 4K 修复版，实际对应另一剪辑版。"
+    }
+  ],
+  "originalLicenses": [
+    {
+      "id": "LIC-B-HB",
+      "workKey": "HB",
+      "archive": "b",
+      "territoryId": "TERR-LZ",
+      "territoryName": "澜州都会放映圈（虚构）",
+      "exhibitionStart": "2026-10-10T00:00:00+08:00",
+      "exhibitionEnd": "2026-12-20T23:59:59+08:00",
+      "exclusive": true,
+      "exclusiveStart": "2026-11-10T00:00:00+08:00",
+      "exclusiveEnd": "2026-12-15T23:59:59+08:00",
+      "grantedAt": "2026-09-20T14:00:00+08:00",
+      "feePrivate": "人民币 14 万元",
+      "internalNote": "后授予；卖方疑似重复出售独占档。",
+      "publicText": "澜州都会放映圈独占；独占期 2026-11-10 至 2026-12-15。"
+    },
+    {
+      "id": "LIC-B-LT",
+      "workKey": "LT",
+      "archive": "b",
+      "territoryId": "TERR-LZ",
+      "territoryName": "澜州都会放映圈（虚构）",
+      "exhibitionStart": "2026-11-05T00:00:00+08:00",
+      "exhibitionEnd": "2026-12-25T23:59:59+08:00",
+      "exclusive": true,
+      "exclusiveStart": "2026-12-01T00:00:00+08:00",
+      "exclusiveEnd": "2026-12-25T23:59:59+08:00",
+      "grantedAt": "2026-09-08T11:00:00+08:00",
+      "feePrivate": "人民币 5 万元",
+      "internalNote": "书名近似但卖方版次封签不同。",
+      "publicText": "《午夜信札》澜州独占许可。"
+    },
+    {
+      "id": "LIC-B-SP",
+      "workKey": "SP",
+      "archive": "b",
+      "territoryId": "TERR-LZ",
+      "territoryName": "澜州都会放映圈（虚构）",
+      "exhibitionStart": "2026-11-01T00:00:00+08:00",
+      "exhibitionEnd": "2026-12-31T23:59:59+08:00",
+      "exclusive": true,
+      "exclusiveStart": "2026-12-01T00:00:00+08:00",
+      "exclusiveEnd": "2026-12-19T22:00:00+08:00",
+      "grantedAt": "2026-08-01T09:30:00+08:00",
+      "feePrivate": "人民币 12 万元",
+      "internalNote": "先授予。",
+      "publicText": "《春分列车》澜州独占；独占期至 2026-12-19 22:00；先授予顺位。"
+    }
+  ],
+  "electronicScreeningSheets": [
+    {
+      "id": "SCR-B-HB",
+      "workKey": "HB",
+      "sheetId": "ESH-B-20261212",
+      "hall": "西潮二厅",
+      "start": "2026-12-12T19:00:00+08:00",
+      "end": "2026-12-12T21:05:00+08:00",
+      "sold": 63,
+      "capacity": 90,
+      "holdStatus": "PLAYABLE_AFTER_RECHECK",
+      "deskWorkOrderId": "WO-HB-1212"
+    },
+    {
+      "id": "SCR-B-LT",
+      "workKey": "LT",
+      "sheetId": "ESH-B-20261212",
+      "hall": "西潮一小厅",
+      "start": "2026-12-12T20:15:00+08:00",
+      "end": "2026-12-12T22:05:00+08:00",
+      "sold": 55,
+      "capacity": 80,
+      "holdStatus": "AWAIT_SAME_EDITION_WITNESS",
+      "deskWorkOrderId": null
+    },
+    {
+      "id": "SCR-B-SP-EVE",
+      "workKey": "SP",
+      "sheetId": "ESH-B-20261219",
+      "hall": "西潮大厅",
+      "start": "2026-12-19T20:00:00+08:00",
+      "end": "2026-12-19T21:40:00+08:00",
+      "sold": 102,
+      "capacity": 200,
+      "holdStatus": "PLAYABLE_AFTER_RECHECK",
+      "deskWorkOrderId": "WO-SP-1219"
+    }
+  ],
+  "ownConfirmations": [
+    {
+      "pairId": "P-HB",
+      "workKey": "HB",
+      "result": "SAME_EDITION_HIT_CONFIRMED",
+      "confirmedAt": "2026-11-27T01:56:16.811Z",
+      "sessionPurpose": "INITIAL_THREE_PROGRAMS"
+    },
+    {
+      "pairId": "P-LT",
+      "workKey": "LT",
+      "result": "NOT_SAME_EDITION_ACKNOWLEDGED",
+      "acknowledgedAt": "2026-11-27T01:56:16.812Z",
+      "sessionPurpose": "INITIAL_THREE_PROGRAMS"
+    },
+    {
+      "pairId": "P-SP",
+      "workKey": "SP",
+      "result": "SAME_EDITION_HIT_CONFIRMED",
+      "confirmedAt": "2026-11-27T01:56:16.812Z",
+      "sessionPurpose": "INITIAL_THREE_PROGRAMS"
+    },
+    {
+      "pairId": "P-HB",
+      "workKey": "HB",
+      "result": "NOT_SAME_EDITION_ACKNOWLEDGED",
+      "acknowledgedAt": "2026-11-27T01:56:16.813Z",
+      "sessionPurpose": "CORRECTION_CR-2026-011_WO-HB-1212"
+    }
+  ],
+  "boundary": {
+    "post": "archive-b",
+    "name": "西潮影像馆岗位",
+    "aloneCanExport": [
+      "乙馆原目录",
+      "乙馆原始许可合同（含底价/内部备注）",
+      "乙馆电子放映单与售票数",
+      "乙馆自己的比对确认记录",
+      "排映台发给乙馆的工单状态"
+    ],
+    "aloneCannotReconstruct": [
+      "甲馆原目录",
+      "甲馆合同底价/内部备注",
+      "未命中的近似名记录是否在甲馆",
+      "散会后的一次性会话映射"
+    ]
+  }
+}

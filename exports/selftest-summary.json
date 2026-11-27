@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "architecture": "B_ONE_TIME_SESSION",
+  "lookalikeTitleSimilarity": 0.75,
+  "initialPause": {
+    "workOrder": "WO-HB-1212",
+    "screeningId": "SCR-B-HB",
+    "start": "2026-12-12T19:00:00+08:00"
+  },
+  "decoy": {
+    "pair": "P-LT",
+    "releasedToDesk": false
+  },
+  "cutCorrection": {
+    "correction": "CR-2026-011",
+    "workOrder": "WO-HB-1212",
+    "status": "LIFTED_DIFFERENT_CUT"
+  },
+  "exclusivityAmendment": {
+    "amendment": "AMEND-LIC-A-SP-01",
+    "exclusiveEnd": "2026-12-19T18:00:00+08:00",
+    "paused": [
+      "SCR-A-SP-PM 14:30-16:20"
+    ],
+    "playable": [
+      "SCR-A-SP-EVE 19:30-21:20"
+    ]
+  },
+  "exports": [
+    "exports/archive-a.json",
+    "exports/archive-b.json",
+    "exports/trust.json",
+    "exports/desk.json",
+    "exports/governance.json"
+  ]
+}

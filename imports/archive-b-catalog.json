@@ -1,0 +1,5 @@
+[
+  { "id": "B-CAT-01", "workKey": "HB", "title": "《夜航雾港》", "aliases": ["Fog Night Harbor"], "receiptId": "RCPT-B-HB" },
+  { "id": "B-CAT-02", "workKey": "LT", "title": "《午夜信札》", "aliases": ["Midnight Letter"], "receiptId": "RCPT-B-LT" },
+  { "id": "B-CAT-03", "workKey": "SP", "title": "《春分列车》", "aliases": ["Train at Spring Equinox"], "receiptId": "RCPT-B-SP" }
+]

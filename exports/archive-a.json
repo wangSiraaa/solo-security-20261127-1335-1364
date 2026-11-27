@@ -1,0 +1,206 @@
+{
+  "exportedAt": "2026-11-27T01:56:16.816Z",
+  "post": "archive-a",
+  "architecture": "ONE_TIME_LOCAL_LEDGER",
+  "postName": "东屿资料馆",
+  "originalCatalog": [
+    {
+      "id": "A-CAT-01",
+      "workKey": "HB",
+      "title": "《雾港回声》",
+      "aliases": [
+        "Echoes from the Fog"
+      ],
+      "receiptId": "RCPT-A-HB"
+    },
+    {
+      "id": "A-CAT-02",
+      "workKey": "LT",
+      "title": "《午夜信笺》",
+      "aliases": [],
+      "receiptId": "RCPT-A-LT"
+    },
+    {
+      "id": "A-CAT-03",
+      "workKey": "SP",
+      "title": "《春分特快》",
+      "aliases": [
+        "Spring Express"
+      ],
+      "receiptId": "RCPT-A-SP"
+    }
+  ],
+  "ownReceipts": [
+    {
+      "id": "RCPT-A-HB",
+      "archive": "a",
+      "alias": "Echoes from the Fog",
+      "status": "VALID",
+      "issuedAt": "2026-08-18T10:00:00+08:00",
+      "statement": "卖方回执：该别名在回执柜中对应一个版次封签；持回执不能直接读出封签。"
+    },
+    {
+      "id": "RCPT-A-LT",
+      "archive": "a",
+      "alias": "Midnight Letter Paper",
+      "status": "VALID",
+      "issuedAt": "2026-08-19T09:00:00+08:00",
+      "statement": "卖方回执：《午夜信笺》别名。"
+    },
+    {
+      "id": "RCPT-A-SP",
+      "archive": "a",
+      "alias": "Spring Express",
+      "status": "VALID",
+      "issuedAt": "2026-07-10T10:00:00+08:00",
+      "statement": "卖方回执：《春分特快》。"
+    }
+  ],
+  "originalLicenses": [
+    {
+      "id": "LIC-A-HB",
+      "workKey": "HB",
+      "archive": "a",
+      "territoryId": "TERR-LZ",
+      "territoryName": "澜州都会放映圈（虚构）",
+      "exhibitionStart": "2026-10-01T00:00:00+08:00",
+      "exhibitionEnd": "2026-12-31T23:59:59+08:00",
+      "exclusive": true,
+      "exclusiveStart": "2026-11-01T00:00:00+08:00",
+      "exclusiveEnd": "2026-12-20T23:59:59+08:00",
+      "grantedAt": "2026-09-02T10:00:00+08:00",
+      "feePrivate": "人民币 18 万元（采购底价，不对外）",
+      "internalNote": "甲馆首任独占；合同约定先授予者优先。",
+      "publicText": "澜州都会放映圈独占；独占期 2026-11-01 至 2026-12-20；先授予顺位。"
+    },
+    {
+      "id": "LIC-A-LT",
+      "workKey": "LT",
+      "archive": "a",
+      "territoryId": "TERR-LZ",
+      "territoryName": "澜州都会放映圈（虚构）",
+      "exhibitionStart": "2026-11-01T00:00:00+08:00",
+      "exhibitionEnd": "2026-12-31T23:59:59+08:00",
+      "exclusive": true,
+      "exclusiveStart": "2026-12-01T00:00:00+08:00",
+      "exclusiveEnd": "2026-12-31T23:59:59+08:00",
+      "grantedAt": "2026-09-05T10:00:00+08:00",
+      "feePrivate": "人民币 6 万元",
+      "internalNote": "仅是近似名作品，不得因书名发送排映台。",
+      "publicText": "《午夜信笺》澜州独占许可。"
+    },
+    {
+      "id": "LIC-A-SP",
+      "workKey": "SP",
+      "archive": "a",
+      "territoryId": "TERR-LZ",
+      "territoryName": "澜州都会放映圈（虚构）",
+      "exhibitionStart": "2026-11-15T00:00:00+08:00",
+      "exhibitionEnd": "2026-12-31T23:59:59+08:00",
+      "exclusive": true,
+      "exclusiveStart": "2026-12-01T00:00:00+08:00",
+      "exclusiveEnd": "2026-12-19T18:00:00+08:00",
+      "grantedAt": "2026-08-20T15:00:00+08:00",
+      "feePrivate": "人民币 11 万元",
+      "internalNote": "后授予；独占截止时间待一次合同订正。",
+      "publicText": "《春分特快》澜州独占；合同订正后独占截止 2026-12-19 18:00（晚场 19:30 前）；放映权本身至 2026-12-31。"
+    }
+  ],
+  "electronicScreeningSheets": [
+    {
+      "id": "SCR-A-HB",
+      "workKey": "HB",
+      "sheetId": "ESH-A-20261212",
+      "hall": "东屿一号厅",
+      "start": "2026-12-12T19:30:00+08:00",
+      "end": "2026-12-12T21:35:00+08:00",
+      "sold": 118,
+      "capacity": 160,
+      "holdStatus": "PROCEED_FIRST_GRANT",
+      "deskWorkOrderId": "WO-HB-1212"
+    },
+    {
+      "id": "SCR-A-LT",
+      "workKey": "LT",
+      "sheetId": "ESH-A-20261212",
+      "hall": "东屿二号厅",
+      "start": "2026-12-12T20:00:00+08:00",
+      "end": "2026-12-12T21:40:00+08:00",
+      "sold": 40,
+      "capacity": 120,
+      "holdStatus": "AWAIT_SAME_EDITION_WITNESS",
+      "deskWorkOrderId": null
+    },
+    {
+      "id": "SCR-A-SP-PM",
+      "workKey": "SP",
+      "sheetId": "ESH-A-20261219",
+      "hall": "东屿一号厅",
+      "start": "2026-12-19T14:30:00+08:00",
+      "end": "2026-12-19T16:20:00+08:00",
+      "sold": 41,
+      "capacity": 160,
+      "holdStatus": "PAUSED_FOR_RIGHTS_COLLISION",
+      "deskWorkOrderId": "WO-SP-1219"
+    },
+    {
+      "id": "SCR-A-SP-EVE",
+      "workKey": "SP",
+      "sheetId": "ESH-A-20261219",
+      "hall": "东屿一号厅",
+      "start": "2026-12-19T19:30:00+08:00",
+      "end": "2026-12-19T21:20:00+08:00",
+      "sold": 77,
+      "capacity": 160,
+      "holdStatus": "PLAYABLE_AFTER_RECHECK",
+      "deskWorkOrderId": "WO-SP-1219"
+    }
+  ],
+  "ownConfirmations": [
+    {
+      "pairId": "P-HB",
+      "workKey": "HB",
+      "result": "SAME_EDITION_HIT_CONFIRMED",
+      "confirmedAt": "2026-11-27T01:56:16.811Z",
+      "sessionPurpose": "INITIAL_THREE_PROGRAMS"
+    },
+    {
+      "pairId": "P-LT",
+      "workKey": "LT",
+      "result": "NOT_SAME_EDITION_ACKNOWLEDGED",
+      "acknowledgedAt": "2026-11-27T01:56:16.812Z",
+      "sessionPurpose": "INITIAL_THREE_PROGRAMS"
+    },
+    {
+      "pairId": "P-SP",
+      "workKey": "SP",
+      "result": "SAME_EDITION_HIT_CONFIRMED",
+      "confirmedAt": "2026-11-27T01:56:16.812Z",
+      "sessionPurpose": "INITIAL_THREE_PROGRAMS"
+    },
+    {
+      "pairId": "P-HB",
+      "workKey": "HB",
+      "result": "NOT_SAME_EDITION_ACKNOWLEDGED",
+      "acknowledgedAt": "2026-11-27T01:56:16.813Z",
+      "sessionPurpose": "CORRECTION_CR-2026-011_WO-HB-1212"
+    }
+  ],
+  "boundary": {
+    "post": "archive-a",
+    "name": "东屿资料馆岗位",
+    "aloneCanExport": [
+      "甲馆原目录",
+      "甲馆原始许可合同（含底价/内部备注）",
+      "甲馆电子放映单与售票数",
+      "甲馆自己的比对确认记录",
+      "排映台发给甲馆的工单状态"
+    ],
+    "aloneCannotReconstruct": [
+      "乙馆原目录",
+      "乙馆合同底价/内部备注",
+      "未命中的近似名记录是否在乙馆",
+      "散会后的一次性会话映射"
+    ]
+  }
+}

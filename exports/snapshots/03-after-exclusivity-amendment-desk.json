@@ -1,0 +1,450 @@
+{
+  "exportedAt": "2026-11-27T01:56:16.815Z",
+  "post": "desk",
+  "architecture": "ONE_TIME_LOCAL_LEDGER",
+  "protocol": {
+    "sameEditionRequired": true,
+    "territoryRule": "territoryId 相同或授权地域区间相交；本样例使用相同地域。",
+    "collisionRule": "同版 + 同地域 + 两份许可均在该时段主张独占 + 放映场落入双重独占区间。",
+    "priorityRule": "双重独占区间内，后授予许可方的场次暂停；先授予方场次标记 FIRST_IN_TIME_PROCEED。",
+    "eveningRule": "场次不在两份独占期交集内时，联合排映台不作撞期暂停，按本场许可的公开片段排映。"
+  },
+  "confirmedReleases": [
+    {
+      "releaseId": "REL-HB",
+      "pairId": "P-HB",
+      "workKey": "HB",
+      "witnessId": "WIT-0002",
+      "agreedTitle": "《雾港回声》4K 修复版（含乙馆旧别名《夜航雾港》）",
+      "status": "WITHDRAWN_DIFFERENT_CUT",
+      "confirmedAt": "2026-11-27T01:56:16.811Z",
+      "archiveCatalogRefs": {
+        "a": "A-CAT-01",
+        "b": "B-CAT-01"
+      },
+      "publicFragments": [
+        {
+          "licenseId": "LIC-A-HB",
+          "archive": "a",
+          "territoryId": "TERR-LZ",
+          "territoryName": "澜州都会放映圈（虚构）",
+          "exclusive": true,
+          "exclusiveStart": "2026-11-01T00:00:00+08:00",
+          "exclusiveEnd": "2026-12-20T23:59:59+08:00",
+          "exhibitionStart": "2026-10-01T00:00:00+08:00",
+          "exhibitionEnd": "2026-12-31T23:59:59+08:00",
+          "grantedAt": "2026-09-02T10:00:00+08:00",
+          "allowedPublicText": "澜州都会放映圈独占；独占期 2026-11-01 至 2026-12-20；先授予顺位。"
+        },
+        {
+          "licenseId": "LIC-B-HB",
+          "archive": "b",
+          "territoryId": "TERR-LZ",
+          "territoryName": "澜州都会放映圈（虚构）",
+          "exclusive": true,
+          "exclusiveStart": "2026-11-10T00:00:00+08:00",
+          "exclusiveEnd": "2026-12-15T23:59:59+08:00",
+          "exhibitionStart": "2026-10-10T00:00:00+08:00",
+          "exhibitionEnd": "2026-12-20T23:59:59+08:00",
+          "grantedAt": "2026-09-20T14:00:00+08:00",
+          "allowedPublicText": "澜州都会放映圈独占；独占期 2026-11-10 至 2026-12-15。"
+        }
+      ],
+      "dispatchedAt": "2026-11-27T01:56:16.812Z",
+      "withdrawnAt": "2026-11-27T01:56:16.813Z",
+      "withdrawalReason": "CR-2026-011 后新会话未产生同版见证；两馆确认不重合。"
+    },
+    {
+      "releaseId": "REL-SP",
+      "pairId": "P-SP",
+      "workKey": "SP",
+      "witnessId": "WIT-0003",
+      "agreedTitle": "《春分特快/春分列车》35mm 同版",
+      "status": "ACTIVE",
+      "confirmedAt": "2026-11-27T01:56:16.812Z",
+      "archiveCatalogRefs": {
+        "a": "A-CAT-03",
+        "b": "B-CAT-03"
+      },
+      "publicFragments": [
+        {
+          "licenseId": "LIC-A-SP",
+          "archive": "a",
+          "territoryId": "TERR-LZ",
+          "territoryName": "澜州都会放映圈（虚构）",
+          "exclusive": true,
+          "exclusiveStart": "2026-12-01T00:00:00+08:00",
+          "exclusiveEnd": "2026-12-19T18:00:00+08:00",
+          "exhibitionStart": "2026-11-15T00:00:00+08:00",
+          "exhibitionEnd": "2026-12-31T23:59:59+08:00",
+          "grantedAt": "2026-08-20T15:00:00+08:00",
+          "allowedPublicText": "《春分特快》澜州独占；合同订正后独占截止 2026-12-19 18:00（晚场 19:30 前）；放映权本身至 2026-12-31。",
+          "amendedBy": "AMEND-LIC-A-SP-01"
+        },
+        {
+          "licenseId": "LIC-B-SP",
+          "archive": "b",
+          "territoryId": "TERR-LZ",
+          "territoryName": "澜州都会放映圈（虚构）",
+          "exclusive": true,
+          "exclusiveStart": "2026-12-01T00:00:00+08:00",
+          "exclusiveEnd": "2026-12-19T22:00:00+08:00",
+          "exhibitionStart": "2026-11-01T00:00:00+08:00",
+          "exhibitionEnd": "2026-12-31T23:59:59+08:00",
+          "grantedAt": "2026-08-01T09:30:00+08:00",
+          "allowedPublicText": "《春分列车》澜州独占；独占期至 2026-12-19 22:00；先授予顺位。"
+        }
+      ],
+      "dispatchedAt": "2026-11-27T01:56:16.812Z"
+    }
+  ],
+  "minimizedScreeningSubmissions": [
+    {
+      "screeningId": "SCR-A-HB",
+      "releaseId": "REL-HB",
+      "archive": "a",
+      "sheetId": "ESH-A-20261212",
+      "start": "2026-12-12T19:30:00+08:00",
+      "end": "2026-12-12T21:35:00+08:00",
+      "sold": 118
+    },
+    {
+      "screeningId": "SCR-B-HB",
+      "releaseId": "REL-HB",
+      "archive": "b",
+      "sheetId": "ESH-B-20261212",
+      "start": "2026-12-12T19:00:00+08:00",
+      "end": "2026-12-12T21:05:00+08:00",
+      "sold": 63
+    },
+    {
+      "screeningId": "SCR-A-SP-PM",
+      "releaseId": "REL-SP",
+      "archive": "a",
+      "sheetId": "ESH-A-20261219",
+      "start": "2026-12-19T14:30:00+08:00",
+      "end": "2026-12-19T16:20:00+08:00",
+      "sold": 41
+    },
+    {
+      "screeningId": "SCR-A-SP-EVE",
+      "releaseId": "REL-SP",
+      "archive": "a",
+      "sheetId": "ESH-A-20261219",
+      "start": "2026-12-19T19:30:00+08:00",
+      "end": "2026-12-19T21:20:00+08:00",
+      "sold": 77
+    },
+    {
+      "screeningId": "SCR-B-SP-EVE",
+      "releaseId": "REL-SP",
+      "archive": "b",
+      "sheetId": "ESH-B-20261219",
+      "start": "2026-12-19T20:00:00+08:00",
+      "end": "2026-12-19T21:40:00+08:00",
+      "sold": 102
+    }
+  ],
+  "workOrders": [
+    {
+      "id": "WO-HB-1212",
+      "workKey": "HB",
+      "releaseId": "REL-HB",
+      "status": "LIFTED_DIFFERENT_CUT",
+      "createdAt": "2026-11-27T01:56:16.812Z",
+      "updatedAt": "2026-11-27T01:56:16.813Z",
+      "currentSummary": "同版见证已被改名/版次订正推翻；当前回执只支持不同剪辑版，排映台不再有同版管辖基础。",
+      "targetScreeningIds": [],
+      "rounds": [
+        {
+          "workOrderId": "WO-HB-1212",
+          "round": 1,
+          "at": "2026-11-27T01:56:16.812Z",
+          "trigger": "INITIAL_LOCAL_SCREENING_SHEETS",
+          "evaluation": {
+            "releaseId": "REL-HB",
+            "workKey": "HB",
+            "witnessId": "WIT-0002",
+            "sameEdition": true,
+            "sameTerritory": true,
+            "bothExclusive": true,
+            "exclusiveOverlap": {
+              "start": "2026-11-09T16:00:00.000Z",
+              "end": "2026-12-15T15:59:59.000Z"
+            },
+            "screeningDecisions": [
+              {
+                "screeningId": "SCR-A-HB",
+                "archive": "a",
+                "sheetId": "ESH-A-20261212",
+                "start": "2026-12-12T19:30:00+08:00",
+                "end": "2026-12-12T21:35:00+08:00",
+                "sold": 118,
+                "priority": "FIRST_GRANT",
+                "withinExhibition": true,
+                "inMutualExclusiveOverlap": true,
+                "decision": "PROCEED_FIRST_GRANT",
+                "reasonCode": "IN_OVERLAP_BUT_FIRST_GRANT_PRIORITY"
+              },
+              {
+                "screeningId": "SCR-B-HB",
+                "archive": "b",
+                "sheetId": "ESH-B-20261212",
+                "start": "2026-12-12T19:00:00+08:00",
+                "end": "2026-12-12T21:05:00+08:00",
+                "sold": 63,
+                "priority": "LATER_GRANT",
+                "withinExhibition": true,
+                "inMutualExclusiveOverlap": true,
+                "decision": "PAUSE",
+                "reasonCode": "SOLD_SHOW_IN_DOUBLE_EXCLUSIVE_OVERLAP_LATER_GRANT"
+              }
+            ],
+            "pauseScreeningIds": [
+              "SCR-B-HB"
+            ]
+          },
+          "status": "PAUSED",
+          "targetScreeningIds": [
+            "SCR-B-HB"
+          ]
+        },
+        {
+          "workOrderId": "WO-HB-1212",
+          "round": 2,
+          "at": "2026-11-27T01:56:16.813Z",
+          "trigger": "CORRECTION_CR-2026-011_ORIGINAL_WO_REPLAY",
+          "reasonCode": "DIFFERENT_CUT",
+          "status": "LIFTED",
+          "releaseStatus": "WITHDRAWN_DIFFERENT_CUT",
+          "reason": "同版见证已被改名/版次订正推翻；当前回执只支持不同剪辑版，排映台不再有同版管辖基础。",
+          "screeningDecisions": [
+            {
+              "screeningId": "SCR-B-HB",
+              "decision": "PLAYABLE",
+              "reasonCode": "DIFFERENT_CUT",
+              "inMutualExclusiveOverlap": false
+            }
+          ],
+          "targetScreeningIds": []
+        }
+      ]
+    },
+    {
+      "id": "WO-SP-1219",
+      "workKey": "SP",
+      "releaseId": "REL-SP",
+      "status": "PAUSED",
+      "createdAt": "2026-11-27T01:56:16.812Z",
+      "updatedAt": "2026-11-27T01:56:16.815Z",
+      "currentSummary": "第 2 次复办：PAUSED",
+      "targetScreeningIds": [
+        "SCR-A-SP-PM"
+      ],
+      "rounds": [
+        {
+          "workOrderId": "WO-SP-1219",
+          "round": 1,
+          "at": "2026-11-27T01:56:16.812Z",
+          "trigger": "INITIAL_LOCAL_SCREENING_SHEETS",
+          "evaluation": {
+            "releaseId": "REL-SP",
+            "workKey": "SP",
+            "witnessId": "WIT-0003",
+            "sameEdition": true,
+            "sameTerritory": true,
+            "bothExclusive": true,
+            "exclusiveOverlap": {
+              "start": "2026-11-30T16:00:00.000Z",
+              "end": "2026-12-19T14:00:00.000Z"
+            },
+            "screeningDecisions": [
+              {
+                "screeningId": "SCR-A-SP-PM",
+                "archive": "a",
+                "sheetId": "ESH-A-20261219",
+                "start": "2026-12-19T14:30:00+08:00",
+                "end": "2026-12-19T16:20:00+08:00",
+                "sold": 41,
+                "priority": "LATER_GRANT",
+                "withinExhibition": true,
+                "inMutualExclusiveOverlap": true,
+                "decision": "PAUSE",
+                "reasonCode": "SOLD_SHOW_IN_DOUBLE_EXCLUSIVE_OVERLAP_LATER_GRANT"
+              },
+              {
+                "screeningId": "SCR-A-SP-EVE",
+                "archive": "a",
+                "sheetId": "ESH-A-20261219",
+                "start": "2026-12-19T19:30:00+08:00",
+                "end": "2026-12-19T21:20:00+08:00",
+                "sold": 77,
+                "priority": "LATER_GRANT",
+                "withinExhibition": true,
+                "inMutualExclusiveOverlap": true,
+                "decision": "PAUSE",
+                "reasonCode": "SOLD_SHOW_IN_DOUBLE_EXCLUSIVE_OVERLAP_LATER_GRANT"
+              },
+              {
+                "screeningId": "SCR-B-SP-EVE",
+                "archive": "b",
+                "sheetId": "ESH-B-20261219",
+                "start": "2026-12-19T20:00:00+08:00",
+                "end": "2026-12-19T21:40:00+08:00",
+                "sold": 102,
+                "priority": "FIRST_GRANT",
+                "withinExhibition": true,
+                "inMutualExclusiveOverlap": true,
+                "decision": "PROCEED_FIRST_GRANT",
+                "reasonCode": "IN_OVERLAP_BUT_FIRST_GRANT_PRIORITY"
+              }
+            ],
+            "pauseScreeningIds": [
+              "SCR-A-SP-PM",
+              "SCR-A-SP-EVE"
+            ]
+          },
+          "status": "PAUSED",
+          "targetScreeningIds": [
+            "SCR-A-SP-PM",
+            "SCR-A-SP-EVE"
+          ]
+        },
+        {
+          "workOrderId": "WO-SP-1219",
+          "round": 2,
+          "at": "2026-11-27T01:56:16.815Z",
+          "trigger": "LICENSE_AMENDMENT_AMEND-LIC-A-SP-01_ORIGINAL_WO_REPLAY",
+          "reasonCode": "EXCLUSIVITY_SHORTENED_BEFORE_EVENING",
+          "evaluation": {
+            "releaseId": "REL-SP",
+            "workKey": "SP",
+            "witnessId": "WIT-0003",
+            "sameEdition": true,
+            "sameTerritory": true,
+            "bothExclusive": true,
+            "exclusiveOverlap": {
+              "start": "2026-11-30T16:00:00.000Z",
+              "end": "2026-12-19T10:00:00.000Z"
+            },
+            "screeningDecisions": [
+              {
+                "screeningId": "SCR-A-SP-PM",
+                "archive": "a",
+                "sheetId": "ESH-A-20261219",
+                "start": "2026-12-19T14:30:00+08:00",
+                "end": "2026-12-19T16:20:00+08:00",
+                "sold": 41,
+                "priority": "LATER_GRANT",
+                "withinExhibition": true,
+                "inMutualExclusiveOverlap": true,
+                "decision": "PAUSE",
+                "reasonCode": "SOLD_SHOW_IN_DOUBLE_EXCLUSIVE_OVERLAP_LATER_GRANT"
+              },
+              {
+                "screeningId": "SCR-A-SP-EVE",
+                "archive": "a",
+                "sheetId": "ESH-A-20261219",
+                "start": "2026-12-19T19:30:00+08:00",
+                "end": "2026-12-19T21:20:00+08:00",
+                "sold": 77,
+                "priority": "LATER_GRANT",
+                "withinExhibition": true,
+                "inMutualExclusiveOverlap": false,
+                "decision": "PLAYABLE",
+                "reasonCode": "OUTSIDE_MUTUAL_EXCLUSIVE_OVERLAP"
+              },
+              {
+                "screeningId": "SCR-B-SP-EVE",
+                "archive": "b",
+                "sheetId": "ESH-B-20261219",
+                "start": "2026-12-19T20:00:00+08:00",
+                "end": "2026-12-19T21:40:00+08:00",
+                "sold": 102,
+                "priority": "FIRST_GRANT",
+                "withinExhibition": true,
+                "inMutualExclusiveOverlap": false,
+                "decision": "PLAYABLE",
+                "reasonCode": "OUTSIDE_MUTUAL_EXCLUSIVE_OVERLAP"
+              }
+            ],
+            "pauseScreeningIds": [
+              "SCR-A-SP-PM"
+            ]
+          },
+          "status": "PAUSED",
+          "targetScreeningIds": [
+            "SCR-A-SP-PM"
+          ]
+        }
+      ]
+    }
+  ],
+  "deskActions": [
+    {
+      "at": "2026-11-27T01:56:16.812Z",
+      "action": "RELEASE_RECEIVED_MINIMIZED",
+      "releaseId": "REL-HB"
+    },
+    {
+      "at": "2026-11-27T01:56:16.812Z",
+      "action": "RELEASE_RECEIVED_MINIMIZED",
+      "releaseId": "REL-SP"
+    },
+    {
+      "at": "2026-11-27T01:56:16.812Z",
+      "action": "ADJUDICATION_ROUND",
+      "woId": "WO-HB-1212",
+      "round": 1,
+      "status": "PAUSED",
+      "pauseIds": [
+        "SCR-B-HB"
+      ]
+    },
+    {
+      "at": "2026-11-27T01:56:16.812Z",
+      "action": "ADJUDICATION_ROUND",
+      "woId": "WO-SP-1219",
+      "round": 1,
+      "status": "PAUSED",
+      "pauseIds": [
+        "SCR-A-SP-PM",
+        "SCR-A-SP-EVE"
+      ]
+    },
+    {
+      "at": "2026-11-27T01:56:16.813Z",
+      "action": "RELEASE_WITHDRAWN_DIFFERENT_CUT",
+      "releaseId": "REL-HB"
+    },
+    {
+      "at": "2026-11-27T01:56:16.813Z",
+      "action": "PAUSE_LIFTED_AFTER_REPLAY",
+      "woId": "WO-HB-1212",
+      "reasonCode": "DIFFERENT_CUT"
+    },
+    {
+      "at": "2026-11-27T01:56:16.815Z",
+      "action": "WORK_ORDER_REPLAYED",
+      "woId": "WO-SP-1219",
+      "round": 2,
+      "status": "PAUSED"
+    }
+  ],
+  "boundary": {
+    "post": "desk",
+    "name": "联合排映台岗位",
+    "aloneCanExport": [
+      "双方确认同版后的发布包",
+      "两馆准许公开的合同片段",
+      "仅同版作品的最小放映字段",
+      "撞期核查、暂停/解除/复办工单"
+    ],
+    "aloneCannotReconstruct": [
+      "未确认重合的目录和近似名候选",
+      "完整合同、底价、内部备注",
+      "散会后的一次性句柄",
+      "仅凭案号重新向两馆原册发起同版核验"
+    ]
+  }
+}

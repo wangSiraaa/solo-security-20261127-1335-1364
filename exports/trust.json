@@ -1,0 +1,130 @@
+{
+  "exportedAt": "2026-11-27T01:56:16.816Z",
+  "post": "trust",
+  "architecture": "ONE_TIME_LOCAL_LEDGER",
+  "activeOneTimeSessions": [],
+  "receiptLedgerIncludingInternalLock": [
+    {
+      "id": "RCPT-A-HB",
+      "archive": "a",
+      "alias": "Echoes from the Fog",
+      "lock": "LOCK-HB-4K",
+      "status": "VALID",
+      "issuedAt": "2026-08-18T10:00:00+08:00",
+      "statement": "卖方回执：该别名在回执柜中对应一个版次封签；持回执不能直接读出封签。"
+    },
+    {
+      "id": "RCPT-B-HB",
+      "archive": "b",
+      "alias": "夜航雾港 / Fog Night Harbor",
+      "lock": "LOCK-HB-4K",
+      "status": "CORRECTED",
+      "issuedAt": "2026-08-25T11:20:00+08:00",
+      "statement": "卖方回执：旧别名等价回执，等待本地相等性接口核验。",
+      "supersededBy": "RCPT-B-HB-C2",
+      "correctionOrderId": "CR-2026-011"
+    },
+    {
+      "id": "RCPT-A-LT",
+      "archive": "a",
+      "alias": "Midnight Letter Paper",
+      "lock": "LOCK-LT-PAPER",
+      "status": "VALID",
+      "issuedAt": "2026-08-19T09:00:00+08:00",
+      "statement": "卖方回执：《午夜信笺》别名。"
+    },
+    {
+      "id": "RCPT-B-LT",
+      "archive": "b",
+      "alias": "Midnight Letter",
+      "lock": "LOCK-LT-MAIL",
+      "status": "VALID",
+      "issuedAt": "2026-08-26T15:00:00+08:00",
+      "statement": "卖方回执：《午夜信札》别名；书名近似不构成同版见证。"
+    },
+    {
+      "id": "RCPT-A-SP",
+      "archive": "a",
+      "alias": "Spring Express",
+      "lock": "LOCK-SP-35",
+      "status": "VALID",
+      "issuedAt": "2026-07-10T10:00:00+08:00",
+      "statement": "卖方回执：《春分特快》。"
+    },
+    {
+      "id": "RCPT-B-SP",
+      "archive": "b",
+      "alias": "Train at Spring Equinox",
+      "lock": "LOCK-SP-35",
+      "status": "VALID",
+      "issuedAt": "2026-07-12T10:00:00+08:00",
+      "statement": "卖方回执：《春分列车》。"
+    },
+    {
+      "id": "RCPT-B-HB-C2",
+      "archive": "b",
+      "alias": "夜航雾港（导演剪辑版）",
+      "lock": "LOCK-HB-DIRECTORS-CUT",
+      "status": "VALID",
+      "issuedAt": "2026-11-27T01:56:16.813Z",
+      "correctionOrderId": "CR-2026-011",
+      "statement": "卖方订正回执：旧别名误挂 4K 修复版，实际对应另一剪辑版。"
+    }
+  ],
+  "correctionLedger": [
+    {
+      "id": "CR-2026-011",
+      "at": "2026-11-27T01:56:16.813Z",
+      "type": "ALIAS_EDITION_REASSIGNMENT",
+      "oldReceiptId": "RCPT-B-HB",
+      "newReceiptId": "RCPT-B-HB-C2",
+      "oldLock": "LOCK-HB-4K",
+      "newLock": "LOCK-HB-DIRECTORS-CUT",
+      "reason": "旧别名后来更正：《夜航雾港》为导演剪辑版，不是甲馆《雾港回声》4K 修复版。",
+      "chosenArchitectureConsequence": "一次性会话句柄已删除；必须由两馆再次配合召开新会话。"
+    },
+    {
+      "id": "AMEND-LIC-A-SP-01",
+      "type": "LICENSE_EXCLUSIVITY_AMENDMENT",
+      "at": "2026-11-27T01:56:16.815Z",
+      "licenseId": "LIC-A-SP",
+      "field": "exclusiveEnd",
+      "before": "2026-12-19T22:30:00+08:00",
+      "after": "2026-12-19T18:00:00+08:00",
+      "note": "只缩短独占档期，不缩短普通放映权；晚场仍在 exhibitionEnd 内。"
+    }
+  ],
+  "issuedWitnesses": [
+    {
+      "id": "WIT-0002",
+      "workKey": "HB",
+      "status": "SUPERSEDED_BY_CORRECTION",
+      "issuedAt": "2026-11-27T01:56:16.811Z",
+      "statement": "本地受托相等性接口：两份当前有效回执在签发时对应同一版次封签。",
+      "supersededByCorrection": "CR-2026-011"
+    },
+    {
+      "id": "WIT-0003",
+      "workKey": "SP",
+      "status": "ACTIVE",
+      "issuedAt": "2026-11-27T01:56:16.812Z",
+      "statement": "本地受托相等性接口：两份当前有效回执在签发时对应同一版次封签。"
+    }
+  ],
+  "boundary": {
+    "post": "trust",
+    "name": "本地卖方回执/相等性接口岗",
+    "aloneCanExport": [
+      "回执编号、别名与内部版次封签",
+      "改名/版次订正台账",
+      "已签发的同版见证号及其状态",
+      "尚在进行中的一次性会话；散会后为空"
+    ],
+    "aloneCannotReconstruct": [
+      "两馆完整采购目录",
+      "许可合同条款和价格",
+      "电子放映单/售票场次",
+      "已删除的本轮句柄与两馆目录行映射"
+    ]
+  }
+}

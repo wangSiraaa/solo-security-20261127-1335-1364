@@ -1,0 +1,5 @@
+[
+  { "id": "A-CAT-01", "workKey": "HB", "title": "《雾港回声》", "aliases": ["Echoes from the Fog"], "receiptId": "RCPT-A-HB" },
+  { "id": "A-CAT-02", "workKey": "LT", "title": "《午夜信笺》", "aliases": [], "receiptId": "RCPT-A-LT" },
+  { "id": "A-CAT-03", "workKey": "SP", "title": "《春分特快》", "aliases": ["Spring Express"], "receiptId": "RCPT-A-SP" }
+]

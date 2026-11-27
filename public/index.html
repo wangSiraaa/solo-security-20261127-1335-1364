@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>两馆数字展权比对与联合排映台</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="kicker">本地受托相等性接口 · 方案 B</p>
+        <h1>两馆数字展权撞车核查与联合排映台</h1>
+        <p class="subtitle">原册留馆、一次性会话、分别确认命中、散会删除跨轮标识；排映台只见双方确认项与公开合同片段。</p>
+      </div>
+      <div class="top-actions">
+        <button id="btn-prepare" class="primary">重置并跑初始比对/排映</button>
+        <button id="btn-cut">改名订正为不同剪辑版并复办 WO-HB</button>
+        <button id="btn-shorten">缩短 SP 独占期至晚场前并复办</button>
+        <button id="btn-alone" class="danger-ghost">试凭案号单独复查 WO-HB</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="brief">
+        <article class="card narrative">
+          <h2>本场样例与预期结论</h2>
+          <ol class="scenario-list">
+            <li>
+              <strong>《雾港回声》 ≈ 《夜航雾港》</strong>
+              <span>回执封签相同，双方确认同版。先授予甲馆、后授予乙馆；双重独占区间内，乙馆 <code>SCR-B-HB</code>（12/12 19:00）暂停，甲馆 19:30 按先授予顺位继续。</span>
+            </li>
+            <li>
+              <strong>《午夜信笺》 vs 《午夜信札》</strong>
+              <span>书名相似度 0.75，但回执封签不同。未取得同版见证，不生成排映台发布包、不暂停。</span>
+            </li>
+            <li>
+              <strong>《春分特快》 vs 《春分列车》</strong>
+              <span>保持同版。甲馆独占截止从 22:30 订正为 18:00 后，14:30 下午场仍在双重独占交集内并暂停；19:30 晚场在交集外，可正常播放。</span>
+            </li>
+          </ol>
+          <div id="action-result" class="action-result" aria-live="polite"></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <h2>运行计数</h2>
+            <button id="btn-refresh" class="small">刷新</button>
+          </div>
+          <div id="counts" class="counts"></div>
+          <h3>岗位边界速查</h3>
+          <div class="mini-matrix">
+            <div><b>甲/乙馆</b><span>只持本馆原册、全合同和放映单</span></div>
+            <div><b>回执接口</b><span>持回执封签/订正台账，不持两馆目录和放映单</span></div>
+            <div><b>排映台</b><span>只见确认同版包、公开片段、最小放映字段和工单</span></div>
+          </div>
+        </article>
+
+        <article class="card log-card">
+          <h2>本地模拟总线审计流</h2>
+          <div id="events" class="events"></div>
+        </article>
+      </section>
+
+      <section class="console card">
+        <nav class="tabs" aria-label="岗位视图">
+          <button class="tab active" data-tab="desk">联合排映台</button>
+          <button class="tab" data-tab="archive-a">东屿资料馆</button>
+          <button class="tab" data-tab="archive-b">西潮影像馆</button>
+          <button class="tab" data-tab="trust">回执/会话岗</button>
+          <button class="tab" data-tab="governance">导出矩阵/案号复查</button>
+        </nav>
+        <div class="tab-actions">
+          <span id="view-title" class="view-title"></span>
+          <a id="export-link" class="button small" href="#" download>导出本岗 JSON</a>
+        </div>
+        <div id="role-view" class="role-view"></div>
+      </section>
+    </main>
+
+    <script src="/static/app.js" type="module"></script>
+  </body>
+</html>
