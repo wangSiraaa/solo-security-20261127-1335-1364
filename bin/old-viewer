@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE="$(cd "$SCRIPT_DIR/.." && pwd)"
+export PYTHONPATH="$WORKSPACE${PYTHONPATH:+:$PYTHONPATH}"
+# If --seat is absent, cli.old_viewer_main supplies old-1.
+exec python3 -c 'from subtitle_sim.cli import old_viewer_main; raise SystemExit(old_viewer_main())' "$@"
