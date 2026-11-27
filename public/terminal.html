@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>谈单终端 · 私聊边界模拟器</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="seal">谈</span>谈单终端</div>
+    <span id="partyPill" class="pill"></span>
+    <span id="presencePill" class="pill"></span>
+    <label class="pill" style="gap:8px">演练分支
+      <select id="sidSelect" style="width:auto;padding:3px 8px;border-radius:999px">
+        <option value="present">同一轮 · 甲在场</option>
+        <option value="missing">同一轮 · 甲失联</option>
+        <option value="live">自由谈单台</option>
+      </select>
+    </label>
+    <label class="pill" style="gap:8px">演练时间
+      <input id="simNow" type="datetime-local" value="2026-11-26T20:08" style="width:auto;padding:2px 7px" />
+    </label>
+    <div class="spacer"></div>
+    <a class="button" href="/">总入口</a>
+    <a class="button arb" href="/arbiter.html" target="_blank" rel="noreferrer">打开仲裁席</a>
+    <button id="resetBtn" class="danger">重置本分支</button>
+  </header>
+
+  <main class="layout">
+    <section>
+      <div class="panel" id="stancePanel"></div>
+
+      <div class="panel">
+        <h2>订单与引用原件</h2>
+        <div id="orders"></div>
+      </div>
+
+      <div class="panel">
+        <h2>正式回单</h2>
+        <div id="receipts"></div>
+        <label class="check"><input type="checkbox" id="includeReceipts" /> 生成证据包时补入所列正式回单（只补证据，不改原始签署时间）</label>
+      </div>
+
+      <div class="panel">
+        <h2>取出本终端记录</h2>
+        <div class="row">
+          <button id="exportJson">导出聊天/状态 JSON</button>
+          <button id="exportMd">导出可读 Markdown</button>
+          <label class="check" style="margin:0"><input type="checkbox" id="includePairSecretExport" /> JSON 含双边核对钥</label>
+        </div>
+        <p class="muted small">导出件包含终端显示的消息、私记、订单版本、订正、回单与效力标记。</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>本地私聊记录 <span id="chatCount" class="pill"></span></h2>
+      <div id="chat" class="chat" aria-live="polite"></div>
+      <div style="margin-top:12px">
+        <div class="row" style="margin-bottom:8px">
+          <button data-quick="proposal" class="a">甲：发改规格私聊</button>
+          <button data-quick="ack" class="b">乙：回复“我收到了”</button>
+          <button data-quick="privacy" class="ghost">甲：强调不可转证</button>
+          <button data-advance="1">时间 +1 分钟</button>
+          <button id="lateTimeBtn" class="warn">设为 21:14（迟到）</button>
+        </div>
+        <textarea id="messageInput" placeholder="输入普通私聊。普通消息只会盖双边私记，不会直接换版。"></textarea>
+        <div class="row" style="margin-top:8px;justify-content:space-between">
+          <span class="muted small">“我收到了”只表示送达/知悉；如要正式变更，请在右侧立引用订正并签署。</span>
+          <button id="sendBtn" class="primary">发送普通私聊</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="panel">
+        <div class="tabs">
+          <button class="active" data-tab="new">立订正</button>
+          <button data-tab="docs">签署/查回 <span id="docCount" class="pill">0</span></button>
+          <button data-tab="pkg">证据包</button>
+        </div>
+
+        <div class="tabpane active" data-pane="new">
+          <h2>每次订正必须引用旧约定与上下文</h2>
+          <div class="grid2">
+            <label class="field">订正类型
+              <select id="crKind">
+                <option value="spec">交片规格订正</option>
+                <option value="reschedule">同版改期</option>
+              </select>
+            </label>
+            <label class="field">签署办法
+              <select id="crMethod">
+                <option value="joint">双边到场会签（仅彼此私记 + 双方公鉴）</option>
+                <option value="named">发言端具名公鉴修订单</option>
+              </select>
+            </label>
+          </div>
+          <label class="field">引用的旧约定版本
+            <select id="citationSelect"></select>
+          </label>
+          <label class="field">引用原文（必须能在旧约定中还原）
+            <textarea id="quoteInput"></textarea>
+          </label>
+          <div class="row">
+            <button id="fillQuoteBtn" class="ghost">填入整段原文</button>
+            <button id="fillCommonQuoteBtn" class="ghost">只填相同规格句</button>
+            <span id="citationCheck" class="small"></span>
+          </div>
+          <label class="field">选择上下文消息（至少一条；建议含改规格提议与“收到”）
+            <div id="contextPicker" class="card" style="max-height:170px;overflow:auto"></div>
+          </label>
+          <label class="field">订正摘要
+            <input id="summaryInput" value="调整次日交片规格，并明确母版交付时间。" />
+          </label>
+          <div id="specFields">
+            <label class="field">新版完整条款
+              <textarea id="clauseInput">双方确认：2026-11-27 18:00 前先交付 1920×1080、25fps、H.264 MP4 审片版；3840×2160/ProRes 422 HQ 母版改于 2026-11-28 12:00 前交付。本订正仅替换引用的 AGR-1127-SPEC 版本。</textarea>
+            </label>
+          </div>
+          <div id="rescheduleFields" hidden>
+            <label class="field">改期后的交付时间
+              <input id="newDueInput" type="datetime-local" value="2026-11-29T18:00" />
+            </label>
+            <label class="field">改期依据/措辞
+              <input id="basisInput" value="申请按“本单尚未开工”整体改期。" />
+            </label>
+            <label class="field">改期条款
+              <textarea id="rescheduleClauseInput">双方同意 ORD-1127 引用版本项下交付时间改至 2026-11-29 18:00；本同版改期不改变规格正文。申请人称依据为“本单尚未开工”，该事实由证据/回单另行检验。</textarea>
+            </label>
+          </div>
+          <label class="field" id="deadlineField">对方接受期限（具名办法用；可制造迟到同意）
+            <input id="acceptByInput" type="datetime-local" value="2026-11-26T21:00" />
+          </label>
+          <button id="createCrBtn" class="primary" style="width:100%">生成引用订正并由本方签署</button>
+          <p class="muted small">终端只在这一步把普通谈话固化为待签承诺。仅输入“我同意”“我收到了”不会换版。</p>
+        </div>
+
+        <div class="tabpane" data-pane="docs">
+          <h2>待签 / 已签订正</h2>
+          <div id="corrections"></div>
+        </div>
+
+        <div class="tabpane" data-pane="pkg">
+          <h2>交给模拟仲裁席的证据包</h2>
+          <label class="check"><input type="checkbox" id="pkgPairVerifier" checked /> 附双边共享模拟核对钥（仲裁可验 HMAC，但仍不能唯一归属甲/乙）</label>
+          <label class="check"><input type="checkbox" id="pkgAllMessages" checked /> 包含全部聊天上下文</label>
+          <label class="field">证据包标题
+            <input id="pkgTitle" value="乙在甲失联时提交的私聊及正式文件证据包" />
+          </label>
+          <div class="row">
+            <button id="buildPkgBtn" class="arb">生成证据包</button>
+            <button id="downloadPkgBtn" disabled>下载 JSON</button>
+            <button id="arbitratePkgBtn" class="primary" disabled>送本页仲裁接口判定</button>
+          </div>
+          <div id="pkgResult" class="small muted" style="margin-top:10px"></div>
+          <hr style="border:0;border-top:1px solid var(--line);margin:16px 0" />
+          <h3>仲裁席查回签过的内容</h3>
+          <div class="row">
+            <input id="queryInput" placeholder="输入订正编号、回单编号或 docHash" />
+            <button id="queryBtn">查回</button>
+          </div>
+          <div id="queryResult" class="search-results" style="margin-top:10px"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast"></div>
+  <script type="module" src="/terminal.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+{
+  "schema": "simulated-arbitration-award/v1",
+  "awardId": "AWD-PKG-RESCHEDULE-001",
+  "packageId": "PKG-RESCHEDULE-001",
+  "caseCaption": "拾光录制室 v. 声浪录制室：ORD-1127 交片规格/改期争议（模拟）",
+  "renderedAt": "2026-11-26T21:30:00+08:00",
+  "formalRuleVersion": "terminal-rule/v1",
+  "packageIntegrity": {
+    "valid": true,
+    "expected": "ccf87b5d18741a0c834b4c8fb3c3f4b90a0625b7a99bad2a067679e0e3649cb5",
+    "actual": "ccf87b5d18741a0c834b4c8fb3c3f4b90a0625b7a99bad2a067679e0e3649cb5"
+  },
+  "messageFindings": {
+    "results": [
+      {
+        "id": "MSG-001",
+        "seq": 1,
+        "at": "2026-11-26T19:50:00+08:00",
+        "claimedFrom": "SYSTEM",
+        "kind": "system",
+        "text": "本地谈单会话已建立。普通消息只加盖甲乙共享的双边私记；订单规格变更必须生成引用旧约定及上下文的订正，并按所选办法完成签署。",
+        "pair": {
+          "verifiable": true,
+          "valid": true,
+          "detail": "双边私记 HMAC 验证通过，内容未被篡改"
+        },
+        "uniqueAttributionToClaimedSender": false,
+        "attributionReason": "pair-mark/v1 是甲乙共享钥记号；即使验签通过，也只能归属于“持有会话私钥的一方”，不能排除另一方制作。终端本地发送方向标签不属于可独立验真的公鉴署名。",
+        "receiptEffect": null
+      },
+      {
+        "id": "MSG-002",
+        "seq": 2,
+        "at": "2026-11-26T20:00:00+08:00",
+        "claimedFrom": "B",
+        "kind": "talk",
+        "text": "甲，明天 ORD-1127 的访谈成片还是按刚才确认的老规格交吧？",
+        "pair": {
+          "verifiable": true,
+          "valid": true,
+          "detail": "双边私记 HMAC 验证通过，内容未被篡改"
+        },
+        "uniqueAttributionToClaimedSender": false,
+        "attributionReason": "pair-mark/v1 是甲乙共享钥记号；即使验签通过，也只能归属于“持有会话私钥的一方”，不能排除另一方制作。终端本地发送方向标签不属于可独立验真的公鉴署名。",
+        "receiptEffect": null
+      },
+      {
+        "id": "MSG-003",
+        "seq": 3,
+        "at": "2026-11-26T20:02:00+08:00",
+        "claimedFrom": "A",
+        "kind": "proposal-talk",
+        "text": "明天交片规格改一下：先出 1920×1080、25fps、H.264 MP4 审片版，4K ProRes 母版往后放。",
+        "pair": {
+          "verifiable": true,
+          "valid": true,
+          "detail": "双边私记 HMAC 验证通过，内容未被篡改"
+        },
+        "uniqueAttributionToClaimedSender": false,
+        "attributionReason": "pair-mark/v1 是甲乙共享钥记号；即使验签通过，也只能归属于“持有会话私钥的一方”，不能排除另一方制作。终端本地发送方向标签不属于可独立验真的公鉴署名。",
+        "receiptEffect": null
+      },
+      {
+        "id": "MSG-004",
+        "seq": 4,
+        "at": "2026-11-26T20:03:00+08:00",
+        "claimedFrom": "B",
+        "kind": "ack",
+        "text": "我收到了。",
+        "pair": {
+          "verifiable": true,
+          "valid": true,
+          "detail": "双边私记 HMAC 验证通过，内容未被篡改"
+        },
+        "uniqueAttributionToClaimedSender": false,
+        "attributionReason": "pair-mark/v1 是甲乙共享钥记号；即使验签通过，也只能归属于“持有会话私钥的一方”，不能排除另一方制作。终端本地发送方向标签不属于可独立验真的公鉴署名。",
+        "receiptEffect": "acknowledgment-only：收到/知悉不构成对规格变更的同意"
+      },
+      {
+        "id": "MSG-006",
+        "seq": 6,
+        "at": "2026-11-26T20:05:00+08:00",
+        "claimedFrom": "B",
+        "kind": "talk",
+        "text": "可以。若我联系不上你，至少你发言端直接署名的具名修订单得能让仲裁验出处；没这个，我不能只拿私聊改已接订单。",
+        "pair": {
+          "verifiable": true,
+          "valid": true,
+          "detail": "双边私记 HMAC 验证通过，内容未被篡改"
+        },
+        "uniqueAttributionToClaimedSender": false,
+        "attributionReason": "pair-mark/v1 是甲乙共享钥记号；即使验签通过，也只能归属于“持有会话私钥的一方”，不能排除另一方制作。终端本地发送方向标签不属于可独立验真的公鉴署名。",
+        "receiptEffect": null
+      }
+    ],
+    "pairVerifierDisclosed": true,
+    "checked": true,
+    "validCount": 5,
+    "total": 5,
+    "uniqueAttributionPossible": false,
+    "conclusion": "已用证据包内的共享模拟钥核对 5/5 条私记；没有任何一条普通私聊可凭双边私记被唯一归给甲或乙。"
+  },
+  "correctionFindings": [
+    {
+      "id": "RSK-1127-001",
+      "kind": "reschedule",
+      "title": "ORD-1127 同版改期单",
+      "summary": "双方对同一个 RSK-1127-001 docHash 接受：交付时间改至 2026-11-29 18:00；申请措辞称“未开工”，该事实另行用回单检验。",
+      "changes": {
+        "clauseText": "双方同意 ORD-1127 项下交付时间改至 2026-11-29T18:00:00+08:00；交片规格仍按引用版本执行。本改期单仅替换 AGR-1127-SPEC@v1 中的交付时间/日期条款。",
+        "terms": {
+          "dueAt": "2026-11-29T18:00:00+08:00"
+        },
+        "schedule": {
+          "dueAt": "2026-11-29T18:00:00+08:00",
+          "claimedBasis": "本单尚未开工"
+        },
+        "basis": "申请人称按“未开工”改期；开工/签收状态由 RCPT-ORIG-001 等证据独立判断。",
+        "title": "ORD-1127 同版改期单"
+      },
+      "acceptBy": null,
+      "orderId": "ORD-1127",
+      "method": "joint",
+      "statusInTerminal": "effective",
+      "terminalEffectiveVersion": 2,
+      "docHash": "8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077",
+      "expectedHash": "8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077",
+      "hashMatch": true,
+      "citation": {
+        "valid": true,
+        "agreementId": "AGR-1127-SPEC",
+        "version": 1,
+        "orderId": "ORD-1127",
+        "clauseId": "DELIVERY_SPEC",
+        "contentHash": "3d021a7fc3952a4168721a01d0e5b7f1f1181e85f2b3afdeaf49f438cb478e7a",
+        "quote": "交片规格：3840×2160、25fps、ProRes 422 HQ 母版，音频为 48kHz/24bit 立体声 WAV，次日 18:00 前交片。",
+        "hashMatch": true,
+        "quoteMatch": true,
+        "contextMatch": true,
+        "orderMatch": true,
+        "actualHash": "3d021a7fc3952a4168721a01d0e5b7f1f1181e85f2b3afdeaf49f438cb478e7a",
+        "missingContext": [],
+        "contextCount": 4,
+        "reason": ""
+      },
+      "contextMessageIds": [
+        "MSG-002",
+        "MSG-003",
+        "MSG-004",
+        "MSG-006"
+      ],
+      "contextSnapshot": [
+        {
+          "id": "MSG-002",
+          "seq": 2,
+          "at": "2026-11-26T20:00:00+08:00",
+          "from": "B",
+          "kind": "talk",
+          "text": "甲，明天 ORD-1127 的访谈成片还是按刚才确认的老规格交吧？"
+        },
+        {
+          "id": "MSG-003",
+          "seq": 3,
+          "at": "2026-11-26T20:02:00+08:00",
+          "from": "A",
+          "kind": "proposal-talk",
+          "text": "明天交片规格改一下：先出 1920×1080、25fps、H.264 MP4 审片版，4K ProRes 母版往后放。"
+        },
+        {
+          "id": "MSG-004",
+          "seq": 4,
+          "at": "2026-11-26T20:03:00+08:00",
+          "from": "B",
+          "kind": "ack",
+          "text": "我收到了。"
+        },
+        {
+          "id": "MSG-006",
+          "seq": 6,
+          "at": "2026-11-26T20:05:00+08:00",
+          "from": "B",
+          "kind": "talk",
+          "text": "可以。若我联系不上你，至少你发言端直接署名的具名修订单得能让仲裁验出处；没这个，我不能只拿私聊改已接订单。"
+        }
+      ],
+      "approvals": [
+        {
+          "party": "A",
+          "at": "2026-11-26T20:15:00+08:00",
+          "channel": "joint-presence",
+          "decision": "accept",
+          "keyId": "KEY-A-511E74480385",
+          "valid": true,
+          "reason": null
+        },
+        {
+          "party": "B",
+          "at": "2026-11-26T20:16:00+08:00",
+          "channel": "joint-presence",
+          "decision": "accept",
+          "keyId": "KEY-B-0625B956C57A",
+          "valid": true,
+          "reason": null
+        }
+      ],
+      "validSignatureCount": 2,
+      "bothPartiesAccepted": true,
+      "timelyBothAccepted": true,
+      "lateApprovalCount": 0,
+      "methodCompliance": true,
+      "independentlyEffective": true,
+      "nextVersionInPackage": {
+        "agreementId": "AGR-1127-SPEC",
+        "version": 2,
+        "contentHash": "f2ba24bab34d63cbc9d95d1997b0c9364649546648df4703a4a657f16d6c5164"
+      },
+      "identicalTextCarriers": [
+        {
+          "agreementId": "AGR-8899-SPEC",
+          "orderId": "ORD-8899",
+          "version": 1,
+          "contentHash": "787a977dee6ef80216955c0c681380674cea324ea36ca651ff5e6aa002c9af3b"
+        }
+      ],
+      "scopeRule": "引用指向哪一份 agreementId@version+contentHash，就只有该份可换版；相同字句本身不是订单范围。",
+      "effect": "有效换版：仅 AGR-1127-SPEC@v1 被替换为 v2。",
+      "transferabilityWarning": "双边会签件由双方共同封定；对外提交范围由双方/证据包决定。"
+    }
+  ],
+  "receiptFindings": [],
+  "scope": {
+    "changedCitationRefs": [
+      "AGR-1127-SPEC@v1"
+    ],
+    "orderStates": [
+      {
+        "orderId": "ORD-1127",
+        "title": "次日访谈成片交片单",
+        "latestVersion": 2,
+        "latestAgreementId": "AGR-1127-SPEC",
+        "effectiveCorrectionIds": [
+          "RSK-1127-001"
+        ],
+        "unchangedDespiteIdenticalWords": false
+      },
+      {
+        "orderId": "ORD-8899",
+        "title": "另一场访谈录制交片单（无关订单）",
+        "latestVersion": 1,
+        "latestAgreementId": "AGR-8899-SPEC",
+        "effectiveCorrectionIds": [],
+        "unchangedDespiteIdenticalWords": true
+      }
+    ],
+    "identicalWordWarnings": [
+      {
+        "correctionId": "RSK-1127-001",
+        "quotedFrom": "AGR-1127-SPEC@v1",
+        "identicalTextAlsoAppearsIn": "AGR-8899-SPEC@v1",
+        "otherOrderId": "ORD-8899",
+        "ruled": "不得仅因字句相同而覆盖该无关约定/订单"
+      }
+    ],
+    "unstartedBasis": {
+      "supported": true,
+      "contraryReceiptIds": [],
+      "ruling": "证据包中没有相反的原版成片签收回单；可结合其他证据判断开工状态。"
+    }
+  },
+  "holdings": [
+    {
+      "index": 1,
+      "title": "私聊语句及发送归属",
+      "result": "不能由第三方唯一认定",
+      "text": "已用证据包内的共享模拟钥核对 5/5 条私记；没有任何一条普通私聊可凭双边私记被唯一归给甲或乙。",
+      "details": [
+        "MSG-003 显示来自A：私记有效；不能仅凭该普通语句变更订单。",
+        "MSG-004 显示来自B：私记有效；acknowledgment-only：收到/知悉不构成对规格变更的同意。"
+      ]
+    },
+    {
+      "index": 2,
+      "title": "“我收到了”的效力",
+      "result": "不构成同意改规格",
+      "text": "在终端规则要求“引用旧约定+上下文+正式签署/会签”的前提下，送达确认或“我收到了”只产生知悉效力，不自动构成对新规格的承诺。",
+      "details": [
+        "MSG-004：我收到了。 —— acknowledgment-only：收到/知悉不构成对规格变更的同意"
+      ]
+    },
+    {
+      "index": 3,
+      "title": "订正 RSK-1127-001（ORD-1127 同版改期单）",
+      "result": "认定有效换版",
+      "text": "有效换版：仅 AGR-1127-SPEC@v1 被替换为 v2。",
+      "details": [
+        "引用：AGR-1127-SPEC@v1 / 订单 ORD-1127；哈希匹配 是；原文还原 成功；上下文 4 条（MSG-002、MSG-003、MSG-004、MSG-006）。",
+        "被替换原文（仲裁还原）：“交片规格：3840×2160、25fps、ProRes 422 HQ 母版，音频为 48kHz/24bit 立体声 WAV，次日 18:00 前交片。”",
+        "同版哈希 `8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077`；终端状态 effective；仲裁独立判断生效：是。",
+        "A 于 2026-11-26T20:15:00+08:00 joint-presence/accept：验签通过",
+        "B 于 2026-11-26T20:16:00+08:00 joint-presence/accept：验签通过",
+        "相同字句另存在于 AGR-8899-SPEC@v1（ORD-8899），不得据此覆盖该无关订单。"
+      ]
+    },
+    {
+      "index": 4,
+      "title": "同版改期内容查回",
+      "result": "可查回签过的精确版本",
+      "text": "仲裁席按订正编号或 docHash 可查回双方签署的同版改期内容；不同哈希、不同日期或事后改写均不是同一份。",
+      "details": [
+        "RSK-1127-001：引用 AGR-1127-SPEC@v1；同版哈希 `8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077`；摘要：双方对同一个 RSK-1127-001 docHash 接受：交付时间改至 2026-11-29 18:00；申请措辞称“未开工”，该事实另行用回单检验。。精确条款可用编号或哈希在“查回签过的内容”中取出。"
+      ]
+    },
+    {
+      "index": 5,
+      "title": "相同字句与无关订单",
+      "result": "按引用范围换版",
+      "text": "订正仅能替换其明确引用的 agreementId/version/contentHash。相同字句在 ORD-8899 或其他订单中出现，不构成对那些约定的引用或覆盖。",
+      "details": [
+        "RSK-1127-001 引用 AGR-1127-SPEC@v1；相同文字见于 AGR-8899-SPEC@v1（ORD-8899）：不得仅因字句相同而覆盖该无关约定/订单"
+      ]
+    }
+  ],
+  "signedContentIndex": [
+    {
+      "type": "correction",
+      "id": "RSK-1127-001",
+      "title": "ORD-1127 同版改期单",
+      "hash": "8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077",
+      "verified": true,
+      "effective": true,
+      "exactContent": {
+        "summary": "双方对同一个 RSK-1127-001 docHash 接受：交付时间改至 2026-11-29 18:00；申请措辞称“未开工”，该事实另行用回单检验。",
+        "changes": {
+          "clauseText": "双方同意 ORD-1127 项下交付时间改至 2026-11-29T18:00:00+08:00；交片规格仍按引用版本执行。本改期单仅替换 AGR-1127-SPEC@v1 中的交付时间/日期条款。",
+          "terms": {
+            "dueAt": "2026-11-29T18:00:00+08:00"
+          },
+          "schedule": {
+            "dueAt": "2026-11-29T18:00:00+08:00",
+            "claimedBasis": "本单尚未开工"
+          },
+          "basis": "申请人称按“未开工”改期；开工/签收状态由 RCPT-ORIG-001 等证据独立判断。",
+          "title": "ORD-1127 同版改期单"
+        },
+        "citation": {
+          "agreementId": "AGR-1127-SPEC",
+          "orderId": "ORD-1127",
+          "version": 1,
+          "clauseId": "DELIVERY_SPEC",
+          "contentHash": "3d021a7fc3952a4168721a01d0e5b7f1f1181e85f2b3afdeaf49f438cb478e7a",
+          "quote": "交片规格：3840×2160、25fps、ProRes 422 HQ 母版，音频为 48kHz/24bit 立体声 WAV，次日 18:00 前交片。",
+          "quoteLength": 75
+        },
+        "acceptBy": null
+      }
+    }
+  ],
+  "specificOrders": [
+    "确认 AGR-1127-SPEC@v1 已由 RSK-1127-001 合法替换，范围仅限 ORD-1127。",
+    "本裁决为本地模拟规则下的具体判定，不代表真实法院或仲裁机构意见。"
+  ],
+  "markdown": "# 拾光录制室 v. 声浪录制室：ORD-1127 交片规格/改期争议（模拟）\n\n- 裁决编号：AWD-PKG-RESCHEDULE-001\n- 证据包：PKG-RESCHEDULE-001\n- 出具时间：2026-11-26T21:30:00+08:00\n- 模拟规则：terminal-rule/v1\n\n## 一、证据包与见证器\n\n- 清单完整性：通过\n- 双边私记：已用证据包内的共享模拟钥核对 5/5 条私记；没有任何一条普通私聊可凭双边私记被唯一归给甲或乙。\n- 具名公鉴：下列署名均使用证据包内公钥独立验签；公钥指纹与 keyId 一并列明。\n\n## 二、具体判定\n\n### 1. 私聊语句及发送归属 —— 不能由第三方唯一认定\n\n已用证据包内的共享模拟钥核对 5/5 条私记；没有任何一条普通私聊可凭双边私记被唯一归给甲或乙。\n\n- MSG-003 显示来自A：私记有效；不能仅凭该普通语句变更订单。\n- MSG-004 显示来自B：私记有效；acknowledgment-only：收到/知悉不构成对规格变更的同意。\n\n### 2. “我收到了”的效力 —— 不构成同意改规格\n\n在终端规则要求“引用旧约定+上下文+正式签署/会签”的前提下，送达确认或“我收到了”只产生知悉效力，不自动构成对新规格的承诺。\n\n- MSG-004：我收到了。 —— acknowledgment-only：收到/知悉不构成对规格变更的同意\n\n### 3. 订正 RSK-1127-001（ORD-1127 同版改期单） —— 认定有效换版\n\n有效换版：仅 AGR-1127-SPEC@v1 被替换为 v2。\n\n- 引用：AGR-1127-SPEC@v1 / 订单 ORD-1127；哈希匹配 是；原文还原 成功；上下文 4 条（MSG-002、MSG-003、MSG-004、MSG-006）。\n- 被替换原文（仲裁还原）：“交片规格：3840×2160、25fps、ProRes 422 HQ 母版，音频为 48kHz/24bit 立体声 WAV，次日 18:00 前交片。”\n- 同版哈希 `8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077`；终端状态 effective；仲裁独立判断生效：是。\n- A 于 2026-11-26T20:15:00+08:00 joint-presence/accept：验签通过\n- B 于 2026-11-26T20:16:00+08:00 joint-presence/accept：验签通过\n- 相同字句另存在于 AGR-8899-SPEC@v1（ORD-8899），不得据此覆盖该无关订单。\n\n### 4. 同版改期内容查回 —— 可查回签过的精确版本\n\n仲裁席按订正编号或 docHash 可查回双方签署的同版改期内容；不同哈希、不同日期或事后改写均不是同一份。\n\n- RSK-1127-001：引用 AGR-1127-SPEC@v1；同版哈希 `8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077`；摘要：双方对同一个 RSK-1127-001 docHash 接受：交付时间改至 2026-11-29 18:00；申请措辞称“未开工”，该事实另行用回单检验。。精确条款可用编号或哈希在“查回签过的内容”中取出。\n\n### 5. 相同字句与无关订单 —— 按引用范围换版\n\n订正仅能替换其明确引用的 agreementId/version/contentHash。相同字句在 ORD-8899 或其他订单中出现，不构成对那些约定的引用或覆盖。\n\n- RSK-1127-001 引用 AGR-1127-SPEC@v1；相同文字见于 AGR-8899-SPEC@v1（ORD-8899）：不得仅因字句相同而覆盖该无关约定/订单\n\n## 三、订单版本范围\n\n- ORD-1127（次日访谈成片交片单）：当前证据包内版本 AGR-1127-SPEC@v2；生效订正：RSK-1127-001\n- ORD-8899（另一场访谈录制交片单（无关订单））：当前证据包内版本 AGR-8899-SPEC@v1；生效订正：无；虽有相同字句，仍不因 ORD-1127 的引用订正而换版。\n\n## 四、可查回的签署内容\n\n- correction RSK-1127-001：ORD-1127 同版改期单；哈希 `8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077`；验签 通过；已生效/具相应事实效力\n\n> 本文件是本地规则模拟仲裁，不构成真实法律意见或真实裁决。"
+}

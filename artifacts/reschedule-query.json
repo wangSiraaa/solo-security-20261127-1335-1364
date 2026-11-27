@@ -1,0 +1,35 @@
+[
+  {
+    "type": "correction",
+    "id": "RSK-1127-001",
+    "title": "ORD-1127 同版改期单",
+    "hash": "8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077",
+    "verified": true,
+    "effective": true,
+    "exactContent": {
+      "summary": "双方对同一个 RSK-1127-001 docHash 接受：交付时间改至 2026-11-29 18:00；申请措辞称“未开工”，该事实另行用回单检验。",
+      "changes": {
+        "clauseText": "双方同意 ORD-1127 项下交付时间改至 2026-11-29T18:00:00+08:00；交片规格仍按引用版本执行。本改期单仅替换 AGR-1127-SPEC@v1 中的交付时间/日期条款。",
+        "terms": {
+          "dueAt": "2026-11-29T18:00:00+08:00"
+        },
+        "schedule": {
+          "dueAt": "2026-11-29T18:00:00+08:00",
+          "claimedBasis": "本单尚未开工"
+        },
+        "basis": "申请人称按“未开工”改期；开工/签收状态由 RCPT-ORIG-001 等证据独立判断。",
+        "title": "ORD-1127 同版改期单"
+      },
+      "citation": {
+        "agreementId": "AGR-1127-SPEC",
+        "orderId": "ORD-1127",
+        "version": 1,
+        "clauseId": "DELIVERY_SPEC",
+        "contentHash": "3d021a7fc3952a4168721a01d0e5b7f1f1181e85f2b3afdeaf49f438cb478e7a",
+        "quote": "交片规格：3840×2160、25fps、ProRes 422 HQ 母版，音频为 48kHz/24bit 立体声 WAV，次日 18:00 前交片。",
+        "quoteLength": 75
+      },
+      "acceptBy": null
+    }
+  }
+]

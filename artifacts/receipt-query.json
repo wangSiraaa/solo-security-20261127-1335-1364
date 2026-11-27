@@ -1,0 +1,15 @@
+[
+  {
+    "type": "receipt",
+    "id": "RCPT-ORIG-001",
+    "title": "原版成片母版正式签收回单",
+    "hash": "23f59638459f2910cdf4c578b4ce49df2f037e88210b3654107e89185e835150",
+    "verified": true,
+    "effective": true,
+    "exactContent": {
+      "signedAt": "2026-11-20T15:30:00+08:00",
+      "signedBy": "A",
+      "text": "今收到并验收 ORD-1127 原版成片母版一支，画面、声音与初版交付清单一致，同意正式签收。本回单不证明后续修订审片版或延期母版已经交付。"
+    }
+  }
+]

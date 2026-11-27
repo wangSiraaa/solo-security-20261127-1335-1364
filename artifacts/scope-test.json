@@ -1,0 +1,40 @@
+{
+  "rule": "Only the cited agreementId/version/hash may be superseded; identical words cannot target an unrelated order.",
+  "invalidAttempt": {
+    "rejected": true,
+    "code": "SCOPE_MISMATCH",
+    "message": "订正单的订单号必须与被引用约定的订单一致。"
+  },
+  "unrelatedOrderAfterValidReschedule": {
+    "id": "ORD-8899",
+    "title": "另一场访谈录制交片单（无关订单）",
+    "status": "accepted",
+    "currentAgreementId": "AGR-8899-SPEC",
+    "currentVersion": 1,
+    "receiptIds": []
+  },
+  "unrelatedAgreement": {
+    "status": "effective",
+    "parentVersion": null,
+    "parentHash": null,
+    "sourceCorrectionId": null,
+    "seal": null,
+    "agreementId": "AGR-8899-SPEC",
+    "orderId": "ORD-8899",
+    "version": 1,
+    "clauseId": "DELIVERY_SPEC",
+    "title": "ORD-8899 交片规格约定",
+    "clauseText": "ORD-8899 沿用同一套通用交片口径。交片规格：3840×2160、25fps、ProRes 422 HQ 母版，音频为 48kHz/24bit 立体声 WAV，次日 18:00 前交片。 嘉宾字幕名单另行确认；本约定与 ORD-1127 的订正互不覆盖。",
+    "terms": {
+      "deliverable": "另一场访谈成片母版",
+      "dueAt": "2026-11-28T18:00:00+08:00",
+      "resolution": "3840x2160",
+      "fps": 25,
+      "codec": "ProRes 422 HQ",
+      "audio": "48kHz/24bit stereo WAV",
+      "delivery": "内网/加密硬盘"
+    },
+    "createdAt": "2026-11-26T18:30:00+08:00",
+    "contentHash": "787a977dee6ef80216955c0c681380674cea324ea36ca651ff5e6aa002c9af3b"
+  }
+}

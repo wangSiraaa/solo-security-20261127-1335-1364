@@ -1,0 +1,342 @@
+{
+  "schema": "arbitration-evidence-package/v1",
+  "packageId": "PKG-RESCHEDULE-001",
+  "caseCaption": "拾光录制室 v. 声浪录制室：ORD-1127 交片规格/改期争议（模拟）",
+  "preparedBy": "A+B",
+  "preparedByTerminal": "terminal-A+B",
+  "generatedAt": "2026-11-26T20:20:00+08:00",
+  "title": "双方接受同版改期的证据包（未补回单）",
+  "supplementalNote": null,
+  "claims": [],
+  "session": {
+    "id": "SES-PRESENT-1127",
+    "formalRuleVersion": "terminal-rule/v1",
+    "pairWitness": "pair-mark/v1",
+    "pairWitnessDescription": "HMAC 式双边私记：甲乙共享模拟钥，可验完整性，但不能向第三方唯一归属发送者。",
+    "pairVerifier": {
+      "scheme": "pair-mark/v1",
+      "algorithm": "HMAC-SHA256",
+      "sharedSecret": "SIM-PAIR-SES-PRESENT-1127-ffe624f9f574892e8206e8a5",
+      "caveat": "该模拟钥由甲乙双方共同持有；验证成功只能证明持有同一钥的一方制作且内容未被篡改，不能唯一认定是甲或乙发送。"
+    }
+  },
+  "registry": {
+    "A": {
+      "party": "A",
+      "name": "拾光录制室",
+      "role": "甲方 / 委托及收件方",
+      "keyId": "KEY-A-511E74480385",
+      "alg": "Ed25519-SIMULATED",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAkw7U/jL3837OrCgMLtvbedLDOx1tclubpWGmesnBM5I=\n-----END PUBLIC KEY-----\n",
+      "fingerprint": "ee399f43962155aefcd22f110e8d5fd70e869e4c80af57cb429fef885db7a6bb"
+    },
+    "B": {
+      "party": "B",
+      "name": "声浪录制室",
+      "role": "乙方 / 承制及交片方",
+      "keyId": "KEY-B-0625B956C57A",
+      "alg": "Ed25519-SIMULATED",
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAYlGhF24rsjOTbRfhsJfh4e4+6r+doAfZUWY+0UPIyRg=\n-----END PUBLIC KEY-----\n",
+      "fingerprint": "175fb84304cf2b932e8beff4d8f79437cb1719f443ea4bd9bb6b8ed126589b4e"
+    }
+  },
+  "orders": [
+    {
+      "id": "ORD-1127",
+      "title": "次日访谈成片交片单",
+      "status": "partially_accepted_original_master",
+      "currentAgreementId": "AGR-1127-SPEC",
+      "currentVersion": 2,
+      "receiptIds": [
+        "RCPT-ORIG-001"
+      ]
+    },
+    {
+      "id": "ORD-8899",
+      "title": "另一场访谈录制交片单（无关订单）",
+      "status": "accepted",
+      "currentAgreementId": "AGR-8899-SPEC",
+      "currentVersion": 1,
+      "receiptIds": []
+    }
+  ],
+  "agreements": [
+    {
+      "status": "superseded",
+      "parentVersion": null,
+      "parentHash": null,
+      "sourceCorrectionId": null,
+      "seal": null,
+      "agreementId": "AGR-1127-SPEC",
+      "orderId": "ORD-1127",
+      "version": 1,
+      "clauseId": "DELIVERY_SPEC",
+      "title": "ORD-1127 交片规格约定",
+      "clauseText": "双方确认次日访谈成片交片口径。交片规格：3840×2160、25fps、ProRes 422 HQ 母版，音频为 48kHz/24bit 立体声 WAV，次日 18:00 前交片。 交付方式为录制室内网或加密移动硬盘。",
+      "terms": {
+        "deliverable": "访谈成片母版",
+        "dueAt": "2026-11-27T18:00:00+08:00",
+        "resolution": "3840x2160",
+        "fps": 25,
+        "codec": "ProRes 422 HQ",
+        "audio": "48kHz/24bit stereo WAV",
+        "delivery": "内网/加密硬盘"
+      },
+      "createdAt": "2026-11-26T19:45:00+08:00",
+      "contentHash": "3d021a7fc3952a4168721a01d0e5b7f1f1181e85f2b3afdeaf49f438cb478e7a",
+      "supersededAt": "2026-11-26T20:16:00+08:00",
+      "supersededBy": "RSK-1127-001"
+    },
+    {
+      "status": "effective",
+      "parentVersion": null,
+      "parentHash": null,
+      "sourceCorrectionId": null,
+      "seal": null,
+      "agreementId": "AGR-8899-SPEC",
+      "orderId": "ORD-8899",
+      "version": 1,
+      "clauseId": "DELIVERY_SPEC",
+      "title": "ORD-8899 交片规格约定",
+      "clauseText": "ORD-8899 沿用同一套通用交片口径。交片规格：3840×2160、25fps、ProRes 422 HQ 母版，音频为 48kHz/24bit 立体声 WAV，次日 18:00 前交片。 嘉宾字幕名单另行确认；本约定与 ORD-1127 的订正互不覆盖。",
+      "terms": {
+        "deliverable": "另一场访谈成片母版",
+        "dueAt": "2026-11-28T18:00:00+08:00",
+        "resolution": "3840x2160",
+        "fps": 25,
+        "codec": "ProRes 422 HQ",
+        "audio": "48kHz/24bit stereo WAV",
+        "delivery": "内网/加密硬盘"
+      },
+      "createdAt": "2026-11-26T18:30:00+08:00",
+      "contentHash": "787a977dee6ef80216955c0c681380674cea324ea36ca651ff5e6aa002c9af3b"
+    },
+    {
+      "status": "effective",
+      "parentVersion": 1,
+      "parentHash": "3d021a7fc3952a4168721a01d0e5b7f1f1181e85f2b3afdeaf49f438cb478e7a",
+      "sourceCorrectionId": "RSK-1127-001",
+      "seal": {
+        "method": "joint",
+        "correctionId": "RSK-1127-001",
+        "docHash": "8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077",
+        "approvals": [
+          {
+            "party": "A",
+            "at": "2026-11-26T20:15:00+08:00",
+            "keyId": "KEY-A-511E74480385",
+            "fingerprint": "ee399f43962155aefcd22f110e8d5fd70e869e4c80af57cb429fef885db7a6bb",
+            "signature": "tDVJhgL5bL+HvStQfbaOs6yQw4p1UVErrVpM35Fc3j8cJqJHi9zGtjepTOhpsuCnEpt7hzCmRO14bAnqegcbBQ==",
+            "channel": "joint-presence",
+            "decision": "accept"
+          },
+          {
+            "party": "B",
+            "at": "2026-11-26T20:16:00+08:00",
+            "keyId": "KEY-B-0625B956C57A",
+            "fingerprint": "175fb84304cf2b932e8beff4d8f79437cb1719f443ea4bd9bb6b8ed126589b4e",
+            "signature": "1jrnaSrrnBhyMv+nRSP307yY5TQImKyO614ZWUlqVaepD9rUxd0YQZGmdvfRVxCcuka19rIFG2HyWyWTDNE1Aw==",
+            "channel": "joint-presence",
+            "decision": "accept"
+          }
+        ]
+      },
+      "agreementId": "AGR-1127-SPEC",
+      "orderId": "ORD-1127",
+      "version": 2,
+      "clauseId": "DELIVERY_SPEC",
+      "title": "ORD-1127 同版改期单",
+      "clauseText": "双方同意 ORD-1127 项下交付时间改至 2026-11-29T18:00:00+08:00；交片规格仍按引用版本执行。本改期单仅替换 AGR-1127-SPEC@v1 中的交付时间/日期条款。",
+      "terms": {
+        "deliverable": "访谈成片母版",
+        "dueAt": "2026-11-29T18:00:00+08:00",
+        "resolution": "3840x2160",
+        "fps": 25,
+        "codec": "ProRes 422 HQ",
+        "audio": "48kHz/24bit stereo WAV",
+        "delivery": "内网/加密硬盘"
+      },
+      "createdAt": "2026-11-26T20:16:00+08:00",
+      "contentHash": "f2ba24bab34d63cbc9d95d1997b0c9364649546648df4703a4a657f16d6c5164"
+    }
+  ],
+  "messages": [
+    {
+      "id": "MSG-001",
+      "seq": 1,
+      "at": "2026-11-26T19:50:00+08:00",
+      "from": "SYSTEM",
+      "kind": "system",
+      "text": "本地谈单会话已建立。普通消息只加盖甲乙共享的双边私记；订单规格变更必须生成引用旧约定及上下文的订正，并按所选办法完成签署。",
+      "legalEffect": "formal-boundary-notice",
+      "correctionId": null,
+      "receiptId": null,
+      "pairMark": "78eb8ff70eabf83a4fdf589324de7b1ed76e3e5cf7af6df19b6bcbbb0f963db4"
+    },
+    {
+      "id": "MSG-002",
+      "seq": 2,
+      "at": "2026-11-26T20:00:00+08:00",
+      "from": "B",
+      "kind": "talk",
+      "text": "甲，明天 ORD-1127 的访谈成片还是按刚才确认的老规格交吧？",
+      "legalEffect": null,
+      "correctionId": null,
+      "receiptId": null,
+      "pairMark": "93db3a668654bddec71ce501d26571bc11d2fee5c6a0b929fff811011ba4eb1b"
+    },
+    {
+      "id": "MSG-003",
+      "seq": 3,
+      "at": "2026-11-26T20:02:00+08:00",
+      "from": "A",
+      "kind": "proposal-talk",
+      "text": "明天交片规格改一下：先出 1920×1080、25fps、H.264 MP4 审片版，4K ProRes 母版往后放。",
+      "legalEffect": null,
+      "correctionId": null,
+      "receiptId": null,
+      "terminalNote": "普通私聊中的意向表达；尚未引用并替换 AGR-1127-SPEC@v1。",
+      "pairMark": "320b35cfb31b50f1fe4f083b9184d469985b15782eb3309b63bbee820f6068d3"
+    },
+    {
+      "id": "MSG-004",
+      "seq": 4,
+      "at": "2026-11-26T20:03:00+08:00",
+      "from": "B",
+      "kind": "ack",
+      "text": "我收到了。",
+      "legalEffect": "acknowledgment-only",
+      "correctionId": null,
+      "receiptId": null,
+      "terminalNote": "终端已标记：“收到”只证明送达/知悉，不构成对规格变更的承诺或会签。",
+      "pairMark": "e9da83fc6015c7fe63ef28da8610c1bbbdf94be6aead888c7da9bfc5ef88f916"
+    },
+    {
+      "id": "MSG-006",
+      "seq": 6,
+      "at": "2026-11-26T20:05:00+08:00",
+      "from": "B",
+      "kind": "talk",
+      "text": "可以。若我联系不上你，至少你发言端直接署名的具名修订单得能让仲裁验出处；没这个，我不能只拿私聊改已接订单。",
+      "legalEffect": null,
+      "correctionId": null,
+      "receiptId": null,
+      "pairMark": "115439439aed4d9bf5aad4a764a7571d3a55e64149164dcbcb541621db079c4f"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "RSK-1127-001",
+      "schema": "formal-correction/v1",
+      "kind": "reschedule",
+      "title": "ORD-1127 同版改期单",
+      "orderId": "ORD-1127",
+      "method": "joint",
+      "citation": {
+        "agreementId": "AGR-1127-SPEC",
+        "orderId": "ORD-1127",
+        "version": 1,
+        "clauseId": "DELIVERY_SPEC",
+        "contentHash": "3d021a7fc3952a4168721a01d0e5b7f1f1181e85f2b3afdeaf49f438cb478e7a",
+        "quote": "交片规格：3840×2160、25fps、ProRes 422 HQ 母版，音频为 48kHz/24bit 立体声 WAV，次日 18:00 前交片。",
+        "quoteLength": 75
+      },
+      "changes": {
+        "clauseText": "双方同意 ORD-1127 项下交付时间改至 2026-11-29T18:00:00+08:00；交片规格仍按引用版本执行。本改期单仅替换 AGR-1127-SPEC@v1 中的交付时间/日期条款。",
+        "terms": {
+          "dueAt": "2026-11-29T18:00:00+08:00"
+        },
+        "schedule": {
+          "dueAt": "2026-11-29T18:00:00+08:00",
+          "claimedBasis": "本单尚未开工"
+        },
+        "basis": "申请人称按“未开工”改期；开工/签收状态由 RCPT-ORIG-001 等证据独立判断。",
+        "title": "ORD-1127 同版改期单"
+      },
+      "summary": "双方对同一个 RSK-1127-001 docHash 接受：交付时间改至 2026-11-29 18:00；申请措辞称“未开工”，该事实另行用回单检验。",
+      "contextMessageIds": [
+        "MSG-002",
+        "MSG-003",
+        "MSG-004",
+        "MSG-006"
+      ],
+      "contextSnapshot": [
+        {
+          "id": "MSG-002",
+          "seq": 2,
+          "at": "2026-11-26T20:00:00+08:00",
+          "from": "B",
+          "kind": "talk",
+          "text": "甲，明天 ORD-1127 的访谈成片还是按刚才确认的老规格交吧？"
+        },
+        {
+          "id": "MSG-003",
+          "seq": 3,
+          "at": "2026-11-26T20:02:00+08:00",
+          "from": "A",
+          "kind": "proposal-talk",
+          "text": "明天交片规格改一下：先出 1920×1080、25fps、H.264 MP4 审片版，4K ProRes 母版往后放。"
+        },
+        {
+          "id": "MSG-004",
+          "seq": 4,
+          "at": "2026-11-26T20:03:00+08:00",
+          "from": "B",
+          "kind": "ack",
+          "text": "我收到了。"
+        },
+        {
+          "id": "MSG-006",
+          "seq": 6,
+          "at": "2026-11-26T20:05:00+08:00",
+          "from": "B",
+          "kind": "talk",
+          "text": "可以。若我联系不上你，至少你发言端直接署名的具名修订单得能让仲裁验出处；没这个，我不能只拿私聊改已接订单。"
+        }
+      ],
+      "proposedBy": "A",
+      "createdAt": "2026-11-26T20:15:00+08:00",
+      "acceptBy": null,
+      "status": "effective",
+      "approvals": [
+        {
+          "docId": "RSK-1127-001",
+          "docHash": "8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077",
+          "party": "A",
+          "at": "2026-11-26T20:15:00+08:00",
+          "channel": "joint-presence",
+          "decision": "accept",
+          "keyId": "KEY-A-511E74480385",
+          "publicKeyFingerprint": "ee399f43962155aefcd22f110e8d5fd70e869e4c80af57cb429fef885db7a6bb",
+          "signature": "tDVJhgL5bL+HvStQfbaOs6yQw4p1UVErrVpM35Fc3j8cJqJHi9zGtjepTOhpsuCnEpt7hzCmRO14bAnqegcbBQ=="
+        },
+        {
+          "docId": "RSK-1127-001",
+          "docHash": "8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077",
+          "party": "B",
+          "at": "2026-11-26T20:16:00+08:00",
+          "channel": "joint-presence",
+          "decision": "accept",
+          "keyId": "KEY-B-0625B956C57A",
+          "publicKeyFingerprint": "175fb84304cf2b932e8beff4d8f79437cb1719f443ea4bd9bb6b8ed126589b4e",
+          "signature": "1jrnaSrrnBhyMv+nRSP307yY5TQImKyO614ZWUlqVaepD9rUxd0YQZGmdvfRVxCcuka19rIFG2HyWyWTDNE1Aw=="
+        }
+      ],
+      "docHash": "8054773c8812d2f06c2daaf9718e7609174ca2d126f9c12b94e0699a5b705077",
+      "deliveredAt": "2026-11-26T20:15:00+08:00",
+      "transferWarning": "双边会签件由双方共同封定；对外提交范围由双方/证据包决定。",
+      "effectiveAt": "2026-11-26T20:16:00+08:00",
+      "effectiveVersion": 2,
+      "effectiveContentHash": "f2ba24bab34d63cbc9d95d1997b0c9364649546648df4703a4a657f16d6c5164"
+    }
+  ],
+  "receipts": [],
+  "terminalExportNotice": "终端界面上的发送方向标签来自本地会话状态；密码学记号的对外归属力以本包验证结论为准。",
+  "manifest": {
+    "schema": "arbitration-evidence-package/v1",
+    "packageId": "PKG-RESCHEDULE-001",
+    "contentsHash": "ccf87b5d18741a0c834b4c8fb3c3f4b90a0625b7a99bad2a067679e0e3649cb5",
+    "hashAlgorithm": "SHA-256/canonical-json",
+    "generatedAt": "2026-11-26T20:20:00+08:00"
+  }
+}

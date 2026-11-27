@@ -1,0 +1,15 @@
+{
+  "name": "private-talk-arbitration-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "可独立使用的甲乙谈单终端、证据包导出器与模拟仲裁席",
+  "scripts": {
+    "start": "node server.js",
+    "demo": "node scripts/demo.js",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

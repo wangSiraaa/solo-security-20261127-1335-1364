@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>模拟仲裁席 · 私聊边界模拟器</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="seal">仲</span>模拟仲裁席</div>
+    <span class="pill arb">只按证据包内可独立验真的材料判定</span>
+    <div class="spacer"></div>
+    <a class="button" href="/">总入口</a>
+    <a class="button" href="/terminal.html?party=A&sid=present" target="_blank">甲终端</a>
+    <a class="button" href="/terminal.html?party=B&sid=present" target="_blank">乙终端</a>
+  </header>
+
+  <main class="layout single">
+    <section class="panel">
+      <h2>接收第三方证据包</h2>
+      <div class="grid2">
+        <div class="upload-zone">
+          <p><b>上传从终端取出的证据包 JSON</b></p>
+          <input id="fileInput" type="file" accept="application/json,.json" />
+          <p class="muted small">全部判定在本地服务完成；证据包内附公钥，仲裁逻辑会独立验签。</p>
+        </div>
+        <div class="card" style="margin:0">
+          <h3 style="margin-top:0">按编号/脚本证据载入</h3>
+          <div class="row">
+            <input id="packageIdInput" placeholder="PKG-... 或选择下列脚本包" />
+            <button id="fetchPackageBtn" class="primary">载入并开庭</button>
+          </div>
+          <div class="row" style="margin-top:10px">
+            <button class="ghost demo-pkg" data-file="/artifacts/present-package.json">甲在场证据包</button>
+            <button class="ghost demo-pkg" data-file="/artifacts/missing-pair-only-package.json">失联·私聊包</button>
+            <button class="ghost demo-pkg" data-file="/artifacts/missing-named-late-package.json">失联·具名迟到包</button>
+            <button class="ghost demo-pkg" data-file="/artifacts/reschedule-package.json">同版改期包</button>
+            <button class="ghost demo-pkg" data-file="/artifacts/receipt-edge-package.json">回单边界包</button>
+          </div>
+          <div id="loadStatus" class="small muted" style="margin-top:8px"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="packageSummary" class="panel" hidden></section>
+    <section id="awardPanel" class="panel award" hidden>
+      <div class="row" style="justify-content:space-between">
+        <h2 style="margin:0">仲裁判定</h2>
+        <div class="row no-print">
+          <button id="exportAwardJson">取出裁决 JSON</button>
+          <button id="exportAwardMd">取出裁决 Markdown</button>
+          <button onclick="window.print()" class="primary">打印 / 存 PDF</button>
+        </div>
+      </div>
+      <div id="award"></div>
+    </section>
+
+    <section class="panel" id="queryPanel" hidden>
+      <h2>查回签过的内容</h2>
+      <div class="row">
+        <input id="queryInput" placeholder="订正编号 / 回单编号 / 完整或前缀 docHash" />
+        <button id="queryBtn" class="arb">仲裁席查回</button>
+      </div>
+      <div id="queryResults" class="search-results" style="margin-top:12px"></div>
+    </section>
+  </main>
+
+  <div class="toast"></div>
+  <script type="module" src="/arbiter.js"></script>
+</body>
+</html>

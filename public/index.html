@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>私聊边界 × 模拟仲裁席</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="seal">证</span>两家录制室谈单见证模拟</div>
+    <span class="pill">无真实账号 / 无外部凭据</span>
+    <div class="spacer"></div>
+    <a class="button arb" href="/arbiter.html">进入仲裁席</a>
+  </header>
+
+  <section class="hero">
+    <h1>私聊片段能证明是谁改了规格吗？<br/>让终端把“聊天”和“承诺”分开。</h1>
+    <p class="lead">
+      一对可分别打开的甲、乙谈单终端，加一个只按自包含证据包判断的模拟仲裁席。
+      普通消息使用只有会话双方能核对的<b>双边私记</b>；正式订正可选择<b>双方到场会签</b>，
+      或由发言端作出第三方可独立验真的<b>具名公鉴署名</b>。
+    </p>
+    <div class="note info" style="max-width:900px">
+      题内两类见证器均已模拟：<b>双边私记见证器 PairMark</b> 只有会话双方能核对；<b>具名公鉴见证器 PublicSeal</b> 让第三方用证据包内公钥独立验真。每次订正都固定引用它替换的 <code>agreementId@version + contentHash</code>、原文摘录和上下文消息；“我收到了”只标记为知悉，不自动同意改规格。
+    </div>
+  </section>
+
+  <section class="cards">
+    <article class="entry">
+      <div class="icon" style="background:var(--a-soft);color:var(--a)">甲</div>
+      <h2>拾光录制室终端</h2>
+      <p>畅所欲言：普通私聊只留双边可核对记号；需要对外可验时，才主动作具名修订单或到场会签。可演练突然失联。</p>
+      <div class="links">
+        <a class="button a" href="/terminal.html?party=A&sid=present">甲在场分支</a>
+        <a class="button danger" href="/terminal.html?party=A&sid=missing">甲失联前终端</a>
+        <a class="button ghost" href="/terminal.html?party=A&sid=live">自由台</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="icon" style="background:var(--b-soft);color:var(--b)">乙</div>
+      <h2>声浪录制室终端</h2>
+      <p>保护已接订单：核对私聊、生成引用订正、请求甲会签，或接受甲失联前的具名修订单。可导出终端记录和第三方证据包。</p>
+      <div class="links">
+        <a class="button b" href="/terminal.html?party=B&sid=present">乙·在场演练</a>
+        <a class="button b" href="/terminal.html?party=B&sid=missing">乙·失联演练</a>
+        <a class="button ghost" href="/terminal.html?party=B&sid=live">自由台</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="icon" style="background:var(--arb-soft);color:var(--arb)">仲</div>
+      <h2>模拟仲裁席</h2>
+      <p>上传或读回证据包，独立重算清单哈希、双边 HMAC、Ed25519 式公鉴署名、引用哈希、上下文和迟到接受时间。裁决 JSON/Markdown 可取出。</p>
+      <div class="links">
+        <a class="button arb" href="/arbiter.html">打开仲裁席</a>
+        <a class="button ghost" href="/artifacts/" onclick="return false">脚本证据见下方</a>
+      </div>
+    </article>
+  </section>
+
+  <h2 class="section-title">同一轮谈单的脚本产物（运行 <code>npm run demo</code> 后可直接由仲裁席按钮载入）</h2>
+  <div class="artifact-list">
+    <a href="/artifacts/present-transcript-A.md">甲在场 · 甲终端聊天记录 Markdown</a>
+    <a href="/artifacts/present-transcript-B.md">甲在场 · 乙终端聊天记录 Markdown</a>
+    <a href="/artifacts/present-package.json">甲在场 · 双方会签证据包 JSON</a>
+    <a href="/artifacts/present-award.md">甲在场 · 仲裁具体判定 Markdown</a>
+
+    <a href="/artifacts/missing-pair-only-package.json">甲失联 · 乙单方双边私聊证据包</a>
+    <a href="/artifacts/missing-pair-only-award.md">甲失联 · 私聊归属/换版判定</a>
+    <a href="/artifacts/missing-named-late-package.json">甲失联 · 具名出处可验但接受迟到包</a>
+    <a href="/artifacts/missing-named-late-award.md">甲失联 · 出处成立但变更不成立裁决</a>
+
+    <a href="/artifacts/reschedule-package.json">双方同版改期 · 证据包</a>
+    <a href="/artifacts/reschedule-award.md">双方同版改期 · 查回签署内容裁决</a>
+    <a href="/artifacts/receipt-edge-package.json">补入原版成片签收回单 · 证据包</a>
+    <a href="/artifacts/receipt-edge-award.md">回单来源成立但不能按未开工改期裁决</a>
+
+    <a href="/artifacts/scope-test-award.json">相同字句不覆盖无关订单 · 机器判定</a>
+    <a href="/verify-evidence.mjs">第三方独立验真 CLI 脚本</a>
+  </div>
+
+  <section class="hero" style="padding-top:10px">
+    <div class="panel">
+      <h2>如何演练</h2>
+      <ol>
+        <li>运行 <code>npm start</code>，打开甲、乙两个终端窗口；选择同一 <code>sid</code> 分支。</li>
+        <li>在甲终端发送普通改规格话，在乙终端点“我收到了”；观察消息只被标记为知悉，订单版本不变。</li>
+        <li>右侧“立订正”会自动引用旧约定、原文和上下文。选择双边会签时，分别在甲、乙终端点签署；选择具名办法时，甲的署名可在缺席后验真。</li>
+        <li>把演练时间设到 <code>21:14</code> 再接受 <code>CR-NAMED-001</code>，仲裁会区分“甲确实出具”与“乙接受迟到、未完成变更”。</li>
+        <li>在“证据包”页导出 JSON，交给仲裁席；也可运行 <code>node scripts/verify-evidence.mjs artifacts/xxx-package.json</code> 做独立命令行核验。</li>
+      </ol>
+    </div>
+  </section>
+</body>
+</html>
