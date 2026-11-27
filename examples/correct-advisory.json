@@ -1,0 +1,18 @@
+{
+  "old_id": "ADV-DCP710-R2",
+  "reason": "Example only: supplier clarifies process-exit evidence; scope unchanged.",
+  "withdrawn": true,
+  "at": "SHIFT-1-FRI-AM",
+  "advisory": {
+    "code": "FIC-BARCODE-DCP710",
+    "revision": 3,
+    "advisory_id": "ADV-DCP710-R3-EXAMPLE",
+    "title": "Fictional barcode decoder advisory (example correction)",
+    "part_numbers": ["DCP-710"],
+    "affected_range": ">=1.0.0,<2.0.0",
+    "fixed_version": "2.0.0",
+    "enablement": "FUNCTION_ENABLED",
+    "issued_at": "SHIFT-1-FRI-AM",
+    "note": "Clarifies that an exited old PID and a corrected running process are both required."
+  }
+}

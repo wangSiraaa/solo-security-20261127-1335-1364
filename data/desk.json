@@ -1,0 +1,884 @@
+{
+  "sequence": 8,
+  "current_shift": "SHIFT-0-TONIGHT",
+  "advisories": [
+    {
+      "id": "ADV-DCP710-R1",
+      "code": "FIC-BARCODE-DCP710",
+      "revision": 1,
+      "title": "Fictional barcode decoder advisory (withdrawn revision)",
+      "status": "WITHDRAWN",
+      "part_numbers": [
+        "DCP-710"
+      ],
+      "affected_range": [
+        ">=1.0.0",
+        "<1.9.0"
+      ],
+      "fixed_version": "1.9.0",
+      "enablement": "FUNCTION_ENABLED",
+      "accepted_routes": [
+        "REPLACED_NEW_PROCESS",
+        "FUNCTIONS_DISABLED"
+      ],
+      "note": "Initial paper bulletin; upper bound later found to be wrong.",
+      "issued_at": "SHIFT-YESTERDAY",
+      "successor_id": "ADV-DCP710-R2",
+      "withdrawn_reason": "Supplier withdrew R1 and corrected the affected version interval.",
+      "withdrawn_at": "SHIFT-0-TONIGHT"
+    },
+    {
+      "id": "ADV-DCP710-R2",
+      "code": "FIC-BARCODE-DCP710",
+      "revision": 2,
+      "title": "Fictional barcode decoder advisory (corrected revision)",
+      "status": "ACTIVE",
+      "part_numbers": [
+        "DCP-710"
+      ],
+      "affected_range": [
+        ">=1.0.0",
+        "<2.0.0"
+      ],
+      "fixed_version": "2.0.0",
+      "enablement": "FUNCTION_ENABLED",
+      "accepted_routes": [
+        "REPLACED_NEW_PROCESS",
+        "FUNCTIONS_DISABLED"
+      ],
+      "note": "Correction includes 1.9.x subcomponents and expressly requires the old process to exit before replacement evidence is accepted.",
+      "issued_at": "SHIFT-0-TONIGHT",
+      "successor_id": null,
+      "withdrawn_reason": null
+    }
+  ],
+  "machines": [
+    {
+      "machine_no": "TERM-JIA",
+      "label": "甲桌条码终端",
+      "desk": "DESK-JIA",
+      "service": {
+        "tonight_demand": 40,
+        "manual_capacity": {
+          "tonight": 20,
+          "SHIFT-1-FRI-AM": 0
+        },
+        "safe_manual": true,
+        "closed_shifts": [
+          "SHIFT-1-FRI-AM",
+          "SHIFT-2-FRI-PM"
+        ],
+        "appointments": {},
+        "manual_backup": {},
+        "control_through_shift": "SHIFT-2-FRI-PM",
+        "next_window": "WINDOW-NEXT-AFTER-TWO-SHIFTS",
+        "control_reason": "正在接待且有安全人工通道；明天该桌休息",
+        "window_reason": ""
+      }
+    },
+    {
+      "machine_no": "TERM-YI",
+      "label": "乙桌条码终端",
+      "desk": "DESK-YI",
+      "service": {
+        "tonight_demand": 0,
+        "can_stop_tonight": true,
+        "appointments": {
+          "SHIFT-1-FRI-AM": 10
+        },
+        "manual_capacity": {
+          "SHIFT-1-FRI-AM": 0
+        },
+        "manual_backup": {
+          "SHIFT-1-FRI-AM": false
+        },
+        "safe_manual": false,
+        "promise_from_shift": "SHIFT-1-FRI-AM",
+        "promise": "Ten booked morning items recorded normally after process receipt.",
+        "window_reason": "明早十件已约且当前无替班/人工代录"
+      }
+    },
+    {
+      "machine_no": "TERM-BING",
+      "label": "不停业单读终端（丙）",
+      "desk": "MOBILE-COUNTER",
+      "service": {
+        "cannot_stop_service": true,
+        "spare_no": "SPARE-BING-1",
+        "order_kind": "NO_DOWNTIME_REPLACE"
+      }
+    }
+  ],
+  "inventory_reports": [
+    {
+      "id": "INV-JIA-YDAY-OPEN",
+      "seq": 1,
+      "machine_no": "TERM-JIA",
+      "captured_at": "SHIFT-YESTERDAY",
+      "reporter": "closing-count",
+      "whole_model": "DeskBar X9",
+      "whole_version": "7.2.0-fictional",
+      "components": [
+        {
+          "uid": "JIA-batch",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.8.4",
+          "function": "BATCH_READ",
+          "calls_part": true,
+          "function_enabled": true,
+          "processes": [
+            {
+              "pid": 4101,
+              "running_version": "1.8.4",
+              "state": "RUNNING"
+            }
+          ]
+        },
+        {
+          "uid": "JIA-single",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.8.4",
+          "function": "SINGLE_READ",
+          "calls_part": true,
+          "function_enabled": true,
+          "processes": [
+            {
+              "pid": 4102,
+              "running_version": "1.8.4",
+              "state": "RUNNING"
+            }
+          ]
+        }
+      ],
+      "raw_note": ""
+    },
+    {
+      "id": "INV-JIA-YDAY-MANUAL",
+      "seq": 2,
+      "machine_no": "TERM-JIA",
+      "captured_at": "SHIFT-YESTERDAY",
+      "reporter": "supervisor-paper-check",
+      "whole_model": "DeskBar X9",
+      "whole_version": "7.2.0-fictional",
+      "components": [
+        {
+          "uid": "JIA-batch",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.8.4",
+          "function": "BATCH_READ",
+          "calls_part": true,
+          "function_enabled": false,
+          "processes": [
+            {
+              "pid": 4101,
+              "running_version": "1.8.4",
+              "state": "EXITED"
+            }
+          ]
+        },
+        {
+          "uid": "JIA-single",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.8.4",
+          "function": "SINGLE_READ",
+          "calls_part": true,
+          "function_enabled": false,
+          "processes": [
+            {
+              "pid": 4102,
+              "running_version": "1.8.4",
+              "state": "EXITED"
+            }
+          ]
+        }
+      ],
+      "raw_note": ""
+    },
+    {
+      "id": "INV-JIA-TONIGHT-CHECK",
+      "seq": 3,
+      "machine_no": "TERM-JIA",
+      "captured_at": "SHIFT-0-TONIGHT",
+      "reporter": "opening-count",
+      "whole_model": "DeskBar X9",
+      "whole_version": "7.2.0-fictional",
+      "components": [
+        {
+          "uid": "JIA-batch",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.8.4",
+          "function": "BATCH_READ",
+          "calls_part": true,
+          "function_enabled": false,
+          "processes": [
+            {
+              "pid": 4101,
+              "running_version": "1.8.4",
+              "state": "EXITED"
+            }
+          ]
+        },
+        {
+          "uid": "JIA-single",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.8.4",
+          "function": "SINGLE_READ",
+          "calls_part": true,
+          "function_enabled": false,
+          "processes": [
+            {
+              "pid": 4102,
+              "running_version": "1.8.4",
+              "state": "EXITED"
+            }
+          ]
+        }
+      ],
+      "raw_note": ""
+    },
+    {
+      "id": "INV-YI-OPEN",
+      "seq": 4,
+      "machine_no": "TERM-YI",
+      "captured_at": "SHIFT-0-TONIGHT",
+      "reporter": "pre-window-count",
+      "whole_model": "DeskBar X9",
+      "whole_version": "7.2.0-fictional",
+      "components": [
+        {
+          "uid": "YI-batch",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.8.4",
+          "function": "BATCH_READ",
+          "calls_part": true,
+          "function_enabled": true,
+          "processes": [
+            {
+              "pid": 5101,
+              "running_version": "1.8.4",
+              "state": "RUNNING"
+            }
+          ]
+        },
+        {
+          "uid": "YI-single",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.8.4",
+          "function": "SINGLE_READ",
+          "calls_part": true,
+          "function_enabled": true,
+          "processes": [
+            {
+              "pid": 5102,
+              "running_version": "1.8.4",
+              "state": "RUNNING"
+            }
+          ]
+        }
+      ],
+      "raw_note": ""
+    },
+    {
+      "id": "INV-YI-NEW-PROCESS",
+      "seq": 5,
+      "machine_no": "TERM-YI",
+      "captured_at": "SHIFT-0-TONIGHT",
+      "reporter": "post-replacement-process-count",
+      "whole_model": "DeskBar X9",
+      "whole_version": "7.2.0-fictional",
+      "components": [
+        {
+          "uid": "YI-batch",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "2.0.1-fictional",
+          "function": "BATCH_READ",
+          "calls_part": true,
+          "function_enabled": true,
+          "processes": [
+            {
+              "pid": 5101,
+              "running_version": "1.8.4",
+              "state": "EXITED"
+            },
+            {
+              "pid": 5201,
+              "running_version": "2.0.1-fictional",
+              "state": "RUNNING"
+            }
+          ]
+        },
+        {
+          "uid": "YI-single",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "2.0.1-fictional",
+          "function": "SINGLE_READ",
+          "calls_part": true,
+          "function_enabled": true,
+          "processes": [
+            {
+              "pid": 5102,
+              "running_version": "1.8.4",
+              "state": "EXITED"
+            },
+            {
+              "pid": 5202,
+              "running_version": "2.0.1-fictional",
+              "state": "RUNNING"
+            }
+          ]
+        }
+      ],
+      "raw_note": "New PIDs and process executable versions checked against paper receipt."
+    },
+    {
+      "id": "INV-BING-OPEN",
+      "seq": 6,
+      "machine_no": "TERM-BING",
+      "captured_at": "SHIFT-0-TONIGHT",
+      "reporter": "roving-count",
+      "whole_model": "QuickScan PaperOnly",
+      "whole_version": "4.0.0-fictional",
+      "components": [
+        {
+          "uid": "BING-single",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.9.4",
+          "function": "SINGLE_READ",
+          "calls_part": true,
+          "function_enabled": true,
+          "processes": [
+            {
+              "pid": 6101,
+              "running_version": "1.9.4",
+              "state": "RUNNING"
+            }
+          ]
+        }
+      ],
+      "raw_note": ""
+    },
+    {
+      "id": "INV-BING-CORRECTED-COUNT",
+      "seq": 7,
+      "machine_no": "TERM-BING",
+      "captured_at": "SHIFT-0-TONIGHT",
+      "reporter": "field-count",
+      "whole_model": "",
+      "whole_version": "",
+      "components": [
+        {
+          "uid": "BING-single",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "2.0.0-fictional",
+          "function": "SINGLE_READ",
+          "calls_part": true,
+          "function_enabled": true,
+          "processes": [
+            {
+              "pid": 6101,
+              "running_version": "1.9.4",
+              "state": "EXITED"
+            },
+            {
+              "pid": 6201,
+              "running_version": "2.0.0-fictional",
+              "state": "RUNNING"
+            }
+          ]
+        }
+      ],
+      "raw_note": "No separate repair receipt; process inventory is the receipt."
+    },
+    {
+      "id": "INV-BING-ROLLBACK",
+      "seq": 8,
+      "machine_no": "TERM-BING",
+      "captured_at": "SHIFT-0-TONIGHT-LATER",
+      "reporter": "repeat-process-count",
+      "whole_model": "",
+      "whole_version": "",
+      "components": [
+        {
+          "uid": "BING-single",
+          "part_no": "DCP-710",
+          "name": "fictional barcode decoder module",
+          "installed_version": "1.9.4",
+          "function": "SINGLE_READ",
+          "calls_part": true,
+          "function_enabled": true,
+          "processes": [
+            {
+              "pid": 6201,
+              "running_version": "2.0.0-fictional",
+              "state": "EXITED"
+            },
+            {
+              "pid": 6301,
+              "running_version": "1.9.4",
+              "state": "RUNNING"
+            }
+          ]
+        }
+      ],
+      "raw_note": "Machine returned to the old decoder process/version."
+    }
+  ],
+  "repair_receipts": [
+    {
+      "id": "RR-YI-WINDOW",
+      "machine_no": "TERM-YI",
+      "completed_at": "SHIFT-0-TONIGHT",
+      "action": "REPLACE_DCP710",
+      "part_no": "DCP-710",
+      "from_version": "1.8.4",
+      "to_version": "2.0.1-fictional",
+      "covered_uids": [
+        "YI-batch",
+        "YI-single"
+      ],
+      "installer": "maintenance-desk",
+      "paper_ref": "window envelope 7",
+      "note": "One part/revision fitted to both decoder slots; old board tagged."
+    }
+  ],
+  "disablement_receipts": [
+    {
+      "id": "DIS-JIA-YDAY",
+      "machine_no": "TERM-JIA",
+      "issued_at": "SHIFT-YESTERDAY",
+      "covered_uids": [
+        "JIA-batch",
+        "JIA-single"
+      ],
+      "covered_functions": [
+        "BATCH_READ",
+        "SINGLE_READ"
+      ],
+      "durable": false,
+      "temporary": true,
+      "old_processes_stopped": true,
+      "control": "SIGNED_PAPER_SWITCHOFF_AND_MANUAL_QUEUE",
+      "valid_through_shift": "SHIFT-2-FRI-PM",
+      "paper_ref": "A-desk logbook p.18",
+      "note": "Both callers switched off; staff instructed not to relaunch decoder."
+    }
+  ],
+  "staffing_reports": [
+    {
+      "id": "STAFF-YI-AM-ORIGINAL",
+      "desk": "DESK-YI",
+      "shift": "SHIFT-1-FRI-AM",
+      "manual_backup_available": false,
+      "source": "duty-roster",
+      "reliable": true,
+      "note": "Ten appointments; no substitute/manual entry clerk."
+    },
+    {
+      "id": "STAFF-YI-AM-RUMOR",
+      "desk": "DESK-YI",
+      "shift": "SHIFT-1-FRI-AM",
+      "manual_backup_available": true,
+      "source": "unconfirmed-message",
+      "reliable": false,
+      "note": "Report changed twice; do not move the safety/window decision on this alone."
+    }
+  ],
+  "resource_events": [
+    {
+      "id": "RES-SPARE-RESERVED",
+      "resource_no": "SPARE-BING-1",
+      "event": "SPARE_RESERVED",
+      "machine_no": "TERM-BING",
+      "available": true,
+      "linked_machine": null,
+      "at": "SHIFT-0-TONIGHT",
+      "note": "Spare terminal makes a no-downtime replacement order supportable."
+    },
+    {
+      "id": "RES-SPARE-LOANED",
+      "resource_no": "SPARE-BING-1",
+      "event": "LOANED_OUT",
+      "machine_no": null,
+      "available": false,
+      "linked_machine": "TERM-OTHER-9",
+      "at": "SHIFT-0-TONIGHT",
+      "note": "Spare was only lent to another person; that does not remediate TERM-BING."
+    }
+  ],
+  "tickets": [
+    {
+      "id": "TKT-JIA",
+      "machine_no": "TERM-JIA",
+      "advisory_code": "FIC-BARCODE-DCP710",
+      "order_kind": "CONTROL_OR_REPLACE",
+      "status": "MITIGATED",
+      "opened_at": "SHIFT-0-TONIGHT",
+      "promise": {
+        "kind": "SAFE_MANUAL_CONTROL",
+        "status": "AVAILABLE",
+        "through_shift": "SHIFT-2-FRI-PM"
+      },
+      "items": [
+        {
+          "key": "installed:JIA-batch",
+          "kind": "INSTALLED_COMPONENT",
+          "uid": "JIA-batch",
+          "function": "BATCH_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.8.4",
+          "first_seen_report": "INV-JIA-YDAY-OPEN",
+          "required_evidence": "A later full inventory showing the fixed part/version, or a signed durable disablement covering this function with the old process exited.",
+          "status": "OPEN",
+          "status_history": []
+        },
+        {
+          "key": "process:JIA-batch:4101",
+          "kind": "RUNNING_PROCESS",
+          "uid": "JIA-batch",
+          "pid": 4101,
+          "function": "BATCH_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.8.4",
+          "first_seen_report": "INV-JIA-YDAY-OPEN",
+          "required_evidence": "An inventory/process receipt showing this PID exited and a new process running the corrected version.",
+          "status": "CLEARED",
+          "status_history": []
+        },
+        {
+          "key": "installed:JIA-single",
+          "kind": "INSTALLED_COMPONENT",
+          "uid": "JIA-single",
+          "function": "SINGLE_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.8.4",
+          "first_seen_report": "INV-JIA-YDAY-OPEN",
+          "required_evidence": "A later full inventory showing the fixed part/version, or a signed durable disablement covering this function with the old process exited.",
+          "status": "OPEN",
+          "status_history": []
+        },
+        {
+          "key": "process:JIA-single:4102",
+          "kind": "RUNNING_PROCESS",
+          "uid": "JIA-single",
+          "pid": 4102,
+          "function": "SINGLE_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.8.4",
+          "first_seen_report": "INV-JIA-YDAY-OPEN",
+          "required_evidence": "An inventory/process receipt showing this PID exited and a new process running the corrected version.",
+          "status": "CLEARED",
+          "status_history": []
+        }
+      ],
+      "note": "",
+      "status_history": [
+        {
+          "status": "OPEN",
+          "at": "SHIFT-0-TONIGHT",
+          "reason": "ticket opened"
+        },
+        {
+          "status": "MITIGATED",
+          "at": "SHIFT-YESTERDAY",
+          "reason": "time-boxed temporary control closure",
+          "closure_id": "CL-JIA-TMP-YDAY"
+        }
+      ],
+      "last_assessment": {
+        "active_advisory_id": "ADV-DCP710-R1",
+        "open_item_count": 2,
+        "can_close_final": false,
+        "can_close_temporary": true,
+        "eligible_final_routes": []
+      }
+    },
+    {
+      "id": "TKT-YI",
+      "machine_no": "TERM-YI",
+      "advisory_code": "FIC-BARCODE-DCP710",
+      "order_kind": "DOWNTIME_REPLACE",
+      "status": "CLOSED",
+      "opened_at": "SHIFT-0-TONIGHT",
+      "promise": {
+        "kind": "TONIGHT_WINDOW_REPLACE",
+        "status": "AVAILABLE",
+        "through_shift": "SHIFT-1-FRI-AM"
+      },
+      "items": [
+        {
+          "key": "installed:YI-batch",
+          "kind": "INSTALLED_COMPONENT",
+          "uid": "YI-batch",
+          "function": "BATCH_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.8.4",
+          "first_seen_report": "INV-YI-OPEN",
+          "required_evidence": "A later full inventory showing the fixed part/version, or a signed durable disablement covering this function with the old process exited.",
+          "status": "CLEARED",
+          "status_history": []
+        },
+        {
+          "key": "process:YI-batch:5101",
+          "kind": "RUNNING_PROCESS",
+          "uid": "YI-batch",
+          "pid": 5101,
+          "function": "BATCH_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.8.4",
+          "first_seen_report": "INV-YI-OPEN",
+          "required_evidence": "An inventory/process receipt showing this PID exited and a new process running the corrected version.",
+          "status": "CLEARED",
+          "status_history": []
+        },
+        {
+          "key": "installed:YI-single",
+          "kind": "INSTALLED_COMPONENT",
+          "uid": "YI-single",
+          "function": "SINGLE_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.8.4",
+          "first_seen_report": "INV-YI-OPEN",
+          "required_evidence": "A later full inventory showing the fixed part/version, or a signed durable disablement covering this function with the old process exited.",
+          "status": "CLEARED",
+          "status_history": []
+        },
+        {
+          "key": "process:YI-single:5102",
+          "kind": "RUNNING_PROCESS",
+          "uid": "YI-single",
+          "pid": 5102,
+          "function": "SINGLE_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.8.4",
+          "first_seen_report": "INV-YI-OPEN",
+          "required_evidence": "An inventory/process receipt showing this PID exited and a new process running the corrected version.",
+          "status": "CLEARED",
+          "status_history": []
+        }
+      ],
+      "note": "",
+      "status_history": [
+        {
+          "status": "OPEN",
+          "at": "SHIFT-0-TONIGHT",
+          "reason": "ticket opened"
+        },
+        {
+          "status": "CLOSED",
+          "at": "SHIFT-0-TONIGHT",
+          "reason": "final closure via REPLACED_NEW_PROCESS",
+          "closure_id": "CL-YI-FINAL"
+        }
+      ],
+      "last_assessment": {
+        "active_advisory_id": "ADV-DCP710-R2",
+        "open_item_count": 0,
+        "can_close_final": true,
+        "can_close_temporary": false,
+        "eligible_final_routes": [
+          "REPLACED_NEW_PROCESS"
+        ]
+      }
+    },
+    {
+      "id": "TKT-BING",
+      "machine_no": "TERM-BING",
+      "advisory_code": "FIC-BARCODE-DCP710",
+      "order_kind": "NO_DOWNTIME_REPLACE",
+      "status": "OPEN",
+      "opened_at": "SHIFT-0-TONIGHT",
+      "promise": {
+        "kind": "NO_DOWNTIME_REPLACE",
+        "status": "IMPOSSIBLE",
+        "through_shift": null,
+        "reason": "Old process regressed and SPARE-BING-1 is loaned to TERM-OTHER-9.",
+        "options": [
+          "recover SPARE-BING-1 before promising hot swap",
+          "schedule a downtime replacement window"
+        ]
+      },
+      "items": [
+        {
+          "key": "installed:BING-single",
+          "kind": "INSTALLED_COMPONENT",
+          "uid": "BING-single",
+          "function": "SINGLE_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.9.4",
+          "first_seen_report": "INV-BING-OPEN",
+          "required_evidence": "A later full inventory showing the fixed part/version, or a signed durable disablement covering this function with the old process exited.",
+          "status": "OPEN",
+          "status_history": []
+        },
+        {
+          "key": "process:BING-single:6101",
+          "kind": "RUNNING_PROCESS",
+          "uid": "BING-single",
+          "pid": 6101,
+          "function": "SINGLE_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.9.4",
+          "first_seen_report": "INV-BING-OPEN",
+          "required_evidence": "An inventory/process receipt showing this PID exited and a new process running the corrected version.",
+          "status": "CLEARED",
+          "status_history": []
+        },
+        {
+          "key": "process:BING-single:6301",
+          "kind": "RUNNING_PROCESS",
+          "uid": "BING-single",
+          "pid": 6301,
+          "function": "SINGLE_READ",
+          "part_no": "DCP-710",
+          "affected_version": "1.9.4",
+          "first_seen_report": "INV-BING-ROLLBACK",
+          "required_evidence": "An inventory/process receipt showing this PID exited and a new process running the corrected version.",
+          "status": "OPEN",
+          "status_history": []
+        }
+      ],
+      "note": "",
+      "status_history": [
+        {
+          "status": "OPEN",
+          "at": "SHIFT-0-TONIGHT",
+          "reason": "ticket opened"
+        },
+        {
+          "status": "CLOSED",
+          "at": "SHIFT-0-TONIGHT",
+          "reason": "final closure via REPLACED_NEW_PROCESS",
+          "closure_id": "CL-BING-BRIEF-FINAL"
+        },
+        {
+          "status": "OPEN",
+          "at": "SHIFT-0-TONIGHT",
+          "reason": "fresh inventory contradicts the final closure; reopened without deleting history"
+        }
+      ],
+      "last_assessment": {
+        "active_advisory_id": "ADV-DCP710-R2",
+        "open_item_count": 2,
+        "can_close_final": false,
+        "can_close_temporary": false,
+        "eligible_final_routes": []
+      }
+    }
+  ],
+  "closures": [
+    {
+      "id": "CL-JIA-TMP-YDAY",
+      "ticket_id": "TKT-JIA",
+      "machine_no": "TERM-JIA",
+      "advisory_code": "FIC-BARCODE-DCP710",
+      "issued_under_advisory_id": "ADV-DCP710-R1",
+      "issued_at_shift": "SHIFT-YESTERDAY",
+      "kind": "TEMPORARY_CONTROL",
+      "route": "TEMPORARY_CONTROL",
+      "evidence_ids": [
+        "DIS-JIA-YDAY",
+        "INV-JIA-YDAY-MANUAL"
+      ],
+      "valid_through_shift": "SHIFT-2-FRI-PM",
+      "statement": "Yesterday's scoped temporary closure; not a durable replacement closure.",
+      "scope": {
+        "summary": "Covers only switched-off BATCH_READ/SINGLE_READ callers and exited PIDs 4101/4102. Manual completion is bounded to 20 pieces for tonight's staffing; it does not promise all 40 or normal scanner service.",
+        "max_tonight_completions": 20,
+        "tonight_intake": 40,
+        "carried_unfinished": 20,
+        "valid_through_shift": "SHIFT-2-FRI-PM",
+        "staffing_dependency": "NONE_REQUIRED"
+      },
+      "record_version": 1
+    },
+    {
+      "id": "CL-YI-FINAL",
+      "ticket_id": "TKT-YI",
+      "machine_no": "TERM-YI",
+      "advisory_code": "FIC-BARCODE-DCP710",
+      "issued_under_advisory_id": "ADV-DCP710-R2",
+      "issued_at_shift": "SHIFT-0-TONIGHT",
+      "kind": "FINAL",
+      "route": "REPLACED_NEW_PROCESS",
+      "evidence_ids": [
+        "INV-YI-NEW-PROCESS",
+        "RR-YI-WINDOW"
+      ],
+      "valid_through_shift": null,
+      "statement": "Replaced and new process inventory receipt verified.",
+      "scope": {
+        "summary": "Covers BATCH_READ and SINGLE_READ instances and PIDs 5101/5102.",
+        "morning_appointments_covered": 10,
+        "staffing_dependency": "NONE_REQUIRED"
+      },
+      "record_version": 1
+    },
+    {
+      "id": "CL-BING-BRIEF-FINAL",
+      "ticket_id": "TKT-BING",
+      "machine_no": "TERM-BING",
+      "advisory_code": "FIC-BARCODE-DCP710",
+      "issued_under_advisory_id": "ADV-DCP710-R2",
+      "issued_at_shift": "SHIFT-0-TONIGHT",
+      "kind": "FINAL",
+      "route": "REPLACED_NEW_PROCESS",
+      "evidence_ids": [
+        "INV-BING-CORRECTED-COUNT"
+      ],
+      "valid_through_shift": null,
+      "statement": "Closed directly from corrected field inventory and old PID exit evidence.",
+      "scope": {
+        "summary": "Positive intermediate state required by the exercise."
+      },
+      "record_version": 1
+    }
+  ],
+  "plans": [
+    {
+      "window_machine": "TERM-YI",
+      "control_first_machine": "TERM-JIA",
+      "control_order": [
+        {
+          "machine_no": "TERM-JIA",
+          "action": "Disable and lock BATCH_READ and SINGLE_READ callers before accepting another scanned item; open the paper/manual queue.",
+          "why": "正在接待且有安全人工通道；明天该桌休息",
+          "tonight_completable": 20,
+          "carried_unfinished": 20,
+          "do_not_promise": "all 40 tonight items",
+          "control_through_shift": "SHIFT-2-FRI-PM",
+          "next_window": "WINDOW-NEXT-AFTER-TWO-SHIFTS"
+        },
+        {
+          "machine_no": "TERM-YI",
+          "action": "Stop the old decoder process at window start, replace the part, start the corrected process, and file the new-process inventory receipt.",
+          "why": "明早十件已约且当前无替班/人工代录",
+          "promise_from_shift": "SHIFT-1-FRI-AM",
+          "promise": "Ten booked morning items recorded normally after process receipt."
+        }
+      ],
+      "staffing_report_policy": "Append a new staffing report; never rewrite yesterday's closure. A changed substitute report can change current capacity planning, but an unsigned/volatile report does not move the one tonight window. The old closure remains valid only if its stored scope explicitly bounds capacity and does not promise substitute-dependent normal service.",
+      "baseline": "Whenever a desk is open, either show an effective final closure or keep every affected calling function disabled with old processes exited.",
+      "id": "PLAN-TONIGHT-1"
+    }
+  ],
+  "shift_order": [
+    "SHIFT-YESTERDAY",
+    "SHIFT-0-TONIGHT",
+    "SHIFT-1-FRI-AM",
+    "SHIFT-2-FRI-PM",
+    "WINDOW-NEXT-AFTER-TWO-SHIFTS",
+    "SHIFT-3-SAT-AM"
+  ]
+}
