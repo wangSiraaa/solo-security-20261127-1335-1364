@@ -1,0 +1,5 @@
+[
+  {"at": 1000, "level": "low"},
+  {"at": 1500, "level": "high"},
+  {"at": 1900, "level": "high"}
+]

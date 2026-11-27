@@ -1,0 +1,108 @@
+# 采样固件“推迟版”：只移动开放中断点，函数体/栈帧/work 全部不变。
+# 开放区间从 sensor_read 之前挪到 filter_chain 之前——
+# 读取阶段全程关中断，封闭区间变长，且开放点处调用深度变浅。
+program sampler {
+    mode SAMPLE entry sample_entry;
+    mode CALIB  entry calib_entry;
+
+    irq high handler hi_isr arrivals 2 per_period;
+    irq low  handler lo_isr arrivals 1 per_period;
+
+    func sample_entry(frame 64 bytes, work 20 us) : mode SAMPLE {
+        irq off all;
+        call sensor_setup;
+        call sensor_read;
+        region sample_window open low, high {
+            call filter_chain;
+        }
+        call sensor_store;
+    }
+
+    func calib_entry(frame 72 bytes, work 30 us) : mode CALIB {
+        irq off all;
+        call sensor_setup;
+        call sensor_read;
+        region calib_window open low, high {
+            call calibrate;
+        }
+        call sensor_store;
+    }
+
+    func sensor_setup(frame 80 bytes, work 150 us) {
+        call bus_wake;
+        call gpio_prep;
+    }
+
+    func bus_wake(frame 40 bytes, work 220 us) {
+        call delay_block;
+    }
+
+    func gpio_prep(frame 50 bytes, work 180 us) {
+    }
+
+    func delay_block(frame 30 bytes, work 400 us) {
+    }
+
+    func sensor_read(frame 110 bytes, work 90 us) {
+        call adc_shot;
+        call dma_xfer;
+    }
+
+    func adc_shot(frame 70 bytes, work 160 us) {
+    }
+
+    func dma_xfer(frame 90 bytes, work 240 us) {
+    }
+
+    func filter_chain(frame 100 bytes, work 80 us) : mode SAMPLE {
+        call moving_avg;
+        call threshold_check;
+    }
+
+    func moving_avg(frame 120 bytes, work 200 us) : mode SAMPLE {
+    }
+
+    func threshold_check(frame 60 bytes, work 110 us) : mode SAMPLE {
+    }
+
+    func calibrate(frame 96 bytes, work 120 us) : mode CALIB {
+        call dac_trim;
+    }
+
+    func dac_trim(frame 84 bytes, work 330 us) : mode CALIB {
+    }
+
+    func sensor_store(frame 130 bytes, work 70 us) {
+        call spi_flush;
+    }
+
+    func spi_flush(frame 150 bytes, work 260 us) {
+    }
+
+    func hi_isr(frame 110 bytes, work 60 us) {
+        irq off all;
+        call hi_capture;
+        irq on high;
+    }
+
+    func hi_capture(frame 90 bytes, work 140 us) {
+    }
+
+    func lo_isr(frame 100 bytes, work 80 us) {
+        irq off all;
+        call lo_service;
+        region lo_window open high {
+            call lo_feed;
+        }
+        call lo_finish;
+    }
+
+    func lo_service(frame 70 bytes, work 170 us) {
+    }
+
+    func lo_feed(frame 120 bytes, work 250 us) {
+    }
+
+    func lo_finish(frame 60 bytes, work 100 us) {
+    }
+}

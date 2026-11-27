@@ -1,0 +1,45 @@
+# 模拟板卡：列出 RAM、保留区、采样周期与两级中断的最晚响应时间。
+
+# 小板：1KB RAM，顶部有向量表与校准数据保留区；响应要求宽松。
+board NANO {
+    ram 1024 bytes;
+    reserve vectors   [960, 1024);
+    reserve calib     [896, 960);
+    period 20000 us;
+    deadline high 1400 us;
+    deadline low  3000 us;
+}
+
+# 同型小板：再把一段内存留给新外设 FIFO，可用 RAM 被切成两段。
+# 空闲总量 816B（>隔离栈总需 772B），但最大连续块仅 704B，容不下两个独立栈区
+# （中断栈 420B + 前台栈 352B 无法在不重叠的前提下放入 704B 块，112B 块又太小）。
+board NANO_P {
+    ram 1024 bytes;
+    reserve vectors     [960, 1024);
+    reserve calib       [896, 960);
+    reserve periph_fifo [704, 784);
+    period 20000 us;
+    deadline high 1400 us;
+    deadline low  3000 us;
+}
+
+# 碎片教学板：空闲总量 800B（>隔离栈总需 772B），但被切成两个各 400B 的块，
+# 420B 的中断栈一块都放不下——这是“总量够却纯因碎片失败”的情形。
+board NANO_F {
+    ram 1024 bytes;
+    reserve vectors     [960, 1024);
+    reserve calib       [896, 960);
+    reserve periph_fifo [400, 496);
+    period 20000 us;
+    deadline high 1400 us;
+    deadline low  3000 us;
+}
+
+# 大板：RAM 充裕，保留区少，但高级中断的最晚响应时间卡得很紧。
+board MID {
+    ram 4096 bytes;
+    reserve vectors   [4000, 4096);
+    period 20000 us;
+    deadline high 600 us;
+    deadline low  2000 us;
+}

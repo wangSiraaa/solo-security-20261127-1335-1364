@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "peak_bytes": 360,
+  "capacity_bytes": 772,
+  "finished_at": 3180,
+  "records": [
+    {
+      "seq": 0,
+      "level": "low",
+      "arrival": 1000,
+      "started": 1110,
+      "finished": 1910,
+      "latency": 110,
+      "response": 910,
+      "state": "served"
+    },
+    {
+      "seq": 1,
+      "level": "high",
+      "arrival": 1500,
+      "started": 1530,
+      "finished": 1730,
+      "latency": 30,
+      "response": 230,
+      "state": "served"
+    },
+    {
+      "seq": 2,
+      "level": "high",
+      "arrival": 1900,
+      "started": 1910,
+      "finished": 2110,
+      "latency": 10,
+      "response": 210,
+      "state": "served"
+    }
+  ],
+  "violations": []
+}

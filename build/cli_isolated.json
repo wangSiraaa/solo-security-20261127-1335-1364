@@ -1,0 +1,75 @@
+{
+  "schema": "fwstack/config/v1",
+  "program": {
+    "name": "sampler",
+    "path": "examples/programs/sampler.fw",
+    "fingerprint": "60ccd5d6d89a4928"
+  },
+  "board": {
+    "name": "NANO",
+    "path": "examples/boards/boards.fwboard",
+    "fingerprint": "38b9cb29b2e89216"
+  },
+  "stack_model": "isolated",
+  "guarantees": {
+    "foreground_peak_bytes": 352,
+    "shared_peak_bytes": 704,
+    "interrupt_peak_bytes": 420,
+    "worst_latency_us": {
+      "high": 950,
+      "low": 1350
+    },
+    "worst_response_us": {
+      "high": 1150,
+      "low": 1950
+    },
+    "deadline_us": {
+      "high": 1400,
+      "low": 3000
+    },
+    "period_load_us": 3250,
+    "sample_period_us": 20000,
+    "arrivals_per_period": {
+      "high": 2,
+      "low": 1
+    }
+  },
+  "memory_layout": [
+    {
+      "name": "foreground_stack",
+      "size": 352,
+      "start": 352,
+      "end": 704
+    },
+    {
+      "name": "interrupt_stack",
+      "size": 420,
+      "start": 0,
+      "end": 420
+    }
+  ],
+  "open_points": [
+    {
+      "op_id": "region:calib_window@calib_entry:2",
+      "function": "calib_entry",
+      "path": "2",
+      "mask": [
+        "low",
+        "high"
+      ]
+    },
+    {
+      "op_id": "region:sample_window@sample_entry:2",
+      "function": "sample_entry",
+      "path": "2",
+      "mask": [
+        "low",
+        "high"
+      ]
+    }
+  ],
+  "modes": {
+    "SAMPLE": "sample_entry",
+    "CALIB": "calib_entry"
+  }
+}
