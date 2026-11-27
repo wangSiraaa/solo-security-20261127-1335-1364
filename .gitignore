@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.worktrees/
+.runs/
+review-desk/*.key.pem
+# Generated packages/classrooms and evidence are intentionally left on disk after
+# `python3 -m reviewdesk.cli demo`; ignore only transient Python/build state here.

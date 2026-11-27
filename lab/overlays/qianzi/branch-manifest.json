@@ -1,0 +1,10 @@
+{
+  "publisher": "虚构·千字出版社",
+  "branch": "maint/qianzi-legacy",
+  "route": "native-reimplementation",
+  "patch_name": "fix(offline): resolve promised entries without external query",
+  "caller_contract": "caller/legacy-wordid-v1",
+  "entrypoint": "mojiao.native_legacy:resolve",
+  "carries_mainline_component_verbatim": false,
+  "rationale": "Preserve four-digit classroom word numbers and allow independent local word-list releases. The branch must be revalidated and receive only a branch-scoped statement."
+}

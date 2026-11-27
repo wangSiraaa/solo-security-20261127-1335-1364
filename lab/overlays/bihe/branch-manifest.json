@@ -1,0 +1,15 @@
+{
+  "publisher": "虚构·碧荷出版社",
+  "branch": "maint/bihe-sealed-component",
+  "route": "verbatim-reviewed-component-plus-boundary",
+  "patch_name": "fix(offline): resolve promised entries without external query",
+  "caller_contract": "caller/legacy-wordid-v1",
+  "entrypoint": "mojiao.compat_oldid:resolve",
+  "verbatim_subject": {
+    "entrypoint": "mojiao.reviewed_resolver:resolve",
+    "files": ["mojiao/reviewed_resolver.py"],
+    "wordlists": ["wordlists/school-promised-modern-2.1.0.json"]
+  },
+  "carries_mainline_component_verbatim": true,
+  "rationale": "Seal the reviewed resolver and its reviewed word list unchanged; review only the new old-id boundary/composition separately."
+}
