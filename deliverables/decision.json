@@ -1,0 +1,65 @@
+{
+  "schema": "archive-coop-decision/1",
+  "answer": "Only the exact byte edition whose digest is bound by an original-time receipt and an unbroken admissible trust bridge or renewal chain can be proved to a stranger.",
+  "cross_library_choice": {
+    "manuscript_id": "QIXIA-KAO",
+    "edition": "v3",
+    "method": "self-contained-successor-witness-bundle",
+    "reason": "Cross-library rules require reverification of every historical witness; a registry screen or current statement alone is insufficient, and registry closure must not make the loan unverifiable.",
+    "old_authority": "old-witness-2023",
+    "old_authority_trust_not_after": "2026-11-20T23:59:59Z",
+    "successor_authority": "new-witness-2026",
+    "successor_valid_from": "2026-09-01T00:00:00Z",
+    "latest_safe_bridge_time": "2026-11-20T23:59:59Z",
+    "timely_owner_handover": "2026-11-18T14:00:00Z",
+    "timely_migration": "2026-11-19T10:30:00Z",
+    "one_day_late_handover": "2026-11-21T09:15:00Z",
+    "one_day_late_migration": "2026-11-21T10:30:00Z",
+    "holders": {
+      "owner": "May retain the original; delivered exact bytes before the hard deadline and holds the signed handover record.",
+      "cooperative_and_witness": "Hold private signing keys, sealed working copies, and witness logs in cabinet/private (mode 0700).",
+      "foreign_reader_or_library": "Receives the ZIP with manuscript bytes, old receipt, contemporaneous check, handover, migration attestation, policy, public keys/pins, and standalone verifier."
+    }
+  },
+  "registry_route": {
+    "manuscript_id": "DENG-YING-LU",
+    "timely_edition": "v1-tui",
+    "owner_keeps_original": true,
+    "deadline": "2026-06-30T23:59:59Z",
+    "timely_last_renewal": "2026-05-10T09:00:00Z",
+    "late_last_renewal": "2026-07-02T09:00:00Z",
+    "registry_closure_effective": "2026-10-15T23:59:59Z",
+    "closure_effect": "Live registry recheck becomes unavailable; complete signed historical receipts remain independently verifiable offline. A current statement without history fails."
+  },
+  "one_character_editions": {
+    "difference": "僧推月下门 -> 僧敲月下门; exactly one Chinese character",
+    "v1": {
+      "label": "DENG-YING-v1-tui",
+      "path": "reader-originals/DENG-YING-v1-tui.txt",
+      "sha256": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e"
+    },
+    "v2": {
+      "label": "DENG-YING-v2-qiao",
+      "path": "reader-originals/DENG-YING-v2-qiao.txt",
+      "sha256": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+    }
+  },
+  "expected_verdicts": [
+    {"case": "qixia-crosslibrary", "exit_code": 0, "ok": true},
+    {"case": "qixia-crosslibrary-registry-closed", "exit_code": 0, "ok": true, "warning": "registry-online-unavailable"},
+    {"case": "online-complete-http-flow", "exit_code": 0, "ok": true},
+    {"case": "dengying-registry-timely+v1", "exit_code": 0, "ok": true},
+    {"case": "dengying-late-renewal-after-deadline+v1", "exit_code": 2, "ok": false, "break_at": "renewal-4", "failure": "deadline-anchor-late"},
+    {"case": "dengying-renewal-date-edited-no-resign+v1", "exit_code": 2, "ok": false, "break_at": "renewal-4", "failure": "signature-invalid"},
+    {"case": "dengying-registry-timely+v2", "exit_code": 2, "ok": false, "break_at": "reader-original", "failure": "digest-mismatch"},
+    {"case": "qixia-late-delivery", "exit_code": 2, "ok": false, "break_at": "migration-2026", "failure": "bridge-too-late"},
+    {"case": "qixia-post-trust-stamp", "exit_code": 2, "ok": false, "break_at": "migration-2026", "failure": "bridge-too-late"},
+    {"case": "dengying-registry-closed+v1", "exit_code": 0, "ok": true, "warning": "registry-online-unavailable"},
+    {"case": "registry-statement-only", "exit_code": 2, "ok": false, "break_at": "registry-current-statement", "failure": "history-required"}
+  ],
+  "reviews": {
+    "external": "reviews/EXTERNAL_REVIEW.md",
+    "external_json": "reviews/external-review-summary.json",
+    "mutation_sequence": "reviews/MUTATION_SEQUENCE.md"
+  }
+}

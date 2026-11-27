@@ -1,0 +1,17 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "old-witness-2023",
+  "data": {
+    "type": "timestamp-receipt",
+    "receipt_id": "ONLINE-OLD-0001",
+    "manuscript_id": "ONLINE-OK",
+    "edition": "1",
+    "whole_item_digested": true,
+    "hash_algorithm": "sha-256",
+    "digest": "971a828e664bfa437cb0995ed2a8c1af8042c373133910299153eedaecb45183",
+    "issued_at": "2025-04-01T10:00:00Z",
+    "simulated_online_receipt": true
+  },
+  "signature_b64": "y3DimxGM6gianArSy8b++hXdAYkfAssPmZU1EqeV6bgDir2c40hc74Q2nWujsZ4By00vXSfomOXy6usj191cBw=="
+}

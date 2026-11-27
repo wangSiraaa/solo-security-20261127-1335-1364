@@ -1,0 +1,53 @@
+{
+  "schema": "archive-coop-manifest/1",
+  "case_id": "QIXIA-KAO-v3-crosslibrary-registry-closed",
+  "title": "Cross-library self-contained witness migration",
+  "claim": "self-contained-bridge",
+  "cutoff": "2026-11-20T23:59:59Z",
+  "simulated": true,
+  "custody_summary": {
+    "owner": "may retain the original; delivered exact bytes before the bridge deadline in the happy path",
+    "cooperative_and_new_witness": "holds signed migration record and sealed working copy",
+    "foreign_library_or_stranger": "receives this complete bundle and can verify offline"
+  },
+  "original": {
+    "path": "originals/QIXIA-KAO-v3.txt",
+    "required": true,
+    "sha256": "8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066",
+    "manuscript_id": "QIXIA-KAO",
+    "edition": "v3"
+  },
+  "policy": "policy.json",
+  "trust_dir": "trust",
+  "artifacts": [
+    {
+      "id": "old-receipt",
+      "path": "artifacts/01-old-timestamp-receipt.json",
+      "required": true
+    },
+    {
+      "id": "crosscheck-2025",
+      "path": "artifacts/02-contemporaneous-crosscheck.json",
+      "required": true
+    },
+    {
+      "id": "owner-delivery",
+      "path": "artifacts/03-owner-delivery.json",
+      "required": true
+    },
+    {
+      "id": "migration-2026",
+      "path": "artifacts/04-successor-migration-attestation.json",
+      "required": true
+    },
+    {
+      "id": "registry-closure",
+      "path": "artifacts/05-registry-closure.json",
+      "required": true
+    }
+  ],
+  "artifact_hashes_for_operator": {
+    "migration": "03f01f2f69cca0fcd5f54e399091b40c686defdf8cadd6a8eb0cbd2c729aba58"
+  },
+  "registry_online": false
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "owner-qixia",
+  "data": {
+    "type": "custody-handover",
+    "handover_id": "ONLINE-HANDOVER-0001",
+    "manuscript_id": "ONLINE-OK",
+    "edition": "1",
+    "digest": "971a828e664bfa437cb0995ed2a8c1af8042c373133910299153eedaecb45183",
+    "on_time": true,
+    "custody_choice": "self-contained-migration-bundle",
+    "issued_at": "2026-11-19T15:00:00Z",
+    "simulated_online_receipt": true
+  },
+  "signature_b64": "YvkRP5TQ9FxfRvBVvmuHgagGA/UF9mHf7heOo08TEeY18ZGfp6J/+itTJlQclU0AjMdTo+u3usYSLeD509szDw=="
+}

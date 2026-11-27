@@ -1,0 +1,20 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "clerk-li-2025",
+  "data": {
+    "type": "contemporaneous-crosscheck",
+    "check_id": "ONLINE-XCHECK-0001",
+    "manuscript_id": "ONLINE-OK",
+    "edition": "1",
+    "digest": "971a828e664bfa437cb0995ed2a8c1af8042c373133910299153eedaecb45183",
+    "result": "match",
+    "old_receipt": {
+      "artifact_id": "old-receipt",
+      "sha256": "be8ca621706ee7c0efa14a73e2e4761760c1f9d128fa6413fc0ef658a495351c"
+    },
+    "issued_at": "2025-04-01T10:00:00Z",
+    "simulated_online_receipt": true
+  },
+  "signature_b64": "Ie4ucZWvXHvvekDpuwkYF2/OE+mIfzwKrwOpQpDtVPOncHTyp0N9x9sa6qh+xBW7DfFrNLBBzZJQwcdan6jcDA=="
+}

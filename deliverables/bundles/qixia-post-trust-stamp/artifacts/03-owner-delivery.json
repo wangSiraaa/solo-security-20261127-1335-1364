@@ -1,0 +1,25 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "owner-qixia",
+  "data": {
+    "type": "custody-handover",
+    "handover_id": "HANDOVER-QIXIA-stamp-after-old-witness-untrusted",
+    "issued_at": "2026-11-27T08:00:00Z",
+    "owner_key": "owner-qixia",
+    "recipient": "new-witness-2026",
+    "promised_material_deadline": "2026-11-20T23:59:59Z",
+    "on_time": false,
+    "manuscript_id": "QIXIA-KAO",
+    "edition": "v3",
+    "digest": "8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066",
+    "transferred_materials": [
+      "whole manuscript bytes",
+      "old timestamp receipt",
+      "contemporaneous cross-check"
+    ],
+    "custody_choice": "self-contained-migration-bundle",
+    "owner_may_retain_original": true
+  },
+  "signature_b64": "Ope4Y2dYJ03m2kodeEkktry8nBn5Lj8fDbPmGLVgfcZY71jtETalHmoQZOisZ2G2+bj7fOQ4Qh7fq2koHrl5DA=="
+}

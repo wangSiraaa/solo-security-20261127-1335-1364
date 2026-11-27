@@ -1,0 +1,18 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "old-witness-2023",
+  "data": {
+    "type": "timestamp-receipt",
+    "receipt_id": "OLD-QIXIA-20250314-001",
+    "issued_at": "2025-03-14T09:20:00Z",
+    "authority": "old-witness-2023",
+    "manuscript_id": "QIXIA-KAO",
+    "edition": "v3",
+    "whole_item_digested": true,
+    "hash_algorithm": "sha-256",
+    "digest": "8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066",
+    "simulated_public_receipt": true
+  },
+  "signature_b64": "LakBBiP/Y5xYHnGIeqqpuPg42LdQQWCv8PG22cq4FEOt4qnD8mf3tXt/M8RkOmbks+CEYiK9C761RbvWae8FAQ=="
+}

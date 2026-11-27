@@ -1,0 +1,34 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "new-witness-2026",
+  "data": {
+    "type": "migration-attestation",
+    "migration_id": "ONLINE-MIG-0001",
+    "relied_authority": "old-witness-2023",
+    "manuscript_id": "ONLINE-OK",
+    "edition": "1",
+    "digest": "971a828e664bfa437cb0995ed2a8c1af8042c373133910299153eedaecb45183",
+    "verified": {
+      "online_complete_materials": true,
+      "signature_checks": true
+    },
+    "old_receipt": {
+      "artifact_id": "old-receipt",
+      "sha256": "be8ca621706ee7c0efa14a73e2e4761760c1f9d128fa6413fc0ef658a495351c"
+    },
+    "crosschecks": [
+      {
+        "artifact_id": "crosscheck",
+        "sha256": "10fc85c63dcd808526103fbea52680d1a67982d21f2e9a6b6969d1d932190dab"
+      }
+    ],
+    "handover": {
+      "artifact_id": "handover",
+      "sha256": "fb414b237a7c213052c8b43956fc2d1be363d1b4b84d1964bfad6a4ca0acccff"
+    },
+    "issued_at": "2026-11-19T15:00:00Z",
+    "simulated_online_receipt": true
+  },
+  "signature_b64": "PnSNRL7YW+JdpUYVAvJQ/A9tXvMEeKZgMXGwY9EDB5mD8tB5x+wheo3YvNp0heZo0wfKJT2POkOoV/So9QXMDQ=="
+}

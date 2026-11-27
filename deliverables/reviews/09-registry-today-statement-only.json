@@ -1,0 +1,76 @@
+{
+  "case": "09-registry-today-statement-only",
+  "zip": "registry-statement-only.zip",
+  "reader_original": null,
+  "exit_code": 2,
+  "expected_exit_code": 2,
+  "report": {
+    "ok": false,
+    "summary": "NOT VERIFIED: registry's current statement alone cannot re-prove prior witnessing; original point-in-time credentials are required.",
+    "bundle": "/tmp/external-review-09-registry-today-statement-only-8nyxzgsj/registry-statement-only",
+    "reader_original": null,
+    "verifier_now": "2026-11-27T09:00:00Z",
+    "earliest_admissible_anchor": {
+      "artifact_id": "registry-current-statement",
+      "time": "2026-11-27T08:00:00Z",
+      "kind": "registry-statement",
+      "key_id": "registry-2026"
+    },
+    "break_at": {
+      "artifact_id": "registry-current-statement",
+      "reason": "a new registry statement is not a substitute for original-time receipts"
+    },
+    "failure_count": 1,
+    "failures": [
+      {
+        "id": "history-required",
+        "status": "fail",
+        "message": "registry's current statement alone cannot re-prove prior witnessing; original point-in-time credentials are required."
+      }
+    ],
+    "checks": [
+      {
+        "id": "bundle-shape",
+        "status": "pass",
+        "message": "manifest lists 1 artifacts and all required files are readable"
+      },
+      {
+        "id": "trust-anchor-fingerprint",
+        "status": "pass",
+        "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+      },
+      {
+        "id": "original-not-supplied",
+        "status": "warn",
+        "message": "lightweight receipt only: no reader original was supplied, so digest cannot be bound to content"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "policy: valid Ed25519 signature by coop-governance-2026",
+        "artifact_id": "policy",
+        "key_id": "coop-governance-2026"
+      },
+      {
+        "id": "policy-signature",
+        "status": "pass",
+        "message": "policy signed by coop-governance-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "registry-current-statement: valid Ed25519 signature by registry-2026",
+        "artifact_id": "registry-current-statement",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "history-required",
+        "status": "fail",
+        "message": "registry's current statement alone cannot re-prove prior witnessing; original point-in-time credentials are required."
+      }
+    ]
+  },
+  "stderr": "",
+  "expectation_failures": [],
+  "passed": true
+}

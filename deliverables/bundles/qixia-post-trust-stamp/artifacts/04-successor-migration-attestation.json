@@ -1,0 +1,37 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "new-witness-2026",
+  "data": {
+    "type": "migration-attestation",
+    "migration_id": "MIG-QIXIA-stamp-after-old-witness-untrusted",
+    "issued_at": "2026-11-27T08:00:00Z",
+    "successor_witness": "new-witness-2026",
+    "relied_authority": "old-witness-2023",
+    "manuscript_id": "QIXIA-KAO",
+    "edition": "v3",
+    "digest": "8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066",
+    "verified": {
+      "reader_or_manuscript_digest_matches": true,
+      "old_receipt_ed25519_signature_valid": true,
+      "crosscheck_matches": true,
+      "performed_before_old_trust_end": false
+    },
+    "old_receipt": {
+      "artifact_id": "old-receipt",
+      "sha256": "d31c23824c7a6c0b5f07539f9565b369688ab6c3ecf952b00f2d3aa1bceac8b4"
+    },
+    "crosschecks": [
+      {
+        "artifact_id": "crosscheck-2025",
+        "sha256": "14c6ece77dd1780b8818ac1ebbd8981c99192a337878bb15676a3ba82f5fd850"
+      }
+    ],
+    "handover": {
+      "artifact_id": "owner-delivery",
+      "sha256": "ed5581edc9989a22af4ab361c2acdcf2f79d7aa9ae3cdb88ea852a228faac891"
+    },
+    "statement": "Successor witness preserves the exact digest and original-time materials; this attestation is not a backdated claim that the successor saw the manuscript in 2025."
+  },
+  "signature_b64": "bqIQ2bKa9zsgUJD4OJd2EryA2ZlW9BOL0xEWyVHzyas4i88O/lhnV3LIQbZWsKz59OxNUtazDBD+kBoKOxPbBA=="
+}

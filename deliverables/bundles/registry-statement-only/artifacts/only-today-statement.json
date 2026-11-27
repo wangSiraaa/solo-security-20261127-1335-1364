@@ -1,0 +1,17 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "registry-2026",
+  "data": {
+    "type": "registry-statement",
+    "issued_at": "2026-11-27T08:00:00Z",
+    "as_of": "2026-11-27T08:00:00Z",
+    "registry": "registry-2026",
+    "manuscript_id": "DENG-YING-LU",
+    "edition": "v1-tui",
+    "digest": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+    "historical_receipts_included": false,
+    "statement": "Current registry screen says the commitment is valid, but history was not exported."
+  },
+  "signature_b64": "lQs0F1zcwkK2PqLlHeTySFVqn81DW9Qe47TTT5Q2c0ajOorydT+uQvVgmCbTPQCPJP0heJ5Zm7UGiuyNBD0QBg=="
+}

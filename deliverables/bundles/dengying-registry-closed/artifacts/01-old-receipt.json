@@ -1,0 +1,16 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "old-witness-2023",
+  "data": {
+    "type": "timestamp-receipt",
+    "receipt_id": "OLD-DENGYING-20250510-007",
+    "issued_at": "2025-05-10T08:00:00Z",
+    "manuscript_id": "DENG-YING-LU",
+    "edition": "v1-tui",
+    "whole_item_digested": true,
+    "hash_algorithm": "sha-256",
+    "digest": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e"
+  },
+  "signature_b64": "cHid+uQUawWGy3yNghLuBWMEw02JmfU+YMA73TVZyxvo21g/ANWu4D8z+FreM9xEvyslMHujjjwb3vXTJ+OBAA=="
+}

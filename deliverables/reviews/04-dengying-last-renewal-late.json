@@ -1,0 +1,155 @@
+{
+  "case": "04-dengying-last-renewal-late",
+  "zip": "dengying-late-renewal-after-deadline.zip",
+  "reader_original": "DENG-YING-v1-tui.txt",
+  "exit_code": 2,
+  "expected_exit_code": 2,
+  "report": {
+    "ok": false,
+    "summary": "NOT VERIFIED (1 failure(s)); first break is renewal-4.",
+    "bundle": "/tmp/external-review-04-dengying-last-renewal-late-s4398afy/dengying-late-renewal-after-deadline",
+    "reader_original": "/tmp/external-review-04-dengying-last-renewal-late-s4398afy/reader-brought-by-foreign-process/DENG-YING-v1-tui.txt",
+    "verifier_now": "2026-11-27T09:00:00Z",
+    "earliest_admissible_anchor": {
+      "artifact_id": "crosscheck-2025",
+      "time": "2025-05-10T08:20:00Z",
+      "kind": "contemporaneous-crosscheck",
+      "key_id": "clerk-li-2025"
+    },
+    "break_at": {
+      "artifact_id": "renewal-4",
+      "path": "artifacts/07-renewal-4-last.json",
+      "reason": "designated renewal is after the deadline; chain cannot prove the deadline claim"
+    },
+    "failure_count": 1,
+    "failures": [
+      {
+        "id": "deadline-anchor-late",
+        "status": "fail",
+        "message": "renewal-4: last/designated renewal issued 2026-07-02T09:00:00+00:00, after deadline 2026-06-30T23:59:59+00:00. A later valid receipt cannot backdate the missing pre-deadline link.",
+        "artifact_id": "renewal-4",
+        "deadline": "2026-06-30T23:59:59+00:00",
+        "issued_at": "2026-07-02T09:00:00+00:00"
+      }
+    ],
+    "checks": [
+      {
+        "id": "bundle-shape",
+        "status": "pass",
+        "message": "manifest lists 7 artifacts and all required files are readable"
+      },
+      {
+        "id": "trust-anchor-fingerprint",
+        "status": "pass",
+        "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+      },
+      {
+        "id": "original-hash",
+        "status": "pass",
+        "message": "SHA-256 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "policy: valid Ed25519 signature by coop-governance-2026",
+        "artifact_id": "policy",
+        "key_id": "coop-governance-2026"
+      },
+      {
+        "id": "policy-signature",
+        "status": "pass",
+        "message": "policy signed by coop-governance-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+        "artifact_id": "old-receipt",
+        "key_id": "old-witness-2023"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+        "artifact_id": "crosscheck-2025",
+        "key_id": "clerk-li-2025"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "genesis: valid Ed25519 signature by registry-2026",
+        "artifact_id": "genesis",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "renewal-1: valid Ed25519 signature by registry-2026",
+        "artifact_id": "renewal-1",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "renewal-2: valid Ed25519 signature by registry-2026",
+        "artifact_id": "renewal-2",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "renewal-3: valid Ed25519 signature by registry-2026",
+        "artifact_id": "renewal-3",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "renewal-4: valid Ed25519 signature by registry-2026",
+        "artifact_id": "renewal-4",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "crosscheck-2025 -> old-receipt matches"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "genesis -> old-receipt matches"
+      },
+      {
+        "id": "renewal-link",
+        "status": "pass",
+        "message": "continuous-commitment: genesis -> renewal-1 is unbroken"
+      },
+      {
+        "id": "renewal-link",
+        "status": "pass",
+        "message": "continuous-commitment: renewal-1 -> renewal-2 is unbroken"
+      },
+      {
+        "id": "renewal-link",
+        "status": "pass",
+        "message": "continuous-commitment: renewal-2 -> renewal-3 is unbroken"
+      },
+      {
+        "id": "renewal-link",
+        "status": "pass",
+        "message": "continuous-commitment: renewal-3 -> renewal-4 is unbroken"
+      },
+      {
+        "id": "deadline-anchor-late",
+        "status": "fail",
+        "message": "renewal-4: last/designated renewal issued 2026-07-02T09:00:00+00:00, after deadline 2026-06-30T23:59:59+00:00. A later valid receipt cannot backdate the missing pre-deadline link.",
+        "artifact_id": "renewal-4",
+        "deadline": "2026-06-30T23:59:59+00:00",
+        "issued_at": "2026-07-02T09:00:00+00:00"
+      }
+    ]
+  },
+  "stderr": "",
+  "expectation_failures": [],
+  "passed": true
+}

@@ -1,0 +1,1543 @@
+{
+  "passed": 11,
+  "total": 11,
+  "results": [
+    {
+      "case": "01-qixia-crosslibrary-happy",
+      "zip": "qixia-crosslibrary.zip",
+      "reader_original": null,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "report": {
+        "ok": true,
+        "summary": "VERIFIED: exact reader bytes match the old receipt; original-time checks and a timely successor-witness bridge validate the complete witness history offline.",
+        "bundle": "/tmp/external-review-01-qixia-crosslibrary-happy-v_wbrg9o/qixia-crosslibrary",
+        "reader_original": "/tmp/external-review-01-qixia-crosslibrary-happy-v_wbrg9o/qixia-crosslibrary/originals/QIXIA-KAO-v3.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "crosscheck-2025",
+          "time": "2025-03-14T09:35:00Z",
+          "kind": "contemporaneous-crosscheck",
+          "key_id": "clerk-li-2025"
+        },
+        "break_at": null,
+        "failure_count": 0,
+        "failures": [],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 4 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-hash",
+            "status": "pass",
+            "message": "SHA-256 8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck-2025",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "owner-delivery: valid Ed25519 signature by owner-qixia",
+            "artifact_id": "owner-delivery",
+            "key_id": "owner-qixia"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "migration-2026: valid Ed25519 signature by new-witness-2026",
+            "artifact_id": "migration-2026",
+            "key_id": "new-witness-2026"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck-2025 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> crosscheck-2025 matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> owner-delivery matches"
+          },
+          {
+            "id": "bridge-timely",
+            "status": "pass",
+            "message": "migration-2026: migration at 2026-11-19T10:30:00+00:00 is before old authority end 2026-11-20T23:59:59Z"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "01b-qixia-same-book-registry-closed",
+      "zip": "qixia-crosslibrary-registry-closed.zip",
+      "reader_original": null,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "report": {
+        "ok": true,
+        "summary": "VERIFIED: exact reader bytes match the old receipt; original-time checks and a timely successor-witness bridge validate the complete witness history offline.",
+        "bundle": "/tmp/external-review-01b-qixia-same-book-registry-closed-fs_0dilx/qixia-crosslibrary-registry-closed",
+        "reader_original": "/tmp/external-review-01b-qixia-same-book-registry-closed-fs_0dilx/qixia-crosslibrary-registry-closed/originals/QIXIA-KAO-v3.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "crosscheck-2025",
+          "time": "2025-03-14T09:35:00Z",
+          "kind": "contemporaneous-crosscheck",
+          "key_id": "clerk-li-2025"
+        },
+        "break_at": null,
+        "failure_count": 0,
+        "failures": [],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 5 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-hash",
+            "status": "pass",
+            "message": "SHA-256 8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck-2025",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "owner-delivery: valid Ed25519 signature by owner-qixia",
+            "artifact_id": "owner-delivery",
+            "key_id": "owner-qixia"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "migration-2026: valid Ed25519 signature by new-witness-2026",
+            "artifact_id": "migration-2026",
+            "key_id": "new-witness-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "registry-closure: valid Ed25519 signature by registry-2026",
+            "artifact_id": "registry-closure",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "registry-online-unavailable",
+            "status": "warn",
+            "message": "registry-closure: registry closed/ceased service at 2026-10-15T23:59:59+00:00; a live registry recheck is unavailable. Valid original-time receipts can still be checked offline, but a new statement cannot replace missing history.",
+            "artifact_id": "registry-closure"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck-2025 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> crosscheck-2025 matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> owner-delivery matches"
+          },
+          {
+            "id": "bridge-timely",
+            "status": "pass",
+            "message": "migration-2026: migration at 2026-11-19T10:30:00+00:00 is before old authority end 2026-11-20T23:59:59Z"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "02-online-http-complete",
+      "zip": "online-complete-http-flow.zip",
+      "reader_original": null,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "report": {
+        "ok": true,
+        "summary": "VERIFIED: exact reader bytes match the old receipt; original-time checks and a timely successor-witness bridge validate the complete witness history offline.",
+        "bundle": "/tmp/external-review-02-online-http-complete-ivv5cbup/online-complete-http-flow",
+        "reader_original": "/tmp/external-review-02-online-http-complete-ivv5cbup/online-complete-http-flow/originals/ONLINE-OK-1.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "crosscheck",
+          "time": "2025-04-01T10:00:00Z",
+          "kind": "contemporaneous-crosscheck",
+          "key_id": "clerk-li-2025"
+        },
+        "break_at": null,
+        "failure_count": 0,
+        "failures": [],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 4 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-hash",
+            "status": "pass",
+            "message": "SHA-256 971a828e664bfa437cb0995ed2a8c1af8042c373133910299153eedaecb45183"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "handover: valid Ed25519 signature by owner-qixia",
+            "artifact_id": "handover",
+            "key_id": "owner-qixia"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "migration: valid Ed25519 signature by new-witness-2026",
+            "artifact_id": "migration",
+            "key_id": "new-witness-2026"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration -> crosscheck matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration -> handover matches"
+          },
+          {
+            "id": "bridge-timely",
+            "status": "pass",
+            "message": "migration: migration at 2026-11-19T15:00:00+00:00 is before old authority end 2026-11-20T23:59:59Z"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "03-dengying-v1-tui-happy",
+      "zip": "dengying-registry-timely.zip",
+      "reader_original": "DENG-YING-v1-tui.txt",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "report": {
+        "ok": true,
+        "summary": "VERIFIED: signatures, digest bindings, sequence, and renewal links are intact.",
+        "bundle": "/tmp/external-review-03-dengying-v1-tui-happy-oqm4f5za/dengying-registry-timely",
+        "reader_original": "/tmp/external-review-03-dengying-v1-tui-happy-oqm4f5za/reader-brought-by-foreign-process/DENG-YING-v1-tui.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "crosscheck-2025",
+          "time": "2025-05-10T08:20:00Z",
+          "kind": "contemporaneous-crosscheck",
+          "key_id": "clerk-li-2025"
+        },
+        "break_at": null,
+        "failure_count": 0,
+        "failures": [],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 7 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-hash",
+            "status": "pass",
+            "message": "SHA-256 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck-2025",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "genesis: valid Ed25519 signature by registry-2026",
+            "artifact_id": "genesis",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-1: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-1",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-2: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-2",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-3: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-3",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-4: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-4",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck-2025 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "genesis -> old-receipt matches"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: genesis -> renewal-1 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-1 -> renewal-2 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-2 -> renewal-3 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-3 -> renewal-4 is unbroken"
+          },
+          {
+            "id": "deadline-anchor-timely",
+            "status": "pass",
+            "message": "renewal-4: issued 2026-05-10T09:00:00+00:00 <= deadline 2026-06-30T23:59:59+00:00"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "04-dengying-last-renewal-late",
+      "zip": "dengying-late-renewal-after-deadline.zip",
+      "reader_original": "DENG-YING-v1-tui.txt",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "report": {
+        "ok": false,
+        "summary": "NOT VERIFIED (1 failure(s)); first break is renewal-4.",
+        "bundle": "/tmp/external-review-04-dengying-last-renewal-late-s4398afy/dengying-late-renewal-after-deadline",
+        "reader_original": "/tmp/external-review-04-dengying-last-renewal-late-s4398afy/reader-brought-by-foreign-process/DENG-YING-v1-tui.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "crosscheck-2025",
+          "time": "2025-05-10T08:20:00Z",
+          "kind": "contemporaneous-crosscheck",
+          "key_id": "clerk-li-2025"
+        },
+        "break_at": {
+          "artifact_id": "renewal-4",
+          "path": "artifacts/07-renewal-4-last.json",
+          "reason": "designated renewal is after the deadline; chain cannot prove the deadline claim"
+        },
+        "failure_count": 1,
+        "failures": [
+          {
+            "id": "deadline-anchor-late",
+            "status": "fail",
+            "message": "renewal-4: last/designated renewal issued 2026-07-02T09:00:00+00:00, after deadline 2026-06-30T23:59:59+00:00. A later valid receipt cannot backdate the missing pre-deadline link.",
+            "artifact_id": "renewal-4",
+            "deadline": "2026-06-30T23:59:59+00:00",
+            "issued_at": "2026-07-02T09:00:00+00:00"
+          }
+        ],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 7 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-hash",
+            "status": "pass",
+            "message": "SHA-256 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck-2025",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "genesis: valid Ed25519 signature by registry-2026",
+            "artifact_id": "genesis",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-1: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-1",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-2: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-2",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-3: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-3",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-4: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-4",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck-2025 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "genesis -> old-receipt matches"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: genesis -> renewal-1 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-1 -> renewal-2 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-2 -> renewal-3 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-3 -> renewal-4 is unbroken"
+          },
+          {
+            "id": "deadline-anchor-late",
+            "status": "fail",
+            "message": "renewal-4: last/designated renewal issued 2026-07-02T09:00:00+00:00, after deadline 2026-06-30T23:59:59+00:00. A later valid receipt cannot backdate the missing pre-deadline link.",
+            "artifact_id": "renewal-4",
+            "deadline": "2026-06-30T23:59:59+00:00",
+            "issued_at": "2026-07-02T09:00:00+00:00"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "04b-dengying-date-edit-without-resign",
+      "zip": "dengying-renewal-date-edited-no-resign.zip",
+      "reader_original": "DENG-YING-v1-tui.txt",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "report": {
+        "ok": false,
+        "summary": "NOT VERIFIED (2 failure(s)); first break is renewal-4.",
+        "bundle": "/tmp/external-review-04b-dengying-date-edit-without-resign-c4oc9rff/dengying-renewal-date-edited-no-resign",
+        "reader_original": "/tmp/external-review-04b-dengying-date-edit-without-resign-c4oc9rff/reader-brought-by-foreign-process/DENG-YING-v1-tui.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "crosscheck-2025",
+          "time": "2025-05-10T08:20:00Z",
+          "kind": "contemporaneous-crosscheck",
+          "key_id": "clerk-li-2025"
+        },
+        "break_at": {
+          "artifact_id": "renewal-4",
+          "path": "artifacts/07-renewal-4-last.json",
+          "reason": "signature does not verify against trusted public key"
+        },
+        "failure_count": 2,
+        "failures": [
+          {
+            "id": "signature-invalid",
+            "status": "fail",
+            "message": "renewal-4: Signature Verification Failure",
+            "artifact_id": "renewal-4",
+            "path": "artifacts/07-renewal-4-last.json",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "deadline-anchor-late",
+            "status": "fail",
+            "message": "renewal-4: last/designated renewal issued 2026-07-02T09:00:00+00:00, after deadline 2026-06-30T23:59:59+00:00. A later valid receipt cannot backdate the missing pre-deadline link.",
+            "artifact_id": "renewal-4",
+            "deadline": "2026-06-30T23:59:59+00:00",
+            "issued_at": "2026-07-02T09:00:00+00:00"
+          }
+        ],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 7 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-hash",
+            "status": "pass",
+            "message": "SHA-256 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck-2025",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "genesis: valid Ed25519 signature by registry-2026",
+            "artifact_id": "genesis",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-1: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-1",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-2: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-2",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-3: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-3",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-invalid",
+            "status": "fail",
+            "message": "renewal-4: Signature Verification Failure",
+            "artifact_id": "renewal-4",
+            "path": "artifacts/07-renewal-4-last.json",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck-2025 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "genesis -> old-receipt matches"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: genesis -> renewal-1 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-1 -> renewal-2 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-2 -> renewal-3 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-3 -> renewal-4 is unbroken"
+          },
+          {
+            "id": "deadline-anchor-late",
+            "status": "fail",
+            "message": "renewal-4: last/designated renewal issued 2026-07-02T09:00:00+00:00, after deadline 2026-06-30T23:59:59+00:00. A later valid receipt cannot backdate the missing pre-deadline link.",
+            "artifact_id": "renewal-4",
+            "deadline": "2026-06-30T23:59:59+00:00",
+            "issued_at": "2026-07-02T09:00:00+00:00"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "05-dengying-swap-reader-to-v2-qiao",
+      "zip": "dengying-registry-timely.zip",
+      "reader_original": "DENG-YING-v2-qiao.txt",
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "report": {
+        "ok": false,
+        "summary": "NOT VERIFIED (8 failure(s)); first break is reader-original.",
+        "bundle": "/tmp/external-review-05-dengying-swap-reader-to-v2-qiao-_lha8r3u/dengying-registry-timely",
+        "reader_original": "/tmp/external-review-05-dengying-swap-reader-to-v2-qiao-_lha8r3u/reader-brought-by-foreign-process/DENG-YING-v2-qiao.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": null,
+        "break_at": {
+          "artifact_id": "reader-original",
+          "path": "/tmp/external-review-05-dengying-swap-reader-to-v2-qiao-_lha8r3u/reader-brought-by-foreign-process/DENG-YING-v2-qiao.txt",
+          "reason": "SHA-256 mismatch with manifest"
+        },
+        "failure_count": 8,
+        "failures": [
+          {
+            "id": "manifest-original-digest",
+            "status": "fail",
+            "message": "reader original does not match manifest digest",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "old-receipt: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "old-receipt",
+            "path": "artifacts/01-old-receipt.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "crosscheck-2025: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "crosscheck-2025",
+            "path": "artifacts/02-crosscheck.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "genesis: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "genesis",
+            "path": "artifacts/03-registry-genesis.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "renewal-1: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "renewal-1",
+            "path": "artifacts/04-renewal-1.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "renewal-2: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "renewal-2",
+            "path": "artifacts/05-renewal-2.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "renewal-3: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "renewal-3",
+            "path": "artifacts/06-renewal-3.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "renewal-4: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "renewal-4",
+            "path": "artifacts/07-renewal-4-last.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          }
+        ],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 7 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "manifest-original-digest",
+            "status": "fail",
+            "message": "reader original does not match manifest digest",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck-2025",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "genesis: valid Ed25519 signature by registry-2026",
+            "artifact_id": "genesis",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-1: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-1",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-2: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-2",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-3: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-3",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-4: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-4",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "old-receipt: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "old-receipt",
+            "path": "artifacts/01-old-receipt.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "crosscheck-2025: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "crosscheck-2025",
+            "path": "artifacts/02-crosscheck.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "genesis: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "genesis",
+            "path": "artifacts/03-registry-genesis.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "renewal-1: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "renewal-1",
+            "path": "artifacts/04-renewal-1.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "renewal-2: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "renewal-2",
+            "path": "artifacts/05-renewal-2.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "renewal-3: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "renewal-3",
+            "path": "artifacts/06-renewal-3.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "digest-mismatch",
+            "status": "fail",
+            "message": "renewal-4: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+            "artifact_id": "renewal-4",
+            "path": "artifacts/07-renewal-4-last.json",
+            "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+            "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck-2025 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "genesis -> old-receipt matches"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: genesis -> renewal-1 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-1 -> renewal-2 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-2 -> renewal-3 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-3 -> renewal-4 is unbroken"
+          },
+          {
+            "id": "deadline-anchor-timely",
+            "status": "pass",
+            "message": "renewal-4: issued 2026-05-10T09:00:00+00:00 <= deadline 2026-06-30T23:59:59+00:00"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "06-qixia-owner-one-day-late",
+      "zip": "qixia-late-delivery.zip",
+      "reader_original": null,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "report": {
+        "ok": false,
+        "summary": "NOT VERIFIED (1 failure(s)); first break is migration-2026.",
+        "bundle": "/tmp/external-review-06-qixia-owner-one-day-late-3klvd0yl/qixia-late-delivery",
+        "reader_original": "/tmp/external-review-06-qixia-owner-one-day-late-3klvd0yl/qixia-late-delivery/originals/QIXIA-KAO-v3.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "crosscheck-2025",
+          "time": "2025-03-14T09:35:00Z",
+          "kind": "contemporaneous-crosscheck",
+          "key_id": "clerk-li-2025"
+        },
+        "break_at": {
+          "artifact_id": "migration-2026",
+          "path": "artifacts/04-successor-migration-attestation.json",
+          "reason": "trust bridge was created after the old witness's admissibility end"
+        },
+        "failure_count": 1,
+        "failures": [
+          {
+            "id": "bridge-too-late",
+            "status": "fail",
+            "message": "migration-2026: successor witness acted at 2026-11-21T10:30:00+00:00, after old authority old-witness-2023 ceased to be admissible at 2026-11-20T23:59:59+00:00. Today's stamp cannot backdate.",
+            "artifact_id": "migration-2026"
+          }
+        ],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 4 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-hash",
+            "status": "pass",
+            "message": "SHA-256 8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck-2025",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "owner-delivery: valid Ed25519 signature by owner-qixia",
+            "artifact_id": "owner-delivery",
+            "key_id": "owner-qixia"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "migration-2026: valid Ed25519 signature by new-witness-2026",
+            "artifact_id": "migration-2026",
+            "key_id": "new-witness-2026"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck-2025 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> crosscheck-2025 matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> owner-delivery matches"
+          },
+          {
+            "id": "bridge-too-late",
+            "status": "fail",
+            "message": "migration-2026: successor witness acted at 2026-11-21T10:30:00+00:00, after old authority old-witness-2023 ceased to be admissible at 2026-11-20T23:59:59+00:00. Today's stamp cannot backdate.",
+            "artifact_id": "migration-2026"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "07-qixia-stamp-after-trust-end",
+      "zip": "qixia-post-trust-stamp.zip",
+      "reader_original": null,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "report": {
+        "ok": false,
+        "summary": "NOT VERIFIED (1 failure(s)); first break is migration-2026.",
+        "bundle": "/tmp/external-review-07-qixia-stamp-after-trust-end-np49jacu/qixia-post-trust-stamp",
+        "reader_original": "/tmp/external-review-07-qixia-stamp-after-trust-end-np49jacu/qixia-post-trust-stamp/originals/QIXIA-KAO-v3.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "crosscheck-2025",
+          "time": "2025-03-14T09:35:00Z",
+          "kind": "contemporaneous-crosscheck",
+          "key_id": "clerk-li-2025"
+        },
+        "break_at": {
+          "artifact_id": "migration-2026",
+          "path": "artifacts/04-successor-migration-attestation.json",
+          "reason": "trust bridge was created after the old witness's admissibility end"
+        },
+        "failure_count": 1,
+        "failures": [
+          {
+            "id": "bridge-too-late",
+            "status": "fail",
+            "message": "migration-2026: successor witness acted at 2026-11-27T08:00:00+00:00, after old authority old-witness-2023 ceased to be admissible at 2026-11-20T23:59:59+00:00. Today's stamp cannot backdate.",
+            "artifact_id": "migration-2026"
+          }
+        ],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 4 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-hash",
+            "status": "pass",
+            "message": "SHA-256 8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck-2025",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "owner-delivery: valid Ed25519 signature by owner-qixia",
+            "artifact_id": "owner-delivery",
+            "key_id": "owner-qixia"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "migration-2026: valid Ed25519 signature by new-witness-2026",
+            "artifact_id": "migration-2026",
+            "key_id": "new-witness-2026"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck-2025 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> crosscheck-2025 matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "migration-2026 -> owner-delivery matches"
+          },
+          {
+            "id": "bridge-too-late",
+            "status": "fail",
+            "message": "migration-2026: successor witness acted at 2026-11-27T08:00:00+00:00, after old authority old-witness-2023 ceased to be admissible at 2026-11-20T23:59:59+00:00. Today's stamp cannot backdate.",
+            "artifact_id": "migration-2026"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "08-registry-closed-history-still-verifies",
+      "zip": "dengying-registry-closed.zip",
+      "reader_original": "DENG-YING-v1-tui.txt",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "report": {
+        "ok": true,
+        "summary": "VERIFIED: signatures, digest bindings, sequence, and renewal links are intact.",
+        "bundle": "/tmp/external-review-08-registry-closed-history-still-verifies-ivr6eque/dengying-registry-closed",
+        "reader_original": "/tmp/external-review-08-registry-closed-history-still-verifies-ivr6eque/reader-brought-by-foreign-process/DENG-YING-v1-tui.txt",
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "crosscheck-2025",
+          "time": "2025-05-10T08:20:00Z",
+          "kind": "contemporaneous-crosscheck",
+          "key_id": "clerk-li-2025"
+        },
+        "break_at": null,
+        "failure_count": 0,
+        "failures": [],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 8 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-hash",
+            "status": "pass",
+            "message": "SHA-256 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+            "artifact_id": "old-receipt",
+            "key_id": "old-witness-2023"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+            "artifact_id": "crosscheck-2025",
+            "key_id": "clerk-li-2025"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "genesis: valid Ed25519 signature by registry-2026",
+            "artifact_id": "genesis",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-1: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-1",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-2: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-2",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-3: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-3",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "renewal-4: valid Ed25519 signature by registry-2026",
+            "artifact_id": "renewal-4",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "registry-closure: valid Ed25519 signature by registry-2026",
+            "artifact_id": "registry-closure",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "registry-online-unavailable",
+            "status": "warn",
+            "message": "registry-closure: registry closed/ceased service at 2026-10-15T23:59:59+00:00; a live registry recheck is unavailable. Valid original-time receipts can still be checked offline, but a new statement cannot replace missing history.",
+            "artifact_id": "registry-closure"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "crosscheck-2025 -> old-receipt matches"
+          },
+          {
+            "id": "reference-hash",
+            "status": "pass",
+            "message": "genesis -> old-receipt matches"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: genesis -> renewal-1 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-1 -> renewal-2 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-2 -> renewal-3 is unbroken"
+          },
+          {
+            "id": "renewal-link",
+            "status": "pass",
+            "message": "continuous-commitment: renewal-3 -> renewal-4 is unbroken"
+          },
+          {
+            "id": "deadline-anchor-timely",
+            "status": "pass",
+            "message": "renewal-4: issued 2026-05-10T09:00:00+00:00 <= deadline 2026-06-30T23:59:59+00:00"
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    },
+    {
+      "case": "09-registry-today-statement-only",
+      "zip": "registry-statement-only.zip",
+      "reader_original": null,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "report": {
+        "ok": false,
+        "summary": "NOT VERIFIED: registry's current statement alone cannot re-prove prior witnessing; original point-in-time credentials are required.",
+        "bundle": "/tmp/external-review-09-registry-today-statement-only-8nyxzgsj/registry-statement-only",
+        "reader_original": null,
+        "verifier_now": "2026-11-27T09:00:00Z",
+        "earliest_admissible_anchor": {
+          "artifact_id": "registry-current-statement",
+          "time": "2026-11-27T08:00:00Z",
+          "kind": "registry-statement",
+          "key_id": "registry-2026"
+        },
+        "break_at": {
+          "artifact_id": "registry-current-statement",
+          "reason": "a new registry statement is not a substitute for original-time receipts"
+        },
+        "failure_count": 1,
+        "failures": [
+          {
+            "id": "history-required",
+            "status": "fail",
+            "message": "registry's current statement alone cannot re-prove prior witnessing; original point-in-time credentials are required."
+          }
+        ],
+        "checks": [
+          {
+            "id": "bundle-shape",
+            "status": "pass",
+            "message": "manifest lists 1 artifacts and all required files are readable"
+          },
+          {
+            "id": "trust-anchor-fingerprint",
+            "status": "pass",
+            "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+          },
+          {
+            "id": "original-not-supplied",
+            "status": "warn",
+            "message": "lightweight receipt only: no reader original was supplied, so digest cannot be bound to content"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "policy: valid Ed25519 signature by coop-governance-2026",
+            "artifact_id": "policy",
+            "key_id": "coop-governance-2026"
+          },
+          {
+            "id": "policy-signature",
+            "status": "pass",
+            "message": "policy signed by coop-governance-2026"
+          },
+          {
+            "id": "signature-valid",
+            "status": "pass",
+            "message": "registry-current-statement: valid Ed25519 signature by registry-2026",
+            "artifact_id": "registry-current-statement",
+            "key_id": "registry-2026"
+          },
+          {
+            "id": "history-required",
+            "status": "fail",
+            "message": "registry's current statement alone cannot re-prove prior witnessing; original point-in-time credentials are required."
+          }
+        ]
+      },
+      "stderr": "",
+      "expectation_failures": [],
+      "passed": true
+    }
+  ]
+}

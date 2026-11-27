@@ -1,0 +1,15 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "registry-2026",
+  "data": {
+    "type": "registry-closure",
+    "closure_id": "CLOSURE-REG-2026-1015",
+    "issued_at": "2026-10-15T18:00:00Z",
+    "effective_at": "2026-10-15T23:59:59Z",
+    "registry": "registry-2026",
+    "statement": "Registry ceased service; no new online statements or renewals after effective_at.",
+    "historical_receipts_remain_verifiable_with_public_key": true
+  },
+  "signature_b64": "zB8Vjv3ISDNVPqcDZXAJZqvWd77p+BG0vNuoOVl8/BgC9vg3O/wFGxifBPiAPZtiduJ57OUOax478S/kSaDRAA=="
+}

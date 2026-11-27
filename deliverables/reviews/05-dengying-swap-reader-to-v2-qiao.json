@@ -1,0 +1,274 @@
+{
+  "case": "05-dengying-swap-reader-to-v2-qiao",
+  "zip": "dengying-registry-timely.zip",
+  "reader_original": "DENG-YING-v2-qiao.txt",
+  "exit_code": 2,
+  "expected_exit_code": 2,
+  "report": {
+    "ok": false,
+    "summary": "NOT VERIFIED (8 failure(s)); first break is reader-original.",
+    "bundle": "/tmp/external-review-05-dengying-swap-reader-to-v2-qiao-_lha8r3u/dengying-registry-timely",
+    "reader_original": "/tmp/external-review-05-dengying-swap-reader-to-v2-qiao-_lha8r3u/reader-brought-by-foreign-process/DENG-YING-v2-qiao.txt",
+    "verifier_now": "2026-11-27T09:00:00Z",
+    "earliest_admissible_anchor": null,
+    "break_at": {
+      "artifact_id": "reader-original",
+      "path": "/tmp/external-review-05-dengying-swap-reader-to-v2-qiao-_lha8r3u/reader-brought-by-foreign-process/DENG-YING-v2-qiao.txt",
+      "reason": "SHA-256 mismatch with manifest"
+    },
+    "failure_count": 8,
+    "failures": [
+      {
+        "id": "manifest-original-digest",
+        "status": "fail",
+        "message": "reader original does not match manifest digest",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "old-receipt: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "old-receipt",
+        "path": "artifacts/01-old-receipt.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "crosscheck-2025: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "crosscheck-2025",
+        "path": "artifacts/02-crosscheck.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "genesis: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "genesis",
+        "path": "artifacts/03-registry-genesis.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "renewal-1: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "renewal-1",
+        "path": "artifacts/04-renewal-1.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "renewal-2: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "renewal-2",
+        "path": "artifacts/05-renewal-2.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "renewal-3: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "renewal-3",
+        "path": "artifacts/06-renewal-3.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "renewal-4: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "renewal-4",
+        "path": "artifacts/07-renewal-4-last.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      }
+    ],
+    "checks": [
+      {
+        "id": "bundle-shape",
+        "status": "pass",
+        "message": "manifest lists 7 artifacts and all required files are readable"
+      },
+      {
+        "id": "trust-anchor-fingerprint",
+        "status": "pass",
+        "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+      },
+      {
+        "id": "manifest-original-digest",
+        "status": "fail",
+        "message": "reader original does not match manifest digest",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "policy: valid Ed25519 signature by coop-governance-2026",
+        "artifact_id": "policy",
+        "key_id": "coop-governance-2026"
+      },
+      {
+        "id": "policy-signature",
+        "status": "pass",
+        "message": "policy signed by coop-governance-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+        "artifact_id": "old-receipt",
+        "key_id": "old-witness-2023"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+        "artifact_id": "crosscheck-2025",
+        "key_id": "clerk-li-2025"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "genesis: valid Ed25519 signature by registry-2026",
+        "artifact_id": "genesis",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "renewal-1: valid Ed25519 signature by registry-2026",
+        "artifact_id": "renewal-1",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "renewal-2: valid Ed25519 signature by registry-2026",
+        "artifact_id": "renewal-2",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "renewal-3: valid Ed25519 signature by registry-2026",
+        "artifact_id": "renewal-3",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "renewal-4: valid Ed25519 signature by registry-2026",
+        "artifact_id": "renewal-4",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "old-receipt: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "old-receipt",
+        "path": "artifacts/01-old-receipt.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "crosscheck-2025: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "crosscheck-2025",
+        "path": "artifacts/02-crosscheck.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "genesis: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "genesis",
+        "path": "artifacts/03-registry-genesis.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "renewal-1: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "renewal-1",
+        "path": "artifacts/04-renewal-1.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "renewal-2: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "renewal-2",
+        "path": "artifacts/05-renewal-2.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "renewal-3: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "renewal-3",
+        "path": "artifacts/06-renewal-3.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "digest-mismatch",
+        "status": "fail",
+        "message": "renewal-4: statement binds 9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e, but reader original has 4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b. The old proof cannot endorse this edition.",
+        "artifact_id": "renewal-4",
+        "path": "artifacts/07-renewal-4-last.json",
+        "expected": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+        "actual": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "crosscheck-2025 -> old-receipt matches"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "genesis -> old-receipt matches"
+      },
+      {
+        "id": "renewal-link",
+        "status": "pass",
+        "message": "continuous-commitment: genesis -> renewal-1 is unbroken"
+      },
+      {
+        "id": "renewal-link",
+        "status": "pass",
+        "message": "continuous-commitment: renewal-1 -> renewal-2 is unbroken"
+      },
+      {
+        "id": "renewal-link",
+        "status": "pass",
+        "message": "continuous-commitment: renewal-2 -> renewal-3 is unbroken"
+      },
+      {
+        "id": "renewal-link",
+        "status": "pass",
+        "message": "continuous-commitment: renewal-3 -> renewal-4 is unbroken"
+      },
+      {
+        "id": "deadline-anchor-timely",
+        "status": "pass",
+        "message": "renewal-4: issued 2026-05-10T09:00:00+00:00 <= deadline 2026-06-30T23:59:59+00:00"
+      }
+    ]
+  },
+  "stderr": "",
+  "expectation_failures": [],
+  "passed": true
+}

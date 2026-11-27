@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+"""Archive Cooperative command-line entry point.
+
+This controls the cooperative's private simulation.  Independent readers do
+not need this program: they use ``deliverables/verify_independent.py`` and a
+copied evidence bundle.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+WORKSPACE = Path(__file__).resolve().parent
+sys.path.insert(0, str(WORKSPACE))
+
+from cooplib.common import DELIVERABLES, PRIVATE  # noqa: E402
+from cooplib.scenario import build_all  # noqa: E402
+from cooplib.server import serve  # noqa: E402
+
+
+def cmd_serve(args: argparse.Namespace) -> int:
+    serve(args.host, args.port, args.write_endpoint)
+    return 0
+
+
+def cmd_build(args: argparse.Namespace) -> int:
+    paths = build_all(clean=not args.keep_keys)
+    printable = {k: str(v) for k, v in paths.items()}
+    print(json.dumps({"built": True, "paths": printable}, ensure_ascii=False, indent=2))
+    return 0
+
+
+def cmd_verify(args: argparse.Namespace) -> int:
+    verifier = DELIVERABLES / "verify_independent.py"
+    cmd = [sys.executable, str(verifier), args.bundle]
+    if args.original:
+        cmd += ["--original", args.original]
+    if args.before:
+        cmd += ["--before", args.before]
+    if args.json:
+        cmd += ["--json"]
+    if args.out:
+        cmd += ["--out", args.out]
+    if args.claim:
+        cmd += ["--claim", args.claim]
+    if args.now:
+        cmd += ["--now", args.now]
+    return subprocess.call(cmd)
+
+
+def main(argv: list[str] | None = None) -> int:
+    p = argparse.ArgumentParser(description="Archive Cooperative simulation and evidence builder")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    b = sub.add_parser("build", help="generate keys, manuscripts, receipts, bundles, and mutations")
+    b.add_argument("--keep-keys", action="store_true", help="do not clean/recreate simulated keys")
+    b.set_defaults(func=cmd_build)
+
+    s = sub.add_parser("serve", help="run local simulated witness/registry HTTP service")
+    s.add_argument("--host", default="127.0.0.1")
+    s.add_argument("--port", type=int, default=0)
+    s.add_argument("--write-endpoint", default=str(PRIVATE / "server-endpoint.json"))
+    s.set_defaults(func=cmd_serve)
+
+    v = sub.add_parser("verify", help="convenience wrapper around the independent verifier")
+    v.add_argument("bundle")
+    v.add_argument("--original")
+    v.add_argument("--before")
+    v.add_argument("--claim")
+    v.add_argument("--now")
+    v.add_argument("--json", action="store_true")
+    v.add_argument("--out")
+    v.set_defaults(func=cmd_verify)
+
+    args = p.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

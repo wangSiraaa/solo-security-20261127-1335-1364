@@ -1,0 +1,54 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "coop-governance-2026",
+  "data": {
+    "type": "policy",
+    "schema": "archive-coop-policy-data/1",
+    "policy_id": "ACP-LT-2026-11",
+    "generated_at": "2026-11-27T08:00:00Z",
+    "simulated_witness": true,
+    "global_transition_cutoff": "2026-11-20T23:59:59Z",
+    "example_existence_cutoff": "2026-06-30T23:59:59Z",
+    "authorities": {
+      "coop-governance-2026": {
+        "role": "policy-governance-key",
+        "valid_from": "2026-01-01T00:00:00Z",
+        "trust_not_after": null
+      },
+      "old-witness-2023": {
+        "role": "original-timestamp-witness",
+        "valid_from": "2023-01-01T00:00:00Z",
+        "trust_not_after": "2026-11-20T23:59:59Z",
+        "replacement": "new-witness-2026"
+      },
+      "new-witness-2026": {
+        "role": "successor-long-term-witness",
+        "valid_from": "2026-09-01T00:00:00Z",
+        "trust_not_after": null
+      },
+      "registry-2026": {
+        "role": "continuous-commitment-registry",
+        "valid_from": "2025-01-01T00:00:00Z",
+        "trust_not_after": null
+      },
+      "clerk-li-2025": {
+        "role": "contemporaneous-checking-clerk",
+        "valid_from": "2025-01-01T00:00:00Z",
+        "trust_not_after": null
+      },
+      "owner-qixia": {
+        "role": "manuscript-owner-custody-key",
+        "valid_from": "2025-01-01T00:00:00Z",
+        "trust_not_after": null
+      }
+    },
+    "rules": {
+      "post_trust_stamp_cannot_backdate": true,
+      "cross_library_requires_original_time_credentials": true,
+      "registry_current_statement_alone_is_insufficient": true,
+      "hash_algorithm": "sha-256"
+    }
+  },
+  "signature_b64": "PEmNEdevM94byIMfhkW6RmEUfnKTUWQDcL4ei3ClMVqSuX9y+3EJ26Xw+bFZNhV5nwQBsn5Z184RHcvFUcqMBQ=="
+}

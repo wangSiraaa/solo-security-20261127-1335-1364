@@ -1,0 +1,79 @@
+{
+  "schema": "archive-coop-manifest/1",
+  "case_id": "DENG-YING-LU-v1-registry-closed",
+  "title": "Lightweight continuous registry renewal",
+  "claim": "renewal-chain",
+  "cutoff": "2026-06-30T23:59:59Z",
+  "simulated": true,
+  "custody_summary": {
+    "owner": "keeps the manuscript; only hash commitments and lightweight receipts leave the owner's cabinet",
+    "registry": "holds the continuous commitment record while in service",
+    "reader": "must supply their own copy to bind the hash; may check the operating registry online"
+  },
+  "original": {
+    "path": null,
+    "required": true,
+    "sha256": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+    "manuscript_id": "DENG-YING-LU",
+    "edition": "v1-tui"
+  },
+  "policy": "policy.json",
+  "trust_dir": "trust",
+  "artifacts": [
+    {
+      "id": "old-receipt",
+      "path": "artifacts/01-old-receipt.json",
+      "required": true
+    },
+    {
+      "id": "crosscheck-2025",
+      "path": "artifacts/02-crosscheck.json",
+      "required": true
+    },
+    {
+      "id": "genesis",
+      "path": "artifacts/03-registry-genesis.json",
+      "required": true
+    },
+    {
+      "id": "renewal-1",
+      "path": "artifacts/04-renewal-1.json",
+      "required": true
+    },
+    {
+      "id": "renewal-2",
+      "path": "artifacts/05-renewal-2.json",
+      "required": true
+    },
+    {
+      "id": "renewal-3",
+      "path": "artifacts/06-renewal-3.json",
+      "required": true
+    },
+    {
+      "id": "renewal-4",
+      "path": "artifacts/07-renewal-4-last.json",
+      "required": true
+    },
+    {
+      "id": "registry-closure",
+      "path": "artifacts/08-registry-closure.json",
+      "required": true
+    }
+  ],
+  "renewal_chains": [
+    {
+      "id": "continuous-commitment",
+      "artifacts": [
+        "genesis",
+        "renewal-1",
+        "renewal-2",
+        "renewal-3",
+        "renewal-4"
+      ],
+      "deadline_anchor": "renewal-4",
+      "must_cover_cutoff": true
+    }
+  ],
+  "registry_online": false
+}

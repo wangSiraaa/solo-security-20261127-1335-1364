@@ -1,0 +1,121 @@
+{
+  "case": "01b-qixia-same-book-registry-closed",
+  "zip": "qixia-crosslibrary-registry-closed.zip",
+  "reader_original": null,
+  "exit_code": 0,
+  "expected_exit_code": 0,
+  "report": {
+    "ok": true,
+    "summary": "VERIFIED: exact reader bytes match the old receipt; original-time checks and a timely successor-witness bridge validate the complete witness history offline.",
+    "bundle": "/tmp/external-review-01b-qixia-same-book-registry-closed-fs_0dilx/qixia-crosslibrary-registry-closed",
+    "reader_original": "/tmp/external-review-01b-qixia-same-book-registry-closed-fs_0dilx/qixia-crosslibrary-registry-closed/originals/QIXIA-KAO-v3.txt",
+    "verifier_now": "2026-11-27T09:00:00Z",
+    "earliest_admissible_anchor": {
+      "artifact_id": "crosscheck-2025",
+      "time": "2025-03-14T09:35:00Z",
+      "kind": "contemporaneous-crosscheck",
+      "key_id": "clerk-li-2025"
+    },
+    "break_at": null,
+    "failure_count": 0,
+    "failures": [],
+    "checks": [
+      {
+        "id": "bundle-shape",
+        "status": "pass",
+        "message": "manifest lists 5 artifacts and all required files are readable"
+      },
+      {
+        "id": "trust-anchor-fingerprint",
+        "status": "pass",
+        "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+      },
+      {
+        "id": "original-hash",
+        "status": "pass",
+        "message": "SHA-256 8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "policy: valid Ed25519 signature by coop-governance-2026",
+        "artifact_id": "policy",
+        "key_id": "coop-governance-2026"
+      },
+      {
+        "id": "policy-signature",
+        "status": "pass",
+        "message": "policy signed by coop-governance-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+        "artifact_id": "old-receipt",
+        "key_id": "old-witness-2023"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "crosscheck-2025: valid Ed25519 signature by clerk-li-2025",
+        "artifact_id": "crosscheck-2025",
+        "key_id": "clerk-li-2025"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "owner-delivery: valid Ed25519 signature by owner-qixia",
+        "artifact_id": "owner-delivery",
+        "key_id": "owner-qixia"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "migration-2026: valid Ed25519 signature by new-witness-2026",
+        "artifact_id": "migration-2026",
+        "key_id": "new-witness-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "registry-closure: valid Ed25519 signature by registry-2026",
+        "artifact_id": "registry-closure",
+        "key_id": "registry-2026"
+      },
+      {
+        "id": "registry-online-unavailable",
+        "status": "warn",
+        "message": "registry-closure: registry closed/ceased service at 2026-10-15T23:59:59+00:00; a live registry recheck is unavailable. Valid original-time receipts can still be checked offline, but a new statement cannot replace missing history.",
+        "artifact_id": "registry-closure"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "crosscheck-2025 -> old-receipt matches"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "migration-2026 -> old-receipt matches"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "migration-2026 -> crosscheck-2025 matches"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "migration-2026 -> owner-delivery matches"
+      },
+      {
+        "id": "bridge-timely",
+        "status": "pass",
+        "message": "migration-2026: migration at 2026-11-19T10:30:00+00:00 is before old authority end 2026-11-20T23:59:59Z"
+      }
+    ]
+  },
+  "stderr": "",
+  "expectation_failures": [],
+  "passed": true
+}

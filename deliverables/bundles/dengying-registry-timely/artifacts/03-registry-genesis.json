@@ -1,0 +1,26 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "registry-2026",
+  "data": {
+    "type": "renewal-receipt",
+    "receipt_id": "REG-DENGYING-000",
+    "seq": 0,
+    "issued_at": "2025-05-12T09:00:00Z",
+    "valid_through": "2025-11-30T23:59:59Z",
+    "registry": "registry-2026",
+    "manuscript_id": "DENG-YING-LU",
+    "edition": "v1-tui",
+    "hash_algorithm": "sha-256",
+    "digest": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+    "commitment": "sha256:9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+    "previous_artifact_id": null,
+    "previous_envelope_sha256": "GENESIS",
+    "genesis_of_continuous_registration": true,
+    "old_receipt": {
+      "artifact_id": "old-receipt",
+      "sha256": "66348c8287ab666a74985d89d47df5488120f74a021d1696bcd9a5a37ea978cd"
+    }
+  },
+  "signature_b64": "60ge8ymG2znbGMNmLL6gM4TBXkwAPDEdvX1yFSQaSmPvxKQY3fv/1wMD/+XZnE4ZYt4R4N6kFSVU56777+OaAw=="
+}

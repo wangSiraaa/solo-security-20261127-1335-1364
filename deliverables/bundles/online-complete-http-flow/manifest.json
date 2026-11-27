@@ -1,0 +1,36 @@
+{
+  "schema": "archive-coop-manifest/1",
+  "case_id": "ONLINE-OK-1-http-happy-path",
+  "title": "Online normal service with complete materials",
+  "claim": "self-contained-bridge",
+  "cutoff": "2026-11-20T23:59:59Z",
+  "original": {
+    "path": "originals/ONLINE-OK-1.txt",
+    "required": true,
+    "sha256": "971a828e664bfa437cb0995ed2a8c1af8042c373133910299153eedaecb45183"
+  },
+  "policy": "policy.json",
+  "trust_dir": "trust",
+  "artifacts": [
+    {
+      "id": "old-receipt",
+      "path": "artifacts/01-old-receipt-from-http.json",
+      "required": true
+    },
+    {
+      "id": "crosscheck",
+      "path": "artifacts/02-crosscheck-from-http.json",
+      "required": true
+    },
+    {
+      "id": "handover",
+      "path": "artifacts/03-handover-from-http.json",
+      "required": true
+    },
+    {
+      "id": "migration",
+      "path": "artifacts/04-migration-from-http.json",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "coop-governance-2026": {
+    "public_key": "coop-governance-2026.pub.pem",
+    "sha256": "6e0826edb2a494e9146bc2de7049d657e7d8205aa3de2206b33ee21cf130a012"
+  },
+  "old-witness-2023": {
+    "public_key": "old-witness-2023.pub.pem",
+    "sha256": "58e69a7e495cd895703dde683224154c6c876646ff648297be1b474901f3862a"
+  },
+  "new-witness-2026": {
+    "public_key": "new-witness-2026.pub.pem",
+    "sha256": "6c09c12b7020f49eadbf79a230b5a7e7e5d2ab1dac21666527442fca816e738f"
+  },
+  "registry-2026": {
+    "public_key": "registry-2026.pub.pem",
+    "sha256": "be5612baf9bbb4fba8de25e13d1933d8e6b0da6b02f27a715be790c5b6d49e9c"
+  },
+  "clerk-li-2025": {
+    "public_key": "clerk-li-2025.pub.pem",
+    "sha256": "f7ce8480d568f0786ccd78f46d422d56ed0e53183d2455ce8c57e6a1255bc244"
+  },
+  "owner-qixia": {
+    "public_key": "owner-qixia.pub.pem",
+    "sha256": "d1b0313e1f7b5a8e2b9227d7849cf99647df27d927ad6964c855fee16ee18552"
+  }
+}

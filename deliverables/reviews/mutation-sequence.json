@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "step": "1-verify-v1-before-mutation",
+      "passed": true,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "ok": true,
+      "expected_ok": true,
+      "break_id": null,
+      "expected_break_id": null,
+      "failure_ids": [],
+      "summary": "VERIFIED: signatures, digest bindings, sequence, and renewal links are intact.",
+      "break_at": null
+    },
+    {
+      "step": "2a-move-date-only-without-resign",
+      "passed": true,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "ok": false,
+      "expected_ok": false,
+      "break_id": "renewal-4",
+      "expected_break_id": "renewal-4",
+      "failure_ids": [
+        "signature-invalid",
+        "deadline-anchor-late"
+      ],
+      "summary": "NOT VERIFIED (2 failure(s)); first break is renewal-4.",
+      "break_at": {
+        "artifact_id": "renewal-4",
+        "path": "artifacts/07-renewal-4-last.json",
+        "reason": "signature does not verify against trusted public key"
+      }
+    },
+    {
+      "step": "2b-honest-late-reissuance-after-deadline",
+      "passed": true,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "ok": false,
+      "expected_ok": false,
+      "break_id": "renewal-4",
+      "expected_break_id": "renewal-4",
+      "failure_ids": [
+        "deadline-anchor-late"
+      ],
+      "summary": "NOT VERIFIED (1 failure(s)); first break is renewal-4.",
+      "break_at": {
+        "artifact_id": "renewal-4",
+        "path": "artifacts/07-renewal-4-last.json",
+        "reason": "designated renewal is after the deadline; chain cannot prove the deadline claim"
+      }
+    },
+    {
+      "step": "3-restore-date-and-reverify-v1",
+      "passed": true,
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "ok": true,
+      "expected_ok": true,
+      "break_id": null,
+      "expected_break_id": null,
+      "failure_ids": [],
+      "summary": "VERIFIED: signatures, digest bindings, sequence, and renewal links are intact.",
+      "break_at": null
+    },
+    {
+      "step": "4-swap-only-reader-original-to-v2",
+      "passed": true,
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "ok": false,
+      "expected_ok": false,
+      "break_id": "reader-original",
+      "expected_break_id": "reader-original",
+      "failure_ids": [
+        "manifest-original-digest",
+        "digest-mismatch",
+        "digest-mismatch",
+        "digest-mismatch",
+        "digest-mismatch",
+        "digest-mismatch",
+        "digest-mismatch",
+        "digest-mismatch"
+      ],
+      "summary": "NOT VERIFIED (8 failure(s)); first break is reader-original.",
+      "break_at": {
+        "artifact_id": "reader-original",
+        "path": "/tmp/coop-mutation-sequence-oh1tjmg3/reader/DENG-YING-v2-qiao.txt",
+        "reason": "SHA-256 mismatch with manifest"
+      }
+    }
+  ]
+}

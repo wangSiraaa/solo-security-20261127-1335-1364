@@ -1,0 +1,108 @@
+{
+  "case": "02-online-http-complete",
+  "zip": "online-complete-http-flow.zip",
+  "reader_original": null,
+  "exit_code": 0,
+  "expected_exit_code": 0,
+  "report": {
+    "ok": true,
+    "summary": "VERIFIED: exact reader bytes match the old receipt; original-time checks and a timely successor-witness bridge validate the complete witness history offline.",
+    "bundle": "/tmp/external-review-02-online-http-complete-ivv5cbup/online-complete-http-flow",
+    "reader_original": "/tmp/external-review-02-online-http-complete-ivv5cbup/online-complete-http-flow/originals/ONLINE-OK-1.txt",
+    "verifier_now": "2026-11-27T09:00:00Z",
+    "earliest_admissible_anchor": {
+      "artifact_id": "crosscheck",
+      "time": "2025-04-01T10:00:00Z",
+      "kind": "contemporaneous-crosscheck",
+      "key_id": "clerk-li-2025"
+    },
+    "break_at": null,
+    "failure_count": 0,
+    "failures": [],
+    "checks": [
+      {
+        "id": "bundle-shape",
+        "status": "pass",
+        "message": "manifest lists 4 artifacts and all required files are readable"
+      },
+      {
+        "id": "trust-anchor-fingerprint",
+        "status": "pass",
+        "message": "6 pinned public key(s) match anchors.json; the anchor file itself must still be distributed out of band"
+      },
+      {
+        "id": "original-hash",
+        "status": "pass",
+        "message": "SHA-256 971a828e664bfa437cb0995ed2a8c1af8042c373133910299153eedaecb45183"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "policy: valid Ed25519 signature by coop-governance-2026",
+        "artifact_id": "policy",
+        "key_id": "coop-governance-2026"
+      },
+      {
+        "id": "policy-signature",
+        "status": "pass",
+        "message": "policy signed by coop-governance-2026"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "old-receipt: valid Ed25519 signature by old-witness-2023",
+        "artifact_id": "old-receipt",
+        "key_id": "old-witness-2023"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "crosscheck: valid Ed25519 signature by clerk-li-2025",
+        "artifact_id": "crosscheck",
+        "key_id": "clerk-li-2025"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "handover: valid Ed25519 signature by owner-qixia",
+        "artifact_id": "handover",
+        "key_id": "owner-qixia"
+      },
+      {
+        "id": "signature-valid",
+        "status": "pass",
+        "message": "migration: valid Ed25519 signature by new-witness-2026",
+        "artifact_id": "migration",
+        "key_id": "new-witness-2026"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "crosscheck -> old-receipt matches"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "migration -> old-receipt matches"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "migration -> crosscheck matches"
+      },
+      {
+        "id": "reference-hash",
+        "status": "pass",
+        "message": "migration -> handover matches"
+      },
+      {
+        "id": "bridge-timely",
+        "status": "pass",
+        "message": "migration: migration at 2026-11-19T15:00:00+00:00 is before old authority end 2026-11-20T23:59:59Z"
+      }
+    ]
+  },
+  "stderr": "",
+  "expectation_failures": [],
+  "passed": true
+}

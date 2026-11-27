@@ -1,0 +1,9 @@
+{
+  "description": "The two reader originals differ in exactly one Chinese character.",
+  "changed_lines": [
+    "- 鸟宿池边树，僧推月下门。",
+    "+ 鸟宿池边树，僧敲月下门。"
+  ],
+  "sha256_v1_tui": "9ee3973c7709b880827181cc8225cc01d18d522a0a8921e4ce773b3f853bd93e",
+  "sha256_v2_qiao": "4801fda1f99611e208602f9d5d99d7ad5e42367c1bb223bdbbd114bc84e9c04b"
+}

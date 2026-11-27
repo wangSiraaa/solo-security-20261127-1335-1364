@@ -1,0 +1,35 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "clerk-li-2025",
+  "data": {
+    "type": "contemporaneous-crosscheck",
+    "check_id": "XCHECK-QIXIA-20250314-001",
+    "issued_at": "2025-03-14T09:35:00Z",
+    "clerk": "clerk-li-2025",
+    "manuscript_id": "QIXIA-KAO",
+    "edition": "v3",
+    "hash_algorithm": "sha-256",
+    "digest": "8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066",
+    "digest_recomputed": true,
+    "old_receipt_signature_checked_with_public_key": true,
+    "result": "match",
+    "old_receipt": {
+      "artifact_id": "old-receipt",
+      "sha256": "d31c23824c7a6c0b5f07539f9565b369688ab6c3ecf952b00f2d3aa1bceac8b4"
+    },
+    "materials": [
+      {
+        "kind": "whole-manuscript-bytes",
+        "path": "originals/QIXIA-KAO-v3.txt",
+        "sha256": "8c64830bd6138cbc7df156a03f49ced15c30411a46b3f3a3bfa1574ba730f066"
+      },
+      {
+        "kind": "old-receipt-envelope",
+        "path": "artifacts/01-old-timestamp-receipt.json",
+        "sha256": "d31c23824c7a6c0b5f07539f9565b369688ab6c3ecf952b00f2d3aa1bceac8b4"
+      }
+    ]
+  },
+  "signature_b64": "IQO98G5SqL7pZO+aLXi2H2LW+nQhhHHe98YtvA8jZVUJqH7d+/vmA3ajPbLHZd3sOfY0kNx7HNIrdmBkj/2iDg=="
+}

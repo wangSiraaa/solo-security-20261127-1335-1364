@@ -1,0 +1,15 @@
+{
+  "schema": "archive-coop-envelope/1",
+  "algorithm": "Ed25519",
+  "key_id": "registry-2026",
+  "data": {
+    "type": "registry-closure",
+    "closure_id": "CLOSURE-REG-2026-1015-QIXIA",
+    "issued_at": "2026-10-15T18:00:00Z",
+    "effective_at": "2026-10-15T23:59:59Z",
+    "registry": "registry-2026",
+    "manuscript_id": "QIXIA-KAO",
+    "statement": "Registry closed; the self-contained migration bundle remains independently verifiable."
+  },
+  "signature_b64": "mqtxUgGmFJrXr/IrhtqjvelehBzqFZfW3PNkDz+K9CnFco4z9Mp4+clXGzc7kyjubQF9lhGCncdz886LtDd3CQ=="
+}
