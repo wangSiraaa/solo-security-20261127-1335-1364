@@ -1,0 +1,15 @@
+{
+  "based_on_receipts": [
+    "drill-shadow-vault-1-take-000001",
+    "drill-shadow-reinspect-check-000001"
+  ],
+  "causal_digest": "3e66c005cf3e89030ea891acb3570d618aef1c88ce70c82a5e6f0824b0680d6c",
+  "domain": "drill",
+  "issued_at": "2026-11-27T02:47:28.198481+00:00",
+  "item_id": "ITEM-A",
+  "job_id": "JOB-D1",
+  "note": "领物条仅由本作业同域回条派生；历史回条不得作为依据",
+  "order_id": "WO-1001",
+  "receiver": "GROUP-A",
+  "slip_id": "drill-slip-JOB-D1"
+}

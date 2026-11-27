@@ -1,0 +1,5 @@
+{"detail":{"order_id":"WO-1001"},"event":"created","ts":"2026-11-27T02:47:28.237520+00:00","type":"LIFECYCLE"}
+{"idempotency_key":"JOB-D4direct:take:e163fcf1d47fe450","intent_digest":"e163fcf1d47fe450bbe34e092added0bc0bc8116598fd23ab8e8622f6e8e1258","request":{"idempotency_key":"JOB-D4direct:take:e163fcf1d47fe450","intent_digest":"e163fcf1d47fe450bbe34e092added0bc0bc8116598fd23ab8e8622f6e8e1258","ticket":{"item_id":"ITEM-A","order_id":"WO-1001","purpose":"例行复检","receiver":"GROUP-A"}},"service":"vault-main","step":"take","ts":"2026-11-27T02:47:28.238567+00:00","type":"INTENT"}
+{"detail":{"attempt":1,"status":"RUNNING","step":"take"},"event":"status","ts":"2026-11-27T02:47:28.239834+00:00","type":"LIFECYCLE"}
+{"idempotency_key":"JOB-D4direct:take:e163fcf1d47fe450","outcome":{"error":"领用组 GROUP-A 不是该件的合法接收者（合法：GROUP-B）","error_type":"ServiceError","ok":false},"step":"take","ts":"2026-11-27T02:47:28.240877+00:00","type":"OBSERVATION"}
+{"detail":{"status":"FAILED","step":"take"},"event":"status","ts":"2026-11-27T02:47:28.242128+00:00","type":"LIFECYCLE"}

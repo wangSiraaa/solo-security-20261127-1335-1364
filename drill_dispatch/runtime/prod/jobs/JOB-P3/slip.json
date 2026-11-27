@@ -1,0 +1,15 @@
+{
+  "based_on_receipts": [
+    "prod-vault-main-take-000004",
+    "prod-reinspect-1-check-000003"
+  ],
+  "causal_digest": "162c8a309512256f0fd9f21f1796b8ffef30d3a2e6056fdfcc252435da38a4dc",
+  "domain": "prod",
+  "issued_at": "2026-11-27T02:47:28.155606+00:00",
+  "item_id": "ITEM-A",
+  "job_id": "JOB-P3",
+  "note": "领物条仅由本作业同域回条派生；历史回条不得作为依据",
+  "order_id": "WO-1003",
+  "receiver": "GROUP-A",
+  "slip_id": "prod-slip-JOB-P3"
+}

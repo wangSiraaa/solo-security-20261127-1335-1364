@@ -1,0 +1,13 @@
+{
+  "domain": "prod",
+  "idem_key": "manual-return-ITEM-A-2",
+  "intent_digest": "manual",
+  "item_id": "ITEM-A",
+  "kind": "return",
+  "order_id": "WO-1003",
+  "receipt_id": "prod-vault-main-return-000005",
+  "receiver": "GROUP-A",
+  "seq": 5,
+  "service": "vault-main",
+  "ts": "2026-11-27T02:47:28.160223+00:00"
+}

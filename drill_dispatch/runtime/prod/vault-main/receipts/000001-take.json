@@ -1,0 +1,14 @@
+{
+  "domain": "prod",
+  "idem_key": "JOB-P1:take:e0a8973215f87407",
+  "intent_digest": "e0a8973215f8740777327c48859656a060703adab0022fd688ecc5df9d46c278",
+  "item_id": "ITEM-A",
+  "kind": "take",
+  "order_id": "WO-1001",
+  "purpose": "例行复检",
+  "receipt_id": "prod-vault-main-take-000001",
+  "receiver": "GROUP-A",
+  "seq": 1,
+  "service": "vault-main",
+  "ts": "2026-11-27T02:47:28.097404+00:00"
+}

@@ -1,0 +1,14 @@
+{
+  "domain": "prod",
+  "idem_key": "JOB-P3:take:9069d48186d67722",
+  "intent_digest": "9069d48186d67722e7ad00fadabffc483dc948a3035678d09c671737cbd09d9e",
+  "item_id": "ITEM-A",
+  "kind": "take",
+  "order_id": "WO-1003",
+  "purpose": "复检后再领用演示（复用回柜件）",
+  "receipt_id": "prod-vault-main-take-000004",
+  "receiver": "GROUP-A",
+  "seq": 4,
+  "service": "vault-main",
+  "ts": "2026-11-27T02:47:28.140529+00:00"
+}

@@ -1,0 +1,16 @@
+{
+  "fired": [
+    {
+      "job_id": "JOB-P2",
+      "mode": "TIMEOUT_ONCE",
+      "step": "check",
+      "ts": "2026-11-27T02:47:28.119691+00:00"
+    },
+    {
+      "job_id": "JOB-P3",
+      "mode": "CRASH_ONCE",
+      "step": "take",
+      "ts": "2026-11-27T02:47:28.139186+00:00"
+    }
+  ]
+}

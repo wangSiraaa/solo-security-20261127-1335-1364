@@ -1,0 +1,11 @@
+{
+  "attempt": 2,
+  "created_at": "2026-11-27T02:47:28.110177+00:00",
+  "domain": "prod",
+  "job_id": "JOB-P2",
+  "order_digest": "2137b5cbd688d7fe0c6b7f9a9ae87d63333cf0a91505a4e7edbdf737b221db31",
+  "order_id": "WO-1002",
+  "status": "COMPLETED",
+  "step": "check",
+  "updated_at": "2026-11-27T02:47:28.129224+00:00"
+}

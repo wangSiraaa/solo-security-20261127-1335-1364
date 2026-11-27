@@ -1,0 +1,21 @@
+{
+  "dispatched": 3,
+  "domain": "prod",
+  "genesis": "",
+  "items": {
+    "ITEM-A": {
+      "allowed_receiver": "GROUP-A",
+      "item_id": "ITEM-A",
+      "status": "IN"
+    },
+    "ITEM-B": {
+      "allowed_receiver": "GROUP-A",
+      "item_id": "ITEM-B",
+      "status": "OUT",
+      "taken_by": "GROUP-A"
+    }
+  },
+  "kind": "cabinet",
+  "name": "vault-main",
+  "seq": 5
+}

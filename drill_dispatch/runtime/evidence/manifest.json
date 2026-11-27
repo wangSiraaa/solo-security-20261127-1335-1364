@@ -1,0 +1,69 @@
+{
+  "created_at": "2026-11-27T02:47:28.165338+00:00",
+  "entries": [
+    {
+      "imported_at": "2026-11-27T02:47:28.166381+00:00",
+      "path": "JOB-P1/state.json",
+      "role": "历史见证（只读），不得作为任何新作业的初态或回条",
+      "sha256": "b131df40ccf30abe92e46794ce322f0644b8c499ae21a6344b07d5ef722720f9",
+      "source_job": "JOB-P1"
+    },
+    {
+      "imported_at": "2026-11-27T02:47:28.167668+00:00",
+      "path": "JOB-P1/journal.jsonl",
+      "role": "历史见证（只读），不得作为任何新作业的初态或回条",
+      "sha256": "1b09e8fb20668bd49ab0d94f11904d0b826daff39d56b9a46fac345b4f264ce5",
+      "source_job": "JOB-P1"
+    },
+    {
+      "imported_at": "2026-11-27T02:47:28.168694+00:00",
+      "path": "JOB-P1/slip.json",
+      "role": "历史见证（只读），不得作为任何新作业的初态或回条",
+      "sha256": "0453ec38f5c2c4d4a20761d5167c734e35dbb6b1d5c9995e7c07c0a19674d7c8",
+      "source_job": "JOB-P1"
+    },
+    {
+      "imported_at": "2026-11-27T02:47:28.170572+00:00",
+      "path": "JOB-P2/state.json",
+      "role": "历史见证（只读），不得作为任何新作业的初态或回条",
+      "sha256": "6bab9ad7ca285e005058777414570b0ecdd7c8ee8d4adb9b4616990646422372",
+      "source_job": "JOB-P2"
+    },
+    {
+      "imported_at": "2026-11-27T02:47:28.171550+00:00",
+      "path": "JOB-P2/journal.jsonl",
+      "role": "历史见证（只读），不得作为任何新作业的初态或回条",
+      "sha256": "244e55b0db45b37cb9eb419d030f6d7f0d088109cc4967fc200545a29c9952c8",
+      "source_job": "JOB-P2"
+    },
+    {
+      "imported_at": "2026-11-27T02:47:28.172461+00:00",
+      "path": "JOB-P2/slip.json",
+      "role": "历史见证（只读），不得作为任何新作业的初态或回条",
+      "sha256": "f8192ff7ef4763eaf167f86434040f781eadf259d7df6611b2f09ba0bbc71bcd",
+      "source_job": "JOB-P2"
+    },
+    {
+      "imported_at": "2026-11-27T02:47:28.175121+00:00",
+      "path": "JOB-P3/state.json",
+      "role": "历史见证（只读），不得作为任何新作业的初态或回条",
+      "sha256": "6ab51e986eced332300894ab03d2fbfd971fa82ffaca21b50e5c8c6e573717ae",
+      "source_job": "JOB-P3"
+    },
+    {
+      "imported_at": "2026-11-27T02:47:28.176129+00:00",
+      "path": "JOB-P3/journal.jsonl",
+      "role": "历史见证（只读），不得作为任何新作业的初态或回条",
+      "sha256": "2fb875f852262f3f8d9ff1dbc223f8751036a51b6732eed7fd7889c0fdf7feb8",
+      "source_job": "JOB-P3"
+    },
+    {
+      "imported_at": "2026-11-27T02:47:28.177736+00:00",
+      "path": "JOB-P3/slip.json",
+      "role": "历史见证（只读），不得作为任何新作业的初态或回条",
+      "sha256": "d51646c126a1e663ae9dd73c5197709cc6de1d3372f1b2b2dbfa89359a44eab4",
+      "source_job": "JOB-P3"
+    }
+  ],
+  "updated_at": "2026-11-27T02:47:28.177748+00:00"
+}

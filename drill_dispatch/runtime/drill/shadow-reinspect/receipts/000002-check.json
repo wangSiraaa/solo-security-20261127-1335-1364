@@ -1,0 +1,13 @@
+{
+  "domain": "drill",
+  "idem_key": "JOB-D3c:check:3215daa83467c796",
+  "intent_digest": "3215daa83467c796312f0fe826e209e4088606634a7cf8761ee102cdc84b74f9",
+  "item_id": "ITEM-A",
+  "kind": "check",
+  "order_id": "WO-3001",
+  "receipt_id": "drill-shadow-reinspect-check-000002",
+  "result": "OK",
+  "seq": 2,
+  "service": "shadow-reinspect",
+  "ts": "2026-11-27T02:47:28.226544+00:00"
+}

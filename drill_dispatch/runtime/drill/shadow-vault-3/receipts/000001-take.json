@@ -1,0 +1,14 @@
+{
+  "domain": "drill",
+  "idem_key": "JOB-D4b:take:be7961c9e256af3a",
+  "intent_digest": "be7961c9e256af3a2ccaf0cf969e1f20beb50c70e6948ca54985add4ffbd25ec",
+  "item_id": "ITEM-A",
+  "kind": "take",
+  "order_id": "WO-1001",
+  "purpose": "例行复检",
+  "receipt_id": "drill-shadow-vault-3-take-000001",
+  "receiver": "GROUP-B",
+  "seq": 1,
+  "service": "shadow-vault-3",
+  "ts": "2026-11-27T02:47:28.247064+00:00"
+}

@@ -1,0 +1,8 @@
+{
+  "JOB-P2": {
+    "check": "TIMEOUT_ONCE"
+  },
+  "JOB-P3": {
+    "take": "CRASH_ONCE"
+  }
+}

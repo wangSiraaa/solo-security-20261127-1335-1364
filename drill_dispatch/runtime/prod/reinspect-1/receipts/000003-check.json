@@ -1,0 +1,13 @@
+{
+  "domain": "prod",
+  "idem_key": "JOB-P3:check:802bcd5d94ddedba",
+  "intent_digest": "802bcd5d94ddedbadd86bd2e8f26d8362f0ed385f72d95e0635d9d38ea0f7268",
+  "item_id": "ITEM-A",
+  "kind": "check",
+  "order_id": "WO-1003",
+  "receipt_id": "prod-reinspect-1-check-000003",
+  "result": "OK",
+  "seq": 3,
+  "service": "reinspect-1",
+  "ts": "2026-11-27T02:47:28.152523+00:00"
+}

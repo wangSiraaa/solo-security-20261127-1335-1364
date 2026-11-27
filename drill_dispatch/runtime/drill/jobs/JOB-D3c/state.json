@@ -1,0 +1,11 @@
+{
+  "attempt": 1,
+  "created_at": "2026-11-27T02:47:28.216766+00:00",
+  "domain": "drill",
+  "job_id": "JOB-D3c",
+  "order_digest": "6ff10e9579be0ec2aad55c72aff5c2a46745bdd9eccdf33a896bc9d31eb33a60",
+  "order_id": "WO-3001",
+  "status": "COMPLETED",
+  "step": "check",
+  "updated_at": "2026-11-27T02:47:28.232215+00:00"
+}
