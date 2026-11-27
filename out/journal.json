@@ -1,0 +1,516 @@
+{
+  "station_key": "受托站演示密钥-local-only",
+  "store_horizons": {
+    "STORE-A": null,
+    "STORE-B": "2025-06-15",
+    "STORE-C": "2027-12-31"
+  },
+  "journal": [
+    {
+      "seq": 1,
+      "type": "contract-registered",
+      "on": "2024-01-01",
+      "payload": {
+        "contract_id": "C-FRAME",
+        "version": 1,
+        "effective_on": "2024-01-01",
+        "default_term_days": 180
+      },
+      "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "entry_hash": "dd1cc273aa2b7a94a9caeac680ab035e3de884ad0116b18f96077c7a72e2fc4b"
+    },
+    {
+      "seq": 2,
+      "type": "contract-registered",
+      "on": "2026-01-01",
+      "payload": {
+        "contract_id": "C-FRAME",
+        "version": 2,
+        "effective_on": "2026-01-01",
+        "default_term_days": 365
+      },
+      "prev_hash": "dd1cc273aa2b7a94a9caeac680ab035e3de884ad0116b18f96077c7a72e2fc4b",
+      "entry_hash": "3b825c65652284ae405a4cff507423bdd1f02efca5c765834d21a31a86ece54b"
+    },
+    {
+      "seq": 3,
+      "type": "contract-registered",
+      "on": "2025-09-01",
+      "payload": {
+        "contract_id": "C-FRAME",
+        "version": 3,
+        "effective_on": "2025-09-01",
+        "default_term_days": 180
+      },
+      "prev_hash": "3b825c65652284ae405a4cff507423bdd1f02efca5c765834d21a31a86ece54b",
+      "entry_hash": "a9975be5b22b29cb6ecf5f72cd028c4c9dd3a060cb036f9c76aa919f712e0cec"
+    },
+    {
+      "seq": 4,
+      "type": "handovers-registered",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-OLD-BLANK",
+        "handovers": [
+          {
+            "handover_id": "HO-R-OLD-BLANK-I",
+            "on": "2025-01-01",
+            "kind": "issue",
+            "from_party": null,
+            "to_party": "受托站"
+          }
+        ]
+      },
+      "prev_hash": "a9975be5b22b29cb6ecf5f72cd028c4c9dd3a060cb036f9c76aa919f712e0cec",
+      "entry_hash": "9f8b8e7668010a3f57cd9499aef466558893ad57d31a24795faedfdb13e2b248"
+    },
+    {
+      "seq": 5,
+      "type": "handovers-registered",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-OLD-EXPLICIT",
+        "handovers": [
+          {
+            "handover_id": "HO-R-OLD-EXPLICIT-I",
+            "on": "2025-01-01",
+            "kind": "issue",
+            "from_party": null,
+            "to_party": "受托站"
+          }
+        ]
+      },
+      "prev_hash": "9f8b8e7668010a3f57cd9499aef466558893ad57d31a24795faedfdb13e2b248",
+      "entry_hash": "81c6ebde6358154000e3ceaff0b1ef97f417d40ba9403659a4bc6436563ebd8d"
+    },
+    {
+      "seq": 6,
+      "type": "handovers-registered",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-TR-1",
+        "handovers": [
+          {
+            "handover_id": "HO-R-TR-1-I",
+            "on": "2025-01-01",
+            "kind": "issue",
+            "from_party": null,
+            "to_party": "受托站"
+          }
+        ]
+      },
+      "prev_hash": "81c6ebde6358154000e3ceaff0b1ef97f417d40ba9403659a4bc6436563ebd8d",
+      "entry_hash": "acb59566d00c35fdca7a792b825b1d04bc5f745b964cf141bd1db6a4da7f7b88"
+    },
+    {
+      "seq": 7,
+      "type": "handovers-registered",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-TR-2",
+        "handovers": [
+          {
+            "handover_id": "HO-R-TR-2-I",
+            "on": "2025-01-01",
+            "kind": "issue",
+            "from_party": null,
+            "to_party": "受托站"
+          }
+        ]
+      },
+      "prev_hash": "acb59566d00c35fdca7a792b825b1d04bc5f745b964cf141bd1db6a4da7f7b88",
+      "entry_hash": "91ea4e30d2199e11c865b554d78f49caaeae6b4b8ce839f9a1bd0df84644dc19"
+    },
+    {
+      "seq": 8,
+      "type": "handovers-registered",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-GROWN",
+        "handovers": [
+          {
+            "handover_id": "HO-R-GROWN-I",
+            "on": "2025-01-01",
+            "kind": "issue",
+            "from_party": null,
+            "to_party": "受托站"
+          }
+        ]
+      },
+      "prev_hash": "91ea4e30d2199e11c865b554d78f49caaeae6b4b8ce839f9a1bd0df84644dc19",
+      "entry_hash": "fbfaf48aba89437681fb9e9a363395aa78e802d158354bc1bca587501a2955b7"
+    },
+    {
+      "seq": 9,
+      "type": "handovers-registered",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-NEW-EXPLICIT",
+        "handovers": [
+          {
+            "handover_id": "HO-RNEW-I",
+            "on": "2025-09-01",
+            "kind": "issue",
+            "from_party": null,
+            "to_party": "受托站"
+          }
+        ]
+      },
+      "prev_hash": "fbfaf48aba89437681fb9e9a363395aa78e802d158354bc1bca587501a2955b7",
+      "entry_hash": "3fa2e8b68590ecd06a2e68a91bd819e5c6c7d6e2914de460320b9b532512d3da"
+    },
+    {
+      "seq": 10,
+      "type": "handovers-registered",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-NRN",
+        "handovers": [
+          {
+            "handover_id": "HO-RNRN-I",
+            "on": "2025-12-01",
+            "kind": "issue",
+            "from_party": null,
+            "to_party": "受托站"
+          }
+        ]
+      },
+      "prev_hash": "3fa2e8b68590ecd06a2e68a91bd819e5c6c7d6e2914de460320b9b532512d3da",
+      "entry_hash": "dab476230536f708afba80a4fd44334efb8eeb5b6d40c97bbe17477ead36aed3"
+    },
+    {
+      "seq": 11,
+      "type": "interpreter-retired",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-OLD-BLANK",
+        "as_of": "2025-06-01"
+      },
+      "prev_hash": "dab476230536f708afba80a4fd44334efb8eeb5b6d40c97bbe17477ead36aed3",
+      "entry_hash": "b141e29a5be6197e05f60fa8af0b9fdd4f34855f4e00ccb312dc6af142eded92"
+    },
+    {
+      "seq": 12,
+      "type": "ratification-opened",
+      "on": "2025-06-01",
+      "payload": {
+        "case_id": "RC-0001",
+        "order_id": "R-OLD-BLANK",
+        "evidence_id": "EV-d3829ce2fb31ddd1",
+        "trigger": "双解释器分歧/条件无法表达"
+      },
+      "prev_hash": "b141e29a5be6197e05f60fa8af0b9fdd4f34855f4e00ccb312dc6af142eded92",
+      "entry_hash": "639f3cfc61686750981938215730d753caa380b9e78eaf824eb1ae3c4366d2dd"
+    },
+    {
+      "seq": 13,
+      "type": "interpreter-retired",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-OLD-EXPLICIT",
+        "as_of": "2025-06-01"
+      },
+      "prev_hash": "639f3cfc61686750981938215730d753caa380b9e78eaf824eb1ae3c4366d2dd",
+      "entry_hash": "b07451183e5daf6f320489d312e92546dabfc70c628f68e32ea4d3d9e7334fa3"
+    },
+    {
+      "seq": 14,
+      "type": "interpreter-retired",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-NEW-EXPLICIT",
+        "as_of": "2025-06-01"
+      },
+      "prev_hash": "b07451183e5daf6f320489d312e92546dabfc70c628f68e32ea4d3d9e7334fa3",
+      "entry_hash": "f4d71a0742f6aaed802e74e6120dcf5bff0f3321c94e27f10226419b0df2fc7b"
+    },
+    {
+      "seq": 15,
+      "type": "interpreter-retired",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-TR-1",
+        "as_of": "2025-06-01"
+      },
+      "prev_hash": "f4d71a0742f6aaed802e74e6120dcf5bff0f3321c94e27f10226419b0df2fc7b",
+      "entry_hash": "03d7eb8f19afd4406a679ee491890451dcb40369deaeccb8dbf1d55b76e5baac"
+    },
+    {
+      "seq": 16,
+      "type": "interpreter-retired",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-TR-2",
+        "as_of": "2025-06-01"
+      },
+      "prev_hash": "03d7eb8f19afd4406a679ee491890451dcb40369deaeccb8dbf1d55b76e5baac",
+      "entry_hash": "38cd1648a473bae0c353ad8afeb0c3f09da2c4fbefeb93bc7bdf1a9e6929cc4a"
+    },
+    {
+      "seq": 17,
+      "type": "ratification-opened",
+      "on": "2025-06-01",
+      "payload": {
+        "case_id": "RC-0002",
+        "order_id": "R-TR-2",
+        "evidence_id": "EV-84a7e3f9283bbaae",
+        "trigger": "双解释器分歧/条件无法表达"
+      },
+      "prev_hash": "38cd1648a473bae0c353ad8afeb0c3f09da2c4fbefeb93bc7bdf1a9e6929cc4a",
+      "entry_hash": "279a43bb85e0cec61f241018cf985c8618a12ffde366c818fb2c03d450205429"
+    },
+    {
+      "seq": 18,
+      "type": "interpreter-retired",
+      "on": "2025-06-01",
+      "payload": {
+        "order_id": "R-GROWN",
+        "as_of": "2025-06-01"
+      },
+      "prev_hash": "279a43bb85e0cec61f241018cf985c8618a12ffde366c818fb2c03d450205429",
+      "entry_hash": "ea3270c15ec12f97b983a36f424e5a735dec9da65d58ed63927c55b0464a83f9"
+    },
+    {
+      "seq": 19,
+      "type": "ratification-opened",
+      "on": "2025-06-01",
+      "payload": {
+        "case_id": "RC-0003",
+        "order_id": "R-GROWN",
+        "evidence_id": "EV-480e991963830ec4",
+        "trigger": "双解释器分歧/条件无法表达"
+      },
+      "prev_hash": "ea3270c15ec12f97b983a36f424e5a735dec9da65d58ed63927c55b0464a83f9",
+      "entry_hash": "e0a06cb5adad57b120a639cacb7a510bea2ff54d675135e7550b4b30fd86ba3d"
+    },
+    {
+      "seq": 20,
+      "type": "dispatch-requested",
+      "on": "2025-06-02",
+      "payload": {
+        "order_id": "R-OLD-EXPLICIT",
+        "store_id": "STORE-A"
+      },
+      "prev_hash": "e0a06cb5adad57b120a639cacb7a510bea2ff54d675135e7550b4b30fd86ba3d",
+      "entry_hash": "066ed39dab90732960bc709c8cd377d91d495c7b26f41daf8d7dae552ce142d4"
+    },
+    {
+      "seq": 21,
+      "type": "dispatch-requested",
+      "on": "2025-09-02",
+      "payload": {
+        "order_id": "R-NEW-EXPLICIT",
+        "store_id": "STORE-C"
+      },
+      "prev_hash": "066ed39dab90732960bc709c8cd377d91d495c7b26f41daf8d7dae552ce142d4",
+      "entry_hash": "1f333f21c830504466d415c11bfc5457fae4a4bd02a19d27da7d9b8ba59c5162"
+    },
+    {
+      "seq": 22,
+      "type": "dispatch-requested",
+      "on": "2025-06-02",
+      "payload": {
+        "order_id": "R-OLD-BLANK",
+        "store_id": "STORE-A"
+      },
+      "prev_hash": "1f333f21c830504466d415c11bfc5457fae4a4bd02a19d27da7d9b8ba59c5162",
+      "entry_hash": "8e0104bba90fca614596ada5cc0ccc8bea76fa8b4001c3cc86213dfa9328fe16"
+    },
+    {
+      "seq": 23,
+      "type": "dispatch-requested",
+      "on": "2025-06-02",
+      "payload": {
+        "order_id": "R-TR-1",
+        "store_id": "STORE-A"
+      },
+      "prev_hash": "8e0104bba90fca614596ada5cc0ccc8bea76fa8b4001c3cc86213dfa9328fe16",
+      "entry_hash": "7def8b49b5194e58a17ece2b8a47f4f1aa62b225d5dfbfe57f136264006a772a"
+    },
+    {
+      "seq": 24,
+      "type": "dispatch-requested",
+      "on": "2025-06-02",
+      "payload": {
+        "order_id": "R-TR-2",
+        "store_id": "STORE-A"
+      },
+      "prev_hash": "7def8b49b5194e58a17ece2b8a47f4f1aa62b225d5dfbfe57f136264006a772a",
+      "entry_hash": "97b4b742f92ef6d0666be15950eb7bca9fdfe758af8cc375b4ee04bcd34917c0"
+    },
+    {
+      "seq": 25,
+      "type": "proposal-issued",
+      "on": "2025-06-02",
+      "payload": {
+        "proposal_id": "PP-0001",
+        "order_id": "R-TR-2",
+        "kind": "amendment",
+        "reason": "许可未明示可留存义务（自动化已被舍弃），仅可受理已追认动作"
+      },
+      "prev_hash": "97b4b742f92ef6d0666be15950eb7bca9fdfe758af8cc375b4ee04bcd34917c0",
+      "entry_hash": "f2e7e58f0c1cb5d9e1b964a9613674f9237610945fe3a50727f1761643832d61"
+    },
+    {
+      "seq": 26,
+      "type": "dispatch-requested",
+      "on": "2025-06-02",
+      "payload": {
+        "order_id": "R-GROWN",
+        "store_id": "STORE-B"
+      },
+      "prev_hash": "f2e7e58f0c1cb5d9e1b964a9613674f9237610945fe3a50727f1761643832d61",
+      "entry_hash": "fbc1a411e2fda5ae51a5d90d7b4f059578b850fa206fd82ce2910018b204839b"
+    },
+    {
+      "seq": 27,
+      "type": "proposal-issued",
+      "on": "2025-06-02",
+      "payload": {
+        "proposal_id": "PP-0002",
+        "order_id": "R-GROWN",
+        "kind": "store-swap",
+        "reason": "库保证存期止于 2025-06-15，短于义务到期 2025-06-30；不得套用新日期或缩短原义务，出换库/改约单"
+      },
+      "prev_hash": "fbc1a411e2fda5ae51a5d90d7b4f059578b850fa206fd82ce2910018b204839b",
+      "entry_hash": "ff1e22fac4c13830cbd91723c367a5f52485d0e05bed0fd45d2e3f55b803c69d"
+    },
+    {
+      "seq": 28,
+      "type": "dispatch-requested",
+      "on": "2025-06-03",
+      "payload": {
+        "order_id": "R-GROWN",
+        "store_id": "STORE-A"
+      },
+      "prev_hash": "ff1e22fac4c13830cbd91723c367a5f52485d0e05bed0fd45d2e3f55b803c69d",
+      "entry_hash": "fb0535d9df1822f0784964f265bc08b800b7f12f9a422e26e8ced749ff822900"
+    },
+    {
+      "seq": 29,
+      "type": "offline-dispose-attempted",
+      "on": "2025-02-01",
+      "payload": {
+        "order_id": "R-OLD-EXPLICIT",
+        "store_id": "STORE-A"
+      },
+      "prev_hash": "fb0535d9df1822f0784964f265bc08b800b7f12f9a422e26e8ced749ff822900",
+      "entry_hash": "b95571f258fea6813563b1d61d3a92bd226ad51310e61f3ff3c5c391c6759167"
+    },
+    {
+      "seq": 30,
+      "type": "offline-dispose-attempted",
+      "on": "2025-04-10",
+      "payload": {
+        "order_id": "R-OLD-EXPLICIT",
+        "store_id": "STORE-A"
+      },
+      "prev_hash": "b95571f258fea6813563b1d61d3a92bd226ad51310e61f3ff3c5c391c6759167",
+      "entry_hash": "1a8c6c9c41ae3a78f6c4b6745a1721bf0369b8d27e01c21a23918ce0772d23b2"
+    },
+    {
+      "seq": 31,
+      "type": "offline-dispose-attempted",
+      "on": "2025-11-05",
+      "payload": {
+        "order_id": "R-NEW-EXPLICIT",
+        "store_id": "STORE-C"
+      },
+      "prev_hash": "1a8c6c9c41ae3a78f6c4b6745a1721bf0369b8d27e01c21a23918ce0772d23b2",
+      "entry_hash": "b7e969a129c11c8f1428d82e911c00ff7c4d7c8c196d50c3dadb6a7ea7f8ca43"
+    },
+    {
+      "seq": 32,
+      "type": "offline-dispose-attempted",
+      "on": "2025-12-31",
+      "payload": {
+        "order_id": "R-OLD-BLANK",
+        "store_id": "STORE-A"
+      },
+      "prev_hash": "b7e969a129c11c8f1428d82e911c00ff7c4d7c8c196d50c3dadb6a7ea7f8ca43",
+      "entry_hash": "77c408d8109187dc3c35ff59bb8ec3ffa7f7ff7842bd6c3edd2424faf29c15aa"
+    },
+    {
+      "seq": 33,
+      "type": "transfer-injected",
+      "on": "2025-10-05",
+      "payload": {
+        "order_id": "R-TR-1",
+        "store_id": "STORE-A",
+        "handover": {
+          "handover_id": "HO-R-TR-1-T1005",
+          "on": "2025-10-05",
+          "kind": "transfer",
+          "from_party": "原受托方",
+          "to_party": "STORE-A"
+        }
+      },
+      "prev_hash": "77c408d8109187dc3c35ff59bb8ec3ffa7f7ff7842bd6c3edd2424faf29c15aa",
+      "entry_hash": "6ee2a9bdcc585359a3bc64a676322c629f6e762f13428f89f6b9f7cbdde15e0e"
+    },
+    {
+      "seq": 34,
+      "type": "transfer-injected",
+      "on": "2025-10-05",
+      "payload": {
+        "order_id": "R-TR-2",
+        "store_id": "STORE-A",
+        "handover": {
+          "handover_id": "HO-R-TR-2-T1005",
+          "on": "2025-10-05",
+          "kind": "transfer",
+          "from_party": "原受托方",
+          "to_party": "STORE-A"
+        }
+      },
+      "prev_hash": "6ee2a9bdcc585359a3bc64a676322c629f6e762f13428f89f6b9f7cbdde15e0e",
+      "entry_hash": "72698027a27f7a8c728b565576dc4c2f59f90ef60285016c6c082df23a80dac3"
+    },
+    {
+      "seq": 35,
+      "type": "ratification-opened",
+      "on": "2025-10-05",
+      "payload": {
+        "case_id": "RC-0004",
+        "order_id": "R-TR-2",
+        "evidence_id": "EV-84a7e3f9283bbaae",
+        "trigger": "未预料转交被冻结：许可未明示接受转交的可表达条件：该自动化签出时已舍弃，冻结并返回复核"
+      },
+      "prev_hash": "72698027a27f7a8c728b565576dc4c2f59f90ef60285016c6c082df23a80dac3",
+      "entry_hash": "5a555ee734f4e89b29202499208b808ff4e29e4cb56c453b3d0a5e1f72ca384d"
+    },
+    {
+      "seq": 36,
+      "type": "ratification-decided",
+      "on": "2025-10-10",
+      "payload": {
+        "case_id": "RC-0002",
+        "decision": "approved",
+        "new_permit": "PM-0007"
+      },
+      "prev_hash": "5a555ee734f4e89b29202499208b808ff4e29e4cb56c453b3d0a5e1f72ca384d",
+      "entry_hash": "582ec96bcfd8246fdc68b56768e14c484a52c4b722e8757a2cfbc22ca1148688"
+    },
+    {
+      "seq": 37,
+      "type": "renewal-intaken",
+      "on": "2025-11-20",
+      "payload": {
+        "order_id": "R-NRN"
+      },
+      "prev_hash": "582ec96bcfd8246fdc68b56768e14c484a52c4b722e8757a2cfbc22ca1148688",
+      "entry_hash": "1465dce774116b419e90a2cdcc232bf9b666c78a524f9158475ede9108ad3303"
+    },
+    {
+      "seq": 38,
+      "type": "dispatch-requested",
+      "on": "2025-12-01",
+      "payload": {
+        "order_id": "R-NRN",
+        "store_id": "STORE-C"
+      },
+      "prev_hash": "1465dce774116b419e90a2cdcc232bf9b666c78a524f9158475ede9108ad3303",
+      "entry_hash": "beaaf0d6a92cb30dc474229bae3ff3533e73a05a9c3f904e1be1a477a7cf2e7d"
+    }
+  ]
+}
