@@ -1,0 +1,5 @@
+FUNC1-BEGIN
+spec=1
+module=数据核对器 data-checker
+module=摘要登记器 digest-ledger
+FUNC1-END

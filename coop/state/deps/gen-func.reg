@@ -1,0 +1,6 @@
+kind=generator
+name=gen-func.sh
+path=/workspace/coop/inputs/gen-func.sh
+sha256=e73e67606d23d4431ecdb53e416154e065fc31c59e17d872d270d3d7f393868e
+origin=本地生成器
+declared=true

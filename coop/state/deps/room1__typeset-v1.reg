@@ -1,0 +1,9 @@
+kind=dependency
+room=room1
+name=typeset-v1
+path=inputs/typeset-v1
+sha256=077c48a9d5ae7b54893b96d734db9ee317fc78f63f445734ca21483ff4da3fa0
+origin=封存旧环境内置
+declared=true
+transient=false
+retain=false

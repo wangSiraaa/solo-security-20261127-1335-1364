@@ -1,0 +1,8 @@
+FUNC2-BEGIN
+line: FUNC1-BEGIN
+line: spec=1
+line: module=数据核对器 data-checker
+line: module=摘要登记器 digest-ledger
+line: FUNC1-END
+sha256=868eb7181a9e52b5c5155e93d1595c48cce80d572d74243bce584b2fd3a4059b
+FUNC2-END

@@ -1,0 +1,13 @@
+build_id=room1-1795731019
+room=room1
+env=sealed-old
+date=2026-11-25
+package=/workspace/coop/room1/work/package.tar
+package_sha256=e2d75d1cc5591a762b17e48062bb80ffd3819933d21305ae5b4e6c9658dff398
+func1_sha256=868eb7181a9e52b5c5155e93d1595c48cce80d572d74243bce584b2fd3a4059b
+func2_sha256=92cac28869c583b869c9b262cfc8f8de80bf808b7c4cb5bfbd49f52ead9a91f4
+cover_sha256=50ecfa4498e40f28e65afaa00f02dbde22283f67570132fa725caa979bca0a1c
+func_origin=source-build
+func_detail=生成器 gen-func.sh 现场从源码生成
+typeset=typeset-v1
+late_material=none

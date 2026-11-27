@@ -1,0 +1,6 @@
+room=room1
+object=func1.bin
+sha256=868eb7181a9e52b5c5155e93d1595c48cce80d572d74243bce584b2fd3a4059b
+origin=source-build
+detail=生成器 gen-func.sh 现场从源码生成
+declared=true
