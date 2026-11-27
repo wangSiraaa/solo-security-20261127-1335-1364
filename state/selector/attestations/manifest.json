@@ -1,0 +1,15 @@
+{
+  "schema": "attestation-manifest/v1",
+  "generated_at": "2026-11-27T22:50:14Z",
+  "entries": [
+    {
+      "package_file": "alpha.pkg",
+      "package_sha256": "a3d4a6c80d144b03eabcf4b4d5b498b193fce7a6c38fc77db7c7199d08c460c9",
+      "publisher_id": "alpha-studio",
+      "publisher_display_name": "阿尔法工坊",
+      "verified_at": "2026-11-27T22:50:14Z"
+    }
+  ],
+  "manifest_signature": "XBZjTEVRGjIzrNxAOemc/Zu26DZ8SnTzkw1PRyzpgsM=",
+  "signed_by_key_id": "verifier-main-1"
+}

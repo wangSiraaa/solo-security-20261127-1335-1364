@@ -1,0 +1,3937 @@
+{
+  "schema": "install-receipt/v1",
+  "time": "2026-11-27T22:50:14Z",
+  "selected_entry_id": "alpha",
+  "selection_basis": {
+    "note": "选择依据为校验席签名记录，而非光标行号或包内自填文字",
+    "verification_status": "verified",
+    "attestation_file": "/workspace/state/selector/attestations/a3d4a6c80d144b03eabcf4b4d5b498b193fce7a6c38fc77db7c7199d08c460c9.json",
+    "attestation_signature": "g8EHHRcGaen1pYYgqRH6J1TtARdFxfE6aWF0RoJNebU=",
+    "signed_by_key_id": "verifier-main-1",
+    "bound_publisher_id": "alpha-studio",
+    "bound_publisher_display_name": "阿尔法工坊",
+    "bound_sha256": "a3d4a6c80d144b03eabcf4b4d5b498b193fce7a6c38fc77db7c7199d08c460c9"
+  },
+  "what_user_saw": {
+    "frame_width": 49,
+    "visual_lines": [
+      "本地安装选择器（键盘操作；L=选择器文字左读，R=发 ",
+      "行方文字右读，数字保序）                         ",
+      "=================================================",
+      "─────────────────────────────────────────────────",
+      "固定核验区（来源：校验席签名记录，选择器文字）   ",
+      "校验席结论：已验证（状态码 verified）            ",
+      "受信发行方：阿尔法工坊（id alpha-studio）        ",
+      "绑定字节：sha256=a3d4a6c80d144b03eabcf4b4d5b498b1",
+      "93fce7a6c38fc77db7c7199d08c460c9                 ",
+      "签发钥匙：verifier-main-1  核验时间：2026-11-27T2",
+      "2:50:14Z                                         ",
+      "核验说明：字节与发行方身份已由校验席核验绑定     ",
+      "── 条目列表（｢｣内为制包者填写文字，含“已验证”也只",
+      "是普通字）──                                     ",
+      "  [?] ｢2026 器装安 证验已｣ 简介:｢）序保 2026 字  ",
+      "↳ 数（包利福 证验已 名同｣                        ",
+      "▶ [V] ｢2026 器装安 证验已｣ 简介:｢）序保 2026 字  ",
+      "↳ 数（版 证验已 方官｣                            ",
+      "─────────────────────────────────────────────────",
+      "↑/↓ 或 k/j 移动 · Enter 安装（仅已验证可装）· r  ",
+      "重新核验 · q 退出                                "
+    ],
+    "provenance": [
+      [
+        {
+          "ch": "本",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "地",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "安",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "装",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "选",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "择",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "器",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "（",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "键",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "盘",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "操",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "作",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "；",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "L",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "选",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "择",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "器",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "文",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "字",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "左",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "读",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "，",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "R",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "发",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "行",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "方",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "文",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "字",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "右",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "读",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "，",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "数",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "字",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "保",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "序",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "）",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "固",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "定",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "核",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "区",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "（",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "来",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "源",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "：",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "校",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "席",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "签",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "名",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "记",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "录",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "，",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "选",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "择",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "器",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "文",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "字",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "）",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "校",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "席",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "结",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "论",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "：",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "已",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "证",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "（",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "状",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "态",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "码",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "v",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "e",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "r",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "i",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "f",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "i",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "e",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "d",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "）",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "受",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "信",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "发",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "行",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "方",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "：",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "阿",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "尔",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "法",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "工",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "坊",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "（",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "i",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "d",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "a",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "l",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "p",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "h",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "a",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "-",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "s",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "t",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "u",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "d",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "i",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "o",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "）",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "绑",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "定",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "字",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "节",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "：",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "s",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "h",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "a",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "2",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "5",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "6",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "=",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "a",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "3",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "d",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "4",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "a",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "6",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "c",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "8",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "0",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "d",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "1",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "4",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "4",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "b",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "0",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "3",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "e",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "a",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "b",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "c",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "f",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "4",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "b",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "4",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "d",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "5",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "b",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "4",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "9",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "8",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "b",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "1",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "9",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "3",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "f",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "c",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "e",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "7",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "a",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "6",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "c",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "3",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "8",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "f",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "c",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "7",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "7",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "d",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "b",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "7",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "c",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "7",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "1",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "9",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "9",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "d",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "0",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "8",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "c",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "4",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "6",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "0",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "c",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "9",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "签",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "发",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "钥",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "匙",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "：",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "v",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "e",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "r",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "i",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "f",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "i",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "e",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "r",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "-",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "m",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "a",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "i",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "n",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "-",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "1",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "核",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "时",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "间",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "：",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "2",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "0",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "2",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "6",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "-",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "1",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "1",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "-",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "2",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "7",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "T",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "2",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "2",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": ":",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "5",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "0",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": ":",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "1",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "4",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "Z",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "核",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "说",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "明",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "：",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "字",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "节",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "与",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "发",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "行",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "方",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "身",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "份",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "已",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "由",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "校",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "席",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "核",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "绑",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "定",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "条",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "目",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "列",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "表",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "（",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "｢",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "｣",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "内",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "为",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "制",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "包",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "者",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "填",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "写",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "文",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "字",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "，",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "含",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "“",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "已",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "证",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "”",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "也",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "只",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "是",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "普",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "通",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "字",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "）",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "[",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "?",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "]",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "｢",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "2",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "0",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "2",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "6",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "器",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "装",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "安",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "证",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "验",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "已",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "｣",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "简",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "介",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": ":",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "｢",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "）",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "序",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "保",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "2",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "0",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "2",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "6",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "字",
+          "source": "publisher",
+          "direction": "R"
+        }
+      ],
+      [
+        {
+          "ch": "↳",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "数",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "（",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "包",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "利",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "福",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "证",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "验",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "已",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "名",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "同",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "｣",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "▶",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "[",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "V",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "]",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "｢",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "2",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "0",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "2",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "6",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "器",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "装",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "安",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "证",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "验",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "已",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "｣",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "简",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "介",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": ":",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "｢",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "）",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "序",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "保",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "2",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "0",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "2",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": "6",
+          "source": "publisher",
+          "direction": "D"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "字",
+          "source": "publisher",
+          "direction": "R"
+        }
+      ],
+      [
+        {
+          "ch": "↳",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "数",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "（",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "版",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "证",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "验",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "已",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": " ",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "方",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "官",
+          "source": "publisher",
+          "direction": "R"
+        },
+        {
+          "ch": "｣",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "─",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "↑",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "/",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "↓",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "或",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "k",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "/",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "j",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "移",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "动",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "·",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "E",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "n",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "t",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "e",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "r",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "安",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "装",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "（",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "仅",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "已",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "证",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "可",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "装",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "）",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "·",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "r",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ],
+      [
+        {
+          "ch": "重",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "新",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "核",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "验",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "·",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "q",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "退",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": "出",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        },
+        {
+          "ch": " ",
+          "source": "selector",
+          "direction": "L"
+        }
+      ]
+    ]
+  },
+  "what_user_heard": {
+    "speech_lines": [
+      "本地安装选择器，共 2 个条目。",
+      "第 1 项：发行方填写的名称〔反向行·发行方原文，逻辑顺序〕已验证 安装器 2026；简介〔反向行·发行方原文，逻辑顺序〕同名 已验证 福利包（数字 2026 保序）；制包者自称 〔反向行·发行方原文，逻辑顺序〕贝塔小站（自称不作身份依据）。",
+      "校验席结论：未核验，状态码 unverified；依据哈希 ed0e51569342aedc45a9e0be03ea031eecd006fa444d22904dddabebd14b8a7c。",
+      "第 2 项，当前聚焦：发行方填写的名称〔反向行·发行方原文，逻辑顺序〕已验证 安装器 2026；简介〔反向行·发行方原文，逻辑顺序〕官方 已验证 版（数字 2026 保序）；制包者自称 〔反向行·发行方原文，逻辑顺序〕阿尔法工坊官方（自称不作身份依据）。",
+      "校验席结论：已验证，状态码 verified；依据哈希 a3d4a6c80d144b03eabcf4b4d5b498b193fce7a6c38fc77db7c7199d08c460c9。",
+      "聚焦详情：alpha。",
+      "校验席结论：已验证。受信发行方 阿尔法工坊，id alpha-studio，签发钥匙 verifier-main-1，核验时间 2026-11-27T22:50:14Z。",
+      "该条目可安装，按 Enter 执行。",
+      "提示：名称或简介中出现的“已验证”是制包者填写的普通文字，不是校验席结论；只有以“校验席结论”开头的句子才是信任依据。"
+    ]
+  },
+  "package_self_described_fields": {
+    "trusted": false,
+    "display_name": "已验证 安装器 2026",
+    "summary": "官方 已验证 版（数字 2026 保序）",
+    "claimed_publisher": "阿尔法工坊官方"
+  },
+  "installed": {
+    "directory": "/workspace/state/selector/installed-tui",
+    "file": "/workspace/state/selector/installed-tui/alpha.pkg",
+    "size": 32,
+    "sha256_on_disk": "a3d4a6c80d144b03eabcf4b4d5b498b193fce7a6c38fc77db7c7199d08c460c9",
+    "sha256_matches_attestation": true
+  },
+  "byte_preview_hex": "616c7068612d73747564696f207061796c6f6164206275696c6420303030310a"
+}

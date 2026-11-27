@@ -1,0 +1,12 @@
+{
+  "schema": "attestation/v1",
+  "publisher_id": "alpha-studio",
+  "publisher_display_name": "阿尔法工坊",
+  "package_file": "alpha.pkg",
+  "package_sha256": "a3d4a6c80d144b03eabcf4b4d5b498b193fce7a6c38fc77db7c7199d08c460c9",
+  "package_size": 32,
+  "verified_at": "2026-11-27T22:50:14Z",
+  "verifier_statement": "字节与发行方身份已由校验席核验绑定",
+  "signature": "g8EHHRcGaen1pYYgqRH6J1TtARdFxfE6aWF0RoJNebU=",
+  "signed_by_key_id": "verifier-main-1"
+}

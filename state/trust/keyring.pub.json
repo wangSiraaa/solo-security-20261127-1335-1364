@@ -1,0 +1,10 @@
+{
+  "kind": "verifier-public-trust-anchors",
+  "anchors": [
+    {
+      "key_id": "verifier-main-1",
+      "issued_by": "校验席（独立第三方）",
+      "material": "DJIXFBDv1TktDED6SC1W7IQtd3SnIgt255qI1acnUxo="
+    }
+  ]
+}

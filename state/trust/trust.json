@@ -1,0 +1,9 @@
+{
+  "kind": "verifier-trusted-publishers",
+  "publishers": [
+    {
+      "publisher_id": "alpha-studio",
+      "display_name": "阿尔法工坊"
+    }
+  ]
+}
