@@ -1,15 +1,23 @@
 {
   "artifacts": {
+    "bihe_sealed_bundle": {
+      "archive": "/workspace/dist/bihe-sealed-review-1.0.0.tar.gz",
+      "archive_sha256": "454bdb04ced473f61b79e2848ef22d8173f6bc3a63e2d0612b9dfcb8ae32c92f",
+      "bundle_id": "bihe-sealed-review-1.0.0",
+      "directory": "/workspace/dist/bihe-sealed-review-1.0.0",
+      "file_count": 16,
+      "manifest_sha256": "ae6e013ed2a9f82de4eaaba7fb84bddb0b306416a93e870a02e0d4b1c276fe48"
+    },
     "endorsements": "/workspace/review-desk/endorsements",
     "install_dir": "/workspace/classrooms/xian-ge-room-01",
     "reports": "/workspace/review-desk/reports",
     "school_bundle": {
       "archive": "/workspace/dist/qianzi-school-1.0.0.tar.gz",
-      "archive_sha256": "41ad7701dc8eea15de5286e1dbc4ce540d4c0bca03e1a0e3456cc08381a24d26",
+      "archive_sha256": "9e8a32952dab2b2216061d0caf632e0b060cec56edb1bddfed08eee1b3a326a2",
       "bundle_id": "qianzi-school-1.0.0",
       "directory": "/workspace/dist/qianzi-school-1.0.0",
       "file_count": 15,
-      "manifest_sha256": "5e642f0bb67be805ac1c7a81667b5fb76c8bf479025e4b0d75176d1ea361d284"
+      "manifest_sha256": "68f97bbe72eb3a3c2316cb2bca6470e69557f6473ab7185a37d20d607aad5b02"
     }
   },
   "bihe_pass": true,
@@ -25,7 +33,7 @@
   "leaky_cabinet_events": 3,
   "leaky_verdict": "FUNCTIONAL_PASS_BUT_REFUSE_NO_EGRESS_OR_NON_DISCLOSURE_ENDORSEMENT",
   "ledger_chain": {
-    "head": "6891b6a1d09229d2e4ed948fb2d22249b656988bc90514351b836332d0e53b8c",
+    "head": "9cfe6e98e92d05223b01933a17b9f825f935c4bbb7bab06e0d6a005be202a250",
     "ok": true,
     "records": 8
   },

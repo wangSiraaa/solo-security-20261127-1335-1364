@@ -30,9 +30,9 @@
     "classroom packaging or installation"
   ],
   "endorsement_id": "END-MAIN-1396",
-  "git_commit": "9b6c241c68e1d39dc4ea63efc4e7f880d10897d8",
+  "git_commit": "06e4cb2cc91a22dbb680a1e41ae4436121c26a84",
   "issued_for": "main reviewed resolver and its reviewed dictionary",
   "key_id": "fictional-publisher-ed25519-2026Q4",
-  "signature": "z05FdbOCBFrOqqISz2SIqdICnKlQ3MoBHQVTqwtTVFL22DMZ0tW9aIxc5DxA8HLZB4Sks0LrHMzACRFuIZT1AA==",
+  "signature": "oV20xT7OQSFaZahKuJh/zcroqrTWd+KpMkNZ0s++OXG4wiF47rz7nGwabkRHaEAmZynQRaD7KXDYJ+KRKS7eCA==",
   "signature_algorithm": "Ed25519"
 }

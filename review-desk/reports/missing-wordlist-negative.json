@@ -86,7 +86,7 @@
   ],
   "original_archive": {
     "archive": "/workspace/dist/qianzi-school-1.0.0.tar.gz",
-    "archive_sha256": "41ad7701dc8eea15de5286e1dbc4ce540d4c0bca03e1a0e3456cc08381a24d26",
+    "archive_sha256": "9e8a32952dab2b2216061d0caf632e0b060cec56edb1bddfed08eee1b3a326a2",
     "publisher_signature_process": "MANIFEST signature remains verifiable inside the untouched source bundle"
   },
   "original_archive_provenance": "AUTHENTIC",

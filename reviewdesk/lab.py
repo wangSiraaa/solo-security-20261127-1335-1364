@@ -354,6 +354,26 @@ def swapped_impl_drill(qianzi: dict[str, Any]) -> dict[str, Any]:
     return decision
 
 
+def build_bihe_bundle(bihe: dict[str, Any]) -> dict[str, Any]:
+    classroom = {
+        "classroom_id": "BIHE-SEALED-REVIEW",
+        "display_name": "虚构·碧荷社原样封存复核包",
+        "caller_contract": "caller/legacy-wordid-v1",
+        "entrypoint": "mojiao.compat_oldid:resolve",
+        "network_policy": "deny",
+        "external_lookup_enabled": False,
+        "wordlist_globs": ["wordlists/*.json"],
+        "promised_word_ids": list(EXPECTED_OLD_IDS),
+    }
+    return build_bundle(
+        source_root=WORKTREES / "bihe",
+        bundle_id="bihe-sealed-review-1.0.0",
+        classroom=classroom,
+        endorsements=[bihe["carry"], bihe["composition"]],
+        include_wordlists=["wordlists/school-promised-modern-2.1.0.json"],
+    )
+
+
 def build_and_install_school(qianzi: dict[str, Any]) -> dict[str, Any]:
     classroom = {
         "classroom_id": "XIAN-GE-ROOM-01",
@@ -585,6 +605,7 @@ def run_all() -> dict[str, Any]:
     main_info = record_mainline()
     qianzi = evaluate_qianzi()
     bihe = evaluate_bihe(main_info)
+    bihe_bundle = build_bihe_bundle(bihe)
     swapped = swapped_impl_drill(qianzi)
     install = build_and_install_school(qianzi)
     update = dictionary_update(install)
@@ -621,6 +642,7 @@ def run_all() -> dict[str, Any]:
         "cabinet_registry": str(registry),
         "artifacts": {
             "school_bundle": install["bundle"],
+            "bihe_sealed_bundle": bihe_bundle,
             "install_dir": install["install_dir"],
             "reports": str(REPORTS),
             "endorsements": str(ENDORSEMENTS),
@@ -645,6 +667,7 @@ def render_markdown(report, acceptance, leaky, missing, swapped, update) -> str:
 - {report['decision']['qianzi']}
 - {report['decision']['bihe']}
 - 学校交付选择：{report['decision']['school_choice']}
+- 碧荷封存路线复核包：`{report['artifacts']['bihe_sealed_bundle']['directory']}`（含原样继承与组合边界两张背书）
 
 ## 正向交付
 

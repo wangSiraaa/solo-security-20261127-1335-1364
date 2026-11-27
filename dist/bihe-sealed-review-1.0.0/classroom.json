@@ -1,0 +1,16 @@
+{
+  "caller_contract": "caller/legacy-wordid-v1",
+  "classroom_id": "BIHE-SEALED-REVIEW",
+  "display_name": "虚构·碧荷社原样封存复核包",
+  "entrypoint": "mojiao.compat_oldid:resolve",
+  "external_lookup_enabled": false,
+  "network_policy": "deny",
+  "promised_word_ids": [
+    "1001",
+    "1002",
+    "1003"
+  ],
+  "wordlist_globs": [
+    "wordlists/*.json"
+  ]
+}

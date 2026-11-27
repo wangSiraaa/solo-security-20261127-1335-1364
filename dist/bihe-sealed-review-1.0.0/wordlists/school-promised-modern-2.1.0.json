@@ -1,0 +1,31 @@
+{
+  "format": "mojiao-dictionary/2",
+  "list_id": "school-promised-2026Q4",
+  "publisher": "虚构·文枢出版社",
+  "version": "2.1.0",
+  "released_at": "2026-11-20",
+  "promised": true,
+  "entries": [
+    {
+      "id": "W-1001",
+      "legacy_id": "1001",
+      "query": "按装",
+      "canonical": "安装",
+      "note": "承诺词表 P-001"
+    },
+    {
+      "id": "W-1002",
+      "legacy_id": "1002",
+      "query": "图象",
+      "canonical": "图像",
+      "note": "承诺词表 P-002"
+    },
+    {
+      "id": "W-1003",
+      "legacy_id": "1003",
+      "query": "订正",
+      "canonical": "订正",
+      "note": "承诺词表 P-003"
+    }
+  ]
+}

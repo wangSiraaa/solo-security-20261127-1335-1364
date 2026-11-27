@@ -1,7 +1,7 @@
 {
   "bundle_id": "qianzi-school-1.0.0",
   "classroom_id": "XIAN-GE-ROOM-01",
-  "created_at": "2026-11-27T04:53:27+00:00",
+  "created_at": "2026-11-27T04:56:37+00:00",
   "endorsement_files": [
     "endorsements/END-QIANZI-BRANCH-1396.json"
   ],
@@ -24,6 +24,6 @@
     "ww": "954fc8db4b1df8154a17b2b39540d8734cddf43dd3957ceef615a487bd108505"
   },
   "key_id": "fictional-publisher-ed25519-2026Q4",
-  "signature": "ZIgBK5lv3Eg5ySGYYOwiwX5A5xX/mleBwAQwf8ooPl3C5ZG2Pb9lpxEaf0DR75r5XpMXavsf7Je/JpR8HsdzBg==",
+  "signature": "lJuOoZKGpgVZ/ehjeCKVixerSUcKCHWW+vMR4WQHyOlpCvYuQcMpjv5dVipY8GV/mQKSxqSlRmCOE9BJHd/MCg==",
   "signature_algorithm": "Ed25519"
 }

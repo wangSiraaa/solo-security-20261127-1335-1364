@@ -1,5 +1,5 @@
 {
-  "archive_sha256": "41ad7701dc8eea15de5286e1dbc4ce540d4c0bca03e1a0e3456cc08381a24d26",
+  "archive_sha256": "9e8a32952dab2b2216061d0caf632e0b060cec56edb1bddfed08eee1b3a326a2",
   "bundle_verify": {
     "ok": true,
     "returncode": 0,
@@ -20,7 +20,7 @@
   },
   "case_id": "SCHOOL-DELIVERY-1396",
   "classroom_id": "XIAN-GE-ROOM-01",
-  "disconnected_endpoint": "http://127.0.0.1:33583",
+  "disconnected_endpoint": "http://127.0.0.1:46019",
   "installed_path": "/workspace/classrooms/xian-ge-room-01",
   "key_id": "fictional-publisher-ed25519-2026Q4",
   "mock_service_started_then_disconnected": true,
@@ -102,7 +102,7 @@
     "1002",
     "1003"
   ],
-  "signature": "mDLLqVjirsMRBdfDVvFkT7HUa4J+dirlhI61NwMiiQxXM8dh/LAfiMxYT7IcvE94NJbNu+FzXynQwQ2CZF7sAQ==",
+  "signature": "CdKLQ3ZItnNZvccwtvZgYQGb7MHQUYFL67QoIceFyR3kj6hhkXXWoUiiAVRnotJaCIiZo4RPgPghmd9aW4NpBw==",
   "signature_algorithm": "Ed25519",
   "verdict": "PASS_OFFLINE_ALL_PROMISED_LISTS"
 }

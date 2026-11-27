@@ -31,6 +31,8 @@ python3 -m reviewdesk.cli demo
 - 演练三个反向案例：偷换实际入口、恢复实现后撤走目标词表、本地答案正确但兼容层外传待查词。
 - 输出机器报告 `review-desk/reports/final-report.json` 和人读报告 `review-desk/reports/final-report.md`。
 
+学校实际安装的是千字社包；碧荷社路线也会生成 `dist/bihe-sealed-review-1.0.0.tar.gz`，供复核“原样组件背书可继承到哪一个哈希边界”。
+
 ## 复核者怎么用发到手里的包
 
 ```sh

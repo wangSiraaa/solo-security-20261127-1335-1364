@@ -5,15 +5,16 @@
 只能沿用其明确覆盖、且实际调用路径的模块/词表/契约哈希完全一致的背书；同名补丁或合并记录不转移信任。
 
 - 千字社走原生重写：不能照签 END-MAIN-1396；重验后只签发仅覆盖 maint/qianzi-native 指定提交的 END-QIANZI-BRANCH-1396。
-- 碧荷社封存路线：碧荷社走原样封存：END-MAIN-1396 仅能通过 CARRY-BIHE-VERBATIM-1396 沿用于哈希一致的 reviewed_resolver.py 与 2.1.0 词表；compat 边界和组合包由 END-BIHE-COMPOSITION-1396 覆盖，边界改版须重审。
+- 碧荷社走原样封存：END-MAIN-1396 仅能通过 CARRY-BIHE-VERBATIM-1396 沿用于哈希一致的 reviewed_resolver.py 与 2.1.0 词表；compat 边界和组合包由 END-BIHE-COMPOSITION-1396 覆盖，边界改版须重审。
 - 学校交付选择：XIAN-GE-ROOM-01 安装千字社原生分支包，因为它保住四位旧词号，并允许词表独立更新。
+- 碧荷封存路线复核包：`/workspace/dist/bihe-sealed-review-1.0.0`（含原样继承与组合边界两张背书）
 
 ## 正向交付
 
 - 教室：`XIAN-GE-ROOM-01`（虚构·弦歌小学一号机房）
 - 包：`/workspace/dist/qianzi-school-1.0.0`
 - 压缩包：`/workspace/dist/qianzi-school-1.0.0.tar.gz`
-- 压缩包 SHA-256：`41ad7701dc8eea15de5286e1dbc4ce540d4c0bca03e1a0e3456cc08381a24d26`
+- 压缩包 SHA-256：`9e8a32952dab2b2216061d0caf632e0b060cec56edb1bddfed08eee1b3a326a2`
 - 断服务离线验收：`通过`
 - 接收柜新事件数：`0`
 
@@ -47,6 +48,6 @@ python3 verify.py --human
 
 ## 账本
 
-- 哈希链校验：`ok=True, records=8, head=6891b6a1d09229d2e4ed948fb2d22249b656988bc90514351b836332d0e53b8c`
+- 哈希链校验：`ok=True, records=8, head=9cfe6e98e92d05223b01933a17b9f825f935c4bbb7bab06e0d6a005be202a250`
 - 柜登记：`/workspace/review-desk/cabinets/registry.json`
 - 单独查柜：`python3 -m reviewdesk.cli cabinet query --all`

@@ -1,0 +1,13 @@
+{
+  "contract_id": "caller/modern-v2",
+  "version": "2.0.0",
+  "entrypoint": "mojiao.reviewed_resolver:resolve",
+  "argument": {
+    "id": "W-#### string, preferred",
+    "text": "optional query text"
+  },
+  "returns": ["status", "word_id", "canonical", "dictionary_version", "egress_performed"],
+  "external_lookup": "forbidden_for_promised_entries",
+  "network_policy": "deny",
+  "word_id_generation": "modern stable W- ids; legacy_id is advisory"
+}
