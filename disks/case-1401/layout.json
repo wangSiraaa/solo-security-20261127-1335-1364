@@ -1,0 +1,24 @@
+{
+  "pages": {
+    "P100": {
+      "block": "BLK100",
+      "index": 0
+    },
+    "P201": {
+      "block": "BLK200",
+      "index": 0
+    },
+    "P202": {
+      "block": "BLK200",
+      "index": 1
+    },
+    "P301": {
+      "block": "BLK300",
+      "index": 0
+    },
+    "P900": {
+      "block": "BLK900",
+      "index": 0
+    }
+  }
+}

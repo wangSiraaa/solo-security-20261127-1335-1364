@@ -1,0 +1,2 @@
+{"tx":"TX1001","op":"rename","entry_id":"E100","old_name":"未重放改名-旧名.txt","name":"日志重放-新名.txt"}
+{"tx":"TX1002","op":"add","entry_id":"E900","name":"Q-开卷即写行-来自日志重放.txt","block_id":"BLK900","pages":["P900"]}

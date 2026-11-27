@@ -1,0 +1,12 @@
+{
+  "pages": {
+    "P001": {
+      "block": "BLK001",
+      "index": 0
+    },
+    "P002": {
+      "block": "BLK001",
+      "index": 1
+    }
+  }
+}
