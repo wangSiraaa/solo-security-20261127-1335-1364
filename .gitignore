@@ -1,0 +1,6 @@
+.handoff-state.json
+.handoff-state.json.lock
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
