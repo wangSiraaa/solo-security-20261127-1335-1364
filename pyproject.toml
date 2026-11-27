@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "duty-tape"
+version = "0.1.0"
+description = "Signed segmented duty-table release and recovery terminal"
+requires-python = ">=3.10"
+
+[project.scripts]
+duty-tape = "duty_tape.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["duty_tape*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
