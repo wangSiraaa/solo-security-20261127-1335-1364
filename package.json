@@ -1,0 +1,13 @@
+{
+  "name": "seal-channel-local-transceiver",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Zero-dependency Python implementation; npm scripts are thin wrappers.",
+  "scripts": {
+    "start": "./sealctl",
+    "test": "python3 -m unittest discover -s tests -v",
+    "demo": "python3 -m seal_channel demo --state demo-case",
+    "plans": "python3 -m seal_channel plans --all",
+    "compare": "python3 -m seal_channel plans --all"
+  }
+}

@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv/
+
+# 本地运行状态；demo-case 可由 `make demo` 重建
+.seal-case/
+demo-case/

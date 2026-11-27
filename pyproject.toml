@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "seal-channel-local-transceiver"
+version = "1.0.0"
+description = "两台离线报讯器的封条号分配、可信核验、持久发端与三号直收窗口"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Mobile Service Team" }]
+dependencies = []
+
+[project.scripts]
+sealctl = "seal_channel.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["seal_channel*"]
