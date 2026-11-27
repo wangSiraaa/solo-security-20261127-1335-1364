@@ -1,0 +1,12 @@
+{
+  "receipt_id": "RCP_70338abf18a1",
+  "envelope_id": "ENV_dd3594d1f1f0",
+  "volume_id": "V1",
+  "index": 1,
+  "generation": 2,
+  "from": "东甲",
+  "to": "东乙",
+  "state": "void",
+  "created_at": "2026-11-27T00:46:46",
+  "note": "交接回单仅为凭证，本身不是有效开封材料"
+}

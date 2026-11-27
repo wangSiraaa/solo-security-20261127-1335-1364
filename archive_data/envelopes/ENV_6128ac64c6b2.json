@@ -1,0 +1,17 @@
+{
+  "envelope_id": "ENV_6128ac64c6b2",
+  "volume_id": "V3",
+  "generation": 1,
+  "index": 2,
+  "site": "东库",
+  "body_b64": "y0SsYoTGX/TMHBWaxi9EnTKNp7Ro2/ocIjfHVRwXkM8=",
+  "status": "sealed",
+  "holder": "东乙",
+  "history": [
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "issued",
+      "holder": "东乙"
+    }
+  ]
+}

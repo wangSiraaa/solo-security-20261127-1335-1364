@@ -1,0 +1,13 @@
+{
+  "generation": 1,
+  "pages": [
+    {
+      "page_no": 1,
+      "bundle_file": "page_1.json"
+    },
+    {
+      "page_no": 2,
+      "bundle_file": "page_2.json"
+    }
+  ]
+}

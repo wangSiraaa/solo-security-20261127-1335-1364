@@ -1,0 +1,32 @@
+{
+  "envelope_id": "ENV_645a96a2a724",
+  "volume_id": "V1",
+  "generation": 1,
+  "index": 1,
+  "site": "东库",
+  "body_b64": "W6Kjz263xRVemYCYr4FB2FX8ZQxsjyIOTPce1l+eVbg=",
+  "status": "superseded",
+  "holder": "东甲",
+  "history": [
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "issued",
+      "holder": "东甲"
+    },
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "handover_started",
+      "from": "东甲",
+      "to": "东乙"
+    },
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "handover_cancelled"
+    },
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "superseded",
+      "still_held_by": "东甲"
+    }
+  ]
+}

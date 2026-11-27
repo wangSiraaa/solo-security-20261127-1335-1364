@@ -1,0 +1,368 @@
+{
+  "volumes": {
+    "V1": {
+      "volume_id": "V1",
+      "policy": "SITE_RECOVERY",
+      "threshold": 2,
+      "generation": 2,
+      "page_numbers": [
+        1,
+        2
+      ],
+      "sealed_at": "2026-11-27T00:46:46",
+      "old_generation_blobs": [
+        "/workspace/archive_data/copies/V1/_gen1_snapshot"
+      ]
+    },
+    "V1S": {
+      "volume_id": "V1S",
+      "policy": "SPLIT_SITE",
+      "threshold": 3,
+      "generation": 1,
+      "page_numbers": [
+        1,
+        2
+      ],
+      "sealed_at": "2026-11-27T00:46:46",
+      "old_generation_blobs": []
+    },
+    "V2": {
+      "volume_id": "V2",
+      "policy": "SITE_RECOVERY",
+      "threshold": 2,
+      "generation": 1,
+      "page_numbers": [
+        1
+      ],
+      "sealed_at": "2026-11-27T00:46:46",
+      "old_generation_blobs": []
+    },
+    "V3": {
+      "volume_id": "V3",
+      "policy": "SITE_RECOVERY",
+      "threshold": 2,
+      "generation": 1,
+      "page_numbers": [
+        1
+      ],
+      "sealed_at": "2026-11-27T00:46:46",
+      "old_generation_blobs": []
+    }
+  },
+  "custodians": {
+    "东甲": {
+      "site": "东库",
+      "index": 1,
+      "cabinet_id": "CAB-东甲",
+      "envelopes": [
+        "ENV_22deeacc2eeb",
+        "ENV_dd3594d1f1f0",
+        "ENV_c401064d917f",
+        "ENV_a3da8e858799"
+      ]
+    },
+    "东乙": {
+      "site": "东库",
+      "index": 2,
+      "cabinet_id": "CAB-东乙",
+      "envelopes": [
+        "ENV_9cf8797bee65",
+        "ENV_9d6c1295dcd9",
+        "ENV_07eaa9d29c34",
+        "ENV_6128ac64c6b2"
+      ]
+    },
+    "西甲": {
+      "site": "西库",
+      "index": 3,
+      "cabinet_id": "CAB-西甲",
+      "envelopes": [
+        "ENV_57660b579e56",
+        "ENV_5fb442bd7e9c",
+        "ENV_3e0cf425b1bf",
+        "ENV_e7abc7fc6a20"
+      ]
+    },
+    "西乙": {
+      "site": "西库",
+      "index": 4,
+      "cabinet_id": "CAB-西乙",
+      "envelopes": [
+        "ENV_6d821a01b546",
+        "ENV_dd0d0897e727",
+        "ENV_71ea8aa46ef4",
+        "ENV_255c86f1bd41"
+      ]
+    }
+  },
+  "pending_handover": [],
+  "recovery_orders": {
+    "ORD_5067095e804b": {
+      "order_id": "ORD_5067095e804b",
+      "volume_id": "V1",
+      "generation": 1,
+      "created_at": "2026-11-27T00:46:46",
+      "threshold": 2,
+      "submitted_envelopes": [
+        "ENV_645a96a2a724",
+        "ENV_5b853d073540"
+      ],
+      "present_custodians": [
+        "东甲",
+        "西甲"
+      ],
+      "delivered_pages": [
+        {
+          "page_no": 1,
+          "verified": true,
+          "replica_used": 1,
+          "digest": "9779ef7fb8a6b93246d37e3f6ff1a54c08018b4d3db6d688918680e17e5ee477",
+          "text": "东库西库共同保管的第一页",
+          "checks": [
+            {
+              "replica": 1,
+              "digest_ok": true,
+              "tag_ok": true,
+              "generation_ok": true,
+              "bundle_generation": 1
+            }
+          ]
+        },
+        {
+          "page_no": 2,
+          "verified": true,
+          "replica_used": 1,
+          "digest": "4151af700e42dd9cb5f9d1b8437fb25631ac39e33e58d97656321392c0958799",
+          "text": "东库西库共同保管的第二页",
+          "checks": [
+            {
+              "replica": 1,
+              "digest_ok": true,
+              "tag_ok": true,
+              "generation_ok": true,
+              "bundle_generation": 1
+            }
+          ]
+        }
+      ],
+      "failed_pages": [],
+      "all_pages_recovered": true,
+      "signed_statement": "卷 V1 全部 2 页均已恢复并核对通过"
+    },
+    "ORD_09ca48cc167d": {
+      "order_id": "ORD_09ca48cc167d",
+      "volume_id": "V1",
+      "generation": 1,
+      "created_at": "2026-11-27T00:46:46",
+      "threshold": 2,
+      "submitted_envelopes": [
+        "ENV_645a96a2a724",
+        "ENV_5b853d073540"
+      ],
+      "present_custodians": [
+        "东甲",
+        "西甲"
+      ],
+      "delivered_pages": [
+        {
+          "page_no": 1,
+          "verified": true,
+          "replica_used": 1,
+          "digest": "9779ef7fb8a6b93246d37e3f6ff1a54c08018b4d3db6d688918680e17e5ee477",
+          "text": "东库西库共同保管的第一页",
+          "checks": [
+            {
+              "replica": 1,
+              "digest_ok": true,
+              "tag_ok": true,
+              "generation_ok": true,
+              "bundle_generation": 1
+            }
+          ]
+        },
+        {
+          "page_no": 2,
+          "verified": true,
+          "replica_used": 1,
+          "digest": "4151af700e42dd9cb5f9d1b8437fb25631ac39e33e58d97656321392c0958799",
+          "text": "东库西库共同保管的第二页",
+          "checks": [
+            {
+              "replica": 1,
+              "digest_ok": true,
+              "tag_ok": true,
+              "generation_ok": true,
+              "bundle_generation": 1
+            }
+          ]
+        }
+      ],
+      "failed_pages": [],
+      "all_pages_recovered": true,
+      "signed_statement": "卷 V1 全部 2 页均已恢复并核对通过"
+    },
+    "ORD_76e74220ef53": {
+      "order_id": "ORD_76e74220ef53",
+      "volume_id": "V1",
+      "generation": 2,
+      "created_at": "2026-11-27T00:46:46",
+      "threshold": 2,
+      "submitted_envelopes": [
+        "ENV_dd3594d1f1f0",
+        "ENV_5fb442bd7e9c"
+      ],
+      "present_custodians": [
+        "东甲",
+        "西甲"
+      ],
+      "delivered_pages": [
+        {
+          "page_no": 1,
+          "verified": true,
+          "replica_used": 1,
+          "digest": "9779ef7fb8a6b93246d37e3f6ff1a54c08018b4d3db6d688918680e17e5ee477",
+          "text": "东库西库共同保管的第一页",
+          "checks": [
+            {
+              "replica": 1,
+              "digest_ok": true,
+              "tag_ok": true,
+              "generation_ok": true,
+              "bundle_generation": 2
+            }
+          ]
+        }
+      ],
+      "failed_pages": [
+        {
+          "page_no": 2,
+          "verified": false,
+          "digest": "4151af700e42dd9cb5f9d1b8437fb25631ac39e33e58d97656321392c0958799",
+          "text": null,
+          "checks": [
+            {
+              "replica": 1,
+              "digest_ok": true,
+              "tag_ok": false,
+              "generation_ok": false,
+              "bundle_generation": 1
+            },
+            {
+              "replica": 2,
+              "digest_ok": true,
+              "tag_ok": false,
+              "generation_ok": false,
+              "bundle_generation": 1
+            },
+            {
+              "replica": 3,
+              "digest_ok": true,
+              "tag_ok": false,
+              "generation_ok": false,
+              "bundle_generation": 1
+            },
+            {
+              "replica": 4,
+              "digest_ok": true,
+              "tag_ok": false,
+              "generation_ok": false,
+              "bundle_generation": 1
+            }
+          ],
+          "reason": "所有副本均未同时通过摘要清单与当前代页标签核对（疑为旧页/串卷/缺页）"
+        }
+      ],
+      "all_pages_recovered": false,
+      "signed_statement": "卷 V1 仅 1 页核准，1 页未通过核对，不能签“两页均已恢复”"
+    },
+    "ORD_f7d0430e2e8b": {
+      "order_id": "ORD_f7d0430e2e8b",
+      "volume_id": "V3",
+      "generation": 1,
+      "created_at": "2026-11-27T00:46:46",
+      "threshold": 2,
+      "submitted_envelopes": [
+        "ENV_6128ac64c6b2",
+        "ENV_255c86f1bd41"
+      ],
+      "present_custodians": [
+        "东乙",
+        "西乙"
+      ],
+      "delivered_pages": [
+        {
+          "page_no": 1,
+          "verified": true,
+          "replica_used": 1,
+          "digest": "a3e83254b9a90b89a3c07305fe5581e45e0a10452c990d5c43c4bb173339dcf0",
+          "text": "普通入口封入的页面",
+          "checks": [
+            {
+              "replica": 1,
+              "digest_ok": true,
+              "tag_ok": true,
+              "generation_ok": true,
+              "bundle_generation": 1
+            }
+          ]
+        }
+      ],
+      "failed_pages": [],
+      "all_pages_recovered": true,
+      "signed_statement": "卷 V3 全部 1 页均已恢复并核对通过"
+    }
+  },
+  "guarantees": {
+    "V1": {
+      "volume_id": "V1",
+      "policy": "SITE_RECOVERY",
+      "title": "就近恢复（一库到场即可开卷）",
+      "pages": 2,
+      "threshold": 2,
+      "share_count": 4,
+      "lines": [
+        "配置：4 份，门限 2 份；东库 2 份（份位 1、2），西库 2 份（份位 3、4）。",
+        "共同底线：任何一名保管人独自只有 1 份，均不能开卷。",
+        "西库全失联、东库自力恢复：可以承诺。",
+        "东库两只柜整体暂交代管、代管方独自开卷：不能防止（代管方可凑齐）。",
+        "替补安排：同库两人即可凑齐本库 2 份；任一库到场都能独立恢复。"
+      ],
+      "status": "signed",
+      "decided_at": "2026-11-27T00:46:46"
+    },
+    "V1S": {
+      "volume_id": "V1S",
+      "policy": "SPLIT_SITE",
+      "title": "分处两库（整库交管仍安全）",
+      "pages": 2,
+      "threshold": 3,
+      "share_count": 4,
+      "lines": [
+        "配置：4 份，门限 3 份；东库 2 份（份位 1、2），西库 2 份（份位 3、4）。",
+        "共同底线：任何一名保管人独自只有 1 份，均不能开卷。",
+        "西库全失联、东库自力恢复：不能承诺。",
+        "东库两只柜整体暂交代管、代管方独自开卷：可以防止（代管方份位不足门限）。",
+        "替补安排：每库两人互为替补；恢复须两库都有人到场（东 2 + 西 1，或东 1 + 西 2）。"
+      ],
+      "status": "rejected",
+      "decided_at": "2026-11-27T00:46:46"
+    },
+    "V3": {
+      "volume_id": "V3",
+      "policy": "SITE_RECOVERY",
+      "title": "就近恢复（一库到场即可开卷）",
+      "pages": 1,
+      "threshold": 2,
+      "share_count": 4,
+      "lines": [
+        "配置：4 份，门限 2 份；东库 2 份（份位 1、2），西库 2 份（份位 3、4）。",
+        "共同底线：任何一名保管人独自只有 1 份，均不能开卷。",
+        "西库全失联、东库自力恢复：可以承诺。",
+        "东库两只柜整体暂交代管、代管方独自开卷：不能防止（代管方可凑齐）。",
+        "替补安排：同库两人即可凑齐本库 2 份；任一库到场都能独立恢复。"
+      ],
+      "status": "signed",
+      "decided_at": "2026-11-27T00:46:46"
+    }
+  }
+}

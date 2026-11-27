@@ -1,0 +1,22 @@
+{
+  "envelope_id": "ENV_7a510e389032",
+  "volume_id": "V1",
+  "generation": 1,
+  "index": 2,
+  "site": "东库",
+  "body_b64": "1E3dGfw63oR8juPMMq/b5sEjZqZXqe3LXvym62CScQU=",
+  "status": "superseded",
+  "holder": "东乙",
+  "history": [
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "issued",
+      "holder": "东乙"
+    },
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "superseded",
+      "still_held_by": "东乙"
+    }
+  ]
+}

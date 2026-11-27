@@ -1,0 +1,22 @@
+{
+  "envelope_id": "ENV_a98fc5c1d99e",
+  "volume_id": "V1",
+  "generation": 1,
+  "index": 4,
+  "site": "西库",
+  "body_b64": "0YghrsM76L04oCVkE/P0mvKGYOkh5WhaeurNkR6KOWQ=",
+  "status": "superseded",
+  "holder": "西乙",
+  "history": [
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "issued",
+      "holder": "西乙"
+    },
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "superseded",
+      "still_held_by": "西乙"
+    }
+  ]
+}

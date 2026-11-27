@@ -1,0 +1,32 @@
+{
+  "envelope_id": "ENV_5b853d073540",
+  "volume_id": "V1",
+  "generation": 1,
+  "index": 3,
+  "site": "西库",
+  "body_b64": "WOH3ontB1wJig8IJsLWtBUSfZ8C3QqiIUAzOCXWWbW4=",
+  "status": "superseded",
+  "holder": "西甲",
+  "history": [
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "issued",
+      "holder": "西甲"
+    },
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "handover_started",
+      "from": "西甲",
+      "to": "西乙"
+    },
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "handover_cancelled"
+    },
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "superseded",
+      "still_held_by": "西甲"
+    }
+  ]
+}

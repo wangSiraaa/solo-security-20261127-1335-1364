@@ -1,0 +1,17 @@
+{
+  "envelope_id": "ENV_3e0cf425b1bf",
+  "volume_id": "V2",
+  "generation": 1,
+  "index": 3,
+  "site": "西库",
+  "body_b64": "PDUU9ro2Pao1my5pyU9vn4odeFQJRjcaW63DUNwD+Tw=",
+  "status": "sealed",
+  "holder": "西甲",
+  "history": [
+    {
+      "at": "2026-11-27T00:46:46",
+      "event": "issued",
+      "holder": "西甲"
+    }
+  ]
+}
