@@ -1,0 +1,9 @@
+# Generated at runtime
+__pycache__/
+*.pyc
+work/
+demo_out/
+*.log
+# Fixtures and station assets are generated; keep the dirs but ignore bulk output
+fixtures/*.json
+supply_station/assets/
