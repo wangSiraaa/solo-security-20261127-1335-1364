@@ -1,0 +1,626 @@
+{
+  "schema": "grid-font-pack/1",
+  "id": "fangyuan",
+  "name": "方圆格字模包",
+  "version": "1.0.0",
+  "fallback": "?",
+  "glyphs": {
+    "启": {
+      "primitive": "qi",
+      "advance": 4
+    },
+    "明": {
+      "primitive": "ming",
+      "advance": 4
+    },
+    "学": {
+      "primitive": "xue",
+      "advance": 4
+    },
+    "校": {
+      "primitive": "xiao",
+      "advance": 4
+    },
+    "永": {
+      "primitive": "yong",
+      "advance": 4
+    },
+    "王": {
+      "primitive": "wang",
+      "advance": 4
+    },
+    "梦": {
+      "primitive": "meng",
+      "advance": 4
+    },
+    "?": {
+      "primitive": "ask",
+      "advance": 4
+    }
+  },
+  "primitives": {
+    "bar3": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      }
+    ],
+    "ask": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 4
+      }
+    ],
+    "qi": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "ming": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "xue_top": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 2
+      }
+    ],
+    "xue": [
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      }
+    ],
+    "xiao": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "yong_wide": [
+      {
+        "op": "square",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 4
+      }
+    ],
+    "yong_narrow": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "yong": [
+      {
+        "op": "branch",
+        "cases": [
+          {
+            "when": {
+              "line_width_lte": 15
+            },
+            "ops": [
+              {
+                "op": "ref",
+                "ref": "yong_narrow"
+              }
+            ]
+          },
+          {
+            "otherwise": true,
+            "ops": [
+              {
+                "op": "ref",
+                "ref": "yong_wide"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "wang": [
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 3
+      }
+    ],
+    "meng_cheap": [
+      {
+        "op": "square",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 4
+      }
+    ],
+    "inkstorm": [
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "ref",
+        "ref": "bar3",
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "meng": [
+      {
+        "op": "branch",
+        "cases": [
+          {
+            "when": {
+              "font_size_gte": 999
+            },
+            "ops": [
+              {
+                "op": "ref",
+                "ref": "inkstorm"
+              }
+            ]
+          },
+          {
+            "otherwise": true,
+            "ops": [
+              {
+                "op": "ref",
+                "ref": "meng_cheap"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

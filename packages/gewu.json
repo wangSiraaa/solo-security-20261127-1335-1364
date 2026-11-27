@@ -1,0 +1,406 @@
+{
+  "schema": "grid-font-pack/1",
+  "id": "gewu",
+  "name": "格物像素包",
+  "version": "2.1.0",
+  "fallback": "?",
+  "glyphs": {
+    "启": {
+      "primitive": "qi2",
+      "advance": 4
+    },
+    "明": {
+      "primitive": "ming2",
+      "advance": 4
+    },
+    "学": {
+      "primitive": "xue2",
+      "advance": 4
+    },
+    "校": {
+      "primitive": "xiao2",
+      "advance": 4
+    },
+    "永": {
+      "primitive": "yong2",
+      "advance": 4
+    },
+    "?": {
+      "primitive": "ask2",
+      "advance": 4
+    }
+  },
+  "primitives": {
+    "qi2": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "ming2": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "xue2": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "xiao2": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "yong_wide2": [
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 4
+      }
+    ],
+    "yong_narrow2": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 3
+      },
+      {
+        "op": "square",
+        "x": 0,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 4
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 4
+      }
+    ],
+    "ask2": [
+      {
+        "op": "square",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 0
+      },
+      {
+        "op": "square",
+        "x": 2,
+        "y": 1
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 2
+      },
+      {
+        "op": "square",
+        "x": 1,
+        "y": 4
+      }
+    ],
+    "yong2": [
+      {
+        "op": "branch",
+        "cases": [
+          {
+            "when": {
+              "line_width_lte": 15
+            },
+            "ops": [
+              {
+                "op": "ref",
+                "ref": "yong_narrow2"
+              }
+            ]
+          },
+          {
+            "otherwise": true,
+            "ops": [
+              {
+                "op": "ref",
+                "ref": "yong_wide2"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

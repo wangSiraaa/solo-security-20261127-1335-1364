@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+.subtitle_studio/
+*.egg-info/
+.pytest_cache/
