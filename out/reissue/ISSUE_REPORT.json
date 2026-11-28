@@ -1,0 +1,87 @@
+{
+  "comps": [
+    0,
+    1,
+    2
+  ],
+  "editions": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "entries": 18,
+  "manifest_verified": true,
+  "notes": [
+    "PNG: 8-bit RGB, non-interlaced, chunks IHDR/IDAT/IEND only.",
+    "No edition metadata is embedded in any PNG.",
+    "Within a composition every edition is identical except its marks.",
+    "Protected colour patches keep fixed values; marks avoid them."
+  ],
+  "plate_hashes": {
+    "plate_c0_e0.png": "9dba9f46ce435423ce1871a562605f77b92229471ea3636b4cd38a951d8e92f1",
+    "plate_c0_e1.png": "90bdc8da3e25db0e84d2c1f209e02296cc46ef6c07351a26b21cd16838d32e6c",
+    "plate_c0_e2.png": "7264730a6ff6655071fcab0ff9302aecc083fdb75c6b40d3907e13f058a100c2",
+    "plate_c0_e3.png": "cb8498bcb0099da321437f62cb4e81bbbd8d4737ba4b304abbde533bc4765142",
+    "plate_c0_e4.png": "3df5d3709d1ebc28f496ce2b140e7bc33f981de15a8739834ceee78e06e62c6a",
+    "plate_c0_e5.png": "a66651ccf3f16f3459e4da7152e534e6c01374b8de2cc6cfb7aa96ce43be2a04",
+    "plate_c1_e0.png": "a9b1f4d910011d895c3cff2cf0989d128b32b5ab366e7736749205fb817d6002",
+    "plate_c1_e1.png": "2b42e9bea4717105e5a833bbb4ec3529d2c4a9c3dc131972ca884f4273914ec2",
+    "plate_c1_e2.png": "3ccaca725e826534d0f097b0f04a3d891861942e4471b6ceecc8cd7ede762294",
+    "plate_c1_e3.png": "c81ef211a7b6ca0e60d83d2ffe90f7090519a67a84badf719eda49fc15b36694",
+    "plate_c1_e4.png": "dda1ff0bf983b048927556cfda1682f1d4a1a133509a454fb490f9482d87da65",
+    "plate_c1_e5.png": "8fc6fc60c399bd666cdfd9ca141d2b029d17eff38b51da18b1f88c01b54e6488",
+    "plate_c2_e0.png": "a518851761c6f6eab8b16a8915e1a56bd7aad01c2d2aa078dae35bdb3ae4c494",
+    "plate_c2_e1.png": "5de0c94ed0f90179ac498004e0e4d62b3b4ca345c39a13e623859ea677fd4116",
+    "plate_c2_e2.png": "44682de6b02600d2c2c8321baebcdc627d4b3cd8e6f657c23159cc6b9a9eedb0",
+    "plate_c2_e3.png": "0958bdf7ae56af16cc153e35292791ab8c776028e65ab614b390ca1826284aa9",
+    "plate_c2_e4.png": "2046da1b3ca7b6e285d52176c2c3d9a5a78d5435391998cc06382268ae9c408d",
+    "plate_c2_e5.png": "032359827ea497ff47612d5545b6d44ba404855fa3ba69f6630177be7a8574b4"
+  },
+  "protected_colours": [
+    [
+      212,
+      156,
+      108
+    ],
+    [
+      216,
+      160,
+      112
+    ],
+    [
+      88,
+      172,
+      196
+    ],
+    [
+      92,
+      176,
+      200
+    ]
+  ],
+  "protected_mark_safety_min_distance": 108,
+  "protected_rects": [
+    [
+      160,
+      128,
+      384,
+      288
+    ],
+    [
+      768,
+      608,
+      1056,
+      832
+    ],
+    [
+      416,
+      352,
+      640,
+      512
+    ]
+  ],
+  "public_key": "82996a7424f1e993fbb6da95ddb285cf079685f8b88b4bc3359c962e65983474"
+}

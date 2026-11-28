@@ -1,0 +1,4 @@
+装帧师裁片记录 / FRAMER NOTES (kept outside the pieces)
+================================================================
+piece_1: edition c0-e0, rect=[448, 592, 736, 848], rot90=1, scale=2x, colour_bits=4, kind=mark_rich, sha256=644cae12f962c09c
+piece_2: edition c0-e1, rect=[72, 72, 344, 280], rot90=2, scale=1x, colour_bits=8, kind=protected_colour, sha256=8fe977d4f1f25285

@@ -1,0 +1,92 @@
+{
+  "block_px": 32,
+  "format": "platedoc-layout-v1",
+  "grid": [
+    39,
+    31
+  ],
+  "localise_rule": "registry block of the decoded tile places the fragment in the original",
+  "mark": {
+    "anchors": {
+      "corner": "light(K-1,K-1)",
+      "origin": "red(0,0)",
+      "x_axis": "green(K-1,0)",
+      "y_axis": "blue(0,K-1)"
+    },
+    "cell_colours": {
+      "one": "dark(32,32,32)",
+      "zero": "light(224,224,224)"
+    },
+    "cell_px": 4,
+    "cells": 8,
+    "payload_bits": {
+      "comp": 4,
+      "crc16": 16,
+      "edition": 6,
+      "tile": 12
+    },
+    "px": 32
+  },
+  "mark_stride_blocks": 3,
+  "plate_size": [
+    1248,
+    992
+  ],
+  "protected_colours": [
+    [
+      196,
+      140,
+      92
+    ],
+    [
+      200,
+      144,
+      96
+    ],
+    [
+      72,
+      156,
+      180
+    ],
+    [
+      76,
+      160,
+      184
+    ]
+  ],
+  "protected_rects": [
+    [
+      96,
+      96,
+      320,
+      256
+    ],
+    [
+      832,
+      576,
+      1120,
+      800
+    ],
+    [
+      448,
+      384,
+      672,
+      544
+    ]
+  ],
+  "sample_rule": "cut tile edges + anchor corners + an interior point; never embed data fields in the PNG",
+  "transform_tolerance": {
+    "integer_scale": [
+      1,
+      2,
+      3
+    ],
+    "min_colour_bits": 2,
+    "rotation_deg": [
+      0,
+      90,
+      180,
+      270
+    ]
+  }
+}

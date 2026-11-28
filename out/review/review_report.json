@@ -1,0 +1,403 @@
+{
+  "pieces": [
+    {
+      "attribution": [
+        {
+          "comp": 0,
+          "edition": 0,
+          "localisation": {
+            "affine": {
+              "A": [
+                [
+                  0.0,
+                  0.5
+                ],
+                [
+                  -0.5,
+                  0.0
+                ]
+              ],
+              "max_residual_px": 0.0,
+              "n_corr": 6,
+              "scale_piece_to_orig": 0.5
+            },
+            "bbox_original": [
+              448,
+              592,
+              736,
+              848
+            ],
+            "n_marks_used": 6
+          },
+          "n_marks": 6,
+          "tiles": [
+            81,
+            82,
+            83,
+            91,
+            92,
+            93
+          ]
+        }
+      ],
+      "crc_failures": 0,
+      "distinct_content_evidence": 6,
+      "localisation": {
+        "affine": {
+          "A": [
+            [
+              0.0,
+              0.5
+            ],
+            [
+              -0.5,
+              0.0
+            ]
+          ],
+          "max_residual_px": 0.0,
+          "n_corr": 6,
+          "scale_piece_to_orig": 0.5
+        },
+        "bbox_original": [
+          448,
+          592,
+          736,
+          848
+        ],
+        "n_marks_used": 6
+      },
+      "mark_regions": [
+        {
+          "block": [
+            15,
+            21
+          ],
+          "region": [
+            480,
+            672,
+            512,
+            704
+          ],
+          "tile": 81
+        },
+        {
+          "block": [
+            18,
+            21
+          ],
+          "region": [
+            576,
+            672,
+            608,
+            704
+          ],
+          "tile": 82
+        },
+        {
+          "block": [
+            21,
+            21
+          ],
+          "region": [
+            672,
+            672,
+            704,
+            704
+          ],
+          "tile": 83
+        },
+        {
+          "block": [
+            15,
+            24
+          ],
+          "region": [
+            480,
+            768,
+            512,
+            800
+          ],
+          "tile": 91
+        },
+        {
+          "block": [
+            18,
+            24
+          ],
+          "region": [
+            576,
+            768,
+            608,
+            800
+          ],
+          "tile": 92
+        },
+        {
+          "block": [
+            21,
+            24
+          ],
+          "region": [
+            672,
+            768,
+            704,
+            800
+          ],
+          "tile": 93
+        }
+      ],
+      "marks_detected": 6,
+      "marks_valid": 6,
+      "needs_another_sample": false,
+      "notes": [],
+      "original_range": [
+        448,
+        592,
+        736,
+        848
+      ],
+      "piece_id": "piece_1",
+      "protected_overlap": false,
+      "reprint": {
+        "path": "out/review/reprints/reprint_piece_1.png",
+        "size": [
+          288,
+          256
+        ],
+        "source": "out/issuance/plates/plate_c0_e0.png"
+      },
+      "size": [
+        512,
+        576
+      ],
+      "source_sha256": "644cae12f962c09c80b4aee757a1de3eb99323fe237200c95d948057545c7c15",
+      "verdict": "attributed"
+    },
+    {
+      "approximate_range": [
+        96,
+        96,
+        320,
+        256
+      ],
+      "attribution": [],
+      "composition_confidence": 0.366,
+      "composition_guess": 0,
+      "crc_failures": 0,
+      "discriminating_blocks": [
+        {
+          "discriminating_blocks": [
+            {
+              "block": [
+                6,
+                9
+              ],
+              "region": [
+                192,
+                288,
+                224,
+                320
+              ],
+              "tile": 35
+            },
+            {
+              "block": [
+                9,
+                9
+              ],
+              "region": [
+                288,
+                288,
+                320,
+                320
+              ],
+              "tile": 36
+            }
+          ],
+          "edition": 0
+        },
+        {
+          "discriminating_blocks": [
+            {
+              "block": [
+                7,
+                9
+              ],
+              "region": [
+                224,
+                288,
+                256,
+                320
+              ],
+              "tile": 35
+            },
+            {
+              "block": [
+                4,
+                9
+              ],
+              "region": [
+                128,
+                288,
+                160,
+                320
+              ],
+              "tile": 34
+            }
+          ],
+          "edition": 1
+        },
+        {
+          "discriminating_blocks": [
+            {
+              "block": [
+                5,
+                9
+              ],
+              "region": [
+                160,
+                288,
+                192,
+                320
+              ],
+              "tile": 34
+            },
+            {
+              "block": [
+                8,
+                9
+              ],
+              "region": [
+                256,
+                288,
+                288,
+                320
+              ],
+              "tile": 35
+            }
+          ],
+          "edition": 2
+        },
+        {
+          "discriminating_blocks": [
+            {
+              "block": [
+                6,
+                1
+              ],
+              "region": [
+                192,
+                32,
+                224,
+                64
+              ],
+              "tile": 2
+            },
+            {
+              "block": [
+                6,
+                10
+              ],
+              "region": [
+                192,
+                320,
+                224,
+                352
+              ],
+              "tile": 35
+            }
+          ],
+          "edition": 3
+        },
+        {
+          "discriminating_blocks": [
+            {
+              "block": [
+                7,
+                1
+              ],
+              "region": [
+                224,
+                32,
+                256,
+                64
+              ],
+              "tile": 2
+            },
+            {
+              "block": [
+                7,
+                10
+              ],
+              "region": [
+                224,
+                320,
+                256,
+                352
+              ],
+              "tile": 35
+            }
+          ],
+          "edition": 4
+        },
+        {
+          "discriminating_blocks": [
+            {
+              "block": [
+                5,
+                1
+              ],
+              "region": [
+                160,
+                32,
+                192,
+                64
+              ],
+              "tile": 1
+            },
+            {
+              "block": [
+                8,
+                1
+              ],
+              "region": [
+                256,
+                32,
+                288,
+                64
+              ],
+              "tile": 2
+            }
+          ],
+          "edition": 5
+        }
+      ],
+      "distinct_content_evidence": 0,
+      "localisation": null,
+      "location_confidence": "approximate (public protected rectangle)",
+      "marks_detected": 0,
+      "marks_valid": 0,
+      "needs_another_sample": true,
+      "notes": [
+        "composition fixed from palette as comp 0; edition still undetermined",
+        "cut any one listed discriminating block to tell editions 0, 1, 2, 3, 4, 5 apart",
+        "visible area is a protected colour region: no edition mark allowed here; request another sample from a permitted area"
+      ],
+      "piece_id": "piece_2",
+      "protected_overlap": true,
+      "size": [
+        272,
+        208
+      ],
+      "source_sha256": "8fe977d4f1f25285306668100e1e15a5453128bd81ab50ce9bfe7e55798c32ac",
+      "verdict": "undecidable"
+    }
+  ],
+  "summary": {
+    "attributed": 1,
+    "issuance": "out/issuance",
+    "manifest_signature_valid": true,
+    "need_another_sample": 1,
+    "pieces_reviewed": 2
+  }
+}

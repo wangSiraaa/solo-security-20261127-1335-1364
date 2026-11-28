@@ -1,0 +1,14 @@
+{
+  "format": "platedoc-swap-sheet-v1",
+  "note": "pieces are bare pixels; provenance intentionally omitted",
+  "pieces": [
+    {
+      "id": "piece_1",
+      "png": "piece_1.png"
+    },
+    {
+      "id": "piece_2",
+      "png": "piece_2.png"
+    }
+  ]
+}

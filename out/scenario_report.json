@@ -1,0 +1,183 @@
+{
+  "framer": {
+    "notes": [
+      "================================================================",
+      "piece_1: edition c0-e0, rect=[448, 592, 736, 848], rot90=1, scale=2x, colour_bits=4, kind=mark_rich, sha256=644cae12f962c09c",
+      "piece_2: edition c0-e1, rect=[72, 72, 344, 280], rot90=2, scale=1x, colour_bits=8, kind=protected_colour, sha256=8fe977d4f1f25285"
+    ],
+    "sheet": {
+      "format": "platedoc-swap-sheet-v1",
+      "note": "pieces are bare pixels; provenance intentionally omitted",
+      "pieces": [
+        {
+          "id": "piece_1",
+          "png": "piece_1.png"
+        },
+        {
+          "id": "piece_2",
+          "png": "piece_2.png"
+        }
+      ]
+    }
+  },
+  "issuance": {
+    "public_key": "82996a7424f1e993fbb6da95ddb285cf079685f8b88b4bc3359c962e65983474",
+    "signature_valid": true
+  },
+  "masking": {
+    "never_guesses": true,
+    "runs": [
+      {
+        "edition": 0,
+        "evidence": 6,
+        "marks_masked": 0,
+        "valid_marks": 6,
+        "verdict": "attributed"
+      },
+      {
+        "edition": 0,
+        "evidence": 5,
+        "marks_masked": 1,
+        "valid_marks": 5,
+        "verdict": "attributed"
+      },
+      {
+        "edition": 0,
+        "evidence": 4,
+        "marks_masked": 2,
+        "valid_marks": 4,
+        "verdict": "attributed"
+      },
+      {
+        "edition": 0,
+        "evidence": 3,
+        "marks_masked": 3,
+        "valid_marks": 3,
+        "verdict": "attributed"
+      },
+      {
+        "edition": 0,
+        "evidence": 2,
+        "marks_masked": 4,
+        "valid_marks": 2,
+        "verdict": "attributed"
+      },
+      {
+        "edition": 0,
+        "evidence": 1,
+        "marks_masked": 5,
+        "valid_marks": 1,
+        "verdict": "attributed"
+      },
+      {
+        "edition": null,
+        "evidence": 0,
+        "marks_masked": 6,
+        "valid_marks": 0,
+        "verdict": "undecidable"
+      }
+    ]
+  },
+  "orientation": {
+    "consistent": true,
+    "runs": [
+      {
+        "edition": 0,
+        "original_range": [
+          448,
+          464,
+          736,
+          720
+        ],
+        "rotation_deg": 0,
+        "verdict": "attributed"
+      },
+      {
+        "edition": 0,
+        "original_range": [
+          448,
+          464,
+          736,
+          720
+        ],
+        "rotation_deg": 90,
+        "verdict": "attributed"
+      },
+      {
+        "edition": 0,
+        "original_range": [
+          448,
+          464,
+          736,
+          720
+        ],
+        "rotation_deg": 180,
+        "verdict": "attributed"
+      },
+      {
+        "edition": 0,
+        "original_range": [
+          448,
+          464,
+          736,
+          720
+        ],
+        "rotation_deg": 270,
+        "verdict": "attributed"
+      }
+    ]
+  },
+  "reissue": {
+    "guard_problems": [],
+    "old_colour_residue": 0,
+    "protected_colours_safe": true,
+    "signature_valid": true
+  },
+  "reissue_print": {
+    "needs_another_sample": true,
+    "new_colour_pixels": 35076,
+    "piece_verdict": "undecidable",
+    "protected_overlap_detected": true
+  },
+  "reprint_verified": {
+    "ok": true,
+    "piece": "piece_1",
+    "pixel_diff_vs_original": 0
+  },
+  "review": {
+    "attributed": 1,
+    "issuance": "out/issuance",
+    "manifest_signature_valid": true,
+    "need_another_sample": 1,
+    "pieces_reviewed": 2
+  },
+  "review_pieces": [
+    {
+      "comp": 0,
+      "edition": 0,
+      "id": "piece_1",
+      "needs_another_sample": false,
+      "notes": [],
+      "original_range": [
+        448,
+        592,
+        736,
+        848
+      ],
+      "verdict": "attributed"
+    },
+    {
+      "comp": null,
+      "edition": null,
+      "id": "piece_2",
+      "needs_another_sample": true,
+      "notes": [
+        "composition fixed from palette as comp 0; edition still undetermined",
+        "cut any one listed discriminating block to tell editions 0, 1, 2, 3, 4, 5 apart",
+        "visible area is a protected colour region: no edition mark allowed here; request another sample from a permitted area"
+      ],
+      "original_range": null,
+      "verdict": "undecidable"
+    }
+  ]
+}
