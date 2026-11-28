@@ -1,0 +1,36 @@
+{
+  "main": {
+    "common": [
+      "read_ticket",
+      "local_font",
+      "render"
+    ],
+    "if_missing": [
+      "call_font_relay",
+      "render"
+    ]
+  },
+  "read_ticket": [
+    "document_id",
+    "title_private",
+    "symbols_allowed"
+  ],
+  "local_font": [
+    "classroom_glyphs"
+  ],
+  "relay": {
+    "legacy_request": [
+      "symbols_allowed",
+      "title_private"
+    ],
+    "payload_only_request": [
+      "symbols_allowed"
+    ],
+    "destination": "public-exchange",
+    "response": [
+      "requested_symbol",
+      "glyph"
+    ]
+  },
+  "training_output_channel": "external-view"
+}

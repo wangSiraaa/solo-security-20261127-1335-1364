@@ -1,0 +1,11 @@
+{
+  "replace_legacy_fields_with": [
+    "symbols_allowed"
+  ],
+  "local_retains": [
+    "title_private"
+  ],
+  "authorized_remote_scope": [
+    "symbols_allowed"
+  ]
+}

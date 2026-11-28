@@ -1,0 +1,25 @@
+{
+  "A": {
+    "room": "room-s",
+    "title_private": "保密台本初稿",
+    "symbols_allowed": [
+      "T"
+    ]
+  },
+  "B": {
+    "room": "room-ext",
+    "title_private": "未公布名单稿",
+    "symbols_allowed": [
+      "T",
+      "Ω"
+    ]
+  },
+  "B_different_address_and_same_symbols": {
+    "room": "room-ext",
+    "title_private": "私下约定稿",
+    "symbols_allowed": [
+      "T",
+      "Ω"
+    ]
+  }
+}

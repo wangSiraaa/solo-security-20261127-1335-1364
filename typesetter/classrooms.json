@@ -1,0 +1,28 @@
+{
+  "room-s": [
+    "T"
+  ],
+  "room-ext": [
+    "T"
+  ],
+  "room-ext-borrowed": [
+    "T",
+    "Ω"
+  ],
+  "local_shapes": {
+    "T": "TT",
+    "Ω": "oo"
+  },
+  "simulated_relay_shapes": {
+    "Ω": "@@"
+  },
+  "equipment": {
+    "room-s": [
+      "verified-offline"
+    ],
+    "room-ext": [
+      "verified-offline",
+      "proxy"
+    ]
+  }
+}
