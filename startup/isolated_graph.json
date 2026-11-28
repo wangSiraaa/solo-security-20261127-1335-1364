@@ -1,0 +1,62 @@
+{
+  "entry": "power",
+  "nodes": {
+    "power": {
+      "tick": 0,
+      "step": "power-on"
+    },
+    "sealed": {
+      "tick": 2,
+      "step": "inspect"
+    },
+    "paired": {
+      "tick": 4,
+      "step": "request-mount"
+    },
+    "reset": {
+      "tick": 5,
+      "step": "hard-reset"
+    },
+    "rechecked": {
+      "tick": 7,
+      "step": "inspect"
+    },
+    "join": {
+      "tick": 8,
+      "step": "request-mount"
+    }
+  },
+  "paths": {
+    "C": [
+      "power",
+      "sealed",
+      "paired"
+    ],
+    "E": [
+      "power",
+      "sealed",
+      "reset",
+      "join"
+    ]
+  },
+  "revision": {
+    "E": [
+      "power",
+      "sealed",
+      "reset",
+      "rechecked",
+      "join"
+    ]
+  },
+  "active_graph_revisions": {
+    "factory": 7,
+    "emergency_rechecked": 8
+  },
+  "claims_at_customer_start": {
+    "revision": 7,
+    "already_proved_inputs": [
+      "C"
+    ],
+    "may_prove_revised_at_counter": false
+  }
+}

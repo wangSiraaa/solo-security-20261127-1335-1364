@@ -1,0 +1,25 @@
+{
+  "basis": [
+    {
+      "id": "C-7",
+      "mode": "C",
+      "deadline": 8,
+      "volume": "c"
+    },
+    {
+      "id": "E-9",
+      "mode": "E",
+      "deadline": 8,
+      "volume": "e"
+    }
+  ],
+  "earlier_E": 6,
+  "volumes": {
+    "c": {
+      "task.txt": "先查接线图冷机档"
+    },
+    "e": {
+      "task.txt": "重试档只能读这一册"
+    }
+  }
+}

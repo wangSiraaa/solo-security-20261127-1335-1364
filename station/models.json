@@ -1,0 +1,11 @@
+{
+  "old-can-only-use-offline": {
+    "guardian_handshake": false,
+    "offline_image_receipt": true
+  },
+  "new-online": {
+    "guardian_handshake": true,
+    "offline_image_receipt": true
+  },
+  "selected_common": "new-online"
+}
