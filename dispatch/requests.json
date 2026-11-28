@@ -1,0 +1,20 @@
+[
+  {
+    "recipe": "T",
+    "boxes": 2,
+    "require": [
+      "blue",
+      "yellow"
+    ],
+    "priority": 1
+  },
+  {
+    "recipe": "W",
+    "boxes": 1,
+    "require": [
+      "yellow"
+    ],
+    "priority": 2,
+    "source": "extra_lot"
+  }
+]

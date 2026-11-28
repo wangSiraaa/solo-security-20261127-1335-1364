@@ -1,0 +1,22 @@
+{
+  "edition": 2,
+  "groups": {
+    "T": {
+      "predecessor": 1,
+      "previous": {
+        "blue": 2,
+        "yellow": 2
+      },
+      "current": {
+        "blue": 2,
+        "yellow": 1
+      }
+    },
+    "W": {
+      "predecessor": null,
+      "current": {
+        "yellow": 1
+      }
+    }
+  }
+}

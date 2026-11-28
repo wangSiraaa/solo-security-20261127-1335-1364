@@ -1,0 +1,10 @@
+{
+  "primary": {
+    "blue": 4,
+    "yellow": 2
+  },
+  "extra_lot": {
+    "yellow": 1
+  },
+  "hold_unconfirmed": true
+}

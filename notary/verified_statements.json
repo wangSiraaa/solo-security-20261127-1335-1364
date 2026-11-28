@@ -1,0 +1,67 @@
+{
+  "T": {
+    "per_cell": [
+      {
+        "item": "blue",
+        "value": 2,
+        "edit": 1,
+        "author": "乙",
+        "tick": 2
+      },
+      {
+        "item": "yellow",
+        "value": 1,
+        "edit": 2,
+        "author": "乙",
+        "tick": 4
+      }
+    ],
+    "release": {
+      "approver": "辛",
+      "covers": [
+        "blue",
+        "yellow"
+      ],
+      "version": 2,
+      "tick": 4
+    },
+    "sealed": {
+      "version": 2,
+      "ratio_holder": "乙",
+      "release_holder": "辛",
+      "tick": 4,
+      "ratios": {
+        "blue": 2,
+        "yellow": 1
+      }
+    }
+  },
+  "W": {
+    "per_cell": [
+      {
+        "item": "yellow",
+        "value": 1,
+        "edit": 2,
+        "author": "乙",
+        "tick": 3
+      }
+    ],
+    "release": {
+      "approver": "辛",
+      "covers": [
+        "yellow"
+      ],
+      "version": 2,
+      "tick": 3
+    },
+    "sealed": {
+      "version": 2,
+      "ratio_holder": "乙",
+      "release_holder": "辛",
+      "tick": 3,
+      "ratios": {
+        "yellow": 1
+      }
+    }
+  }
+}

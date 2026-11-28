@@ -1,0 +1,29 @@
+{
+  "乙": {
+    "duties": [
+      "ratio"
+    ],
+    "valid": [
+      1,
+      5
+    ]
+  },
+  "辛": {
+    "duties": [
+      "release"
+    ],
+    "valid": [
+      1,
+      6
+    ]
+  },
+  "楼": {
+    "duties": [
+      "preview"
+    ],
+    "valid": [
+      1,
+      5
+    ]
+  }
+}
