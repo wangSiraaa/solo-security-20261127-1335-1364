@@ -1,0 +1,33 @@
+{
+  "ink-7": {
+    "units": 7,
+    "actions": {
+      "text": {
+        "mode": "dynamic",
+        "label": "font",
+        "system": "font-a"
+      },
+      "picture": {
+        "mode": "embedded",
+        "digest": "ink-b",
+        "also_declared_dynamic": "ink-c"
+      }
+    }
+  },
+  "ink-11": {
+    "units": 11,
+    "loader": "v2",
+    "actions": {
+      "text": {
+        "mode": "dynamic",
+        "label": "font",
+        "system": "font-a"
+      },
+      "picture": {
+        "mode": "dynamic",
+        "label": "ink",
+        "system": "ink-c"
+      }
+    }
+  }
+}

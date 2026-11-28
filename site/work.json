@@ -1,0 +1,17 @@
+[
+  {
+    "name": "W",
+    "machine": "P1",
+    "action": "text"
+  },
+  {
+    "name": "G",
+    "machine": "P1",
+    "action": "picture"
+  },
+  {
+    "name": "M",
+    "machine": "P2",
+    "action": "picture"
+  }
+]

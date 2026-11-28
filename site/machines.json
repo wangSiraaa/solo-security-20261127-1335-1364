@@ -1,0 +1,29 @@
+{
+  "P1": {
+    "disk": 9,
+    "loaders": [
+      "v1",
+      "v2"
+    ]
+  },
+  "P2": {
+    "disk": 12,
+    "loaders": [
+      "v1",
+      "v2"
+    ]
+  },
+  "P1_service_upgrade": {
+    "disk": 12,
+    "loaders": [
+      "v1",
+      "v2"
+    ]
+  },
+  "P0_legacy": {
+    "disk": 12,
+    "loaders": [
+      "v1"
+    ]
+  }
+}

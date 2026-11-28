@@ -1,0 +1,16 @@
+{
+  "withdrawn_digests": [
+    "ink-b"
+  ],
+  "known": {
+    "ink-b": {
+      "text": "private-retired-stub"
+    },
+    "ink-c": {
+      "text": "safe-print-stub"
+    },
+    "font-a": {
+      "text": "text-stub"
+    }
+  }
+}
