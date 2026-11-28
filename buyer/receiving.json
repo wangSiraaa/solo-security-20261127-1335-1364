@@ -1,0 +1,42 @@
+{
+  "complete": {
+    "volume": "v1",
+    "chapter": "N1",
+    "already": "",
+    "range": [
+      0,
+      6
+    ],
+    "tape_capacity": 6
+  },
+  "short_tape": {
+    "volume": "v1",
+    "chapter": "N1",
+    "already": "ABCD",
+    "range": [
+      4,
+      6
+    ],
+    "tape_capacity": 2
+  },
+  "narrow_tape_complete": {
+    "volume": "v1",
+    "chapter": "N1",
+    "already": "",
+    "range": [
+      0,
+      6
+    ],
+    "tape_capacity": 2
+  },
+  "short_tape_wrong_existing": {
+    "volume": "v1",
+    "chapter": "N1",
+    "already": "ZYXD",
+    "range": [
+      4,
+      6
+    ],
+    "tape_capacity": 2
+  }
+}

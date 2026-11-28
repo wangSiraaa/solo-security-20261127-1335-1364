@@ -1,0 +1,28 @@
+{
+  "windows": [
+    {
+      "origin": "g1",
+      "id": "a1",
+      "volume": "v1",
+      "chapter": "N1",
+      "start": 0,
+      "text": "ABC"
+    },
+    {
+      "origin": "g2",
+      "id": "b1",
+      "volume": "v1",
+      "chapter": "N1",
+      "start": 3,
+      "text": "DEF"
+    }
+  ],
+  "substitute_second": {
+    "origin": "g2",
+    "id": "b2",
+    "volume": "v2",
+    "chapter": "N1",
+    "start": 3,
+    "text": "DEF"
+  }
+}

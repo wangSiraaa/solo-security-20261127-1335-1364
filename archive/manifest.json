@@ -1,0 +1,37 @@
+{
+  "encoding": "ascii",
+  "volumes": {
+    "v1": {
+      "N1": {
+        "length": 6,
+        "sha256": "e9c0f8b575cbfcb42ab3b78ecc87efa3b011d9a5d10b09fa4e96f240bf6a82f5",
+        "chunks": [
+          {
+            "start": 0,
+            "digest": "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78"
+          },
+          {
+            "start": 3,
+            "digest": "967c5a5b7e2fbbe3080a0c5cefea7c279570b16ae8465525538bc3b115267a45"
+          }
+        ]
+      }
+    },
+    "v2": {
+      "N1": {
+        "length": 6,
+        "sha256": "e2f213169eb0749a85f0f5042ed52bb1a23c510399a4b74bb90394c692fdae29",
+        "chunks": [
+          {
+            "start": 0,
+            "digest": "66a9a730a6becdf2ec3df6478aa705077058521503186c1234eae32b117a9919"
+          },
+          {
+            "start": 3,
+            "digest": "967c5a5b7e2fbbe3080a0c5cefea7c279570b16ae8465525538bc3b115267a45"
+          }
+        ]
+      }
+    }
+  }
+}
