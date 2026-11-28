@@ -1,0 +1,353 @@
+{
+  "sections": [],
+  "baseline_leadability": {
+    "T-01": {
+      "tube": "T-01",
+      "leadable": true,
+      "eq_hours": 252.81850313401605,
+      "mean_upper_c": 5.6433755717812595,
+      "rebuilt_hours": 0,
+      "reasons": []
+    },
+    "T-02": {
+      "tube": "T-02",
+      "leadable": true,
+      "eq_hours": 261.21495312368864,
+      "mean_upper_c": 6.043446896689001,
+      "rebuilt_hours": 0,
+      "reasons": []
+    },
+    "T-03": {
+      "tube": "T-03",
+      "leadable": false,
+      "eq_hours": 297.2623632538123,
+      "mean_upper_c": 7.53766847521159,
+      "rebuilt_hours": 30,
+      "reasons": [
+        "最不利暴露 297.3 等效小时 > 预算 295.0"
+      ]
+    },
+    "T-04": {
+      "tube": "T-04",
+      "leadable": false,
+      "eq_hours": 293.48051337720716,
+      "mean_upper_c": 7.4921024799032185,
+      "rebuilt_hours": 0,
+      "reasons": [
+        "跨柜回单 T-LOG-04 实绑 T-07（窗口 48-60h），与 T-04 不符"
+      ]
+    },
+    "T-05": {
+      "tube": "T-05",
+      "leadable": false,
+      "eq_hours": 342.0709534069638,
+      "mean_upper_c": 9.19652886508951,
+      "rebuilt_hours": 70,
+      "reasons": [
+        "最不利暴露 342.1 等效小时 > 预算 295.0"
+      ]
+    }
+  },
+  "application_id": "APP-2026-0042（虚构）",
+  "first_round": [
+    {
+      "order": "RV-101",
+      "verdict": "办结通过：名义与最坏允许变化两张色样 ΔE00 均 ≤ 1.5，按实际混色与耗量通过",
+      "swatches": [
+        {
+          "tag": "nominal",
+          "doses_ml": {
+            "A": 0.24,
+            "B": 0.36
+          },
+          "base_lot": "BL-07",
+          "strengths": {
+            "A": 1.0,
+            "B": 1.0
+          },
+          "lab": [
+            86.453,
+            3.807,
+            21.438
+          ],
+          "delta_e00": 0.0,
+          "bench": "独立比色台（自持目标色卡）",
+          "pass": true
+        },
+        {
+          "tag": "worst-case",
+          "doses_ml": {
+            "A": 0.24,
+            "B": 0.36
+          },
+          "base_lot": "BL-07",
+          "strengths": {
+            "A": 0.8100315463645062,
+            "B": 0.8043835047248984
+          },
+          "lab": [
+            87.249,
+            3.149,
+            19.2
+          ],
+          "delta_e00": 1.3568,
+          "bench": "独立比色台（自持目标色卡）",
+          "pass": true
+        }
+      ],
+      "doses_used_ml": {
+        "A": 0.48,
+        "B": 0.72
+      },
+      "base_used_ml": 100.0
+    },
+    {
+      "order": "RV-102",
+      "verdict": "办结通过：名义与最坏允许变化两张色样 ΔE00 均 ≤ 1.5，按实际混色与耗量通过",
+      "swatches": [
+        {
+          "tag": "nominal",
+          "doses_ml": {
+            "A": 0.5,
+            "B": 0.46
+          },
+          "base_lot": "BL-07",
+          "strengths": {
+            "A": 1.0,
+            "B": 1.0
+          },
+          "lab": [
+            83.362,
+            8.51,
+            25.063
+          ],
+          "delta_e00": 0.0,
+          "bench": "独立比色台（自持目标色卡）",
+          "pass": true
+        },
+        {
+          "tag": "worst-case",
+          "doses_ml": {
+            "A": 0.5,
+            "B": 0.46
+          },
+          "base_lot": "BL-07",
+          "strengths": {
+            "A": 0.8100315463645062,
+            "B": 0.8043835047248984
+          },
+          "lab": [
+            84.448,
+            7.47,
+            22.703
+          ],
+          "delta_e00": 1.4363,
+          "bench": "独立比色台（自持目标色卡）",
+          "pass": true
+        }
+      ],
+      "doses_used_ml": {
+        "A": 1.0,
+        "B": 0.92
+      },
+      "base_used_ml": 100.0
+    }
+  ],
+  "t03_after_narrow": {
+    "tube": "T-03",
+    "leadable": true,
+    "eq_hours": 293.6224906841022,
+    "mean_upper_c": 7.415168475211589,
+    "rebuilt_hours": 30,
+    "reasons": []
+  },
+  "t04_after_restore": {
+    "verify": {
+      "ok": true,
+      "problems": []
+    },
+    "leadability": {
+      "tube": "T-04",
+      "leadable": false,
+      "eq_hours": 295.58872279643913,
+      "mean_upper_c": 7.564602479903214,
+      "rebuilt_hours": 0,
+      "reasons": [
+        "最不利暴露 295.6 等效小时 > 预算 295.0"
+      ]
+    }
+  },
+  "second_round": [
+    {
+      "order": "RV-101",
+      "verdict": "办结通过：名义与最坏允许变化两张色样 ΔE00 均 ≤ 1.5，按实际混色与耗量通过",
+      "swatches": [
+        {
+          "tag": "nominal",
+          "doses_ml": {
+            "A": 0.24,
+            "B": 0.42
+          },
+          "base_lot": "BL-07",
+          "strengths": {
+            "A": 1.0,
+            "B": 1.0
+          },
+          "lab": [
+            86.342,
+            3.32,
+            22.886
+          ],
+          "delta_e00": 0.9703,
+          "bench": "独立比色台（自持目标色卡）",
+          "pass": true
+        },
+        {
+          "tag": "worst-case",
+          "doses_ml": {
+            "A": 0.24,
+            "B": 0.42
+          },
+          "base_lot": "BL-08",
+          "strengths": {
+            "A": 0.8100315463645062,
+            "B": 0.8043835047248984
+          },
+          "lab": [
+            87.151,
+            2.685,
+            20.548
+          ],
+          "delta_e00": 1.2594,
+          "bench": "独立比色台（自持目标色卡）",
+          "pass": true
+        }
+      ],
+      "doses_used_ml": {
+        "A": 0.48,
+        "B": 0.84
+      },
+      "base_used_ml": 100.0
+    },
+    {
+      "order": "RV-102",
+      "verdict": "办结拒收：worst-case 色样超出已签色差限 ΔE00 1.5，按实际混色与耗量拒收",
+      "swatches": [
+        {
+          "tag": "nominal",
+          "doses_ml": {
+            "A": 0.5,
+            "B": 0.42
+          },
+          "base_lot": "BL-08",
+          "strengths": {
+            "A": 1.0,
+            "B": 1.0
+          },
+          "lab": [
+            83.418,
+            8.784,
+            24.275
+          ],
+          "delta_e00": 0.5448,
+          "bench": "独立比色台（自持目标色卡）",
+          "pass": true
+        },
+        {
+          "tag": "worst-case",
+          "doses_ml": {
+            "A": 0.5,
+            "B": 0.42
+          },
+          "base_lot": "BL-08",
+          "strengths": {
+            "A": 0.8100315463645062,
+            "B": 0.8043835047248984
+          },
+          "lab": [
+            84.498,
+            7.733,
+            21.964
+          ],
+          "delta_e00": 1.6998,
+          "bench": "独立比色台（自持目标色卡）",
+          "pass": false
+        }
+      ],
+      "doses_used_ml": {
+        "A": 1.0,
+        "B": 0.84
+      },
+      "base_used_ml": 100.0
+    }
+  ],
+  "base_ledger": [
+    {
+      "order": "RV-101",
+      "base_lot": "BL-07",
+      "ml": 50.0
+    },
+    {
+      "order": "RV-101",
+      "base_lot": "BL-07",
+      "ml": 50.0
+    },
+    {
+      "order": "RV-102",
+      "base_lot": "BL-07",
+      "ml": 50.0
+    },
+    {
+      "order": "RV-102",
+      "base_lot": "BL-07",
+      "ml": 50.0
+    },
+    {
+      "order": "RV-101",
+      "base_lot": "BL-07",
+      "ml": 50.0
+    },
+    {
+      "order": "RV-101",
+      "base_lot": "BL-08",
+      "ml": 50.0
+    },
+    {
+      "order": "RV-102",
+      "base_lot": "BL-08",
+      "ml": 50.0
+    },
+    {
+      "order": "RV-102",
+      "base_lot": "BL-08",
+      "ml": 50.0
+    }
+  ],
+  "base_lots_remaining": {
+    "BL-07": 0.0,
+    "BL-08": 100.0
+  },
+  "dye_remaining_ml": {
+    "A": 15.040000000000006,
+    "B": 12.68
+  },
+  "tamper_checks": {
+    "clean": {
+      "ok": true,
+      "problems": []
+    },
+    "altered_reading": {
+      "ok": false,
+      "problems": [
+        "probes：自身哈希不符（封存件被改动）"
+      ]
+    },
+    "mislabeled_receipt": {
+      "ok": false,
+      "problems": [
+        "回单 T-LOG-04 绑定 T-07，不是本管 T-04",
+        "回单 T-LOG-04 时段与交接段不一致"
+      ]
+    }
+  }
+}
