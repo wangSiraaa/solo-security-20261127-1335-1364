@@ -1,0 +1,32 @@
+{
+  "proposed": [
+    {
+      "owner": "甲",
+      "task": "calibration",
+      "range": [
+        4,
+        5
+      ],
+      "options": [
+        "G",
+        "H",
+        "S"
+      ]
+    }
+  ],
+  "later_only": [
+    6,
+    7
+  ],
+  "route_distinguishing": {
+    "owner": "乙",
+    "task": "independent-check",
+    "range": [
+      6,
+      7
+    ],
+    "options": [
+      "T"
+    ]
+  }
+}

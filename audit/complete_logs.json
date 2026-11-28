@@ -1,0 +1,64 @@
+{
+  "G": {
+    "audit_id": "登记G",
+    "periods": [
+      {
+        "profile": "O",
+        "covers": [
+          3,
+          5
+        ]
+      }
+    ]
+  },
+  "H": {
+    "audit_id": "登记H",
+    "periods": [
+      {
+        "profile": "O",
+        "covers": [
+          3,
+          5
+        ]
+      }
+    ]
+  },
+  "S": {
+    "audit_id": "登记S",
+    "periods": [
+      {
+        "profile": "未启用",
+        "covers": [
+          3,
+          5
+        ]
+      },
+      {
+        "profile": "P",
+        "covers": [
+          6,
+          7
+        ]
+      }
+    ]
+  },
+  "T": {
+    "audit_id": "登记T",
+    "periods": [
+      {
+        "profile": "未启用",
+        "covers": [
+          3,
+          5
+        ]
+      },
+      {
+        "profile": "P",
+        "covers": [
+          6,
+          7
+        ]
+      }
+    ]
+  }
+}

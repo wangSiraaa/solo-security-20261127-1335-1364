@@ -1,0 +1,18 @@
+{
+  "G": {
+    "owner": "一厂",
+    "capacity": 1
+  },
+  "H": {
+    "owner": "二厂",
+    "capacity": 1
+  },
+  "S": {
+    "owner": "三厂",
+    "capacity": 1
+  },
+  "T": {
+    "owner": "四厂",
+    "capacity": 1
+  }
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "point": "G",
+    "profile": "O",
+    "covers": [
+      3,
+      5
+    ],
+    "department": "A",
+    "original": "a1"
+  },
+  {
+    "point": "G",
+    "profile": "O",
+    "covers": [
+      3,
+      5
+    ],
+    "department": "B",
+    "original": "b2"
+  },
+  {
+    "point": "H",
+    "profile": "O",
+    "covers": [
+      3,
+      5
+    ],
+    "department": "A",
+    "original": "a3"
+  },
+  {
+    "point": "H",
+    "profile": "O",
+    "covers": [
+      3,
+      5
+    ],
+    "department": "B",
+    "original": "b4"
+  },
+  {
+    "point": "S",
+    "profile": "P",
+    "covers": [
+      6,
+      7
+    ],
+    "department": "A",
+    "original": "a5"
+  },
+  {
+    "point": "S",
+    "profile": "P",
+    "covers": [
+      6,
+      7
+    ],
+    "department": "B",
+    "original": "b6"
+  }
+]

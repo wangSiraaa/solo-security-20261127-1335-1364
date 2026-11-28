@@ -1,0 +1,20 @@
+{
+  "O": {
+    "accepted": [
+      "本地实体凭证"
+    ],
+    "long_access_points": [
+      "G",
+      "H"
+    ]
+  },
+  "P": {
+    "accepted": [
+      "电子工作牌"
+    ],
+    "long_access_points": [
+      "S",
+      "T"
+    ]
+  }
+}
