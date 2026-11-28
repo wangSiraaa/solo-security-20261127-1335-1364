@@ -1,0 +1,83 @@
+{
+  "lanes": {
+    "east": {
+      "epoch": 2,
+      "in": [
+        {
+          "pkg": "k1",
+          "seq": 1,
+          "time": 2
+        },
+        {
+          "pkg": "k2",
+          "seq": 2,
+          "time": 4
+        }
+      ],
+      "out": [
+        {
+          "pkg": "k1",
+          "seq": 1,
+          "time": 3,
+          "delivered": true
+        }
+      ],
+      "coverage": {
+        "in": 5,
+        "out": 5
+      },
+      "short_out_coverage": 3,
+      "retired_window": {
+        "epoch": 1,
+        "pkg": "k2",
+        "seq": 2,
+        "time": 4
+      }
+    },
+    "west": {
+      "epoch": 2,
+      "in": [
+        {
+          "pkg": "k4",
+          "seq": 1,
+          "time": 2
+        },
+        {
+          "pkg": "k5",
+          "seq": 2,
+          "time": 4
+        }
+      ],
+      "out": [
+        {
+          "pkg": "k4",
+          "seq": 1,
+          "time": 3,
+          "delivered": true
+        }
+      ],
+      "coverage": {
+        "in": 5,
+        "out": 3
+      }
+    }
+  },
+  "followup": [
+    {
+      "pkg": "k3",
+      "lane": "east",
+      "arrive": 6,
+      "final_at": 6,
+      "unless_east_paused": true,
+      "proof_in_and_out": true
+    },
+    {
+      "pkg": "k6",
+      "lane": "west",
+      "arrive": 6,
+      "final_at": 6,
+      "proof_in_and_out": true,
+      "individual_coverage": 6
+    }
+  ]
+}
