@@ -1,0 +1,25 @@
+{
+  "E1": {
+    "source": "words/lamp",
+    "published_as": "words/lamp",
+    "trained_only": true,
+    "approved_from": 1,
+    "revoked_at": 6
+  },
+  "shared_windows": {
+    "normal_online": [
+      2,
+      3
+    ],
+    "offline": [
+      3,
+      4
+    ],
+    "withdrawn_online": [
+      7,
+      8
+    ]
+  },
+  "offline_issue_tick": 2,
+  "offline_collect_tick": 5
+}

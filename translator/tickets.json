@@ -1,0 +1,21 @@
+{
+  "normal": {
+    "id": "L1",
+    "words": [
+      "lamp",
+      "signal"
+    ],
+    "tick": 3
+  },
+  "second": {
+    "id": "L2",
+    "words": [
+      "gate",
+      "signal"
+    ],
+    "tick": 4
+  },
+  "alternate_first_word": "gate",
+  "new_private_note_must_remain_unobservable": true,
+  "language": "zh"
+}

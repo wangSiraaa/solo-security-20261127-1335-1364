@@ -1,0 +1,15 @@
+{
+  "publisher": {
+    "words/lamp": "灯",
+    "words/gate": "门",
+    "words/signal": "信号"
+  },
+  "private": {
+    "words/lamp": "照明",
+    "words/rehearsal": "隐藏词",
+    "sealed/line-7": "未公开注记"
+  },
+  "private_counterfactual": {
+    "sealed/extra_hidden": "虚构新增排练笔记，仅保留在私档"
+  }
+}
