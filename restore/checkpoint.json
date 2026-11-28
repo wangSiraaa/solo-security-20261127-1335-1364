@@ -1,0 +1,26 @@
+{
+  "slots": {
+    "3": "o",
+    "5": "o",
+    "7": "q"
+  },
+  "objects": {
+    "o": {
+      "generation": "old-v1",
+      "cursor": 1,
+      "grant": "G"
+    },
+    "q": {
+      "generation": "old-v1",
+      "cursor": 1,
+      "grant": "G"
+    }
+  },
+  "labels": {
+    "复核册": "new-v2"
+  },
+  "already_in_use": [
+    3,
+    6
+  ]
+}

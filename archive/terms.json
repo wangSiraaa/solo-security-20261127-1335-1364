@@ -1,0 +1,17 @@
+{
+  "grant": {
+    "G": {
+      "generation": "old-v1",
+      "half_open": [
+        0,
+        4
+      ]
+    }
+  },
+  "local_envelope_max_bytes": 4,
+  "later_valid_same_generation_extension": {
+    "generation": "old-v1",
+    "data": "ABCDEF",
+    "G_end": 6
+  }
+}
