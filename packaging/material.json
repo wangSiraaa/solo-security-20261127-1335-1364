@@ -1,0 +1,23 @@
+{
+  "case": "public-a",
+  "label": "demo-a",
+  "version": "v1",
+  "key_roles": {
+    "B/3": "body",
+    "B/4": "wrapper",
+    "B/5": "wrapper",
+    "B/6": "body",
+    "B/7": "margin-note"
+  },
+  "role_only_change": {
+    "B/3": "margin-note"
+  },
+  "old_body_key": "B/3",
+  "old_wrapper_key": "B/4",
+  "new_wrapper_key": "B/5",
+  "new_body_key": "B/6",
+  "supported_versions": [
+    "v1",
+    "v2"
+  ]
+}

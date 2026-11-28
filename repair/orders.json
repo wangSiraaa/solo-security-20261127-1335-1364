@@ -1,0 +1,17 @@
+{
+  "normal": {
+    "work": "L-03",
+    "case": "public-a",
+    "desk": "regular",
+    "want": [
+      "T1",
+      "T2"
+    ]
+  },
+  "independent_scope_change": {
+    "desk": "regular",
+    "tracks": [
+      "T1"
+    ]
+  }
+}

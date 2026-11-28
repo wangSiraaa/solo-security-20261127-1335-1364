@@ -1,0 +1,6 @@
+{
+  "open_to_repack": true,
+  "repack_minutes_available": 4,
+  "cost_per_body": 2,
+  "original_signature_reference": "preserve-body-ciphertext"
+}

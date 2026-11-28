@@ -1,0 +1,40 @@
+{
+  "regular": {
+    "accept_wrappers": [
+      "B/5"
+    ],
+    "inner_versions": [
+      "v1",
+      "v2"
+    ],
+    "tracks": [
+      "T1",
+      "T2"
+    ]
+  },
+  "old-original": {
+    "accept_wrappers": [
+      "B/5"
+    ],
+    "inner_versions": [
+      "v1"
+    ],
+    "tracks": [
+      "T1",
+      "T2"
+    ],
+    "requires_same_body_bytes": true
+  },
+  "only-v2": {
+    "accept_wrappers": [
+      "B/5"
+    ],
+    "inner_versions": [
+      "v2"
+    ],
+    "tracks": [
+      "T1",
+      "T2"
+    ]
+  }
+}

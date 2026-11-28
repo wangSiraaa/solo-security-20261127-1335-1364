@@ -1,0 +1,22 @@
+{
+  "wrapper": {
+    "ref": "B/4",
+    "meta": {
+      "case": "public-a",
+      "label": "demo-a",
+      "purpose": "wrapper"
+    },
+    "nonce_hex": "000000000000000000000001",
+    "ciphertext_b64": "NWytay0/IqZnpfABHAnb1H4hHWg823bZ9hrKvCl23KhjPv7A0UEWwjiPDb6lSEdF1Lc2oXewH12vMPQDKSaop67K2QAb4v4PQL5SWnKULHg5gRJxF5j3yPu2ufIe/oVzgq/o889kpA+z5lyoXrZ8MBUyW8hNMy0zlnfXvQmJ6rJ8U9syGVbS"
+  },
+  "body": {
+    "ref": "B/3",
+    "meta": {
+      "case": "public-a",
+      "version": "v1",
+      "purpose": "body"
+    },
+    "nonce_hex": "000000000000000000000001",
+    "ciphertext_b64": "Ad4cD6RyBDP9x36WEwv6wtMAqbziFd3PdVsAQqc4PmvxDD5ySgQfxNHXOLl1gdVwpWaY+/rtacRyxUx8v8mJeCHu1goy"
+  }
+}
