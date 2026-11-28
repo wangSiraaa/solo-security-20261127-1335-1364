@@ -1,0 +1,24 @@
+[
+  {
+    "case": "repair-S",
+    "body": "S19",
+    "batch": "C2",
+    "measure_day": 9,
+    "ref": "r2",
+    "readback": {
+      "m1": 100,
+      "m2": 104
+    }
+  },
+  {
+    "case": "repair-J",
+    "body": "J44",
+    "batch": "K1",
+    "measure_day": 9,
+    "ref": "rk",
+    "readback": {
+      "m1": 101,
+      "m2": 104
+    }
+  }
+]

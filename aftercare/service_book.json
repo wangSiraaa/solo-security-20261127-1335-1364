@@ -1,0 +1,12 @@
+{
+  "warranty_last_day": {
+    "S19": 9,
+    "J44": 12
+  },
+  "target": {
+    "m1": 102,
+    "m2": 105
+  },
+  "maximum_adjustment": 2,
+  "mount_partial_band": false
+}

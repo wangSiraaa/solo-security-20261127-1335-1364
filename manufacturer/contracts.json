@@ -1,0 +1,23 @@
+{
+  "packed": {
+    "roster": {
+      "S19": "C1",
+      "J44": "K1"
+    },
+    "offline_ok": true,
+    "replacement_requires_recheck": true
+  },
+  "on_demand": {
+    "issuer_online": true,
+    "accepted_body_and_batch": [
+      [
+        "S19",
+        "C2"
+      ],
+      [
+        "J44",
+        "K1"
+      ]
+    ]
+  }
+}

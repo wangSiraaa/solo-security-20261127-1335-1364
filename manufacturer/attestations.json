@@ -1,0 +1,45 @@
+[
+  {
+    "body": "S19",
+    "componentLabel": "通用片",
+    "batch": "C1",
+    "signedReference": "r1",
+    "models": [
+      "m1",
+      "m2"
+    ],
+    "manufacturing_day": 1
+  },
+  {
+    "body": "S19",
+    "componentLabel": "通用片",
+    "batch": "C2",
+    "signedReference": "r2",
+    "models": [
+      "m1",
+      "m2"
+    ],
+    "manufacturing_day": 9
+  },
+  {
+    "body": "T06",
+    "componentLabel": "通用片",
+    "batch": "C9",
+    "signedReference": "r9",
+    "models": [
+      "m1"
+    ],
+    "manufacturing_day": 5
+  },
+  {
+    "body": "J44",
+    "componentLabel": "通用片",
+    "batch": "K1",
+    "signedReference": "rk",
+    "models": [
+      "m1",
+      "m2"
+    ],
+    "manufacturing_day": 5
+  }
+]
