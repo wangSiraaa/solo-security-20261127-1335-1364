@@ -1,0 +1,31 @@
+{
+  "sheet": "frost",
+  "safe_remaining": [
+    0,
+    6
+  ],
+  "requests": [
+    {
+      "job": "B1",
+      "needed": 4,
+      "position": [
+        0,
+        4
+      ]
+    },
+    {
+      "job": "B2",
+      "needed": 2,
+      "position": [
+        4,
+        6
+      ]
+    }
+  ],
+  "prior_return": {
+    "lead": "R",
+    "reserved": 6,
+    "actually_exposed": 0,
+    "returned_to": "S"
+  }
+}

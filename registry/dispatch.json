@@ -1,0 +1,68 @@
+{
+  "shift_owner": "S",
+  "pre_authorised": 6,
+  "online": {
+    "limit": 6,
+    "jobs": [
+      {
+        "id": "B1",
+        "witness": [
+          "M1",
+          "M2"
+        ],
+        "devices": [
+          "登一",
+          "登二"
+        ]
+      },
+      {
+        "id": "B2",
+        "witness": [
+          "M1",
+          "M2"
+        ],
+        "devices": [
+          "登一",
+          "公共"
+        ]
+      }
+    ]
+  },
+  "released_by": "R",
+  "ways": {
+    "preissue": {
+      "offline_new_batch": true,
+      "next_shift_reassign": false
+    },
+    "online": {
+      "offline_new_batch": false,
+      "next_shift_reassign": true
+    }
+  },
+  "preparation": [
+    {
+      "id": "B1",
+      "witness": [
+        "M1",
+        "M2"
+      ],
+      "devices": [
+        "登一",
+        "登二"
+      ],
+      "witnessed_at": "before_shift"
+    },
+    {
+      "id": "B2",
+      "witness": [
+        "M1",
+        "M2"
+      ],
+      "devices": [
+        "登一",
+        "公共"
+      ],
+      "witnessed_at": "before_shift"
+    }
+  ]
+}

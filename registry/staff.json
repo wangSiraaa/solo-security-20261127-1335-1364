@@ -1,0 +1,24 @@
+{
+  "M1": {
+    "person": "昂",
+    "devices": [
+      "登一",
+      "公共"
+    ]
+  },
+  "M2": {
+    "person": "笙",
+    "devices": [
+      "登二",
+      "公共"
+    ]
+  },
+  "R": {
+    "person": "孔",
+    "role": "prior_supervisor"
+  },
+  "S": {
+    "person": "闻",
+    "role": "shift_supervisor"
+  }
+}
