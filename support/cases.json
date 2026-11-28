@@ -1,0 +1,35 @@
+{
+  "April-closed": {
+    "person": "尚",
+    "same_day_done_before": 16,
+    "covers_request": "M0"
+  },
+  "M1": {
+    "language": "zh",
+    "location": 2,
+    "window": [
+      18,
+      20
+    ],
+    "ticket": "zh-local"
+  },
+  "M2": {
+    "language": "fr",
+    "location": 7,
+    "window": [
+      20,
+      22
+    ],
+    "ticket": "fr-local"
+  },
+  "M0": {
+    "language": "zh",
+    "location": 2,
+    "window": [
+      14,
+      20
+    ],
+    "ticket": "closed-M0",
+    "completed_under": "April-closed"
+  }
+}

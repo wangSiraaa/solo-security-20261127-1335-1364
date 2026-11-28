@@ -1,0 +1,24 @@
+{
+  "普通组": {
+    "languages": [
+      "zh"
+    ],
+    "base": 1,
+    "travel_rate": 1,
+    "available": [
+      18
+    ],
+    "visit_limit": 1
+  },
+  "法语组": {
+    "languages": [
+      "fr"
+    ],
+    "base": 6,
+    "travel_rate": 1,
+    "available": [
+      20
+    ],
+    "visit_limit": 1
+  }
+}

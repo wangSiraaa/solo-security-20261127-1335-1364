@@ -1,0 +1,18 @@
+{
+  "X1": {
+    "issuer": "一区",
+    "account": "07",
+    "class": "verifiable",
+    "success_of_prior_help": "April-closed"
+  },
+  "X2": {
+    "issuer": "一区",
+    "account": "08",
+    "class": "verifiable"
+  },
+  "X3": {
+    "issuer": "二区",
+    "account": "08",
+    "class": "verifiable"
+  }
+}

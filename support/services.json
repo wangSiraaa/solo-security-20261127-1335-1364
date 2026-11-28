@@ -1,0 +1,22 @@
+{
+  "reserved_windows": {
+    "assignable": [
+      [
+        "M1",
+        "普通组",
+        18
+      ],
+      [
+        "M2",
+        "法语组",
+        20
+      ]
+    ],
+    "independent_of_hub": true,
+    "cannot_transfer": true
+  },
+  "live": {
+    "hub_online": true,
+    "can_reassign": true
+  }
+}
