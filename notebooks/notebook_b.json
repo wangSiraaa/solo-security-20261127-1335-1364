@@ -1,0 +1,98 @@
+{
+  "id": "NB-B-2026-07",
+  "title": "南区公用工程趋势分析·记录本B（借用上一轮汇总）",
+  "interface": {
+    "cell_ids": [
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8",
+      "c9",
+      "c10"
+    ],
+    "declared_outputs": [
+      {
+        "rel_path": "out/trend_chart.svg",
+        "kind": "chart"
+      },
+      {
+        "rel_path": "out/trend_table.csv",
+        "kind": "table"
+      },
+      {
+        "rel_path": "out/region_summary.csv",
+        "kind": "table"
+      }
+    ]
+  },
+  "declared_outputs": [
+    {
+      "rel_path": "out/trend_chart.svg",
+      "kind": "chart"
+    },
+    {
+      "rel_path": "out/trend_table.csv",
+      "kind": "table"
+    },
+    {
+      "rel_path": "out/region_summary.csv",
+      "kind": "table"
+    }
+  ],
+  "cells": [
+    {
+      "id": "c1",
+      "comment": "// 格1：装入带版本原始表（相对路径，单位随列声明）",
+      "code": "LOAD ../data/raw/elec_monthly.csv AS elec_raw\nLOAD ../data/raw/water_monthly.csv AS water_raw"
+    },
+    {
+      "id": "c2",
+      "comment": "// 格2：过滤，只保留南区教学口径",
+      "code": "FILTER elec_raw -> elec_south WHERE region == 'South'\nFILTER water_raw -> water_south WHERE region == 'South'"
+    },
+    {
+      "id": "c3",
+      "comment": "// 格3：按月+区域连接（北区无用电记录，自然淘汰）",
+      "code": "JOIN elec_south WITH water_south ON month,region AS joined"
+    },
+    {
+      "id": "c4",
+      "comment": "// 格4：派生单位强度纵列（维度 energy/volume 自动推断；单位随勘误口径为 Wh/m3）",
+      "code": "DERIVE joined -> enriched SET intensity_wh_per_m3[Wh/m3] = electricity_kwh / water_m3"
+    },
+    {
+      "id": "c5",
+      "comment": "// 格5：按区域分组汇总（可重复运行，结果确定）",
+      "code": "GROUP enriched -> region_agg BY region AGG elec_sum=sum(electricity_kwh), water_sum=sum(water_m3), months=count(month)"
+    },
+    {
+      "id": "c6",
+      "comment": "// 格6：按月份排序形成月度趋势表",
+      "code": "SORT enriched -> monthly_trend BY month"
+    },
+    {
+      "id": "c7",
+      "comment": "// 格7：把月度趋势表存成带版本的中间依赖（前格生成、后格装入）",
+      "code": "SAVE monthly_trend TO gen/monthly_trend_v1.csv"
+    },
+    {
+      "id": "c8",
+      "comment": "// 格8【A 版】重新装入自己前格生成的带版本中间表",
+      "code": "// 格8【B 版】装入上一轮汇总（借用旧内存；tmp/ 不随资料封存）\nLOAD tmp/last_round_monthly.csv AS trend_reloaded"
+    },
+    {
+      "id": "c9",
+      "comment": "// 格9：保存提报表",
+      "code": "SAVE trend_reloaded TO out/trend_table.csv\nSAVE region_agg TO out/region_summary.csv"
+    },
+    {
+      "id": "c10",
+      "comment": "// 格10：出提报趋势图（电、水各一面板，面板同高）",
+      "code": "PLOT trend_reloaded x=month series=electricity_kwh,water_m3 AS out/trend_chart.svg TITLE 南区月度用电与用水趋势"
+    }
+  ]
+}

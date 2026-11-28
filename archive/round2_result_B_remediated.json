@@ -1,0 +1,755 @@
+{
+  "notebook_id": "NB-B-2026-07-REMEDIATED",
+  "run_label": "round2-remediated",
+  "execution_order": [
+    {
+      "seq": 1,
+      "cell": "c1",
+      "verb": "LOAD",
+      "raw": "LOAD ../data/raw/elec_monthly.csv AS elec_raw",
+      "output": "elec_raw",
+      "output_hash": "25ddd3a37b5e593d",
+      "inputs": [],
+      "note": "载入版本 elec_monthly/v1.0，访问记录 #1；应用单位勘误 {'electricity_kwh': 'Wh'}"
+    },
+    {
+      "seq": 2,
+      "cell": "c1",
+      "verb": "LOAD",
+      "raw": "LOAD ../data/raw/water_monthly.csv AS water_raw",
+      "output": "water_raw",
+      "output_hash": "5db180fa0a6b8fc5",
+      "inputs": [],
+      "note": "载入版本 water_monthly/v1.2，访问记录 #2"
+    },
+    {
+      "seq": 3,
+      "cell": "c2",
+      "verb": "FILTER",
+      "raw": "FILTER elec_raw -> elec_south WHERE region == 'South'",
+      "output": "elec_south",
+      "output_hash": "6ca2432d8a39ff2e",
+      "inputs": [
+        {
+          "variable": "elec_raw",
+          "content_hash": "25ddd3a37b5e593d",
+          "source_version": "elec_monthly/v1.0",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/data/raw/elec_monthly.csv",
+          "unit_override": {
+            "electricity_kwh": "Wh"
+          },
+          "parents": [
+            "8b6df102b8244167"
+          ]
+        }
+      ],
+      "note": "保留 6/12 行"
+    },
+    {
+      "seq": 4,
+      "cell": "c2",
+      "verb": "FILTER",
+      "raw": "FILTER water_raw -> water_south WHERE region == 'South'",
+      "output": "water_south",
+      "output_hash": "54404d34654c72bd",
+      "inputs": [
+        {
+          "variable": "water_raw",
+          "content_hash": "5db180fa0a6b8fc5",
+          "source_version": "water_monthly/v1.2",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/data/raw/water_monthly.csv",
+          "unit_override": null,
+          "parents": [
+            "1bfc03fb39713c9e"
+          ]
+        }
+      ],
+      "note": "保留 6/18 行"
+    },
+    {
+      "seq": 5,
+      "cell": "c3",
+      "verb": "JOIN",
+      "raw": "JOIN elec_south WITH water_south ON month,region AS joined",
+      "output": "joined",
+      "output_hash": "4739412b110fe32a",
+      "inputs": [
+        {
+          "variable": "elec_south",
+          "content_hash": "6ca2432d8a39ff2e",
+          "source_version": "elec_monthly/v1.0",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/data/raw/elec_monthly.csv",
+          "unit_override": {
+            "electricity_kwh": "Wh"
+          },
+          "parents": [
+            "8b6df102b8244167",
+            "25ddd3a37b5e593d"
+          ]
+        },
+        {
+          "variable": "water_south",
+          "content_hash": "54404d34654c72bd",
+          "source_version": "water_monthly/v1.2",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/data/raw/water_monthly.csv",
+          "unit_override": null,
+          "parents": [
+            "1bfc03fb39713c9e",
+            "5db180fa0a6b8fc5"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "seq": 6,
+      "cell": "c4",
+      "verb": "DERIVE",
+      "raw": "DERIVE joined -> enriched SET intensity_wh_per_m3[Wh/m3] = electricity_kwh / water_m3",
+      "output": "enriched",
+      "output_hash": "ad1bebdef12bb378",
+      "inputs": [
+        {
+          "variable": "joined",
+          "content_hash": "4739412b110fe32a",
+          "source_version": "water_monthly/v1.2",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/data/raw/water_monthly.csv",
+          "unit_override": {
+            "electricity_kwh": "Wh"
+          },
+          "parents": [
+            "8b6df102b8244167",
+            "25ddd3a37b5e593d",
+            "6ca2432d8a39ff2e",
+            "54404d34654c72bd"
+          ]
+        }
+      ],
+      "note": "结果维度 energy/volume，声明 energy/volume"
+    },
+    {
+      "seq": 7,
+      "cell": "c5",
+      "verb": "GROUP",
+      "raw": "GROUP enriched -> region_agg BY region AGG elec_sum=sum(electricity_kwh), water_sum=sum(water_m3), months=count(month)",
+      "output": "region_agg",
+      "output_hash": "842e8b322bd90e38",
+      "inputs": [
+        {
+          "variable": "enriched",
+          "content_hash": "ad1bebdef12bb378",
+          "source_version": "water_monthly/v1.2",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/data/raw/water_monthly.csv",
+          "unit_override": {
+            "electricity_kwh": "Wh"
+          },
+          "parents": [
+            "8b6df102b8244167",
+            "25ddd3a37b5e593d",
+            "6ca2432d8a39ff2e",
+            "54404d34654c72bd",
+            "4739412b110fe32a"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "seq": 8,
+      "cell": "c6",
+      "verb": "SORT",
+      "raw": "SORT enriched -> monthly_trend BY month",
+      "output": "monthly_trend",
+      "output_hash": "ad1bebdef12bb378",
+      "inputs": [
+        {
+          "variable": "enriched",
+          "content_hash": "ad1bebdef12bb378",
+          "source_version": "water_monthly/v1.2",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/data/raw/water_monthly.csv",
+          "unit_override": {
+            "electricity_kwh": "Wh"
+          },
+          "parents": [
+            "8b6df102b8244167",
+            "25ddd3a37b5e593d",
+            "6ca2432d8a39ff2e",
+            "54404d34654c72bd",
+            "4739412b110fe32a"
+          ]
+        }
+      ],
+      "note": ""
+    },
+    {
+      "seq": 9,
+      "cell": "c7",
+      "verb": "SAVE",
+      "raw": "SAVE monthly_trend TO gen/monthly_trend_v1.csv",
+      "output": "gen/monthly_trend_v1.csv",
+      "output_hash": "2730bee8bf18bda03f6fc10553266dfafb91990716c2b2fe53ab0644a195f257",
+      "inputs": [
+        {
+          "variable": "monthly_trend",
+          "content_hash": "ad1bebdef12bb378",
+          "source_version": "water_monthly/v1.2",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/data/raw/water_monthly.csv",
+          "unit_override": {
+            "electricity_kwh": "Wh"
+          },
+          "parents": [
+            "8b6df102b8244167",
+            "25ddd3a37b5e593d",
+            "6ca2432d8a39ff2e",
+            "54404d34654c72bd",
+            "4739412b110fe32a",
+            "ad1bebdef12bb378"
+          ]
+        }
+      ],
+      "note": "写出 6 行；sha256=2730bee8bf18"
+    },
+    {
+      "seq": 10,
+      "cell": "c8",
+      "verb": "LOAD",
+      "raw": "LOAD gen/monthly_trend_v1.csv AS trend_reloaded",
+      "output": "trend_reloaded",
+      "output_hash": "ad1bebdef12bb378",
+      "inputs": [],
+      "note": "载入版本 water_monthly/v1.2，访问记录 #4；应用单位勘误 {'electricity_kwh': 'Wh'}"
+    },
+    {
+      "seq": 11,
+      "cell": "c9",
+      "verb": "SAVE",
+      "raw": "SAVE trend_reloaded TO out/trend_table.csv",
+      "output": "out/trend_table.csv",
+      "output_hash": "74932a513657fe582211100aab57badc3cfbf77c755401fe6896f848903a5dae",
+      "inputs": [
+        {
+          "variable": "trend_reloaded",
+          "content_hash": "ad1bebdef12bb378",
+          "source_version": "water_monthly/v1.2",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/notebook_dir/gen/monthly_trend_v1.csv",
+          "unit_override": {
+            "electricity_kwh": "Wh"
+          },
+          "parents": [
+            "7bef1dc2453ba99c"
+          ]
+        }
+      ],
+      "note": "写出 6 行；sha256=74932a513657"
+    },
+    {
+      "seq": 12,
+      "cell": "c9",
+      "verb": "SAVE",
+      "raw": "SAVE region_agg TO out/region_summary.csv",
+      "output": "out/region_summary.csv",
+      "output_hash": "5b2daa89e89aa211fd5b4f7ddd331015dfb9c7778239b3d6fe467ec5e55bf5a9",
+      "inputs": [
+        {
+          "variable": "region_agg",
+          "content_hash": "842e8b322bd90e38",
+          "source_version": "water_monthly/v1.2",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/data/raw/water_monthly.csv",
+          "unit_override": {
+            "electricity_kwh": "Wh"
+          },
+          "parents": [
+            "8b6df102b8244167",
+            "25ddd3a37b5e593d",
+            "6ca2432d8a39ff2e",
+            "54404d34654c72bd",
+            "4739412b110fe32a",
+            "ad1bebdef12bb378"
+          ]
+        }
+      ],
+      "note": "写出 1 行；sha256=5b2daa89e89a"
+    },
+    {
+      "seq": 13,
+      "cell": "c10",
+      "verb": "PLOT",
+      "raw": "PLOT trend_reloaded x=month series=electricity_kwh,water_m3 AS out/trend_chart.svg TITLE 南区月度用电与用水趋势",
+      "output": "out/trend_chart.svg",
+      "output_hash": "e408af2e12fccc69b3c785a9312776fe7fba9f984ca90aeeea10f7eee06db87e",
+      "inputs": [
+        {
+          "variable": "trend_reloaded",
+          "content_hash": "ad1bebdef12bb378",
+          "source_version": "water_monthly/v1.2",
+          "source_file": "/tmp/recompute_4s3dlbn9/bundle/notebook_dir/gen/monthly_trend_v1.csv",
+          "unit_override": {
+            "electricity_kwh": "Wh"
+          },
+          "parents": [
+            "7bef1dc2453ba99c"
+          ]
+        }
+      ],
+      "note": "SVG 趋势图 sha256=e408af2e12fc"
+    }
+  ],
+  "file_accesses": [
+    {
+      "kind": "load",
+      "rel_path": "../data/raw/elec_monthly.csv",
+      "sha256": "7ef1636c6f30dd354dae5bea03d8e91efaa2f27b420905275b144cbe2c0e5c07",
+      "version": "elec_monthly/v1.0"
+    },
+    {
+      "kind": "load",
+      "rel_path": "../data/raw/water_monthly.csv",
+      "sha256": "e246a026c6d27bf16a13bb736185fc5f7e7c05765409610f1b20ea3b73d16946",
+      "version": "water_monthly/v1.2"
+    },
+    {
+      "kind": "save",
+      "rel_path": "gen/monthly_trend_v1.csv",
+      "sha256": "2730bee8bf18bda03f6fc10553266dfafb91990716c2b2fe53ab0644a195f257",
+      "version": null
+    },
+    {
+      "kind": "load",
+      "rel_path": "gen/monthly_trend_v1.csv",
+      "sha256": "2730bee8bf18bda03f6fc10553266dfafb91990716c2b2fe53ab0644a195f257",
+      "version": "water_monthly/v1.2"
+    },
+    {
+      "kind": "save",
+      "rel_path": "out/trend_table.csv",
+      "sha256": "74932a513657fe582211100aab57badc3cfbf77c755401fe6896f848903a5dae",
+      "version": null
+    },
+    {
+      "kind": "save",
+      "rel_path": "out/region_summary.csv",
+      "sha256": "5b2daa89e89aa211fd5b4f7ddd331015dfb9c7778239b3d6fe467ec5e55bf5a9",
+      "version": null
+    },
+    {
+      "kind": "plot",
+      "rel_path": "out/trend_chart.svg",
+      "sha256": "e408af2e12fccc69b3c785a9312776fe7fba9f984ca90aeeea10f7eee06db87e",
+      "version": null
+    }
+  ],
+  "variables": {
+    "elec_raw": {
+      "current_hash": "25ddd3a37b5e593d",
+      "overwrite_history": [
+        "25ddd3a37b5e593d"
+      ],
+      "units": {
+        "month": null,
+        "region": null,
+        "electricity_kwh": "Wh"
+      }
+    },
+    "water_raw": {
+      "current_hash": "5db180fa0a6b8fc5",
+      "overwrite_history": [
+        "5db180fa0a6b8fc5"
+      ],
+      "units": {
+        "month": null,
+        "region": null,
+        "water_m3": "m3"
+      }
+    },
+    "elec_south": {
+      "current_hash": "6ca2432d8a39ff2e",
+      "overwrite_history": [
+        "6ca2432d8a39ff2e"
+      ],
+      "units": {
+        "month": null,
+        "region": null,
+        "electricity_kwh": "Wh"
+      }
+    },
+    "water_south": {
+      "current_hash": "54404d34654c72bd",
+      "overwrite_history": [
+        "54404d34654c72bd"
+      ],
+      "units": {
+        "month": null,
+        "region": null,
+        "water_m3": "m3"
+      }
+    },
+    "joined": {
+      "current_hash": "4739412b110fe32a",
+      "overwrite_history": [
+        "4739412b110fe32a"
+      ],
+      "units": {
+        "month": null,
+        "region": null,
+        "electricity_kwh": "Wh",
+        "water_m3": "m3"
+      }
+    },
+    "enriched": {
+      "current_hash": "ad1bebdef12bb378",
+      "overwrite_history": [
+        "ad1bebdef12bb378"
+      ],
+      "units": {
+        "month": null,
+        "region": null,
+        "electricity_kwh": "Wh",
+        "water_m3": "m3",
+        "intensity_wh_per_m3": "Wh/m3"
+      }
+    },
+    "region_agg": {
+      "current_hash": "842e8b322bd90e38",
+      "overwrite_history": [
+        "842e8b322bd90e38"
+      ],
+      "units": {
+        "region": null,
+        "elec_sum": "Wh",
+        "water_sum": "m3",
+        "months": null
+      }
+    },
+    "monthly_trend": {
+      "current_hash": "ad1bebdef12bb378",
+      "overwrite_history": [
+        "ad1bebdef12bb378"
+      ],
+      "units": {
+        "month": null,
+        "region": null,
+        "electricity_kwh": "Wh",
+        "water_m3": "m3",
+        "intensity_wh_per_m3": "Wh/m3"
+      }
+    },
+    "trend_reloaded": {
+      "current_hash": "ad1bebdef12bb378",
+      "overwrite_history": [
+        "ad1bebdef12bb378"
+      ],
+      "units": {
+        "month": null,
+        "region": null,
+        "electricity_kwh": "Wh",
+        "water_m3": "m3",
+        "intensity_wh_per_m3": "Wh/m3"
+      }
+    }
+  },
+  "outputs": {
+    "files": {
+      "out/trend_chart.svg": {
+        "sha256": "e408af2e12fccc69b3c785a9312776fe7fba9f984ca90aeeea10f7eee06db87e",
+        "exists": true,
+        "kind": "chart"
+      },
+      "out/trend_table.csv": {
+        "sha256": "74932a513657fe582211100aab57badc3cfbf77c755401fe6896f848903a5dae",
+        "exists": true,
+        "kind": "table"
+      },
+      "out/region_summary.csv": {
+        "sha256": "5b2daa89e89aa211fd5b4f7ddd331015dfb9c7778239b3d6fe467ec5e55bf5a9",
+        "exists": true,
+        "kind": "table"
+      }
+    },
+    "column_lineage": [
+      {
+        "variable": "elec_raw",
+        "content_hash": "25ddd3a37b5e593d",
+        "columns": [
+          "month",
+          "region",
+          "electricity_kwh"
+        ],
+        "units": {
+          "month": null,
+          "region": null,
+          "electricity_kwh": "Wh"
+        },
+        "source_versions": [
+          "elec_monthly/v1.0"
+        ],
+        "erratum_applied": {
+          "electricity_kwh": "Wh"
+        },
+        "parents": [
+          "8b6df102b8244167"
+        ]
+      },
+      {
+        "variable": "water_raw",
+        "content_hash": "5db180fa0a6b8fc5",
+        "columns": [
+          "month",
+          "region",
+          "water_m3"
+        ],
+        "units": {
+          "month": null,
+          "region": null,
+          "water_m3": "m3"
+        },
+        "source_versions": [
+          "water_monthly/v1.2"
+        ],
+        "erratum_applied": null,
+        "parents": [
+          "1bfc03fb39713c9e"
+        ]
+      },
+      {
+        "variable": "elec_south",
+        "content_hash": "6ca2432d8a39ff2e",
+        "columns": [
+          "month",
+          "region",
+          "electricity_kwh"
+        ],
+        "units": {
+          "month": null,
+          "region": null,
+          "electricity_kwh": "Wh"
+        },
+        "source_versions": [
+          "elec_monthly/v1.0"
+        ],
+        "erratum_applied": {
+          "electricity_kwh": "Wh"
+        },
+        "parents": [
+          "8b6df102b8244167",
+          "25ddd3a37b5e593d"
+        ]
+      },
+      {
+        "variable": "water_south",
+        "content_hash": "54404d34654c72bd",
+        "columns": [
+          "month",
+          "region",
+          "water_m3"
+        ],
+        "units": {
+          "month": null,
+          "region": null,
+          "water_m3": "m3"
+        },
+        "source_versions": [
+          "water_monthly/v1.2"
+        ],
+        "erratum_applied": null,
+        "parents": [
+          "1bfc03fb39713c9e",
+          "5db180fa0a6b8fc5"
+        ]
+      },
+      {
+        "variable": "joined",
+        "content_hash": "4739412b110fe32a",
+        "columns": [
+          "month",
+          "region",
+          "electricity_kwh",
+          "water_m3"
+        ],
+        "units": {
+          "month": null,
+          "region": null,
+          "electricity_kwh": "Wh",
+          "water_m3": "m3"
+        },
+        "source_versions": [
+          "water_monthly/v1.2"
+        ],
+        "erratum_applied": {
+          "electricity_kwh": "Wh"
+        },
+        "parents": [
+          "8b6df102b8244167",
+          "25ddd3a37b5e593d",
+          "6ca2432d8a39ff2e",
+          "54404d34654c72bd"
+        ]
+      },
+      {
+        "variable": "enriched",
+        "content_hash": "ad1bebdef12bb378",
+        "columns": [
+          "month",
+          "region",
+          "electricity_kwh",
+          "water_m3",
+          "intensity_wh_per_m3"
+        ],
+        "units": {
+          "month": null,
+          "region": null,
+          "electricity_kwh": "Wh",
+          "water_m3": "m3",
+          "intensity_wh_per_m3": "Wh/m3"
+        },
+        "source_versions": [
+          "water_monthly/v1.2"
+        ],
+        "erratum_applied": {
+          "electricity_kwh": "Wh"
+        },
+        "parents": [
+          "8b6df102b8244167",
+          "25ddd3a37b5e593d",
+          "6ca2432d8a39ff2e",
+          "54404d34654c72bd",
+          "4739412b110fe32a"
+        ]
+      },
+      {
+        "variable": "region_agg",
+        "content_hash": "842e8b322bd90e38",
+        "columns": [
+          "region",
+          "elec_sum",
+          "water_sum",
+          "months"
+        ],
+        "units": {
+          "region": null,
+          "elec_sum": "Wh",
+          "water_sum": "m3",
+          "months": null
+        },
+        "source_versions": [
+          "water_monthly/v1.2"
+        ],
+        "erratum_applied": {
+          "electricity_kwh": "Wh"
+        },
+        "parents": [
+          "8b6df102b8244167",
+          "25ddd3a37b5e593d",
+          "6ca2432d8a39ff2e",
+          "54404d34654c72bd",
+          "4739412b110fe32a",
+          "ad1bebdef12bb378"
+        ]
+      },
+      {
+        "variable": "monthly_trend",
+        "content_hash": "ad1bebdef12bb378",
+        "columns": [
+          "month",
+          "region",
+          "electricity_kwh",
+          "water_m3",
+          "intensity_wh_per_m3"
+        ],
+        "units": {
+          "month": null,
+          "region": null,
+          "electricity_kwh": "Wh",
+          "water_m3": "m3",
+          "intensity_wh_per_m3": "Wh/m3"
+        },
+        "source_versions": [
+          "water_monthly/v1.2"
+        ],
+        "erratum_applied": {
+          "electricity_kwh": "Wh"
+        },
+        "parents": [
+          "8b6df102b8244167",
+          "25ddd3a37b5e593d",
+          "6ca2432d8a39ff2e",
+          "54404d34654c72bd",
+          "4739412b110fe32a",
+          "ad1bebdef12bb378"
+        ]
+      },
+      {
+        "variable": "trend_reloaded",
+        "content_hash": "ad1bebdef12bb378",
+        "columns": [
+          "month",
+          "region",
+          "electricity_kwh",
+          "water_m3",
+          "intensity_wh_per_m3"
+        ],
+        "units": {
+          "month": null,
+          "region": null,
+          "electricity_kwh": "Wh",
+          "water_m3": "m3",
+          "intensity_wh_per_m3": "Wh/m3"
+        },
+        "source_versions": [
+          "water_monthly/v1.2"
+        ],
+        "erratum_applied": {
+          "electricity_kwh": "Wh"
+        },
+        "parents": [
+          "7bef1dc2453ba99c"
+        ]
+      }
+    ],
+    "carry_policy": null
+  },
+  "failure": null,
+  "errata_in_effect": {
+    "../data/raw/elec_monthly.csv": {
+      "electricity_kwh": "Wh"
+    }
+  },
+  "cwd": "/tmp/recompute_4s3dlbn9/bundle",
+  "_workdir": "/tmp/recompute_4s3dlbn9",
+  "_returncode": 0,
+  "_stdout": "{\n  \"notebook_id\": \"NB-B-2026-07-REMEDIATED\",\n  \"run_label\": \"round2-remediated\",\n  \"failure\": null,\n  \"outputs\": {\n    \"out/trend_chart.svg\": \"e408af2e12fccc69b3c785a9312776fe7fba9f984ca90aeeea10f7eee06db87e\",\n    \"out/trend_table.csv\": \"74932a513657fe582211100aab57badc3cfbf77c755401fe6896f848903a5dae\",\n    \"out/region_summary.csv\": \"5b2daa89e89aa211fd5b4f7ddd331015dfb9c7778239b3d6fe467ec5e55bf5a9\"\n  }\n}\n",
+  "_stderr": "",
+  "input_verification": [
+    {
+      "rel_path": "../data/raw/elec_monthly.csv",
+      "version_used": "elec_monthly/v1.0",
+      "class": "raw-input",
+      "sha256_observed": "7ef1636c6f30dd354dae5bea03d8e91efaa2f27b420905275b144cbe2c0e5c07",
+      "sha256_sealed": "7ef1636c6f30dd354dae5bea03d8e91efaa2f27b420905275b144cbe2c0e5c07",
+      "match": true,
+      "raw_identity_required": true,
+      "note": "与封存逐位一致"
+    },
+    {
+      "rel_path": "../data/raw/water_monthly.csv",
+      "version_used": "water_monthly/v1.2",
+      "class": "raw-input",
+      "sha256_observed": "e246a026c6d27bf16a13bb736185fc5f7e7c05765409610f1b20ea3b73d16946",
+      "sha256_sealed": "e246a026c6d27bf16a13bb736185fc5f7e7c05765409610f1b20ea3b73d16946",
+      "match": true,
+      "raw_identity_required": true,
+      "note": "与封存逐位一致"
+    },
+    {
+      "rel_path": "gen/monthly_trend_v1.csv",
+      "version_used": "water_monthly/v1.2",
+      "class": "intermediate-regenerated",
+      "sha256_observed": "2730bee8bf18bda03f6fc10553266dfafb91990716c2b2fe53ab0644a195f257",
+      "sha256_sealed": null,
+      "match": true,
+      "raw_identity_required": false,
+      "note": "中间表按现行口径重新生成，允许与第一轮不同"
+    }
+  ],
+  "seal_verdict": "SEALED：形成所选图表所需的最小可重演执行链完整",
+  "signed": true
+}

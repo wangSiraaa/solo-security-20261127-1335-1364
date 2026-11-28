@@ -1,0 +1,21 @@
+# {"name": "water_raw", "version": "water_monthly/v1.2"}
+# month[-],region[-],water_m3[m3]
+month,region,water_m3
+2026-01,South,910
+2026-01,East,1020
+2026-01,North,760
+2026-02,South,925
+2026-02,East,1040
+2026-02,North,770
+2026-03,South,890
+2026-03,East,1005
+2026-03,North,755
+2026-04,South,860
+2026-04,East,980
+2026-04,North,740
+2026-05,South,875
+2026-05,East,995
+2026-05,North,748
+2026-06,South,905
+2026-06,East,1030
+2026-06,North,765

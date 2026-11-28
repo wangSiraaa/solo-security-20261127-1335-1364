@@ -1,0 +1,4 @@
+# {"converted": {"water_m3": "m3"}, "loaded_version": "water_monthly/v1.2", "name": "region_agg", "source": "water_monthly.csv", "version": "water_monthly/v1.2"}
+# region[-],elec_sum[Wh],water_sum[m3],months[-]
+region,elec_sum,water_sum,months
+South,2495000000,5365,6

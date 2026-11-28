@@ -1,0 +1,28 @@
+{
+  "comparison": [
+    {
+      "rel_path": "out/region_summary.csv",
+      "round1_sha256": "96c2a69915a8ab5412961ea261877e91522437390ce6c60315da3d955db59095",
+      "round2_sha256": "5b2daa89e89aa211fd5b4f7ddd331015dfb9c7778239b3d6fe467ec5e55bf5a9",
+      "changed": true,
+      "round1_exists": true,
+      "round2_exists": true
+    },
+    {
+      "rel_path": "out/trend_chart.svg",
+      "round1_sha256": "c488edbc4f1e5a6364ece1dda49c6eb2818a685e8d8aaba1b5bbcbae0c13ea18",
+      "round2_sha256": "e408af2e12fccc69b3c785a9312776fe7fba9f984ca90aeeea10f7eee06db87e",
+      "changed": true,
+      "round1_exists": true,
+      "round2_exists": true
+    },
+    {
+      "rel_path": "out/trend_table.csv",
+      "round1_sha256": "0405929a8179e4bc123b381fef4d971e012e51ca0940de6a7ac31e6686ad9b31",
+      "round2_sha256": "74932a513657fe582211100aab57badc3cfbf77c755401fe6896f848903a5dae",
+      "changed": true,
+      "round1_exists": true,
+      "round2_exists": true
+    }
+  ]
+}

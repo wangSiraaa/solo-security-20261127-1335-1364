@@ -1,0 +1,9 @@
+[
+  {
+    "column": "water_m3",
+    "policy": "carry",
+    "evidence_hash": "bae44c07e23509e2",
+    "evidence_found_in_round1": true,
+    "verdict": "允许局部沿用"
+  }
+]

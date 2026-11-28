@@ -1,0 +1,163 @@
+{
+  "notebook_id": "NB-B-2026-07-REMEDIATED",
+  "interface": {
+    "cell_ids": [
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8",
+      "c9",
+      "c10"
+    ],
+    "declared_outputs": [
+      {
+        "rel_path": "out/trend_chart.svg",
+        "kind": "chart"
+      },
+      {
+        "rel_path": "out/trend_table.csv",
+        "kind": "table"
+      },
+      {
+        "rel_path": "out/region_summary.csv",
+        "kind": "table"
+      }
+    ]
+  },
+  "declared_outputs": [
+    {
+      "rel_path": "out/trend_chart.svg",
+      "kind": "chart"
+    },
+    {
+      "rel_path": "out/trend_table.csv",
+      "kind": "table"
+    },
+    {
+      "rel_path": "out/region_summary.csv",
+      "kind": "table"
+    }
+  ],
+  "files": [
+    {
+      "cell": "c1",
+      "verb": "LOAD",
+      "kind": "load",
+      "rel_path": "../data/raw/elec_monthly.csv",
+      "exists": true,
+      "excluded": false,
+      "sha256": "7ef1636c6f30dd354dae5bea03d8e91efaa2f27b420905275b144cbe2c0e5c07",
+      "size": 372
+    },
+    {
+      "cell": "c1",
+      "verb": "LOAD",
+      "kind": "load",
+      "rel_path": "../data/raw/water_monthly.csv",
+      "exists": true,
+      "excluded": false,
+      "sha256": "e246a026c6d27bf16a13bb736185fc5f7e7c05765409610f1b20ea3b73d16946",
+      "size": 435
+    },
+    {
+      "cell": "c7",
+      "verb": "SAVE",
+      "kind": "intermediate",
+      "rel_path": "gen/monthly_trend_v1.csv",
+      "exists": true,
+      "excluded": false
+    },
+    {
+      "cell": "c9",
+      "verb": "SAVE",
+      "kind": "output",
+      "rel_path": "out/trend_table.csv",
+      "exists": true,
+      "excluded": true
+    },
+    {
+      "cell": "c9",
+      "verb": "SAVE",
+      "kind": "output",
+      "rel_path": "out/region_summary.csv",
+      "exists": true,
+      "excluded": true
+    },
+    {
+      "cell": "c10",
+      "verb": "PLOT",
+      "kind": "output",
+      "rel_path": "out/trend_chart.svg",
+      "exists": true,
+      "excluded": true
+    }
+  ],
+  "missing_dependencies": [],
+  "engine_files": [
+    {
+      "rel_path": "rechain/__init__.py",
+      "sha256": "08fd25374c3cd23e938c4a1b2ce09623051442df53e2490bbf175c1d8f009416"
+    },
+    {
+      "rel_path": "rechain/charts.py",
+      "sha256": "89c8224ac0c69d6c087edb4004da99616c133e45fde5d7d50ef8763f31b861f7"
+    },
+    {
+      "rel_path": "rechain/demo.py",
+      "sha256": "fa1c790643b286beacdd7c6108770a877bf30ac3b39a90b85fe02da2f5e226e1"
+    },
+    {
+      "rel_path": "rechain/engine.py",
+      "sha256": "8f9d00863559b1995fb00b099523ec67e26a2f143cfaadf46aae54c1fb8c2bde"
+    },
+    {
+      "rel_path": "rechain/lang.py",
+      "sha256": "ca80c0f108070517221793850bc550cad35ee6f1c4bfc177e262f48c1e47d4a5"
+    },
+    {
+      "rel_path": "rechain/recompute.py",
+      "sha256": "88b9af4653e87377615514f51ee4d405a68cc8c82e7a968c739396f177b71e22"
+    },
+    {
+      "rel_path": "rechain/runner.py",
+      "sha256": "b2eebd09c878b09c04d7e28c40ed855279fd04fa69864f852150133179b554e1"
+    },
+    {
+      "rel_path": "rechain/sealing.py",
+      "sha256": "24a0760e09e655a83e5d1eed4a1d3d5d70a6263939646f6d47bff04e3f1faa0d"
+    },
+    {
+      "rel_path": "rechain/table.py",
+      "sha256": "e568ab0df577b1636bd4fc627a9bc2961565ba8bca6837a4fabce076df32ba83"
+    }
+  ],
+  "notebook_file": "notebook_b_remediated.json",
+  "regenerated_intermediates": [
+    {
+      "rel_path": "gen/monthly_trend_v1.csv",
+      "cell": "c7",
+      "sha256_author_copy": null,
+      "reason": "中间依赖不封存旧副本，复算时由前格重新生成"
+    }
+  ],
+  "excluded_outputs": [
+    {
+      "rel_path": "out/trend_table.csv",
+      "reason": "声明提报产物不封存，必须由复算室重新生成"
+    },
+    {
+      "rel_path": "out/region_summary.csv",
+      "reason": "声明提报产物不封存，必须由复算室重新生成"
+    },
+    {
+      "rel_path": "out/trend_chart.svg",
+      "reason": "声明提报产物不封存，必须由复算室重新生成"
+    }
+  ],
+  "sealable": true,
+  "verdict": "SEALED：形成所选图表所需的最小可重演执行链完整"
+}

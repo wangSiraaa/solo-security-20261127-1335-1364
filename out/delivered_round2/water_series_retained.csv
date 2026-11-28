@@ -1,0 +1,9 @@
+# {"converted": {"electricity_kwh": "Wh", "water_m3": "m3"}, "erratum_applied": {"electricity_kwh": "Wh"}, "loaded_version": "water_monthly/v1.2", "name": "water_series_retained", "source": "trend_table.csv", "unit_override": {"electricity_kwh": "Wh"}, "version": "water_monthly/v1.2"}
+# month[-],region[-],water_m3[m3]
+month,region,water_m3
+2026-01,South,910
+2026-02,South,925
+2026-03,South,890
+2026-04,South,860
+2026-05,South,875
+2026-06,South,905

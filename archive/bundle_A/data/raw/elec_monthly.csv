@@ -1,0 +1,15 @@
+# {"name": "elec_raw", "version": "elec_monthly/v1.0"}
+# month[-],region[-],electricity_kwh[kWh]
+month,region,electricity_kwh
+2026-01,South,420000
+2026-01,East,500000
+2026-02,South,435000
+2026-02,East,510000
+2026-03,South,410000
+2026-03,East,498000
+2026-04,South,395000
+2026-04,East,487000
+2026-05,South,405000
+2026-05,East,492000
+2026-06,South,430000
+2026-06,East,515000

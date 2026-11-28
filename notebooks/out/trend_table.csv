@@ -1,0 +1,9 @@
+# {"converted": {"electricity_kwh": "Wh", "water_m3": "m3"}, "loaded_version": "water_monthly/v1.2", "name": "trend_reloaded", "source": "last_round_monthly.csv", "version": "water_monthly/v1.2"}
+# month[-],region[-],electricity_kwh[Wh],water_m3[m3],intensity_wh_per_m3[Wh/m3]
+month,region,electricity_kwh,water_m3,intensity_wh_per_m3
+2026-01,South,420000000,910,461538.4615
+2026-02,South,435000000,925,470270.2703
+2026-03,South,410000000,890,460674.1573
+2026-04,South,395000000,860,459302.3256
+2026-05,South,405000000,875,462857.1429
+2026-06,South,430000000,905,475138.1215

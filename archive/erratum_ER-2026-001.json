@@ -1,0 +1,21 @@
+{
+  "erratum_id": "ER-2026-001",
+  "title": "关于 elec_monthly.csv 中 electricity_kwh 列计量单位的正式勘误",
+  "scope": "仅一个同名列的计量单位；数据数值与其他栏目一律不动",
+  "unit_overrides": {
+    "../data/raw/elec_monthly.csv": {
+      "electricity_kwh": "Wh"
+    }
+  },
+  "before": {
+    "column": "electricity_kwh",
+    "declared_unit": "kWh",
+    "dimension": "energy"
+  },
+  "after": {
+    "column": "electricity_kwh",
+    "corrected_unit": "Wh",
+    "dimension": "energy"
+  },
+  "note": "同维度单位修正，基准换算由 ×1000 改为 ×1；用水栏目不在勘误范围。"
+}
