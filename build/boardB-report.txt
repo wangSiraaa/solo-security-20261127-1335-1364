@@ -1,0 +1,14 @@
+STATUS: STOP
+
+FINDINGS:
+- STOP DRILL_OFFSET: hole moved 4.4 from (5,5) to (9.4,5)
+- STOP HOLE_ENTERED_ADJACENT_GRID: barrel now contacts top rect (10.5,0.5) 9x9; top circle pad center=(15,5) r=4.5; bottom circle pad center=(15,5) r=4.5
+- STOP ISOLATION_LOST: contract-isolated GROUP_A_0 and GROUP_B_0 conduct
+
+CONTINUITY:
+- P_A -> P_C: CONDUCTS | P_A -> plated barrel (9.4,5) contacts top rect (0.5,0.5) 9x9 -> plated barrel (9.4,5) contacts bottom rect (0.5,0.5) 9x9 -> same-layer copper contact: bottom rect (0.5,0.5) 9x9 / bottom rect (4.75,5) 0.5x5.5 -> same-layer copper contact: bottom rect (0.5,10.5) 9x9 / bottom rect (4.75,5) 0.5x5.5 -> P_C
+- P_A -> P_B: CONDUCTS | P_A -> same-layer copper contact: top rect (0.5,0.5) 9x9 / top rect (0.5,9.5) 9x1 -> same-layer copper contact: top rect (0.5,10.5) 9x9 / top rect (0.5,9.5) 9x1 -> same-layer copper contact: top rect (0.5,10.5) 9x9 / top rect (0.5,19.5) 9x1 -> same-layer copper contact: top rect (0.5,20.5) 9x9 / top rect (0.5,19.5) 9x1 -> P_B
+- Q_A -> Q_B: CONDUCTS | Q_A -> plated barrel (15,5) contacts top rect (10.5,0.5) 9x9 -> plated barrel (15,5) contacts bottom rect (14.75,5) 0.5x5.5 -> same-layer copper contact: bottom rect (10.5,10.5) 9x9 / bottom rect (14.75,5) 0.5x5.5 -> Q_B
+
+COMPONENTS:
+- C1 terminals=[P_A,P_C,P_B,Q_A,Q_B] holes=[hole(9.4,5)d=2.4; hole(15,5)d=2.4] shapes=[top rect (0.5,0.5) 9x9; top rect (0.5,10.5) 9x9; top rect (0.5,20.5) 9x9; top rect (0.5,9.5) 9x1; top rect (0.5,19.5) 9x1; top rect (10.5,0.5) 9x9; top circle pad center=(5,5) r=4.5; top circle pad center=(15,5) r=4.5; bottom rect (0.5,0.5) 9x9; bottom rect (0.5,10.5) 9x9; bottom rect (4.75,5) 0.5x5.5; bottom rect (10.5,10.5) 9x9; bottom rect (14.75,5) 0.5x5.5; bottom circle pad center=(5,5) r=4.5; bottom circle pad center=(15,5) r=4.5]

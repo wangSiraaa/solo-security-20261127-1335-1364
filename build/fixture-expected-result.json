@@ -1,0 +1,16 @@
+{
+  "nominal": "RELEASE",
+  "npth": "RELEASE for scoped pairs; P cross-layer pair open as ordered",
+  "single_fixture_drift": "STOP; P plated barrel enters adjacent Q grid cell and shorts P to Q",
+  "private_shape_equivalence": "public package hashes identical for both internal route variants",
+  "public_hash": {
+    "bottom-copper.svg": "98e567891c9830e2914d8d9b37f738979cb2da76b6b3fcd5e603d42cff1ce7c0",
+    "bottom-soldermask.svg": "ff389dc5eeec692392db4aff100b68da63f5139f4ea10ca2c04410e42de27405",
+    "drill.csv": "7dd0b1c119f359f00c4edd8999208b037a7822e41a88b2df5c5eeb29e866f038",
+    "drill.xln": "5097290224492f5c0969413843e728c34143772e490cdec42b47c73b6338bb0d",
+    "public-terminals.csv": "561bd3a1fea27d5a0f1c2255b655695bd6560d7cc0f6094f6aec0d5bfa9b240a",
+    "top-copper.svg": "765e7dcf1258cb80fb7113f272e1852fc2bfd4b2b8e9ed740d9c31998a0e4df8",
+    "top-soldermask.svg": "faa9212912f62b64faa256c16aca2942451745e3c6956246cfe5add470bc6a1b",
+    "SHA256SUMS": "a460aa228e8631f809deaf12e7a836987a2187313eea8f80ca0190269bec6024"
+  }
+}

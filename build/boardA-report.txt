@@ -1,0 +1,13 @@
+STATUS: RELEASE
+
+FINDINGS:
+- none
+
+CONTINUITY:
+- P_A -> P_C: CONDUCTS | P_A -> plated barrel (5,5) contacts top rect (0.5,0.5) 9x9 -> plated barrel (5,5) contacts bottom rect (4.75,5) 0.5x5.5 -> same-layer copper contact: bottom rect (0.5,10.5) 9x9 / bottom rect (4.75,5) 0.5x5.5 -> P_C
+- P_A -> P_B: CONDUCTS | P_A -> same-layer copper contact: top rect (0.5,0.5) 9x9 / top rect (0.5,9.5) 9x1 -> same-layer copper contact: top rect (0.5,10.5) 9x9 / top rect (0.5,9.5) 9x1 -> same-layer copper contact: top rect (0.5,10.5) 9x9 / top rect (0.5,19.5) 9x1 -> same-layer copper contact: top rect (0.5,20.5) 9x9 / top rect (0.5,19.5) 9x1 -> P_B
+- Q_A -> Q_B: CONDUCTS | Q_A -> plated barrel (15,5) contacts top rect (10.5,0.5) 9x9 -> plated barrel (15,5) contacts bottom rect (14.75,5) 0.5x5.5 -> same-layer copper contact: bottom rect (10.5,10.5) 9x9 / bottom rect (14.75,5) 0.5x5.5 -> Q_B
+
+COMPONENTS:
+- C1 terminals=[P_A,P_C,P_B] holes=[hole(5,5)d=2.4] shapes=[top rect (0.5,0.5) 9x9; top rect (0.5,10.5) 9x9; top rect (0.5,20.5) 9x9; top rect (0.5,9.5) 9x1; top rect (0.5,19.5) 9x1; top circle pad center=(5,5) r=4.5; bottom rect (0.5,0.5) 9x9; bottom rect (0.5,10.5) 9x9; bottom rect (4.75,5) 0.5x5.5; bottom circle pad center=(5,5) r=4.5]
+- C2 terminals=[Q_A,Q_B] holes=[hole(15,5)d=2.4] shapes=[top rect (10.5,0.5) 9x9; top circle pad center=(15,5) r=4.5; bottom rect (10.5,10.5) 9x9; bottom rect (14.75,5) 0.5x5.5; bottom circle pad center=(15,5) r=4.5]

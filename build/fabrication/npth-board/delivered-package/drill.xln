@@ -1,0 +1,12 @@
+; drill coordinates; units=inch; no object names
+; PLATED
+M48
+FMAT,2
+T01C2.4
+%
+T01
+X01969Y01969
+T01
+X05906Y01969
+T00
+M30

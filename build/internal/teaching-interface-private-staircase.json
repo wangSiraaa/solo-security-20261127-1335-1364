@@ -1,0 +1,281 @@
+{
+  "name": "teaching-interface-private-staircase",
+  "grid_pitch": 10.0,
+  "public_bounds": {
+    "x": 0,
+    "y": 0,
+    "w": 40,
+    "h": 30
+  },
+  "copper": [
+    {
+      "x": 0.5,
+      "y": 0.5,
+      "w": 9.0,
+      "h": 9.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 0.5,
+      "y": 10.5,
+      "w": 9.0,
+      "h": 9.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 0.5,
+      "y": 20.5,
+      "w": 9.0,
+      "h": 9.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 0.5,
+      "y": 9.5,
+      "w": 9.0,
+      "h": 1.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 0.5,
+      "y": 19.5,
+      "w": 9.0,
+      "h": 1.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 0.5,
+      "y": 0.5,
+      "w": 9.0,
+      "h": 9.0,
+      "layer": "bottom",
+      "name": ""
+    },
+    {
+      "x": 0.5,
+      "y": 10.5,
+      "w": 9.0,
+      "h": 9.0,
+      "layer": "bottom",
+      "name": ""
+    },
+    {
+      "x": 4.75,
+      "y": 5.0,
+      "w": 0.5,
+      "h": 5.5,
+      "layer": "bottom",
+      "name": ""
+    },
+    {
+      "x": 10.5,
+      "y": 0.5,
+      "w": 9.0,
+      "h": 9.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 10.5,
+      "y": 10.5,
+      "w": 9.0,
+      "h": 9.0,
+      "layer": "bottom",
+      "name": ""
+    },
+    {
+      "x": 14.75,
+      "y": 5.0,
+      "w": 0.5,
+      "h": 5.5,
+      "layer": "bottom",
+      "name": ""
+    }
+  ],
+  "pads": [
+    {
+      "x": 5.0,
+      "y": 5.0,
+      "r": 4.5,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 5.0,
+      "y": 5.0,
+      "r": 4.5,
+      "layer": "bottom",
+      "name": ""
+    },
+    {
+      "x": 15.0,
+      "y": 5.0,
+      "r": 4.5,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 15.0,
+      "y": 5.0,
+      "r": 4.5,
+      "layer": "bottom",
+      "name": ""
+    }
+  ],
+  "openings": [
+    {
+      "x": 2.0,
+      "y": 2.0,
+      "w": 6.0,
+      "h": 6.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 2.0,
+      "y": 2.0,
+      "w": 6.0,
+      "h": 6.0,
+      "layer": "bottom",
+      "name": ""
+    },
+    {
+      "x": 12.0,
+      "y": 2.0,
+      "w": 6.0,
+      "h": 6.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 12.0,
+      "y": 12.0,
+      "w": 6.0,
+      "h": 6.0,
+      "layer": "bottom",
+      "name": ""
+    }
+  ],
+  "private_routes": [
+    {
+      "x": 41.0,
+      "y": 2.0,
+      "w": 4.0,
+      "h": 2.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 43.0,
+      "y": 4.0,
+      "w": 4.0,
+      "h": 2.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 45.0,
+      "y": 6.0,
+      "w": 4.0,
+      "h": 2.0,
+      "layer": "top",
+      "name": ""
+    },
+    {
+      "x": 41.0,
+      "y": 14.0,
+      "w": 6.0,
+      "h": 2.0,
+      "layer": "bottom",
+      "name": ""
+    },
+    {
+      "x": 43.0,
+      "y": 16.0,
+      "w": 6.0,
+      "h": 2.0,
+      "layer": "bottom",
+      "name": ""
+    },
+    {
+      "x": 45.0,
+      "y": 18.0,
+      "w": 6.0,
+      "h": 2.0,
+      "layer": "bottom",
+      "name": ""
+    }
+  ],
+  "holes": [
+    {
+      "name": "P_VIA",
+      "x": 5.0,
+      "y": 5.0,
+      "diameter": 2.4,
+      "plated": true,
+      "layers": [
+        "top",
+        "bottom"
+      ]
+    },
+    {
+      "name": "Q_VIA",
+      "x": 15.0,
+      "y": 5.0,
+      "diameter": 2.4,
+      "plated": true,
+      "layers": [
+        "top",
+        "bottom"
+      ]
+    }
+  ],
+  "terminals": [
+    {
+      "name": "P_A",
+      "x": 5.0,
+      "y": 5.0,
+      "layer": "top",
+      "net": "P"
+    },
+    {
+      "name": "P_C",
+      "x": 5.0,
+      "y": 15.0,
+      "layer": "bottom",
+      "net": "P"
+    },
+    {
+      "name": "P_B",
+      "x": 5.0,
+      "y": 25.0,
+      "layer": "top",
+      "net": "P"
+    },
+    {
+      "name": "Q_A",
+      "x": 15.0,
+      "y": 5.0,
+      "layer": "top",
+      "net": "Q"
+    },
+    {
+      "name": "Q_B",
+      "x": 15.0,
+      "y": 15.0,
+      "layer": "bottom",
+      "net": "Q"
+    }
+  ],
+  "isolation": [
+    {
+      "a": "P",
+      "b": "Q"
+    }
+  ]
+}

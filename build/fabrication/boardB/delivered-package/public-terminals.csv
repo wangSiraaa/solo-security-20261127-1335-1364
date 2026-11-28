@@ -1,0 +1,6 @@
+terminal,x,y,layer
+P_A,5,5,top
+P_C,5,15,bottom
+P_B,5,25,top
+Q_A,15,5,top
+Q_B,15,15,bottom
