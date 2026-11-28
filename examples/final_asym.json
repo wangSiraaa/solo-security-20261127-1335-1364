@@ -1,0 +1,286 @@
+{
+  "puzzle_id": "finalasym",
+  "fields": {
+    "k": {
+      "literals": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f"
+      ]
+    }
+  },
+  "truth": {
+    "k": "d"
+  },
+  "statements": [
+    {
+      "key": "eq_a",
+      "kind": "eq",
+      "var": "k",
+      "value": "a",
+      "text": "a"
+    },
+    {
+      "key": "eq_b",
+      "kind": "eq",
+      "var": "k",
+      "value": "b",
+      "text": "b"
+    },
+    {
+      "key": "eq_c",
+      "kind": "eq",
+      "var": "k",
+      "value": "c",
+      "text": "c"
+    },
+    {
+      "key": "eq_e",
+      "kind": "eq",
+      "var": "k",
+      "value": "e",
+      "text": "e"
+    },
+    {
+      "key": "eq_f",
+      "kind": "eq",
+      "var": "k",
+      "value": "f",
+      "text": "f"
+    },
+    {
+      "key": "in_def",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "d",
+        "e",
+        "f"
+      ],
+      "text": "def"
+    },
+    {
+      "key": "in_bcd",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "b",
+        "c",
+        "d"
+      ],
+      "text": "bcd"
+    },
+    {
+      "key": "in_cde",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "c",
+        "d",
+        "e"
+      ],
+      "text": "cde"
+    },
+    {
+      "key": "in_de",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "d",
+        "e"
+      ],
+      "text": "de"
+    },
+    {
+      "key": "in_cd",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "c",
+        "d"
+      ],
+      "text": "cd"
+    }
+  ],
+  "pages": {
+    "p_a": {
+      "text": "k=a",
+      "give": [
+        "eq_a"
+      ]
+    },
+    "p_b": {
+      "text": "k=b",
+      "give": [
+        "eq_b"
+      ]
+    },
+    "p_c": {
+      "text": "k=c",
+      "give": [
+        "eq_c"
+      ]
+    },
+    "p_e": {
+      "text": "k=e",
+      "give": [
+        "eq_e"
+      ]
+    },
+    "p_f": {
+      "text": "k=f",
+      "give": [
+        "eq_f"
+      ]
+    },
+    "p_def": {
+      "text": "k in def",
+      "give": [
+        "in_def"
+      ]
+    },
+    "p_bcd": {
+      "text": "k in bcd",
+      "give": [
+        "in_bcd"
+      ]
+    },
+    "p_cde": {
+      "text": "k in cde",
+      "give": [
+        "in_cde"
+      ]
+    },
+    "p_de": {
+      "text": "k in de",
+      "give": [
+        "in_de"
+      ]
+    },
+    "p_cd": {
+      "text": "k in cd",
+      "give": [
+        "in_cd"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "key": "q1",
+      "text": "Q1 split b or def",
+      "responses": [
+        {
+          "when": {
+            "k": "a"
+          },
+          "page": "p_a"
+        },
+        {
+          "when": {
+            "k": "b"
+          },
+          "page": "p_b"
+        },
+        {
+          "when": {
+            "k": "c"
+          },
+          "page": "p_c"
+        }
+      ],
+      "default": "p_def",
+      "alternatives": [
+        "p_de"
+      ]
+    },
+    {
+      "key": "q0",
+      "text": "Q0 split a or bcd",
+      "responses": [
+        {
+          "when": {
+            "k": "a"
+          },
+          "page": "p_a"
+        },
+        {
+          "when": {
+            "k": "e"
+          },
+          "page": "p_e"
+        },
+        {
+          "when": {
+            "k": "f"
+          },
+          "page": "p_f"
+        }
+      ],
+      "default": "p_bcd"
+    },
+    {
+      "key": "q2",
+      "text": "Q2 split a,b or cde",
+      "responses": [
+        {
+          "when": {
+            "k": "a"
+          },
+          "page": "p_a"
+        },
+        {
+          "when": {
+            "k": "b"
+          },
+          "page": "p_b"
+        },
+        {
+          "when": {
+            "k": "f"
+          },
+          "page": "p_f"
+        }
+      ],
+      "default": "p_cde"
+    }
+  ],
+  "final_questions": [
+    {
+      "key": "qf",
+      "text": "QF final de",
+      "responses": [
+        {
+          "when": {
+            "k": "a"
+          },
+          "page": "p_a"
+        },
+        {
+          "when": {
+            "k": "b"
+          },
+          "page": "p_b"
+        },
+        {
+          "when": {
+            "k": "c"
+          },
+          "page": "p_c"
+        },
+        {
+          "when": {
+            "k": "f"
+          },
+          "page": "p_f"
+        }
+      ],
+      "default": "p_de",
+      "alternatives": [
+        "p_cd"
+      ]
+    }
+  ]
+}

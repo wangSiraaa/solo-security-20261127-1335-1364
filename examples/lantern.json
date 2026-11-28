@@ -1,0 +1,98 @@
+{
+  "puzzle_id": "lantern-demo",
+  "fields": {
+    "victim": {
+      "literals": ["alice", "alice_l", "bob", "carol", "dave", "erin"],
+      "aliases": [["alice", "alice_l"]]
+    },
+    "room":   {"literals": ["north", "south", "east", "west"]},
+    "weapon": {"literals": ["rope", "knife", "candle", "bell", "cup", "quill"]}
+  },
+  "truth": {"victim": "alice_l", "room": "north", "weapon": "candle"},
+  "statements": [
+    {"key": "v_alice", "kind": "eq", "var": "victim", "value": "alice",  "text": "旁听者见过 甲 在场"},
+    {"key": "v_bob",   "kind": "eq", "var": "victim", "value": "bob",    "text": "旁听者见过 乙 在场"},
+    {"key": "v_carol", "kind": "eq", "var": "victim", "value": "carol",  "text": "旁听者见过 丙 在场"},
+    {"key": "v_dave",  "kind": "eq", "var": "victim", "value": "dave",   "text": "旁听者见过 丁 在场"},
+    {"key": "v_erin",  "kind": "eq", "var": "victim", "value": "erin",   "text": "旁听者见过 戊 在场"},
+
+    {"key": "r_north", "kind": "eq", "var": "room", "value": "north", "text": "北屋的灯亮过"},
+    {"key": "r_south", "kind": "eq", "var": "room", "value": "south", "text": "南屋的灯亮过"},
+    {"key": "r_east",  "kind": "eq", "var": "room", "value": "east",  "text": "东屋的灯亮过"},
+    {"key": "r_west",  "kind": "eq", "var": "room", "value": "west",  "text": "西屋的灯亮过"},
+
+    {"key": "w_rope",   "kind": "eq", "var": "weapon", "value": "rope",   "text": "库房少了一段绳"},
+    {"key": "w_knife",  "kind": "eq", "var": "weapon", "value": "knife",  "text": "刀架空了一格"},
+    {"key": "w_candle", "kind": "eq", "var": "weapon", "value": "candle", "text": "烛台少了一支"},
+    {"key": "w_bell",   "kind": "eq", "var": "weapon", "value": "bell",   "text": "铜铃挪了位"},
+    {"key": "w_cup",    "kind": "eq", "var": "weapon", "value": "cup",    "text": "少了一只杯"},
+    {"key": "w_quill",  "kind": "eq", "var": "weapon", "value": "quill",  "text": "羽笔不见了"}
+  ],
+  "pages": {
+    "p_alice":  {"text": "甲在场。", "give": ["v_alice"]},
+    "p_bob":    {"text": "乙在场。", "give": ["v_bob"]},
+    "p_carol":  {"text": "丙在场。", "give": ["v_carol"]},
+    "p_dave":   {"text": "丁在场。", "give": ["v_dave"]},
+    "p_erin":   {"text": "戊在场。", "give": ["v_erin"]},
+
+    "p_north":  {"text": "北屋亮过灯。", "give": ["r_north"]},
+    "p_south":  {"text": "南屋亮过灯。", "give": ["r_south"]},
+    "p_east":   {"text": "东屋亮过灯。", "give": ["r_east"]},
+    "p_west":   {"text": "西屋亮过灯。", "give": ["r_west"]},
+
+    "p_rope":   {"text": "少了一段绳。", "give": ["w_rope"]},
+    "p_knife":  {"text": "空了一格刀。", "give": ["w_knife"]},
+    "p_candle": {"text": "少了一支烛。", "give": ["w_candle"]},
+    "p_bell":   {"text": "铜铃挪了位。", "give": ["w_bell"]},
+    "p_cup":    {"text": "少了一只杯。", "give": ["w_cup"]},
+    "p_quill":  {"text": "羽笔不见了。", "give": ["w_quill"]},
+
+    "final_n":  {"text": "最后一页：北。", "give": ["r_north"]},
+    "final_s":  {"text": "最后一页：南。", "give": ["r_south"]},
+    "final_e":  {"text": "最后一页：东。", "give": ["r_east"]},
+    "final_w":  {"text": "最后一页：西。", "give": ["r_west"]}
+  },
+  "questions": [
+    {"key": "q_who", "text": "现场可能是谁？",
+     "responses": [
+       {"when": {"victim": "alice"}, "page": "p_alice"},
+       {"when": {"victim": "bob"},   "page": "p_bob"},
+       {"when": {"victim": "carol"}, "page": "p_carol"},
+       {"when": {"victim": "dave"},  "page": "p_dave"},
+       {"when": {"victim": "erin"},  "page": "p_erin"}
+     ],
+     "default": "p_alice",
+     "alternatives": []},
+    {"key": "q_room", "text": "灯在哪间屋亮过？",
+     "responses": [
+       {"when": {"room": "north"}, "page": "p_north"},
+       {"when": {"room": "south"}, "page": "p_south"},
+       {"when": {"room": "east"},  "page": "p_east"},
+       {"when": {"room": "west"},  "page": "p_west"}
+     ],
+     "default": "p_north",
+     "alternatives": []},
+    {"key": "q_weapon", "text": "少了什么物件？",
+     "responses": [
+       {"when": {"weapon": "rope"},   "page": "p_rope"},
+       {"when": {"weapon": "knife"},  "page": "p_knife"},
+       {"when": {"weapon": "candle"}, "page": "p_candle"},
+       {"when": {"weapon": "bell"},   "page": "p_bell"},
+       {"when": {"weapon": "cup"},    "page": "p_cup"},
+       {"when": {"weapon": "quill"},  "page": "p_quill"}
+     ],
+     "default": "p_rope",
+     "alternatives": []}
+  ],
+  "final_questions": [
+    {"key": "q_final", "text": "最后核对灯的位置。",
+     "responses": [
+       {"when": {"room": "north"}, "page": "final_n"},
+       {"when": {"room": "south"}, "page": "final_s"},
+       {"when": {"room": "east"},  "page": "final_e"},
+       {"when": {"room": "west"},  "page": "final_w"}
+     ],
+     "default": "final_n",
+     "alternatives": []}
+  ]
+}

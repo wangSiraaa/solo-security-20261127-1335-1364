@@ -1,0 +1,140 @@
+{
+  "puzzle_id": "chain5",
+  "fields": {
+    "k": {
+      "literals": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ]
+    }
+  },
+  "truth": {
+    "k": "d"
+  },
+  "statements": [
+    {
+      "key": "eq_a",
+      "kind": "eq",
+      "var": "k",
+      "value": "a",
+      "text": "a"
+    },
+    {
+      "key": "eq_b",
+      "kind": "eq",
+      "var": "k",
+      "value": "b",
+      "text": "b"
+    },
+    {
+      "key": "eq_c",
+      "kind": "eq",
+      "var": "k",
+      "value": "c",
+      "text": "c"
+    },
+    {
+      "key": "in_de",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "d",
+        "e"
+      ],
+      "text": "de"
+    },
+    {
+      "key": "in_cde",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "c",
+        "d",
+        "e"
+      ],
+      "text": "cde"
+    }
+  ],
+  "pages": {
+    "p_a": {
+      "text": "a",
+      "give": [
+        "eq_a"
+      ]
+    },
+    "p_b": {
+      "text": "b",
+      "give": [
+        "eq_b"
+      ]
+    },
+    "p_c": {
+      "text": "c",
+      "give": [
+        "eq_c"
+      ]
+    },
+    "p_de": {
+      "text": "de",
+      "give": [
+        "in_de"
+      ]
+    },
+    "p_cde": {
+      "text": "cde",
+      "give": [
+        "in_cde"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "key": "q1",
+      "text": "Q1",
+      "responses": [
+        {
+          "when": {
+            "k": "a"
+          },
+          "page": "p_a"
+        },
+        {
+          "when": {
+            "k": "b"
+          },
+          "page": "p_b"
+        }
+      ],
+      "default": "p_cde"
+    },
+    {
+      "key": "q2",
+      "text": "Q2",
+      "responses": [
+        {
+          "when": {
+            "k": "a"
+          },
+          "page": "p_a"
+        },
+        {
+          "when": {
+            "k": "b"
+          },
+          "page": "p_b"
+        },
+        {
+          "when": {
+            "k": "c"
+          },
+          "page": "p_c"
+        }
+      ],
+      "default": "p_de"
+    }
+  ],
+  "final_questions": []
+}

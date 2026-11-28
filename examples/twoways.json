@@ -1,0 +1,156 @@
+{
+  "puzzle_id": "twoways",
+  "fields": {
+    "k": {
+      "literals": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    }
+  },
+  "truth": {
+    "k": "d"
+  },
+  "statements": [
+    {
+      "key": "in_ab",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "a",
+        "b"
+      ],
+      "text": "ab"
+    },
+    {
+      "key": "in_cd",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "c",
+        "d"
+      ],
+      "text": "cd"
+    },
+    {
+      "key": "in_ac",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "a",
+        "c"
+      ],
+      "text": "ac"
+    },
+    {
+      "key": "in_bd",
+      "kind": "or",
+      "var": "k",
+      "values": [
+        "b",
+        "d"
+      ],
+      "text": "bd"
+    }
+  ],
+  "pages": {
+    "p_ab": {
+      "text": "ab",
+      "give": [
+        "in_ab"
+      ]
+    },
+    "p_cd": {
+      "text": "cd",
+      "give": [
+        "in_cd"
+      ]
+    },
+    "p_ac": {
+      "text": "ac",
+      "give": [
+        "in_ac"
+      ]
+    },
+    "p_bd": {
+      "text": "bd",
+      "give": [
+        "in_bd"
+      ]
+    }
+  },
+  "questions": [
+    {
+      "key": "qx",
+      "text": "QX",
+      "responses": [
+        {
+          "when": {
+            "k": "c"
+          },
+          "page": "p_cd"
+        },
+        {
+          "when": {
+            "k": "d"
+          },
+          "page": "p_cd"
+        }
+      ],
+      "default": "p_ab"
+    },
+    {
+      "key": "qy",
+      "text": "QY",
+      "responses": [
+        {
+          "when": {
+            "k": "c"
+          },
+          "page": "p_cd"
+        },
+        {
+          "when": {
+            "k": "d"
+          },
+          "page": "p_cd"
+        }
+      ],
+      "default": "p_ab"
+    },
+    {
+      "key": "qz",
+      "text": "QZ",
+      "responses": [
+        {
+          "when": {
+            "k": "a"
+          },
+          "page": "p_ac"
+        },
+        {
+          "when": {
+            "k": "b"
+          },
+          "page": "p_bd"
+        },
+        {
+          "when": {
+            "k": "c"
+          },
+          "page": "p_ac"
+        },
+        {
+          "when": {
+            "k": "d"
+          },
+          "page": "p_bd"
+        }
+      ],
+      "default": "p_ab"
+    }
+  ],
+  "final_questions": []
+}
