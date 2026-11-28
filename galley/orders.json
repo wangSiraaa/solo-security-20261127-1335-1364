@@ -1,0 +1,31 @@
+{
+  "normal": [
+    {
+      "need": "p1",
+      "release_tick": 7,
+      "page": "p3",
+      "edition": 1
+    }
+  ],
+  "independent": [
+    {
+      "need": "p2",
+      "release_tick": 8,
+      "page": "p4",
+      "edition": 2
+    }
+  ],
+  "spare_wrong": {
+    "edition": 1,
+    "source": "4441524b"
+  },
+  "spare_right": {
+    "edition": 2,
+    "source": "4c49474854"
+  },
+  "shutdown": [
+    7,
+    10
+  ],
+  "normal_network_on": true
+}

@@ -1,0 +1,45 @@
+{
+  "past": [
+    {
+      "id": "stage",
+      "edition": 1,
+      "source": "4441524b",
+      "permit": "p1"
+    },
+    {
+      "id": "stage",
+      "edition": 2,
+      "source": "4c49474854",
+      "permit": "p2"
+    }
+  ],
+  "cached": [
+    "p1",
+    "p2"
+  ],
+  "delivery": [
+    {
+      "permit": "p1",
+      "issued": 5,
+      "revoke_normal": 8,
+      "revoke_amended": 6,
+      "recipient_materials_leave": 7,
+      "resume_notice": "no acknowledgement in one replay",
+      "offline_commit_ok": true,
+      "irrevocable": 7
+    },
+    {
+      "permit": "p2",
+      "issued": 4,
+      "offline_commit_ok": true,
+      "irrevocable": 6,
+      "recipient_materials_leave": 6
+    }
+  ],
+  "separate_followup": {
+    "permit": "p1",
+    "recipient_materials_left_at": 7,
+    "open_ack": null,
+    "revoke_received_at": 8
+  }
+}
