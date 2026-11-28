@@ -1,0 +1,7 @@
+/.home/
+/.catalog/
+/.machines/
+/.deliveries/
+/.build/
+__pycache__/
+*.pyc

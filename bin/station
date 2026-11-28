@@ -1,0 +1,827 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+station —— 本地声明式「软件目录 + 装机台」演练工具。
+
+身份模型（三者互不混淆）：
+  1. 短名(short name)：目录里可出租、可归还、可再出租的名字，本身不含信任；
+  2. 发行身份(release identity)：一把 Ed25519 公钥及其指纹/编号，包的真实发布人；
+  3. 目录身份(catalog identity)：目录自己的 Ed25519 公钥，为租约链与交付回执签章。
+
+信任路线（题目路线一）：
+  初装时把短名钉住到「发行公钥指纹」；此后更新只认该指纹的签名，
+  与短名后来租给谁无关。作者换名但沿用同一把公钥时，发行线不断。
+
+包是纯数据（manifest + 声明式 decl + 签名的 tgz），本工具只解释声明，
+不执行包内任何外来代码。
+"""
+
+import argparse
+import hashlib
+import io
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tarfile
+import tempfile
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+
+# ---------------------------------------------------------------- 基础工具
+
+def now_iso():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def sha256_bytes(b: bytes) -> str:
+    return hashlib.sha256(b).hexdigest()
+
+
+def sha256_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def canon(obj) -> bytes:
+    """所有待签章 JSON 的规范字节串：排序键、无空白、UTF-8。"""
+    return json.dumps(obj, sort_keys=True, ensure_ascii=False,
+                      separators=(",", ":")).encode("utf-8")
+
+
+def load_json(p: Path):
+    with open(p, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def dump_json(obj, p: Path):
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with open(p, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2, sort_keys=True)
+        f.write("\n")
+
+
+def log(tag: str, msg: str):
+    print(f"[{tag}] {msg}")
+
+
+def fail(msg: str, code=3):
+    log("拒", msg)
+    sys.exit(code)
+
+
+# ---------------------------------------------------------------- Ed25519（经 openssl，不依赖第三方库）
+
+def openssl_run(args: list[str], data: bytes | None = None) -> subprocess.CompletedProcess:
+    return subprocess.run(["openssl", *args], input=data, capture_output=True)
+
+
+def gen_keypair(priv_path: Path):
+    priv_path.parent.mkdir(parents=True, exist_ok=True)
+    r = openssl_run(["genpkey", "-algorithm", "ED25519", "-out", str(priv_path)])
+    if r.returncode != 0:
+        fail(f"密钥生成失败: {r.stderr.decode(errors='replace')}")
+    os.chmod(priv_path, 0o600)
+
+
+def get_public_pem(priv_path: Path) -> str:
+    r = openssl_run(["pkey", "-in", str(priv_path), "-pubout"])
+    if r.returncode != 0:
+        fail(f"公钥导出失败: {r.stderr.decode(errors='replace')}")
+    return r.stdout.decode()
+
+
+def fingerprint_of_pub(pub_pem: str) -> str:
+    r = openssl_run(["pkey", "-pubin", "-outform", "DER"], data=pub_pem.encode())
+    if r.returncode != 0:
+        fail(f"公钥 DER 导出失败: {r.stderr.decode(errors='replace')}")
+    return sha256_bytes(r.stdout)
+
+
+def sign_bytes(data: bytes, priv_path: Path) -> bytes:
+    with tempfile.TemporaryDirectory() as d:
+        inf, sigf = Path(d) / "in", Path(d) / "sig"
+        inf.write_bytes(data)
+        r = openssl_run(["pkeyutl", "-sign", "-rawin",
+                        "-inkey", str(priv_path), "-in", str(inf), "-out", str(sigf)])
+        if r.returncode != 0:
+            fail(f"签名失败: {r.stderr.decode(errors='replace')}")
+        return sigf.read_bytes()
+
+
+def verify_bytes(data: bytes, sig: bytes, pub_pem: str) -> bool:
+    with tempfile.TemporaryDirectory() as d:
+        inf, sigf, pubf = Path(d) / "in", Path(d) / "sig", Path(d) / "pub"
+        inf.write_bytes(data)
+        sigf.write_bytes(sig)
+        pubf.write_text(pub_pem, encoding="utf-8")
+        r = openssl_run(["pkeyutl", "-verify", "-rawin", "-pubin",
+                         "-inkey", str(pubf), "-in", str(inf), "-sigfile", str(sigf)])
+        return r.returncode == 0
+
+
+def sign_json(obj: dict, priv_path: Path) -> str:
+    return sign_bytes(canon(obj), priv_path).hex()
+
+
+def verify_json(obj: dict, sig_hex: str, pub_pem: str) -> bool:
+    return verify_bytes(canon(obj), bytes.fromhex(sig_hex), pub_pem)
+
+
+# ---------------------------------------------------------------- 身份与目录布局
+
+class Home:
+    """本地密钥库（私钥只存在这里，绝不进包、不进装机台）。"""
+    def __init__(self, root: Path):
+        self.root = root
+        self.keydir = root / "keystore"
+        self.idir = root / "identities"
+
+    def priv(self, ident: str) -> Path:
+        return self.keydir / f"{ident}.priv.pem"
+
+    def identity(self, ident: str) -> Path:
+        return self.idir / f"{ident}.json"
+
+
+def make_identity(ident: str, kind: str, label: str, home: Home) -> dict:
+    if home.identity(ident).exists():
+        fail(f"身份 {ident} 已存在")
+    priv = home.priv(ident)
+    gen_keypair(priv)
+    pub = get_public_pem(priv)
+    rec = {
+        "id": ident,
+        "kind": kind,                      # release / catalog
+        "label": label,
+        "fingerprint": fingerprint_of_pub(pub),
+        "pubkey_pem": pub,
+        "created_at": now_iso(),
+    }
+    dump_json(rec, home.identity(ident))
+    log("身份", f"{kind} 身份 {ident}（{label}）指纹 {rec['fingerprint'][:16]}…")
+    return rec
+
+
+class Catalog:
+    def __init__(self, root: Path):
+        self.root = root
+        self.reg = root / "registry" / "identities"
+        self.renames = root / "registry" / "renames"
+        self.leases = root / "leases"
+        self.pkgs = root / "packages"
+        self.index_p = root / "index.json"
+
+    def require(self):
+        if not self.index_p.exists():
+            fail(f"目录不可达或未初始化：{self.root}（离线状态下不能初装/改租约）", code=2)
+
+    def index(self) -> dict:
+        return load_json(self.index_p)
+
+    def identity_rec(self, ident: str) -> dict:
+        p = self.reg / f"{ident}.json"
+        if not p.exists():
+            fail(f"目录中没有身份 {ident} 的登记", code=2)
+        return load_json(p)
+
+    def catalog_identity(self) -> dict:
+        ids = [load_json(p) for p in self.reg.glob("*.json")]
+        cats = [x for x in ids if x["kind"] == "catalog"]
+        if len(cats) != 1:
+            fail("目录身份缺失或不唯一", code=2)
+        return cats[0]
+
+    def catalog_priv(self, home: Home) -> Path:
+        return home.priv(self.catalog_identity()["id"])
+
+    def lease_chain(self, short: str):
+        p = self.leases / f"{short}.json"
+        return load_json(p) if p.exists() else []
+
+
+def verify_lease_chain(cat: Catalog, short: str) -> list[dict]:
+    """逐条验证租约链的目录签名与前后摘要勾连，返回回执列表。"""
+    cat_rec = cat.catalog_identity()
+    chain = cat.lease_chain(short)
+    prev = None
+    for item in chain:
+        r, sig = item["receipt"], item["sig"]
+        if not verify_json(r, sig, cat_rec["pubkey_pem"]):
+            fail(f"短名 {short} 租约链存在无效目录签名")
+        if r.get("prev_digest") != prev:
+            fail(f"短名 {short} 租约链断裂（prev_digest 不符）")
+        prev = sha256_bytes(canon(r))
+    return chain
+
+
+# ---------------------------------------------------------------- 命令：身份
+
+def cmd_id_new(a):
+    home = Home(Path(a.home))
+    rec = make_identity(a.id, a.kind, a.label, home)
+    if a.catalog:
+        cat = Catalog(Path(a.catalog))
+        cat.require()
+        dump_json(rec, cat.reg / f"{a.id}.json")
+        log("目录", f"身份 {a.id} 已发布到目录登记册")
+
+
+def cmd_catalog_init(a):
+    root = Path(a.catalog)
+    if (root / "index.json").exists():
+        fail("目录已初始化")
+    for d in ("registry/identities", "registry/renames", "leases", "packages"):
+        (root / d).mkdir(parents=True, exist_ok=True)
+    home = Home(Path(a.home))
+    rec = make_identity(a.id, "catalog", a.label, home)
+    dump_json(rec, root / "registry" / "identities" / f"{a.id}.json")
+    dump_json({}, root / "index.json")
+    log("目录", f"可信目录初始化于 {root}，目录身份 {a.id}")
+
+
+# ---------------------------------------------------------------- 命令：租约（目录签章的回执链）
+
+def _append_lease(cat: Catalog, home: Home, short: str, event: str, tenant: str | None):
+    chain = cat.lease_chain(short)
+    prev_digest = sha256_bytes(canon(chain[-1]["receipt"])) if chain else None
+    tenant_fp = None
+    if tenant:
+        tenant_fp = cat.identity_rec(tenant)["fingerprint"]
+    r = {
+        "receipt": "lease",
+        "short_name": short,
+        "seq": len(chain) + 1,
+        "event": event,                         # rent / return
+        "tenant_id": tenant,
+        "tenant_fingerprint": tenant_fp,
+        "prev_digest": prev_digest,
+        "catalog_id": cat.catalog_identity()["id"],
+        "issued_at": now_iso(),
+    }
+    item = {"receipt": r, "sig": sign_json(r, cat.catalog_priv(home))}
+    chain.append(item)
+    dump_json(chain, cat.leases / f"{short}.json")
+    idx = cat.index()
+    cur = idx.get(short, {})
+    if event == "rent":
+        cur.update({"tenant": tenant, "tenant_fingerprint": tenant_fp,
+                    "lease_seq": r["seq"], "current_package": cur.get("current_package")})
+    else:
+        cur.update({"tenant": None, "tenant_fingerprint": None,
+                    "lease_seq": r["seq"], "current_package": None})
+    idx[short] = cur
+    dump_json(idx, cat.index_p)
+    log("回执", f"租约回执 seq={r['seq']} {event} {short} -> "
+               f"{tenant if tenant else '（已归还）'}，目录已签章并勾连前序回执")
+
+
+def cmd_catalog_rent(a):
+    cat = Catalog(Path(a.catalog)); cat.require()
+    cat.identity_rec(a.tenant)
+    idx = cat.index()
+    cur = idx.get(a.short)
+    if cur and cur.get("tenant"):
+        fail(f"短名 {a.short} 尚未归还，现租户为 {cur['tenant']}")
+    _append_lease(cat, Home(Path(a.home)), a.short, "rent", a.tenant)
+
+
+def cmd_catalog_return(a):
+    cat = Catalog(Path(a.catalog)); cat.require()
+    idx = cat.index()
+    cur = idx.get(a.short)
+    if not cur or not cur.get("tenant"):
+        fail(f"短名 {a.short} 当前没有租户，无从归还")
+    _append_lease(cat, Home(Path(a.home)), a.short, "return", None)
+
+
+def cmd_catalog_rename(a):
+    """老作者换名：同一把公钥登记一个新身份编号，目录出具更名回执。"""
+    cat = Catalog(Path(a.catalog)); cat.require()
+    old = cat.identity_rec(a.old_id)
+    if (cat.reg / f"{a.new_id}.json").exists():
+        fail(f"新身份编号 {a.new_id} 已存在")
+    home = Home(Path(a.home))
+    if not home.priv(a.old_id).exists():
+        fail(f"本地缺少 {a.old_id} 的私钥，无法证明同一持钥人")
+    if get_public_pem(home.priv(a.old_id)).strip() != old["pubkey_pem"].strip():
+        fail("私钥与目录登记的公钥不一致，拒绝更名")
+    new = dict(old)
+    new.update({"id": a.new_id, "label": a.label, "created_at": now_iso()})
+    dump_json(new, cat.reg / f"{a.new_id}.json")
+    dump_json(new, home.identity(a.new_id))
+    shutil.copy(home.priv(a.old_id), home.priv(a.new_id))
+    r = {"receipt": "rename", "old_id": a.old_id, "new_id": a.new_id,
+         "fingerprint": old["fingerprint"], "same_release_line": True,
+         "catalog_id": cat.catalog_identity()["id"], "issued_at": now_iso()}
+    item = {"receipt": r, "sig": sign_json(r, cat.catalog_priv(home))}
+    dump_json(item, cat.renames / f"{a.new_id}.json")
+    log("回执", f"更名回执：{a.old_id} -> {a.new_id}，同一公钥指纹 "
+               f"{old['fingerprint'][:16]}…，发行线不变")
+
+
+# ---------------------------------------------------------------- 命令：声明式小包
+
+def cmd_pkg_build(a):
+    manifest = load_json(Path(a.manifest))
+    required = ["package_id", "short_name", "version", "publisher_id",
+                "app_name", "format", "decl"]
+    for k in required:
+        if k not in manifest:
+            fail(f"manifest 缺少字段 {k}", code=2)
+    manifest["built_at"] = now_iso()
+    mb = json.dumps(manifest, sort_keys=True, ensure_ascii=False, indent=2).encode() + b"\n"
+    sig = sign_bytes(mb, Path(a.priv))
+    out = Path(a.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with tarfile.open(out, "w:gz") as tf:
+        for name, data in (("manifest.json", mb), ("manifest.sig", sig)):
+            ti = tarfile.TarInfo(name)
+            ti.size = len(data)
+            ti.mtime = 0
+            tf.addfile(ti, io.BytesIO(data))
+    log("打包", f"{manifest['package_id']} v{manifest['version']} "
+               f"发布人 {manifest['publisher_id']} -> {out}（sha256 {sha256_file(out)[:16]}…）")
+
+
+def unpack_pkg(tgz: Path, dest: Path) -> dict:
+    """解包并做成员白名单校验，返回 manifest。"""
+    dest.mkdir(parents=True, exist_ok=True)
+    with tarfile.open(tgz, "r:gz") as tf:
+        for m in tf.getmembers():
+            if m.name not in ("manifest.json", "manifest.sig"):
+                fail(f"包内出现非白名单成员 {m.name}，拒绝", code=2)
+            if not m.isfile():
+                fail(f"包内成员 {m.name} 不是普通文件，拒绝", code=2)
+            tf.extract(m, dest)
+    return load_json(dest / "manifest.json")
+
+
+def cmd_catalog_publish(a):
+    cat = Catalog(Path(a.catalog)); cat.require()
+    tgz = Path(a.pkg)
+    with tempfile.TemporaryDirectory() as d:
+        manifest = unpack_pkg(tgz, Path(d))
+        publisher = cat.identity_rec(manifest["publisher_id"])
+        sig = (Path(d) / "manifest.sig").read_bytes()
+        mb = (Path(d) / "manifest.json").read_bytes()
+        if not verify_bytes(mb, sig, publisher["pubkey_pem"]):
+            fail("包签名与目录登记的发布人公钥不符，拒绝上架")
+        idx = cat.index()
+        short = manifest["short_name"]
+        cur = idx.get(short)
+        if not cur or not cur.get("tenant_fingerprint"):
+            fail(f"短名 {short} 没有在册租户，不能上架")
+        if publisher["fingerprint"] != cur["tenant_fingerprint"]:
+            fail(f"发布人 {manifest['publisher_id']} 不是短名 {short} 的现租户（按公钥指纹判定），拒绝上架")
+        dest = cat.pkgs / f"{manifest['package_id']}.tgz"
+        if dest.exists():
+            fail("同 package_id 已存在")
+        shutil.copy(tgz, dest)
+        cur["current_package"] = manifest["package_id"]
+        idx[short] = cur
+        dump_json(idx, cat.index_p)
+        log("目录", f"已上架 {manifest['package_id']}，短名 {short} 当前指向此包；"
+                   f"发布人指纹 {publisher['fingerprint'][:16]}…")
+
+
+def cmd_catalog_deliver(a):
+    """目录把『更新包 + 来源材料』打成交付件（含目录签章的交付回执）。"""
+    cat = Catalog(Path(a.catalog)); cat.require()
+    idx = cat.index()
+    cur = idx.get(a.short)
+    if not cur or not cur.get("current_package"):
+        fail(f"短名 {a.short} 没有可交付的包")
+    verify_lease_chain(cat, a.short)
+    pkg_id = a.package or cur["current_package"]
+    tgz = cat.pkgs / f"{pkg_id}.tgz"
+    if not tgz.exists():
+        fail(f"包 {pkg_id} 不在目录中")
+    with tempfile.TemporaryDirectory() as d:
+        manifest = unpack_pkg(tgz, Path(d))
+        publisher = cat.identity_rec(manifest["publisher_id"])
+    out = Path(a.out)
+    (out / "package").mkdir(parents=True, exist_ok=True)
+    (out / "provenance").mkdir(parents=True, exist_ok=True)
+    shutil.copy(tgz, out / "package" / tgz.name)
+    shutil.copy(cat.reg / f"{publisher['id']}.json",
+                out / "provenance" / "publisher-identity.json")
+    shutil.copy(cat.reg / f"{cat.catalog_identity()['id']}.json",
+                out / "provenance" / "catalog-identity.json")
+    shutil.copy(cat.leases / f"{a.short}.json",
+                out / "provenance" / f"lease-chain-{a.short}.json")
+    rn = cat.renames / f"{publisher['id']}.json"
+    if rn.exists():
+        shutil.copy(rn, out / "provenance" / rn.name)
+    receipt = {
+        "receipt": "delivery",
+        "catalog_id": cat.catalog_identity()["id"],
+        "short_name": a.short,
+        "package_id": pkg_id,
+        "package_sha256": sha256_file(tgz),
+        "tenant_id": cur["tenant"],
+        "tenant_fingerprint": cur["tenant_fingerprint"],
+        "publisher_id": publisher["id"],
+        "publisher_fingerprint": publisher["fingerprint"],
+        "lease_seq": cur["lease_seq"],
+        "issued_at": now_iso(),
+    }
+    sig = sign_json(receipt, cat.catalog_priv(Home(Path(a.home))))
+    dump_json(receipt, out / "provenance" / "delivery-manifest.json")
+    (out / "provenance" / "delivery-manifest.sig").write_text(sig)
+    log("交付", f"交付件已生成于 {out}：包 {pkg_id} + 发布人身份/租约链/更名回执/目录签收单")
+
+
+# ---------------------------------------------------------------- 装机台
+
+class Machine:
+    def __init__(self, root: Path):
+        self.root = root
+        self.pins_p = root / "pins.json"
+        self.trusted = root / "trusted" / "identities"
+        self.apps = root / "apps"
+        self.data = root / "data"
+        self.receipts = root / "receipts"
+        self.inbox = root / "inbox"
+
+    def require_init(self):
+        if not self.pins_p.exists():
+            fail(f"装机台 {self.root} 尚无任何安装锚点", code=2)
+
+    def pins(self) -> dict:
+        return load_json(self.pins_p) if self.pins_p.exists() else {}
+
+    def pin(self, short: str) -> dict | None:
+        return self.pins().get(short)
+
+    def trusted_rec(self, ident: str) -> dict | None:
+        p = self.trusted / f"{ident}.json"
+        return load_json(p) if p.exists() else None
+
+    def data_dir(self, fp: str, short: str) -> Path:
+        return self.data / fp / short
+
+    def current_pointer(self, short: str) -> dict:
+        return load_json(self.apps / short / "current.json")
+
+    def current_manifest(self, short: str) -> dict:
+        ptr = self.current_pointer(short)
+        return load_json(self.apps / short / ptr["package_id"] / "manifest.json")
+
+
+def cmd_m_install(a):
+    """联机初装：查目录现租户 → 验包 → 钉住发行公钥指纹 → 解包。"""
+    cat = Catalog(Path(a.catalog)); cat.require()
+    m = Machine(Path(a.machine))
+    if m.pin(a.short):
+        fail(f"该机已安装短名 {a.short}，初装只能发生一次")
+    idx = cat.index()
+    cur = idx.get(a.short)
+    if not cur or not cur.get("tenant") or not cur.get("current_package"):
+        fail(f"目录中短名 {a.short} 无在册租户或无可用包")
+    verify_lease_chain(cat, a.short)
+    pkg_id = cur["current_package"]
+    tgz = cat.pkgs / f"{pkg_id}.tgz"
+    with tempfile.TemporaryDirectory() as d:
+        manifest = unpack_pkg(tgz, Path(d))
+        publisher = cat.identity_rec(manifest["publisher_id"])
+        if publisher["fingerprint"] != cur["tenant_fingerprint"]:
+            fail("目录索引与登记册中的租户指纹不一致，拒绝初装")
+        if not verify_bytes((Path(d) / "manifest.json").read_bytes(),
+                            (Path(d) / "manifest.sig").read_bytes(),
+                            publisher["pubkey_pem"]):
+            fail("包签名无效，拒绝初装")
+        app_dir = m.apps / a.short / pkg_id
+        unpack_pkg(tgz, app_dir)
+    # 只把本次初装需要的身份公钥收入本机信任锚点
+    m.trusted.mkdir(parents=True, exist_ok=True)
+    cat_rec = cat.catalog_identity()
+    dump_json(publisher, m.trusted / f"{publisher['id']}.json")
+    dump_json(cat_rec, m.trusted / f"{cat_rec['id']}.json")
+    ptr = {"package_id": pkg_id, "version": manifest["version"],
+           "publisher_id": publisher["id"], "fingerprint": publisher["fingerprint"]}
+    dump_json(ptr, m.apps / a.short / "current.json")
+    pin = {
+        "short_name": a.short,
+        "pinned_identity": publisher["id"],
+        "pinned_fingerprint": publisher["fingerprint"],
+        "installed_package": pkg_id,
+        "catalog_id": cat_rec["id"],
+        "source_lease_seq": cur["lease_seq"],
+        "installed_at": now_iso(),
+    }
+    pins = m.pins()
+    pins[a.short] = pin
+    dump_json(pins, m.pins_p)
+    ddir = m.data_dir(publisher["fingerprint"], a.short)
+    ddir.mkdir(parents=True, exist_ok=True)
+    (m.receipts / pkg_id).mkdir(parents=True, exist_ok=True)
+    dump_json(pin, m.receipts / pkg_id / "install-pin.json")
+    log("装", f"初装 {pkg_id}：短名 {a.short} 已钉住发行指纹 "
+             f"{publisher['fingerprint'][:16]}…（身份 {publisher['id']}）")
+    log("装", f"用户数据目录隔离于身份指纹之下：{ddir}")
+
+
+def cmd_m_update(a):
+    """接件更新：只凭 本机钉住指纹 + 包签名 决定，目录在线与否均可。"""
+    m = Machine(Path(a.machine)); m.require_init()
+    pin = m.pin(a.short)
+    if not pin:
+        fail(f"本机没有短名 {a.short} 的安装锚点；没有锚点的机器请走联机初装，不能凭空接更新")
+    delivery = Path(a.delivery)
+    prov = delivery / "provenance"
+    pkg_dir = delivery / "package"
+    tgzs = list(pkg_dir.glob("*.tgz"))
+    if len(tgzs) != 1 or not prov.exists():
+        fail("交付件结构不完整（需 package/*.tgz 与 provenance/）")
+    tgz = tgzs[0]
+
+    def reject(reason):
+        ts = time.strftime("%Y%m%d-%H%M%S")
+        dest = m.inbox / "rejected" / f"{ts}-{delivery.name}"
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.move(str(delivery), str(dest))
+        (dest / "rejection.txt").write_text(
+            f"时间: {now_iso()}\n短名: {a.short}\n原因: {reason}\n"
+            f"钉住指纹: {pin['pinned_fingerprint']}\n", encoding="utf-8")
+        fail(f"更新被拒并归档至 {dest}：{reason}")
+
+    # 1) 解包并用「钉住的公钥」验包——路线一的核心信任判定，优先于目录签收单
+    with tempfile.TemporaryDirectory() as d:
+        manifest = unpack_pkg(tgz, Path(d))
+        if manifest["short_name"] != a.short:
+            reject(f"包内短名 {manifest['short_name']} 与锚点短名 {a.short} 不一致")
+        pub_rec = load_json(prov / "publisher-identity.json")
+        sig = (Path(d) / "manifest.sig").read_bytes()
+        mb = (Path(d) / "manifest.json").read_bytes()
+        if not verify_bytes(mb, sig, pub_rec["pubkey_pem"]):
+            reject("包签名对发布人公钥无效")
+        log("验", f"包签名有效：发布人 {pub_rec['id']} 指纹 {pub_rec['fingerprint'][:16]}…")
+        if pub_rec["fingerprint"] != pin["pinned_fingerprint"]:
+            reject(f"发布人指纹 {pub_rec['fingerprint'][:16]}… 与本机钉住指纹 "
+                   f"{pin['pinned_fingerprint'][:16]}… 不同——短名同名不构成信任")
+        log("验", f"指纹与初装锚点一致（允许换名：登记编号 {pin['pinned_identity']} "
+                 f"-> {pub_rec['id']}，同一发行线）")
+        old_ptr = m.current_pointer(a.short)
+        if tuple(map(int, manifest["version"].split("."))) <= tuple(map(int, old_ptr["version"].split("."))):
+            reject(f"版本 {manifest['version']} 不新于现装 {old_ptr['version']}")
+        app_dir = m.apps / a.short / manifest["package_id"]
+        unpack_pkg(tgz, app_dir)
+        manifest_out = manifest
+
+    # 2) 目录签收单（来源材料）——辅助证据；有本机目录锚点则验，离线则降级，不凌驾于钉指纹之上
+    dm_p = prov / "delivery-manifest.json"
+    if dm_p.exists():
+        dm = load_json(dm_p)
+        if sha256_file(tgz) != dm["package_sha256"]:
+            reject("交付包摘要与目录签收单不符")
+        cat_id = dm["catalog_id"]
+        cat_rec = m.trusted_rec(cat_id)
+        if cat_rec:
+            ok = verify_json(dm, (prov / "delivery-manifest.sig").read_text().strip(),
+                             cat_rec["pubkey_pem"])
+            log("验", f"目录签收单签名验证 {'通过' if ok else '失败'}（目录身份 {cat_id}）")
+            if not ok:
+                reject("目录签收单签名无效")
+        else:
+            log("验", "本机无目录身份锚点，跳过签收单验签（离线降级）；更新仍只看钉住指纹")
+    else:
+        log("验", "交付件无目录签收单，按裸包处理，仍须通过钉住指纹验签")
+
+    # 3) 通过：切换指针、归档回执，数据目录原样不动
+    ptr = {"package_id": manifest_out["package_id"], "version": manifest_out["version"],
+           "publisher_id": pub_rec["id"], "fingerprint": pub_rec["fingerprint"]}
+    dump_json(ptr, m.apps / a.short / "current.json")
+    pins = m.pins()
+    pins[a.short]["pinned_identity"] = pub_rec["id"]
+    pins[a.short]["installed_package"] = manifest_out["package_id"]
+    dump_json(pins, m.pins_p)
+    arc = m.receipts / manifest_out["package_id"]
+    if arc.exists():
+        shutil.rmtree(arc)
+    shutil.copytree(delivery, arc)
+    shutil.move(str(delivery), str(m.inbox / f"applied-{manifest_out['package_id']}"))
+    log("装", f"更新生效：{a.short} 现运行 {manifest_out['package_id']}，"
+             f"用户数据目录未被触碰：{m.data_dir(pin['pinned_fingerprint'], a.short)}")
+
+
+# ---------------------------------------------------------------- 声明式运行：打印格式 / 读回样件
+
+def sample_header(version: int) -> str:
+    return f"@lumo-text/v{version}"
+
+
+def parse_sample(text: str) -> dict:
+    lines = text.splitlines()
+    version = 0
+    if lines and lines[0].startswith("@lumo-text/v"):
+        version = int(lines[0].rsplit("v", 1)[1])
+    fields, markers, raw = {}, [], []
+    for line in lines[1:]:
+        if line.startswith("@"):
+            markers.append(line)
+        elif ":" in line:
+            k, v = line.split(":", 1)
+            fields[k.strip()] = v.strip()
+        elif line.strip():
+            raw.append(line)
+    return {"format_version": version, "fields": fields, "markers": markers, "raw": raw}
+
+
+def cmd_m_new_sample(a):
+    m = Machine(Path(a.machine)); m.require_init()
+    pin = m.pin(a.short)
+    manifest = m.current_manifest(a.short)
+    current_ver = manifest["format"]["version"]
+    accept = manifest["decl"].get("reader", {}).get("accept_versions", [current_ver])
+    version = a.format_version if a.format_version is not None else current_ver
+    if version not in accept:
+        fail(f"当前安装版本只声明兼容 {accept}，不能按 v{version} 旧格式写样件")
+    fields = {}
+    for kv in a.set or []:
+        if "=" not in kv:
+            fail(f"--set 需要 key=value：{kv}", code=2)
+        k, v = kv.split("=", 1)
+        fields[k.strip()] = v.strip()
+    lines = [sample_header(version)]
+    for k, v in fields.items():
+        lines.append(f"{k}: {v}")
+    for mk in a.marker or []:
+        lines.append(mk if mk.startswith("@") else f"@{mk}")
+    for ln in a.line or []:
+        lines.append(ln)
+    ddir = m.data_dir(pin["pinned_fingerprint"], a.short)
+    ddir.mkdir(parents=True, exist_ok=True)
+    out = ddir / f"{a.name}.sample"
+    if out.exists():
+        fail(f"样件 {out.name} 已存在")
+    out.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    log("样件", f"已用当前安装版本的 v{version} 写法新建 {out.relative_to(m.root)}")
+
+
+def cmd_m_run(a):
+    m = Machine(Path(a.machine)); m.require_init()
+    pin = m.pin(a.short)
+    manifest = m.current_manifest(a.short)
+    decl = manifest["decl"]
+    print("=" * 68)
+    print(f"应用   : {manifest['app_name']}（短名 {a.short}）")
+    print(f"启动版 : {manifest['package_id']}  发布人 {manifest['publisher_id']}")
+    print(f"发行指纹: {m.current_pointer(a.short)['fingerprint']}")
+    print(f"横幅   : {decl.get('banner', '(无)')}")
+    fmt = manifest["format"]
+    print(f"数据格式: {fmt['name']} 版本 v{fmt['version']}；"
+          f"读取器兼容版本 {decl.get('reader', {}).get('accept_versions', [fmt['version']])}")
+    ddir = m.data_dir(pin["pinned_fingerprint"], a.short)
+    samples = sorted(p.name for p in ddir.glob("*.sample")) if ddir.exists() else []
+    print(f"样件目录: {ddir.relative_to(m.root)}  共 {len(samples)} 件: {samples}")
+    if a.sample:
+        name = a.sample if a.sample.endswith(".sample") else f"{a.sample}.sample"
+        target = ddir / name
+        if not target.exists():
+            fail(f"样件 {name} 不存在")
+        parsed = parse_sample(target.read_text(encoding="utf-8"))
+        print(f"--- 读回 {name}（样件自身格式 v{parsed['format_version']}，由当前 v{manifest['format']['version']} 运行版本兼容读取）---")
+        for k, v in parsed["fields"].items():
+            print(f"  {k}: {v}")
+        for mk in parsed["markers"]:
+            print(f"  标记行: {mk}")
+        for ln in parsed["raw"]:
+            print(f"  附注: {ln}")
+    print("=" * 68)
+
+
+def cmd_m_migrate(a):
+    """按包内声明式 migration 非破坏性迁移样件；带锁定标记的原件保留并报告。"""
+    m = Machine(Path(a.machine)); m.require_init()
+    pin = m.pin(a.short)
+    manifest = m.current_manifest(a.short)
+    mg = manifest["decl"].get("migration")
+    if not mg:
+        fail("当前版本没有声明迁移规则")
+    ddir = m.data_dir(pin["pinned_fingerprint"], a.short)
+    ok, skipped = [], []
+    for src in sorted(ddir.glob("*.sample")):
+        text = src.read_text(encoding="utf-8")
+        parsed = parse_sample(text)
+        if parsed["format_version"] != mg["from"]:
+            continue
+        if mg.get("reject_marker") and mg["reject_marker"] in parsed["markers"]:
+            skipped.append(src.name)
+            log("迁移", f"跳过 {src.name}：含 {mg['reject_marker']} 标记，无法自动迁移，原件保留")
+            continue
+        new_fields = dict(parsed["fields"])
+        for old_k, new_k in mg.get("rename", {}).items():
+            if old_k in new_fields:
+                new_fields[new_k] = new_fields.pop(old_k)
+        for k, v in mg.get("add", {}).items():
+            new_fields.setdefault(k, v)
+        out = src.with_name(src.stem + ".v2.sample")
+        lines = [sample_header(mg["to"])] + [f"{k}: {v}" for k, v in new_fields.items()]
+        lines += parsed["markers"] + parsed["raw"]
+        out.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        reparsed = parse_sample(out.read_text(encoding="utf-8"))
+        if reparsed["format_version"] != mg["to"]:
+            fail(f"迁移结果 {out.name} 回读校验失败")
+        ok.append((src.name, out.name))
+        log("迁移", f"{src.name} -> {out.name}（非破坏性，原件仍在）")
+    log("迁移", f"完成：迁移 {len(ok)} 件，无法迁移而保留原件 {len(skipped)} 件 {skipped}")
+
+
+def cmd_m_status(a):
+    m = Machine(Path(a.machine))
+    pins = m.pins()
+    if not pins:
+        fail("该机尚无安装", code=2)
+    for short, pin in sorted(pins.items()):
+        ptr = m.current_pointer(short)
+        ddir = m.data_dir(pin["pinned_fingerprint"], short)
+        print(f"短名 {short}: 现运行 {ptr['package_id']}（发布人 {ptr['publisher_id']}）")
+        print(f"  钉住指纹: {pin['pinned_fingerprint']}")
+        print(f"  数据目录: {ddir}")
+        if ddir.exists():
+            print(f"  样件: {sorted(p.name for p in ddir.glob('*.sample'))}")
+        rej = m.inbox / "rejected"
+        if rej.exists():
+            print(f"  被拒交付件: {sorted(x.name for x in rej.iterdir())}")
+
+
+def cmd_catalog_show(a):
+    cat = Catalog(Path(a.catalog)); cat.require()
+    idx = cat.index()
+    for short, cur in sorted(idx.items()):
+        print(f"短名 {short}: 现租户 {cur.get('tenant')}  当前包 {cur.get('current_package')}")
+        chain = verify_lease_chain(cat, short)
+        for item in chain:
+            r = item["receipt"]
+            fp = (r.get("tenant_fingerprint") or "")[:16]
+            print(f"  租约 seq={r['seq']} {r['event']:6} 租户={r.get('tenant_id')} 指纹={fp}… 签名=目录已验")
+
+
+# ---------------------------------------------------------------- 参数
+
+def build_parser():
+    p = argparse.ArgumentParser(description="本地声明式软件目录与装机台演练")
+    p.add_argument("--home", default="./.home", help="本地密钥库目录")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    s = sub.add_parser("id-new"); s.add_argument("id"); s.add_argument("kind", choices=["release", "catalog"])
+    s.add_argument("label"); s.add_argument("--catalog"); s.set_defaults(func=cmd_id_new)
+
+    s = sub.add_parser("catalog-init"); s.add_argument("catalog"); s.add_argument("id"); s.add_argument("label")
+    s.set_defaults(func=cmd_catalog_init)
+
+    s = sub.add_parser("catalog-rent"); s.add_argument("catalog"); s.add_argument("short"); s.add_argument("tenant")
+    s.set_defaults(func=cmd_catalog_rent)
+
+    s = sub.add_parser("catalog-return"); s.add_argument("catalog"); s.add_argument("short")
+    s.set_defaults(func=cmd_catalog_return)
+
+    s = sub.add_parser("catalog-rename"); s.add_argument("catalog"); s.add_argument("old_id")
+    s.add_argument("new_id"); s.add_argument("label"); s.set_defaults(func=cmd_catalog_rename)
+
+    s = sub.add_parser("pkg-build"); s.add_argument("manifest"); s.add_argument("priv"); s.add_argument("out")
+    s.set_defaults(func=cmd_pkg_build)
+
+    s = sub.add_parser("catalog-publish"); s.add_argument("catalog"); s.add_argument("pkg")
+    s.set_defaults(func=cmd_catalog_publish)
+
+    s = sub.add_parser("catalog-deliver"); s.add_argument("catalog"); s.add_argument("short")
+    s.add_argument("out"); s.add_argument("--package"); s.set_defaults(func=cmd_catalog_deliver)
+
+    s = sub.add_parser("catalog-show"); s.add_argument("catalog"); s.set_defaults(func=cmd_catalog_show)
+
+    s = sub.add_parser("m-install"); s.add_argument("--machine", required=True)
+    s.add_argument("--catalog", required=True); s.add_argument("--short", required=True)
+    s.set_defaults(func=cmd_m_install)
+
+    s = sub.add_parser("m-update"); s.add_argument("--machine", required=True)
+    s.add_argument("--delivery", required=True); s.add_argument("--short", required=True)
+    s.set_defaults(func=cmd_m_update)
+
+    s = sub.add_parser("m-run"); s.add_argument("--machine", required=True)
+    s.add_argument("--short", required=True); s.add_argument("--sample")
+    s.set_defaults(func=cmd_m_run)
+
+    s = sub.add_parser("m-new-sample"); s.add_argument("--machine", required=True)
+    s.add_argument("--short", required=True); s.add_argument("--name", required=True)
+    s.add_argument("--set", action="append"); s.add_argument("--marker", action="append")
+    s.add_argument("--line", action="append"); s.add_argument("--format-version", type=int)
+    s.set_defaults(func=cmd_m_new_sample)
+
+    s = sub.add_parser("m-migrate"); s.add_argument("--machine", required=True)
+    s.add_argument("--short", required=True); s.set_defaults(func=cmd_m_migrate)
+
+    s = sub.add_parser("m-status"); s.add_argument("--machine", required=True)
+    s.set_defaults(func=cmd_m_status)
+    return p
+
+
+if __name__ == "__main__":
+    args = build_parser().parse_args()
+    args.func(args)

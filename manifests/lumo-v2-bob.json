@@ -1,0 +1,29 @@
+{
+  "package_id": "lumo-notes-2.0-tenantB",
+  "short_name": "lumo-notes",
+  "version": "2.0.0",
+  "publisher_id": "rel-bob",
+  "app_name": "Lumo Notes",
+  "format": {
+    "name": "lumo-text",
+    "version": 2,
+    "sample_header": "@lumo-text/v2",
+    "encoding": "utf-8 key:value lines, field names revised"
+  },
+  "decl": {
+    "kind": "text-reader",
+    "banner": "同名短名、同样声明内容，但由新租户 rel-bob 的另一把公钥签名（混淆包）",
+    "reader": {
+      "accept_versions": [1, 2],
+      "parse": "header + key:value lines, 兼容 v1/v2"
+    },
+    "migration": {
+      "from": 1,
+      "to": 2,
+      "rename": { "note_titel": "note_title" },
+      "add": { "reviewed": "false" },
+      "reject_marker": "@locked",
+      "note": "内容逐字节近似，区别只在签名公钥"
+    }
+  }
+}

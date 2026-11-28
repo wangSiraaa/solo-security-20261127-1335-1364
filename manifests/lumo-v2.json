@@ -1,0 +1,29 @@
+{
+  "package_id": "lumo-notes-2.0",
+  "short_name": "lumo-notes",
+  "version": "2.0.0",
+  "publisher_id": "rel-alice2",
+  "app_name": "Lumo Notes",
+  "format": {
+    "name": "lumo-text",
+    "version": 2,
+    "sample_header": "@lumo-text/v2",
+    "encoding": "utf-8 key:value lines, field names revised"
+  },
+  "decl": {
+    "kind": "text-reader",
+    "banner": "Lumo Notes 2.0 勘误版 —— 修复字段拼写 note_titel->note_title，兼容读取 v1 原件",
+    "reader": {
+      "accept_versions": [1, 2],
+      "parse": "header + key:value lines, 兼容 v1/v2"
+    },
+    "migration": {
+      "from": 1,
+      "to": 2,
+      "rename": { "note_titel": "note_title" },
+      "add": { "reviewed": "false" },
+      "reject_marker": "@locked",
+      "note": "非破坏性：v1 原件保留，另写 *.v2.sample；含 @locked 标记者不自动迁移"
+    }
+  }
+}

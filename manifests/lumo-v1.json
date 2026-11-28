@@ -1,0 +1,21 @@
+{
+  "package_id": "lumo-notes-1.0",
+  "short_name": "lumo-notes",
+  "version": "1.0.0",
+  "publisher_id": "rel-alice",
+  "app_name": "Lumo Notes",
+  "format": {
+    "name": "lumo-text",
+    "version": 1,
+    "sample_header": "@lumo-text/v1",
+    "encoding": "utf-8 key:value lines"
+  },
+  "decl": {
+    "kind": "text-reader",
+    "banner": "Lumo Notes 1.0 —— 本地短文本样件读取器（声明式，无外来代码）",
+    "reader": {
+      "accept_versions": [1],
+      "parse": "header + key:value lines"
+    }
+  }
+}
