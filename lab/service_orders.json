@@ -1,0 +1,27 @@
+[
+  {
+    "service": "shift_offline",
+    "covers": [
+      20,
+      32
+    ],
+    "holders": [
+      [
+        "西册",
+        "07"
+      ],
+      [
+        "东册",
+        "07"
+      ]
+    ],
+    "issuer_online": false,
+    "early_departure_binding": false
+  },
+  {
+    "service": "checked_each_reading",
+    "issuer_online": true,
+    "keep_roster": false,
+    "early_departure_binding": true
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "class": "L",
+  "A": {
+    "target": 100,
+    "tolerance": 1
+  },
+  "B": {
+    "target": 104,
+    "tolerance": 1
+  }
+}

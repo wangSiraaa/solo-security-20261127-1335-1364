@@ -1,0 +1,26 @@
+[
+  {
+    "issuer": "西册",
+    "id": "07",
+    "person": "柳",
+    "class": "L",
+    "from": 18,
+    "until_inclusive": 31
+  },
+  {
+    "issuer": "东册",
+    "id": "07",
+    "person": "樊",
+    "class": "L",
+    "from": 21,
+    "until_inclusive": 26
+  },
+  {
+    "issuer": "东册",
+    "id": "08",
+    "person": "麦",
+    "class": "X",
+    "from": 13,
+    "until_inclusive": 40
+  }
+]

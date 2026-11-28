@@ -1,0 +1,26 @@
+[
+  {
+    "id": "K1",
+    "issuer": "西册",
+    "licence": "07",
+    "range": [
+      24,
+      25
+    ],
+    "point": "A",
+    "class": "L",
+    "observed": 100
+  },
+  {
+    "id": "K2",
+    "issuer": "东册",
+    "licence": "07",
+    "range": [
+      25,
+      26
+    ],
+    "point": "B",
+    "class": "L",
+    "observed": 104
+  }
+]
