@@ -1,0 +1,21 @@
+{
+  "P1": {
+    "signer": "乔",
+    "mode": "store",
+    "stable_org": "T",
+    "label_on_document": "东柜",
+    "valid_on_days": [
+      3,
+      4
+    ]
+  },
+  "P2": {
+    "signer": "乔",
+    "mode": "personal",
+    "stable_org": null,
+    "valid_on_days": [
+      4,
+      5
+    ]
+  }
+}

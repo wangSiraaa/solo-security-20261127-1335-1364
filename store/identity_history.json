@@ -1,0 +1,32 @@
+[
+  {
+    "org": "T",
+    "label": "东柜",
+    "valid_days": [
+      1,
+      4
+    ],
+    "actor": "乔",
+    "role": "代表"
+  },
+  {
+    "org": "T",
+    "label": "合柜",
+    "valid_days": [
+      5,
+      12
+    ],
+    "actor": "乔",
+    "role": "代表"
+  },
+  {
+    "org": "S",
+    "label": "东柜",
+    "valid_days": [
+      5,
+      12
+    ],
+    "actor": "慕",
+    "role": "代表"
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "archive": {
+    "archive_closed_day": 6,
+    "late_correction_after": 6,
+    "source_online_at_claim": false,
+    "covers": [
+      "P1",
+      "P2"
+    ]
+  },
+  "ticket": {
+    "notary_online": true,
+    "correction_arrival": 7,
+    "single_purpose": "保证金结算",
+    "open_days": [
+      3,
+      7
+    ],
+    "signed_correction": {
+      "document": "P1",
+      "notary_verification": "corrected-scope",
+      "mode": "personal",
+      "signer": "乔",
+      "stable_org": null,
+      "date_document_signed": 4,
+      "report_day": 7,
+      "effect": "earliest_unsettled_installment"
+    }
+  }
+}

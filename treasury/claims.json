@@ -1,0 +1,14 @@
+[
+  {
+    "document": "P1",
+    "day_signed": 4,
+    "amount": 7,
+    "sequence": 1
+  },
+  {
+    "document": "P2",
+    "day_signed": 5,
+    "amount": 4,
+    "sequence": 2
+  }
+]
