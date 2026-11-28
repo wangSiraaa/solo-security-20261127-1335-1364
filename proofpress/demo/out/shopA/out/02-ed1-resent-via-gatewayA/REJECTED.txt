@@ -1,0 +1,1 @@
+rejected: edition mismatch: manifest says 1, job table expects 2

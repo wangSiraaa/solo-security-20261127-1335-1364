@@ -1,0 +1,29 @@
+{
+ "id": "A-BADINSERT",
+ "paper_w": 480,
+ "paper_h": 640,
+ "margin": 40,
+ "flip_axis": "vertical",
+ "folds": [
+  {
+   "axis": "v",
+   "move": "left",
+   "place": "over"
+  },
+  {
+   "axis": "h",
+   "move": "bottom",
+   "place": "over"
+  }
+ ],
+ "cuts": [
+  "S"
+ ],
+ "inserts": [
+  {
+   "signature": 2,
+   "after_leaf": 3,
+   "count": 1
+  }
+ ]
+}

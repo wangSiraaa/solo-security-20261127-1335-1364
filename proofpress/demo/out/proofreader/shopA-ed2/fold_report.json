@@ -1,0 +1,52 @@
+{
+ "contract": "A",
+ "positions_read": 18,
+ "order_matches_manifest": true,
+ "openings_checked": [
+  {
+   "left": 6,
+   "right": 7,
+   "ok": true
+  },
+  {
+   "left": 10,
+   "right": 11,
+   "ok": true
+  }
+ ],
+ "approvals": [
+  {
+   "scope": "opening",
+   "left": 6,
+   "right": 7,
+   "text": "第六、七页左右次序不可对调。",
+   "verified": true,
+   "stitched_sha256": "612d3e43a175d379a0e169e74c230367835c0f253168e757f33f88f643781a9a"
+  },
+  {
+   "scope": "opening",
+   "left": 10,
+   "right": 11,
+   "text": "跨页图必须在成品上接成一线。",
+   "verified": true,
+   "stitched_sha256": "f55a84f419b8b5afcf64c99a76b21c7fd7642a14a6561b373611c936989d544e"
+  },
+  {
+   "scope": "book",
+   "text": "全书准印。第二版批示：以此版为准。",
+   "verified": true
+  },
+  {
+   "scope": "signature",
+   "signature": 1,
+   "text": "第一帖：共用图版在此作扉页，准印。",
+   "verified": true
+  },
+  {
+   "scope": "signature",
+   "signature": 2,
+   "text": "第二帖：同一图版此处作广告页，墨色可略深；插页勿倒。",
+   "verified": true
+  }
+ ]
+}

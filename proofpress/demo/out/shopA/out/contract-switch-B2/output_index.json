@@ -1,0 +1,78 @@
+{
+ "contract": "B2",
+ "binding_direction": "ltr",
+ "reader_rotation": 0,
+ "signatures": [
+  {
+   "id": 1,
+   "sheets": [
+    {
+     "role": "main",
+     "front": "/workspace/proofpress/demo/out/shopA/out/contract-switch-B2/sig1_sheet_front.png",
+     "back": "/workspace/proofpress/demo/out/shopA/out/contract-switch-B2/sig1_sheet_back.png",
+     "paper_w": 520,
+     "paper_h": 560,
+     "margin": 40,
+     "folds": [
+      {
+       "axis": "h",
+       "move": "bottom",
+       "place": "over"
+      },
+      {
+       "axis": "v",
+       "move": "left",
+       "place": "over"
+      }
+     ],
+     "flip_axis": "vertical"
+    }
+   ],
+   "inserts": []
+  },
+  {
+   "id": 2,
+   "sheets": [
+    {
+     "role": "main",
+     "front": "/workspace/proofpress/demo/out/shopA/out/contract-switch-B2/sig2_sheet_front.png",
+     "back": "/workspace/proofpress/demo/out/shopA/out/contract-switch-B2/sig2_sheet_back.png",
+     "paper_w": 520,
+     "paper_h": 560,
+     "margin": 40,
+     "folds": [
+      {
+       "axis": "h",
+       "move": "bottom",
+       "place": "over"
+      },
+      {
+       "axis": "v",
+       "move": "left",
+       "place": "over"
+      }
+     ],
+     "flip_axis": "vertical"
+    }
+   ],
+   "inserts": [
+    {
+     "after_leaf": 2,
+     "sheets": [
+      {
+       "role": "insert",
+       "front": "/workspace/proofpress/demo/out/shopA/out/contract-switch-B2/sig2_insert1_front.png",
+       "back": "/workspace/proofpress/demo/out/shopA/out/contract-switch-B2/sig2_insert1_back.png",
+       "paper_w": 440,
+       "paper_h": 480,
+       "margin": 20,
+       "folds": [],
+       "flip_axis": "vertical"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "pdf": "/workspace/proofpress/demo/out/shopA/out/contract-switch-B2/imposed_book.pdf"
+}

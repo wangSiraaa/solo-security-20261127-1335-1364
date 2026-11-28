@@ -1,0 +1,216 @@
+[
+ {
+  "mail": "/workspace/proofpress/demo/out/mailbox/shopB/01-ed2-via-gatewayB.eml",
+  "shop": "shopB",
+  "verdict": "accepted",
+  "reason": "verified",
+  "outputs": {
+   "index": {
+    "contract": "B",
+    "binding_direction": "ltr",
+    "reader_rotation": 180,
+    "signatures": [
+     {
+      "id": 1,
+      "sheets": [
+       {
+        "role": "main",
+        "front": "/workspace/proofpress/demo/out/shopB/out/01-ed2-via-gatewayB/sig1_sheet_front.png",
+        "back": "/workspace/proofpress/demo/out/shopB/out/01-ed2-via-gatewayB/sig1_sheet_back.png",
+        "paper_w": 560,
+        "paper_h": 600,
+        "margin": 40,
+        "folds": [
+         {
+          "axis": "h",
+          "move": "top",
+          "place": "under"
+         },
+         {
+          "axis": "v",
+          "move": "right",
+          "place": "over"
+         }
+        ],
+        "flip_axis": "horizontal"
+       }
+      ],
+      "inserts": []
+     },
+     {
+      "id": 2,
+      "sheets": [
+       {
+        "role": "main",
+        "front": "/workspace/proofpress/demo/out/shopB/out/01-ed2-via-gatewayB/sig2_sheet_front.png",
+        "back": "/workspace/proofpress/demo/out/shopB/out/01-ed2-via-gatewayB/sig2_sheet_back.png",
+        "paper_w": 560,
+        "paper_h": 600,
+        "margin": 40,
+        "folds": [
+         {
+          "axis": "h",
+          "move": "top",
+          "place": "under"
+         },
+         {
+          "axis": "v",
+          "move": "right",
+          "place": "over"
+         }
+        ],
+        "flip_axis": "horizontal"
+       }
+      ],
+      "inserts": [
+       {
+        "after_leaf": 2,
+        "sheets": [
+         {
+          "role": "insert",
+          "front": "/workspace/proofpress/demo/out/shopB/out/01-ed2-via-gatewayB/sig2_insert1_front.png",
+          "back": "/workspace/proofpress/demo/out/shopB/out/01-ed2-via-gatewayB/sig2_insert1_back.png",
+          "paper_w": 480,
+          "paper_h": 520,
+          "margin": 20,
+          "folds": [],
+          "flip_axis": "horizontal"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pdf": "/workspace/proofpress/demo/out/shopB/out/01-ed2-via-gatewayB/imposed_book.pdf"
+   },
+   "receipt": "/workspace/proofpress/demo/out/shopB/out/01-ed2-via-gatewayB/receipt-job-117-ed2.json"
+  },
+  "approved_hashes": [
+   "00139942e1d90a845e1e55bcc2338be8b6dd11941904be57e54a449910033b40",
+   "76befbbbdd2f54a1a59c8ad092888d34a8f6f3658bb28a7652c1e634f8ab352b",
+   "6a71c31cd947cd560c374c9e9720cc94ce21d3f718cb0fe2b824bcd777cbb2f4",
+   "001a6cb4ec16d7fdf851bc801fff84f6f744528a6fb059198072a3a4315a00bd",
+   "98927f926eedc6ece586b0c501be8b407bb228890ab926eb4d29eb6dc0d0913a",
+   "0f864db52e2bf2ab0e02c3ee9032d1bf21c93aa84163a8ebff06a5018b5862af",
+   "5c06ad11b40650facc6e110b6df626e631fc4f66cf73d31bc3863c606b8c3600",
+   "fd4acdcac392144b7e062f7f375de652c6fa69cca0ddb10a8da0966d3cb3a81e",
+   "8125316a7121fa2c10a89884a5d44a67e6f61ce84edd0451d6c12af3be7714ba",
+   "37393cfa10ddc22e54b739337419ef67ef6c69f2298cd0f52dafd6b1bcac413e",
+   "0a752568a3f9ef2cc2bae843ba6f316f32dfb3fa3f9d717ae5e9f593462bda38",
+   "3107b0d2152c6099276377b4f939891871701594ecee6c2557e545aa7d9f09a2",
+   "8ae3f04066125dd97cb7599125c9860beb727b71b86d580bdf3f9964046b3f1b",
+   "9dad028394e126c5788219d48f8d4b26c1e8aabd965c5f992efce2dbfa204d49",
+   "ea4db40962007d490fdf0c333a5b0be9e78e10cfb20d21db841bdbf2ac98829b",
+   "6a71c31cd947cd560c374c9e9720cc94ce21d3f718cb0fe2b824bcd777cbb2f4",
+   "310c7765a10c9d320c56f469b434eb01d053f3b0009005df8eda116813faafc1",
+   "c7c6649d66b6dd20a3ca0e6ea491c60e5f1ea5ac4e736ad789593b333d65c0aa"
+  ]
+ },
+ {
+  "mail": "/workspace/proofpress/demo/out/mailbox/shopB/02-ed2-forwarded-rfc822.eml",
+  "shop": "shopB",
+  "verdict": "accepted",
+  "reason": "verified",
+  "outputs": {
+   "index": {
+    "contract": "B",
+    "binding_direction": "ltr",
+    "reader_rotation": 180,
+    "signatures": [
+     {
+      "id": 1,
+      "sheets": [
+       {
+        "role": "main",
+        "front": "/workspace/proofpress/demo/out/shopB/out/02-ed2-forwarded-rfc822/sig1_sheet_front.png",
+        "back": "/workspace/proofpress/demo/out/shopB/out/02-ed2-forwarded-rfc822/sig1_sheet_back.png",
+        "paper_w": 560,
+        "paper_h": 600,
+        "margin": 40,
+        "folds": [
+         {
+          "axis": "h",
+          "move": "top",
+          "place": "under"
+         },
+         {
+          "axis": "v",
+          "move": "right",
+          "place": "over"
+         }
+        ],
+        "flip_axis": "horizontal"
+       }
+      ],
+      "inserts": []
+     },
+     {
+      "id": 2,
+      "sheets": [
+       {
+        "role": "main",
+        "front": "/workspace/proofpress/demo/out/shopB/out/02-ed2-forwarded-rfc822/sig2_sheet_front.png",
+        "back": "/workspace/proofpress/demo/out/shopB/out/02-ed2-forwarded-rfc822/sig2_sheet_back.png",
+        "paper_w": 560,
+        "paper_h": 600,
+        "margin": 40,
+        "folds": [
+         {
+          "axis": "h",
+          "move": "top",
+          "place": "under"
+         },
+         {
+          "axis": "v",
+          "move": "right",
+          "place": "over"
+         }
+        ],
+        "flip_axis": "horizontal"
+       }
+      ],
+      "inserts": [
+       {
+        "after_leaf": 2,
+        "sheets": [
+         {
+          "role": "insert",
+          "front": "/workspace/proofpress/demo/out/shopB/out/02-ed2-forwarded-rfc822/sig2_insert1_front.png",
+          "back": "/workspace/proofpress/demo/out/shopB/out/02-ed2-forwarded-rfc822/sig2_insert1_back.png",
+          "paper_w": 480,
+          "paper_h": 520,
+          "margin": 20,
+          "folds": [],
+          "flip_axis": "horizontal"
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "pdf": "/workspace/proofpress/demo/out/shopB/out/02-ed2-forwarded-rfc822/imposed_book.pdf"
+   },
+   "receipt": "/workspace/proofpress/demo/out/shopB/out/02-ed2-forwarded-rfc822/receipt-job-117-ed2.json"
+  },
+  "approved_hashes": [
+   "00139942e1d90a845e1e55bcc2338be8b6dd11941904be57e54a449910033b40",
+   "76befbbbdd2f54a1a59c8ad092888d34a8f6f3658bb28a7652c1e634f8ab352b",
+   "6a71c31cd947cd560c374c9e9720cc94ce21d3f718cb0fe2b824bcd777cbb2f4",
+   "001a6cb4ec16d7fdf851bc801fff84f6f744528a6fb059198072a3a4315a00bd",
+   "98927f926eedc6ece586b0c501be8b407bb228890ab926eb4d29eb6dc0d0913a",
+   "0f864db52e2bf2ab0e02c3ee9032d1bf21c93aa84163a8ebff06a5018b5862af",
+   "5c06ad11b40650facc6e110b6df626e631fc4f66cf73d31bc3863c606b8c3600",
+   "fd4acdcac392144b7e062f7f375de652c6fa69cca0ddb10a8da0966d3cb3a81e",
+   "8125316a7121fa2c10a89884a5d44a67e6f61ce84edd0451d6c12af3be7714ba",
+   "37393cfa10ddc22e54b739337419ef67ef6c69f2298cd0f52dafd6b1bcac413e",
+   "0a752568a3f9ef2cc2bae843ba6f316f32dfb3fa3f9d717ae5e9f593462bda38",
+   "3107b0d2152c6099276377b4f939891871701594ecee6c2557e545aa7d9f09a2",
+   "8ae3f04066125dd97cb7599125c9860beb727b71b86d580bdf3f9964046b3f1b",
+   "9dad028394e126c5788219d48f8d4b26c1e8aabd965c5f992efce2dbfa204d49",
+   "ea4db40962007d490fdf0c333a5b0be9e78e10cfb20d21db841bdbf2ac98829b",
+   "6a71c31cd947cd560c374c9e9720cc94ce21d3f718cb0fe2b824bcd777cbb2f4",
+   "310c7765a10c9d320c56f469b434eb01d053f3b0009005df8eda116813faafc1",
+   "c7c6649d66b6dd20a3ca0e6ea491c60e5f1ea5ac4e736ad789593b333d65c0aa"
+  ]
+ }
+]

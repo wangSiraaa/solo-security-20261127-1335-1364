@@ -1,0 +1,29 @@
+{
+ "id": "B",
+ "paper_w": 560,
+ "paper_h": 600,
+ "margin": 40,
+ "flip_axis": "horizontal",
+ "folds": [
+  {
+   "axis": "h",
+   "move": "top",
+   "place": "under"
+  },
+  {
+   "axis": "v",
+   "move": "right",
+   "place": "over"
+  }
+ ],
+ "cuts": [
+  "N"
+ ],
+ "inserts": [
+  {
+   "signature": 2,
+   "after_leaf": 2,
+   "count": 1
+  }
+ ]
+}
