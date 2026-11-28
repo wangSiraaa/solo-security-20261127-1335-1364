@@ -1,0 +1,24 @@
+{
+  "conference": "甲场",
+  "manuscript": "G",
+  "current_tick": 7,
+  "page_requirements": {
+    "A": 2,
+    "B": 1
+  },
+  "paper": {
+    "title": "z",
+    "A": [
+      "段a",
+      "段b"
+    ],
+    "B": [
+      "段c"
+    ]
+  },
+  "priority": [
+    "R1",
+    "R2",
+    "R3"
+  ]
+}

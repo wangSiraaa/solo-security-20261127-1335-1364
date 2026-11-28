@@ -1,0 +1,11 @@
+{
+  "conference": "甲场",
+  "manuscript": "G",
+  "anonymous_group": "编号b2",
+  "conflicts": [],
+  "late_amendment": {
+    "anonymous_group": "编号b2",
+    "reviewer": "R2",
+    "arrives": 8
+  }
+}

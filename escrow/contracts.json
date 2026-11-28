@@ -1,0 +1,11 @@
+{
+  "locked": {
+    "as_of": 7,
+    "deliver_until": 9,
+    "registry_online": false
+  },
+  "online": {
+    "registry_online": true,
+    "refresh_after": 8
+  }
+}
