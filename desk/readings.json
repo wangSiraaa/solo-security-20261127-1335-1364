@@ -1,0 +1,52 @@
+{
+  "tick": 5,
+  "batch": [
+    {
+      "box": "b1",
+      "dest": "east",
+      "contract": "c17",
+      "exact": [
+        1,
+        2
+      ],
+      "legacy_interval": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "box": "b2",
+      "dest": "east",
+      "contract": "c17",
+      "exact": [
+        0,
+        1
+      ],
+      "legacy_interval": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "box": "x1",
+      "dest": "west",
+      "contract": "c18",
+      "exact": [
+        1,
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "trust_source": "fixture verified manifest",
+  "records": [
+    {
+      "service": "cold-drop",
+      "destination": "east",
+      "id": "c17",
+      "revision": 2,
+      "valid_until": 7,
+      "allow": [
+        "grid1",
+        "grid4"
+      ],
+      "range": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "service": "cold-drop",
+      "destination": "west",
+      "id": "c18",
+      "revision": 1,
+      "valid_until": 9,
+      "allow": [
+        "grid4"
+      ],
+      "range": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    }
+  ],
+  "legacy_c17": {
+    "service": "cold-drop",
+    "destination": "east",
+    "id": "c17",
+    "revision": 3,
+    "valid_until": 7,
+    "allow": [
+      "grid1"
+    ],
+    "range": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ]
+  },
+  "same_revision_conflict": {
+    "service": "cold-drop",
+    "destination": "east",
+    "id": "c17",
+    "revision": 2,
+    "valid_until": 7,
+    "allow": [
+      "grid1"
+    ],
+    "range": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ]
+    ]
+  }
+}

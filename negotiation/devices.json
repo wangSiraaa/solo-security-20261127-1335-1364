@@ -1,0 +1,34 @@
+{
+  "old": {
+    "destination": "east",
+    "support": [
+      "grid1"
+    ],
+    "grid": 1,
+    "online": 2,
+    "readout_unit": "格",
+    "working_interval": "转接时维持的零位偏差，非温度读数误差；互认不同粒度时按区间向外舍入"
+  },
+  "new": {
+    "destination": "east",
+    "support": [
+      "grid1",
+      "grid4"
+    ],
+    "grid": 4,
+    "online": 4,
+    "readout_unit": "格",
+    "working_interval": "转接时维持的零位偏差，非温度读数误差；互认不同粒度时按区间向外舍入"
+  },
+  "west_new": {
+    "destination": "west",
+    "support": [
+      "grid1",
+      "grid4"
+    ],
+    "grid": 4,
+    "online": 4,
+    "readout_unit": "格",
+    "working_interval": "转接时维持的零位偏差，非温度读数误差；互认不同粒度时按区间向外舍入"
+  }
+}
