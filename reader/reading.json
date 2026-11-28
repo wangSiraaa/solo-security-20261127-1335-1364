@@ -1,0 +1,43 @@
+{
+  "credential": {
+    "holder": "居",
+    "device": "朗读三号"
+  },
+  "events": [
+    {
+      "event": "hear",
+      "field": "note",
+      "version": "v2",
+      "value": "单程票"
+    },
+    {
+      "event": "hear",
+      "field": "price",
+      "version": "v2",
+      "value": 120
+    },
+    {
+      "event": "hear",
+      "field": "cancel",
+      "version": "v2",
+      "value": 10
+    },
+    {
+      "event": "hear",
+      "field": "sponsorLimit",
+      "version": "v2",
+      "value": 60
+    },
+    {
+      "event": "confirm",
+      "holder": "居",
+      "version": "v2",
+      "fields": [
+        "note",
+        "price",
+        "cancel",
+        "sponsorLimit"
+      ]
+    }
+  ]
+}

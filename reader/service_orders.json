@@ -1,0 +1,15 @@
+{
+  "whole": {
+    "backend_online_at_completion": false,
+    "freeze": "v2",
+    "charge_amendment_requires_full_readback": true
+  },
+  "per_line": {
+    "backend_online_at_completion": true,
+    "amend_price_from": 90,
+    "amend_price_to": 120,
+    "refreshed": [
+      "price"
+    ]
+  }
+}

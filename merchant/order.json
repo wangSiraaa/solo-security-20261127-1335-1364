@@ -1,0 +1,23 @@
+{
+  "id": "S",
+  "versions": {
+    "v1": {
+      "price": 90,
+      "cancel": 10,
+      "sponsorLimit": 60,
+      "note": "单程票"
+    },
+    "v2": {
+      "price": 120,
+      "cancel": 10,
+      "sponsorLimit": 60,
+      "note": "单程票"
+    }
+  },
+  "current": "v2",
+  "critical": [
+    "price",
+    "cancel",
+    "sponsorLimit"
+  ]
+}
