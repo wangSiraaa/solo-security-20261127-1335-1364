@@ -1,0 +1,48 @@
+{
+  "events": [
+    {
+      "endpoint": "l1",
+      "epoch": 3,
+      "segment": "a",
+      "confirmed": 6,
+      "seq": 1
+    },
+    {
+      "endpoint": "l1",
+      "epoch": 3,
+      "segment": "b",
+      "confirmed": 4,
+      "seq": 2
+    },
+    {
+      "endpoint": "l1",
+      "epoch": 3,
+      "segment": "b",
+      "confirmed": 4,
+      "seq": 2
+    },
+    {
+      "endpoint": "l2",
+      "epoch": 3,
+      "segment": "c",
+      "confirmed": 9,
+      "seq": 1
+    },
+    {
+      "endpoint": "l1",
+      "epoch": 2,
+      "segment": "h",
+      "confirmed": 7,
+      "seq": 3
+    }
+  ],
+  "extra": {
+    "endpoint": "l1",
+    "epoch": 3,
+    "segment": "e",
+    "confirmed": 2,
+    "seq": 3
+  },
+  "rate": 3,
+  "header_per_segment": 3
+}

@@ -1,0 +1,16 @@
+{
+  "departure": 7,
+  "regular_arrival": 6,
+  "delivery_budget_tick": 11,
+  "offline_example": {
+    "request": "r1",
+    "window": [
+      8,
+      10
+    ]
+  },
+  "online_example": {
+    "request": "r1",
+    "more_credit_at": 9
+  }
+}

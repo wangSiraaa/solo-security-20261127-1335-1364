@@ -1,0 +1,69 @@
+{
+  "photos": [
+    {
+      "id": "r1",
+      "endpoint": "l1",
+      "epoch": 3,
+      "low": [
+        8,
+        10
+      ],
+      "high": [
+        9,
+        11,
+        4
+      ],
+      "default": "low",
+      "expiry": 12
+    },
+    {
+      "id": "r2",
+      "endpoint": "l2",
+      "epoch": 3,
+      "low": [
+        10
+      ],
+      "high": [
+        16,
+        4
+      ],
+      "default": "low",
+      "expiry": 13
+    },
+    {
+      "id": "r3",
+      "endpoint": "l1",
+      "epoch": 3,
+      "low": [
+        11
+      ],
+      "high": [
+        16
+      ],
+      "default": "low",
+      "expiry": 8,
+      "arrives": 7
+    }
+  ],
+  "amendment": {
+    "id": "r1",
+    "requires": "high"
+  },
+  "receipts": [
+    {
+      "id": "r1",
+      "spec": "low",
+      "accepted": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "r2",
+      "spec": "low",
+      "accepted": [
+        0
+      ]
+    }
+  ]
+}
