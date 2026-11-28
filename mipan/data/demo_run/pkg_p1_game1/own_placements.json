@@ -1,0 +1,67 @@
+{
+  "open": [
+    {
+      "cell": "1,2",
+      "commitment": null,
+      "tile": {
+        "appearance": "木纹",
+        "rotation": 0,
+        "type": "curve"
+      },
+      "turn": 1
+    },
+    {
+      "cell": "2,2",
+      "commitment": null,
+      "tile": {
+        "appearance": "木纹",
+        "rotation": 0,
+        "type": "straight"
+      },
+      "turn": 3
+    },
+    {
+      "cell": "3,2",
+      "commitment": null,
+      "tile": {
+        "appearance": "木纹",
+        "rotation": 1,
+        "type": "curve"
+      },
+      "turn": 5
+    },
+    {
+      "cell": "2,1",
+      "commitment": null,
+      "tile": {
+        "appearance": "铜锈",
+        "rotation": 0,
+        "type": "straight"
+      },
+      "turn": 9
+    },
+    {
+      "cell": "5,1",
+      "commitment": null,
+      "tile": {
+        "appearance": "苔痕",
+        "rotation": 1,
+        "type": "curve"
+      },
+      "turn": 11
+    }
+  ],
+  "sealed": [
+    {
+      "cell": "5,2",
+      "commitment": "f372fb97799f31c2",
+      "tile": {
+        "appearance": "木纹",
+        "rotation": 2,
+        "type": "curve"
+      },
+      "turn": 13
+    }
+  ],
+  "withdrawn_spare_count": 2
+}

@@ -1,0 +1,67 @@
+[
+  {
+    "actor": 0,
+    "cell": "1,1",
+    "cells": [
+      "0,0",
+      "0,1",
+      "1,0",
+      "1,1"
+    ],
+    "conditions": [
+      "1,0"
+    ],
+    "edges": [
+      "0,0/1|0,0/2",
+      "0,0/1|0,1/3",
+      "0,0/2|1,0/0",
+      "0,1/2|0,1/3",
+      "0,1/2|1,1/0",
+      "1,0/0|1,0/1",
+      "1,0/1|1,1/3",
+      "1,1/0|1,1/3"
+    ],
+    "junction": [
+      "1,0/0",
+      "1,0/1"
+    ],
+    "kind": "first_close",
+    "lineage": null,
+    "loop_id": "a1d22f38eb8c",
+    "objective_id": null,
+    "promise": "322efb5d0a98d533",
+    "score": 35,
+    "turn": 4,
+    "visibility": "public"
+  },
+  {
+    "actor": 0,
+    "cell": "4,1",
+    "cells": [
+      "3,0",
+      "3,1",
+      "4,0",
+      "4,1"
+    ],
+    "conditions": [],
+    "edges": [
+      "3,0/1|3,0/2",
+      "3,0/1|3,1/3",
+      "3,0/2|4,0/0",
+      "3,1/2|3,1/3",
+      "3,1/2|4,1/0",
+      "4,0/0|4,0/1",
+      "4,0/1|4,1/3",
+      "4,1/0|4,1/3"
+    ],
+    "junction": [],
+    "kind": "first_close",
+    "lineage": null,
+    "loop_id": "ebd6507c3b6e",
+    "objective_id": null,
+    "promise": null,
+    "score": 40,
+    "turn": 8,
+    "visibility": "public"
+  }
+]

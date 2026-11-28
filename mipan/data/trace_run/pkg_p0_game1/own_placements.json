@@ -1,0 +1,56 @@
+{
+  "open": [
+    {
+      "cell": "3,1",
+      "commitment": null,
+      "tile": {
+        "appearance": "木纹",
+        "rotation": 0,
+        "type": "curve"
+      },
+      "turn": 4
+    },
+    {
+      "cell": "1,1",
+      "commitment": null,
+      "tile": {
+        "appearance": "木纹",
+        "rotation": 3,
+        "type": "curve"
+      },
+      "turn": 6
+    },
+    {
+      "cell": "2,0",
+      "commitment": null,
+      "tile": {
+        "appearance": "苔痕",
+        "rotation": 1,
+        "type": "straight"
+      },
+      "turn": 8
+    },
+    {
+      "cell": "4,1",
+      "commitment": null,
+      "tile": {
+        "appearance": "木纹",
+        "rotation": 1,
+        "type": "straight"
+      },
+      "turn": 10
+    },
+    {
+      "cell": "4,2",
+      "commitment": null,
+      "tile": {
+        "appearance": "苔痕",
+        "rotation": 2,
+        "type": "curve"
+      },
+      "turn": 12
+    }
+  ],
+  "sealed": [],
+  "withdrawn_spare_count": 0
+}

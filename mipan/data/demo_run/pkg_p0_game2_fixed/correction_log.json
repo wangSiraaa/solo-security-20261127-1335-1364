@@ -1,0 +1,9 @@
+[
+  {
+    "loop_id": "a1d22f38eb8c",
+    "new_score": 35,
+    "old_score": 40,
+    "reason": "该圈曾误发 5 分目标奖励，目标实际不在圈内，扣回",
+    "witness_unchanged": true
+  }
+]

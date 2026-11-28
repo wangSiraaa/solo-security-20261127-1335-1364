@@ -1,0 +1,16 @@
+{
+  "files": {
+    "boundary_witness.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "conditional.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "exclusions.json": "cc32c98dc217f6927cb640bf72ec0ded3bbd18f87a073f2430dce891a8e2dc9f",
+    "ledger.json": "3a63b066edb63c563ead457f36039819dda7d4e8a78ddf3970ac5e70285758c2",
+    "objectives_claimed.json": "b19a13617d8a0fb841cce59745cca5d437a179ddc7a84f21b009777b34df081e",
+    "own_placements.json": "2b1000aed383036c353a9b1025b732f7dee16174b8f53538e66c1549d65a2141",
+    "public_process.json": "73e036fe245b68554ab5702a885b998e2f939686ab64840e4295400976fba924",
+    "rules.json": "060f211dbd5d0189be332c99bf79fe8265ba2246b3923887ec4fa39d274a951e",
+    "score.json": "b84f1d79e036f1f0bff131c0869164a0b013bc9c4d5bea75d2d297d1de7e30c8"
+  },
+  "match": "对局一",
+  "name": "甲",
+  "player": 0
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "appearance": "木纹",
+    "cell": "5,2",
+    "commitment": "f372fb97799f31c2",
+    "ports": [
+      {
+        "neighbor": "4,2",
+        "neighbor_sealed": false,
+        "side": 0
+      },
+      {
+        "neighbor": null,
+        "neighbor_sealed": false,
+        "side": 1
+      },
+      {
+        "neighbor": null,
+        "neighbor_sealed": false,
+        "side": 2
+      },
+      {
+        "neighbor": "5,1",
+        "neighbor_sealed": false,
+        "side": 3
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "base_per_cell": 10,
+  "event_kinds": [
+    "first_close",
+    "reconnect",
+    "cosmetic"
+  ],
+  "mode": "A_public_commitment",
+  "visibility": {
+    "dark": "挂起，封盘揭密后凭承诺结算",
+    "public": "当场结算",
+    "self": "本人可重算，当场结算"
+  }
+}

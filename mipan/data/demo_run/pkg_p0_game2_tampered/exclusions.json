@@ -1,0 +1,6 @@
+{
+  "empty_cells": "不包含",
+  "opponent_spares": "不包含",
+  "own_unplaced_tiles": "不包含，仅登记数量",
+  "unclaimed_objectives": "不包含细节，公开视图仅有剩余计数"
+}

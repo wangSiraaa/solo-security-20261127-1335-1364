@@ -1,0 +1,461 @@
+{
+  "name": "对局二",
+  "board_size": 5,
+  "players": [
+    "甲",
+    "乙"
+  ],
+  "hands": {
+    "0": [],
+    "1": []
+  },
+  "board": {
+    "size": 5,
+    "placements": {
+      "0,0": {
+        "tile": null,
+        "tile_open": {
+          "type": "curve",
+          "rotation": 1,
+          "appearance": "木纹"
+        },
+        "owner": 0,
+        "sealed": false,
+        "commitment": null,
+        "turn": 0
+      },
+      "0,1": {
+        "tile": null,
+        "tile_open": {
+          "type": "curve",
+          "rotation": 0,
+          "appearance": "青石"
+        },
+        "owner": 1,
+        "sealed": false,
+        "commitment": null,
+        "turn": 1
+      },
+      "3,3": {
+        "tile": null,
+        "tile_open": {
+          "type": "straight",
+          "rotation": 0,
+          "appearance": "铜锈"
+        },
+        "owner": 0,
+        "sealed": false,
+        "commitment": null,
+        "turn": 2
+      },
+      "1,0": {
+        "tile": {
+          "type": "curve",
+          "rotation": 2,
+          "appearance": "木纹"
+        },
+        "tile_open": {
+          "type": "curve",
+          "rotation": 2,
+          "appearance": "木纹"
+        },
+        "owner": 1,
+        "sealed": false,
+        "commitment": "f372fb97799f31c2",
+        "turn": 3
+      },
+      "1,1": {
+        "tile": null,
+        "tile_open": {
+          "type": "curve",
+          "rotation": 3,
+          "appearance": "青石"
+        },
+        "owner": 0,
+        "sealed": false,
+        "commitment": null,
+        "turn": 4
+      },
+      "3,0": {
+        "tile": null,
+        "tile_open": {
+          "type": "curve",
+          "rotation": 1,
+          "appearance": "铜锈"
+        },
+        "owner": 1,
+        "sealed": false,
+        "commitment": null,
+        "turn": 5
+      },
+      "4,0": {
+        "tile": null,
+        "tile_open": {
+          "type": "curve",
+          "rotation": 2,
+          "appearance": "苔痕"
+        },
+        "owner": 0,
+        "sealed": false,
+        "commitment": null,
+        "turn": 6
+      },
+      "3,1": {
+        "tile": null,
+        "tile_open": {
+          "type": "curve",
+          "rotation": 0,
+          "appearance": "苔痕"
+        },
+        "owner": 1,
+        "sealed": false,
+        "commitment": null,
+        "turn": 7
+      },
+      "4,1": {
+        "tile": null,
+        "tile_open": {
+          "type": "curve",
+          "rotation": 3,
+          "appearance": "铜锈"
+        },
+        "owner": 0,
+        "sealed": false,
+        "commitment": null,
+        "turn": 8
+      }
+    }
+  },
+  "turn": 10,
+  "next_player": 0,
+  "objectives": [],
+  "turn_log": [
+    {
+      "turn": 0,
+      "player": 0,
+      "kind": "place",
+      "cell": "0,0",
+      "sealed": false,
+      "appearance": "木纹",
+      "tile": {
+        "type": "curve",
+        "rotation": 1,
+        "appearance": "木纹"
+      },
+      "commitment": null,
+      "replaced": null,
+      "events": [],
+      "settled_delta": {
+        "0": 0
+      }
+    },
+    {
+      "turn": 1,
+      "player": 1,
+      "kind": "place",
+      "cell": "0,1",
+      "sealed": false,
+      "appearance": "青石",
+      "tile": {
+        "type": "curve",
+        "rotation": 0,
+        "appearance": "青石"
+      },
+      "commitment": null,
+      "replaced": null,
+      "events": [],
+      "settled_delta": {
+        "1": 0
+      }
+    },
+    {
+      "turn": 2,
+      "player": 0,
+      "kind": "place",
+      "cell": "3,3",
+      "sealed": false,
+      "appearance": "铜锈",
+      "tile": {
+        "type": "straight",
+        "rotation": 0,
+        "appearance": "铜锈"
+      },
+      "commitment": null,
+      "replaced": null,
+      "events": [],
+      "settled_delta": {
+        "0": 0
+      }
+    },
+    {
+      "turn": 3,
+      "player": 1,
+      "kind": "place",
+      "cell": "1,0",
+      "sealed": true,
+      "appearance": "木纹",
+      "tile": null,
+      "commitment": "f372fb97799f31c2",
+      "replaced": null,
+      "events": [],
+      "settled_delta": {
+        "1": 0
+      }
+    },
+    {
+      "turn": 4,
+      "player": 0,
+      "kind": "place",
+      "cell": "1,1",
+      "sealed": false,
+      "appearance": "青石",
+      "tile": {
+        "type": "curve",
+        "rotation": 3,
+        "appearance": "青石"
+      },
+      "commitment": null,
+      "replaced": null,
+      "events": [
+        {
+          "turn": 4,
+          "actor": 0,
+          "cell": "1,1",
+          "loop_id": "a1d22f38eb8c",
+          "kind": "first_close",
+          "visibility": "dark",
+          "edges": [
+            "0,0/1|0,0/2",
+            "0,0/1|0,1/3",
+            "0,0/2|1,0/0",
+            "0,1/2|0,1/3",
+            "0,1/2|1,1/0",
+            "1,0/0|1,0/1",
+            "1,0/1|1,1/3",
+            "1,1/0|1,1/3"
+          ],
+          "cells": [
+            "0,0",
+            "0,1",
+            "1,0",
+            "1,1"
+          ],
+          "score": null,
+          "objective_id": null,
+          "promise": "322efb5d0a98d533",
+          "lineage": null,
+          "junction": [
+            "1,0/0",
+            "1,0/1"
+          ],
+          "conditions": [
+            "1,0"
+          ]
+        }
+      ],
+      "settled_delta": {
+        "0": 0
+      }
+    },
+    {
+      "turn": 5,
+      "player": 1,
+      "kind": "place",
+      "cell": "3,0",
+      "sealed": false,
+      "appearance": "铜锈",
+      "tile": {
+        "type": "curve",
+        "rotation": 1,
+        "appearance": "铜锈"
+      },
+      "commitment": null,
+      "replaced": null,
+      "events": [],
+      "settled_delta": {
+        "1": 0
+      }
+    },
+    {
+      "turn": 6,
+      "player": 0,
+      "kind": "place",
+      "cell": "4,0",
+      "sealed": false,
+      "appearance": "苔痕",
+      "tile": {
+        "type": "curve",
+        "rotation": 2,
+        "appearance": "苔痕"
+      },
+      "commitment": null,
+      "replaced": null,
+      "events": [],
+      "settled_delta": {
+        "0": 0
+      }
+    },
+    {
+      "turn": 7,
+      "player": 1,
+      "kind": "place",
+      "cell": "3,1",
+      "sealed": false,
+      "appearance": "苔痕",
+      "tile": {
+        "type": "curve",
+        "rotation": 0,
+        "appearance": "苔痕"
+      },
+      "commitment": null,
+      "replaced": null,
+      "events": [],
+      "settled_delta": {
+        "1": 0
+      }
+    },
+    {
+      "turn": 8,
+      "player": 0,
+      "kind": "place",
+      "cell": "4,1",
+      "sealed": false,
+      "appearance": "铜锈",
+      "tile": {
+        "type": "curve",
+        "rotation": 3,
+        "appearance": "铜锈"
+      },
+      "commitment": null,
+      "replaced": null,
+      "events": [
+        {
+          "turn": 8,
+          "actor": 0,
+          "cell": "4,1",
+          "loop_id": "ebd6507c3b6e",
+          "kind": "first_close",
+          "visibility": "public",
+          "edges": [
+            "3,0/1|3,0/2",
+            "3,0/1|3,1/3",
+            "3,0/2|4,0/0",
+            "3,1/2|3,1/3",
+            "3,1/2|4,1/0",
+            "4,0/0|4,0/1",
+            "4,0/1|4,1/3",
+            "4,1/0|4,1/3"
+          ],
+          "cells": [
+            "3,0",
+            "3,1",
+            "4,0",
+            "4,1"
+          ],
+          "score": 40,
+          "objective_id": null,
+          "promise": null,
+          "lineage": null,
+          "junction": [],
+          "conditions": []
+        }
+      ],
+      "settled_delta": {
+        "0": 40
+      }
+    },
+    {
+      "turn": 9,
+      "player": 1,
+      "kind": "unseal",
+      "cell": "1,0",
+      "tile": {
+        "type": "curve",
+        "rotation": 2,
+        "appearance": "木纹"
+      },
+      "commitment": "f372fb97799f31c2",
+      "settled_now": [
+        {
+          "loop_id": "a1d22f38eb8c",
+          "score": 40
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "turn": 4,
+      "actor": 0,
+      "cell": "1,1",
+      "loop_id": "a1d22f38eb8c",
+      "kind": "first_close",
+      "visibility": "public",
+      "edges": [
+        "0,0/1|0,0/2",
+        "0,0/1|0,1/3",
+        "0,0/2|1,0/0",
+        "0,1/2|0,1/3",
+        "0,1/2|1,1/0",
+        "1,0/0|1,0/1",
+        "1,0/1|1,1/3",
+        "1,1/0|1,1/3"
+      ],
+      "cells": [
+        "0,0",
+        "0,1",
+        "1,0",
+        "1,1"
+      ],
+      "score": 40,
+      "objective_id": null,
+      "promise": "322efb5d0a98d533",
+      "lineage": null,
+      "junction": [
+        "1,0/0",
+        "1,0/1"
+      ],
+      "conditions": [
+        "1,0"
+      ]
+    },
+    {
+      "turn": 8,
+      "actor": 0,
+      "cell": "4,1",
+      "loop_id": "ebd6507c3b6e",
+      "kind": "first_close",
+      "visibility": "public",
+      "edges": [
+        "3,0/1|3,0/2",
+        "3,0/1|3,1/3",
+        "3,0/2|4,0/0",
+        "3,1/2|3,1/3",
+        "3,1/2|4,1/0",
+        "4,0/0|4,0/1",
+        "4,0/1|4,1/3",
+        "4,1/0|4,1/3"
+      ],
+      "cells": [
+        "3,0",
+        "3,1",
+        "4,0",
+        "4,1"
+      ],
+      "score": 40,
+      "objective_id": null,
+      "promise": null,
+      "lineage": null,
+      "junction": [],
+      "conditions": []
+    }
+  ],
+  "score": {
+    "0": 80,
+    "1": 0
+  },
+  "conditional": [],
+  "violations": [],
+  "broken_loops": {},
+  "status": "sealed"
+}

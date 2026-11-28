@@ -1,0 +1,56 @@
+{
+  "open": [
+    {
+      "cell": "0,0",
+      "commitment": null,
+      "tile": {
+        "appearance": "木纹",
+        "rotation": 1,
+        "type": "curve"
+      },
+      "turn": 0
+    },
+    {
+      "cell": "3,3",
+      "commitment": null,
+      "tile": {
+        "appearance": "铜锈",
+        "rotation": 0,
+        "type": "straight"
+      },
+      "turn": 2
+    },
+    {
+      "cell": "1,1",
+      "commitment": null,
+      "tile": {
+        "appearance": "青石",
+        "rotation": 3,
+        "type": "curve"
+      },
+      "turn": 4
+    },
+    {
+      "cell": "4,0",
+      "commitment": null,
+      "tile": {
+        "appearance": "苔痕",
+        "rotation": 2,
+        "type": "curve"
+      },
+      "turn": 6
+    },
+    {
+      "cell": "4,1",
+      "commitment": null,
+      "tile": {
+        "appearance": "铜锈",
+        "rotation": 3,
+        "type": "curve"
+      },
+      "turn": 8
+    }
+  ],
+  "sealed": [],
+  "withdrawn_spare_count": 1
+}
