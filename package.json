@@ -1,0 +1,15 @@
+{
+  "name": "relic-coop-offline-ledger",
+  "version": "1.0.0",
+  "description": "离线查册器与封件寄送台：分叉名册、换钥对账、封缄寄送与局部结价",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test test/",
+    "demo": "node demo/scenario.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
+}
