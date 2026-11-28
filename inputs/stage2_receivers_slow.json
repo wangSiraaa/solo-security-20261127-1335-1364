@@ -1,0 +1,13 @@
+{
+  "_comment": "反事实二：仅把 R2 换成一台接收恢复更慢的接收器，灵敏度等其他参数不变。",
+  "R1": {
+    "role": "档案室接收器",
+    "sensitivity_dbm": -4.0,
+    "recovery_slots": 1
+  },
+  "R2": {
+    "role": "访客接收器（慢恢复型）",
+    "sensitivity_dbm": -11.6,
+    "recovery_slots": 2
+  }
+}

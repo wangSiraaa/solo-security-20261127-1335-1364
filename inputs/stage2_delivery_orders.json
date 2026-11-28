@@ -1,0 +1,26 @@
+{
+  "_comment": "两家带期限的收件单（维护依据签发后到达接入台）。deadline_slot 为该数据帧须完成发送的最晚时隙；ack_deadline_slot 为回执最晚时隙。",
+  "orders": [
+    {
+      "order_id": "ARC-CAT-2026-11",
+      "station": "ARCHIVE",
+      "receiver": "R1",
+      "stream": "catalog",
+      "items": ["catalog_page_1", "catalog_page_2"],
+      "deadline_slot": 13,
+      "ack_deadline_slot": 14,
+      "window": [0, 14]
+    },
+    {
+      "order_id": "VIS-SMP-2026-11",
+      "station": "VISITOR",
+      "receiver": "R2",
+      "stream": "visitor",
+      "items": ["visitor_sample"],
+      "deadline_slot": 18,
+      "ack_deadline_slot": 21,
+      "window": [9, 18],
+      "base_window_purchased": [9, 18]
+    }
+  ]
+}

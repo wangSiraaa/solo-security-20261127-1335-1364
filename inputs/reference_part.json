@@ -1,0 +1,12 @@
+{
+  "_comment": "校正参考件：参考损耗 0.50dB，巡测读数应落在给定容差带内。",
+  "reference_part_id": "REF-0dB50",
+  "known_loss_db": 0.5,
+  "accepted_reading_interval_db": [
+    0.42,
+    0.58
+  ],
+  "observed_reading_db": 0.47,
+  "distance_km_known": 1.5,
+  "observed_distance_bin_km": 1.5
+}

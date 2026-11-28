@@ -1,0 +1,1319 @@
+{
+  "baseline_conservative": {
+    "log": [
+      {
+        "slot": 0,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "9b58e1fb"
+      },
+      {
+        "slot": 1,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "a5e03ba2"
+      },
+      {
+        "slot": 2,
+        "op": "GUARD",
+        "station": "ARCHIVE",
+        "note": "固定守卫/功率档（巡测最差情形）"
+      },
+      {
+        "slot": 3,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "537630f7",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 4,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "ca7f614d",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 9,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 10,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 11,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 12,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 13,
+        "op": "TX",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -2.0,
+        "pathloss_db": 5.35,
+        "rssi_dbm": -7.35,
+        "sensitivity_dbm": -11.6,
+        "decodable": true,
+        "crc": "61a04455"
+      },
+      {
+        "slot": 14,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 15,
+        "op": "RX(ack)",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -6.0,
+        "rssi_dbm": -11.35,
+        "decodable": true,
+        "crc": "4c8a26f9",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 16,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 17,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 18,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      }
+    ],
+    "delivered_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "ack_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "reassembly": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "over_window": [],
+    "reclaimed": [],
+    "rejected": [],
+    "visitor_capacity_slots": 1,
+    "level_table": {
+      "catalog": 2.0,
+      "visitor": -2.0
+    },
+    "content_verification": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "half_duplex_violations": [],
+    "deadline_violations": [],
+    "case": "baseline_conservative"
+  },
+  "baseline_adaptive": {
+    "log": [
+      {
+        "slot": 0,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "9b58e1fb"
+      },
+      {
+        "slot": 1,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "a5e03ba2"
+      },
+      {
+        "slot": 2,
+        "op": "GUARD",
+        "station": "ARCHIVE",
+        "note": "档案室先前承诺"
+      },
+      {
+        "slot": 3,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "537630f7",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 4,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "ca7f614d",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 8,
+        "op": "TRAIN",
+        "station": "ARCHIVE",
+        "note": "短训练脉冲：取得新的整体损耗范围"
+      },
+      {
+        "slot": 9,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 10,
+        "op": "TX",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -6.0,
+        "pathloss_db": 5.35,
+        "rssi_dbm": -11.35,
+        "sensitivity_dbm": -11.6,
+        "decodable": true,
+        "crc": "61a04455"
+      },
+      {
+        "slot": 12,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 14,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 15,
+        "op": "RX(ack)",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -6.0,
+        "rssi_dbm": -11.35,
+        "decodable": true,
+        "crc": "4c8a26f9",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 16,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 17,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 18,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      }
+    ],
+    "delivered_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "ack_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "reassembly": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "over_window": [],
+    "reclaimed": [],
+    "rejected": [],
+    "visitor_capacity_slots": 3,
+    "level_table": {
+      "catalog": 2.0,
+      "visitor": -6.0
+    },
+    "content_verification": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "half_duplex_violations": [],
+    "deadline_violations": [],
+    "case": "baseline_adaptive"
+  },
+  "cf1_echo_reassigned": {
+    "log": [
+      {
+        "slot": 0,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "9b58e1fb"
+      },
+      {
+        "slot": 1,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "a5e03ba2"
+      },
+      {
+        "slot": 2,
+        "op": "GUARD",
+        "station": "ARCHIVE",
+        "note": "档案室先前承诺"
+      },
+      {
+        "slot": 3,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "537630f7",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 4,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "ca7f614d",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 8,
+        "op": "TRAIN",
+        "station": "ARCHIVE",
+        "note": "短训练脉冲：取得新的整体损耗范围"
+      },
+      {
+        "slot": 9,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 10,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "回波歧义未消，保留先前承诺，边缘不借出"
+      },
+      {
+        "slot": 11,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "回波歧义未消，保留先前承诺，边缘不借出"
+      },
+      {
+        "slot": 12,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 13,
+        "op": "TX",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -6.0,
+        "pathloss_db": 5.35,
+        "rssi_dbm": -11.35,
+        "sensitivity_dbm": -11.6,
+        "decodable": true,
+        "crc": "61a04455"
+      },
+      {
+        "slot": 14,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 15,
+        "op": "RX(ack)",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -6.0,
+        "rssi_dbm": -11.35,
+        "decodable": true,
+        "crc": "4c8a26f9",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 16,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 17,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 18,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      }
+    ],
+    "delivered_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "ack_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "reassembly": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "over_window": [],
+    "reclaimed": [
+      "edge-10/11：回波分支归属变更，边缘时隙收回"
+    ],
+    "rejected": [],
+    "visitor_capacity_slots": 1,
+    "level_table": {
+      "catalog": 2.0,
+      "visitor": -6.0
+    },
+    "content_verification": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "half_duplex_violations": [],
+    "deadline_violations": [],
+    "case": "cf1_echo_reassigned",
+    "polytope_ranges_db": {
+      "R1": [
+        0.9,
+        1.5
+      ],
+      "R2": [
+        0.65,
+        1.25
+      ]
+    }
+  },
+  "cf2_slow_receiver": {
+    "log": [
+      {
+        "slot": 0,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "9b58e1fb"
+      },
+      {
+        "slot": 1,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "a5e03ba2"
+      },
+      {
+        "slot": 2,
+        "op": "GUARD",
+        "station": "ARCHIVE",
+        "note": "档案室先前承诺"
+      },
+      {
+        "slot": 3,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "537630f7",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 4,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "ca7f614d",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 8,
+        "op": "TRAIN",
+        "station": "ARCHIVE",
+        "note": "短训练脉冲：取得新的整体损耗范围"
+      },
+      {
+        "slot": 9,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 10,
+        "op": "TX",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -6.0,
+        "pathloss_db": 5.35,
+        "rssi_dbm": -11.35,
+        "sensitivity_dbm": -11.6,
+        "decodable": true,
+        "crc": "61a04455"
+      },
+      {
+        "slot": 12,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 14,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 15,
+        "op": "GUARD",
+        "station": "VISITOR",
+        "note": "慢接收恢复：距上次发送 2 格 <= r=2，ACK 窗必须留空",
+        "forced_blank_window": true
+      },
+      {
+        "slot": 16,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 17,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 18,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      }
+    ],
+    "delivered_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "ack_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": []
+    },
+    "reassembly": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "over_window": [
+      {
+        "slot": 15,
+        "stream": "visitor",
+        "kind": "ack",
+        "deadline": 21,
+        "reason": "接收恢复时间未满足，ACK 窗强制留空"
+      }
+    ],
+    "reclaimed": [],
+    "rejected": [],
+    "visitor_capacity_slots": 3,
+    "level_table": {
+      "catalog": 2.0,
+      "visitor": -6.0
+    },
+    "content_verification": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "half_duplex_violations": [],
+    "deadline_violations": [],
+    "case": "cf2_slow_receiver",
+    "forced_guards": [
+      {
+        "slot": 2,
+        "station": "ARCHIVE",
+        "note": "档案室先前承诺"
+      },
+      {
+        "slot": 15,
+        "station": "VISITOR",
+        "note": "慢接收恢复：距上次发送 2 格 <= r=2，ACK 窗必须留空"
+      }
+    ]
+  },
+  "stress_adaptive": {
+    "log": [
+      {
+        "slot": 0,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "9b58e1fb"
+      },
+      {
+        "slot": 1,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "a5e03ba2"
+      },
+      {
+        "slot": 2,
+        "op": "GUARD",
+        "station": "ARCHIVE",
+        "note": "档案室先前承诺"
+      },
+      {
+        "slot": 3,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "537630f7",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 4,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "ca7f614d",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 8,
+        "op": "TRAIN",
+        "station": "ARCHIVE",
+        "note": "短训练脉冲：取得新的整体损耗范围"
+      },
+      {
+        "slot": 9,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 10,
+        "op": "TX",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -6.0,
+        "pathloss_db": 5.35,
+        "rssi_dbm": -11.35,
+        "sensitivity_dbm": -11.6,
+        "decodable": true,
+        "crc": "61a04455"
+      },
+      {
+        "slot": 12,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 14,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 15,
+        "op": "RX(ack)",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -6.0,
+        "rssi_dbm": -11.35,
+        "decodable": true,
+        "crc": "4c8a26f9",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 16,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 17,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      },
+      {
+        "slot": 18,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": ""
+      }
+    ],
+    "delivered_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "ack_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "reassembly": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "over_window": [],
+    "reclaimed": [],
+    "rejected": [
+      "stress-extra：无满足恢复时间与截止期的空闲时隙，拒绝"
+    ],
+    "visitor_capacity_slots": 3,
+    "level_table": {
+      "catalog": 2.0,
+      "visitor": -6.0
+    },
+    "content_verification": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "half_duplex_violations": [],
+    "deadline_violations": [],
+    "case": "stress_adaptive"
+  },
+  "stress_conservative": {
+    "log": [
+      {
+        "slot": 0,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "9b58e1fb"
+      },
+      {
+        "slot": 1,
+        "op": "TX",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "pathloss_db": 2.16,
+        "rssi_dbm": -0.16,
+        "sensitivity_dbm": -4.0,
+        "decodable": true,
+        "crc": "a5e03ba2"
+      },
+      {
+        "slot": 2,
+        "op": "GUARD",
+        "station": "ARCHIVE",
+        "note": "固定守卫/功率档（巡测最差情形）"
+      },
+      {
+        "slot": 3,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 0,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "537630f7",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 4,
+        "op": "RX(ack)",
+        "station": "ARCHIVE",
+        "stream": "catalog",
+        "seq": 1,
+        "tx_dbm": 2.0,
+        "rssi_dbm": -0.16,
+        "decodable": true,
+        "crc": "ca7f614d",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 9,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 10,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 11,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 12,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 13,
+        "op": "TX",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -2.0,
+        "pathloss_db": 5.35,
+        "rssi_dbm": -7.35,
+        "sensitivity_dbm": -11.6,
+        "decodable": true,
+        "crc": "61a04455"
+      },
+      {
+        "slot": 14,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 15,
+        "op": "RX(ack)",
+        "station": "VISITOR",
+        "stream": "visitor",
+        "seq": 0,
+        "tx_dbm": -6.0,
+        "rssi_dbm": -11.35,
+        "decodable": true,
+        "crc": "4c8a26f9",
+        "closed_loop_level": true
+      },
+      {
+        "slot": 16,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 17,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      },
+      {
+        "slot": 18,
+        "op": "IDLE",
+        "station": "VISITOR",
+        "note": "未借出的边缘时隙"
+      }
+    ],
+    "delivered_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "ack_seqs": {
+      "catalog": [
+        0,
+        1
+      ],
+      "visitor": [
+        0
+      ]
+    },
+    "reassembly": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "over_window": [],
+    "reclaimed": [],
+    "rejected": [],
+    "visitor_capacity_slots": 1,
+    "level_table": {
+      "catalog": 2.0,
+      "visitor": -2.0
+    },
+    "content_verification": {
+      "catalog_page_1": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "7fc6e01aa712aefc0617617ccfacbbf687557d5f3fa658c39809169a711f7b6f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "catalog_page_2": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "8432a919900e8c8c866cd54618a3174a42e81fa09498056bbfc19dd51f24c92f",
+        "length": 158,
+        "manifest_verified": true
+      },
+      "visitor_sample": {
+        "complete": true,
+        "crc_failures": 0,
+        "sha256": "ac85309cfb173e9fc35d531b7dbd2df097a4e11a20ff02b3067c7142437aad4d",
+        "length": 167,
+        "manifest_verified": true
+      }
+    },
+    "half_duplex_violations": [],
+    "deadline_violations": [],
+    "case": "stress_conservative"
+  },
+  "_handoff_cross_check": {
+    "R1": {
+      "rebuilt_range_db": [
+        1.86,
+        2.46
+      ],
+      "basis_range_db": [
+        1.86,
+        2.46
+      ],
+      "match": true
+    },
+    "R2": {
+      "rebuilt_range_db": [
+        5.05,
+        5.65
+      ],
+      "basis_range_db": [
+        5.05,
+        5.65
+      ],
+      "match": true
+    },
+    "all_match": true
+  },
+  "_truth_containment": {
+    "truth_inside_patrol_polytope": true,
+    "truth_inside_trained_polytope": true
+  },
+  "_training_intervals_db": {
+    "R1": [
+      1.96,
+      2.36
+    ],
+    "R2": [
+      5.15,
+      5.55
+    ]
+  },
+  "_patrol_ubs_db": {
+    "R1": 2.46,
+    "R2": 5.65
+  },
+  "_trained_ubs_db": {
+    "R1": 2.36,
+    "R2": 5.55
+  },
+  "_tx_levels_dbm": [
+    -6.0,
+    -2.0,
+    2.0,
+    6.0,
+    10.0
+  ]
+}

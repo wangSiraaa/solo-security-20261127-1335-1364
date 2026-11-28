@@ -1,0 +1,132 @@
+{
+  "_comment": "全部为区间观测；同距离格回波已按 OTDR 分辨率盒叠合。",
+  "distance_bin_width_km": 0.5,
+  "echo_intervals": [
+    {
+      "end": "A",
+      "branch_state": "on",
+      "distance_bin_km": 1.5,
+      "joints_in_bin": [
+        "j1"
+      ],
+      "loss_interval_db": [
+        0.1,
+        0.4
+      ]
+    },
+    {
+      "end": "A",
+      "branch_state": "on",
+      "distance_bin_km": 2.0,
+      "joints_in_bin": [
+        "j2",
+        "j4"
+      ],
+      "loss_interval_db": [
+        0.55,
+        0.85
+      ]
+    },
+    {
+      "end": "A",
+      "branch_state": "off",
+      "distance_bin_km": 1.5,
+      "joints_in_bin": [
+        "j1"
+      ],
+      "loss_interval_db": [
+        0.1,
+        0.4
+      ]
+    },
+    {
+      "end": "A",
+      "branch_state": "off",
+      "distance_bin_km": 2.0,
+      "joints_in_bin": [
+        "j2",
+        "j4"
+      ],
+      "loss_interval_db": [
+        0.55,
+        0.85
+      ]
+    },
+    {
+      "end": "B",
+      "branch_state": "on",
+      "distance_bin_km": 0.0,
+      "joints_in_bin": [
+        "j2",
+        "j3"
+      ],
+      "loss_interval_db": [
+        0.8,
+        1.1
+      ]
+    },
+    {
+      "end": "B",
+      "branch_state": "on",
+      "distance_bin_km": 0.5,
+      "joints_in_bin": [
+        "j1"
+      ],
+      "loss_interval_db": [
+        0.1,
+        0.4
+      ]
+    },
+    {
+      "end": "B",
+      "branch_state": "off",
+      "distance_bin_km": 0.0,
+      "joints_in_bin": [
+        "j2",
+        "j3"
+      ],
+      "loss_interval_db": [
+        0.8,
+        1.1
+      ]
+    },
+    {
+      "end": "B",
+      "branch_state": "off",
+      "distance_bin_km": 0.5,
+      "joints_in_bin": [
+        "j1"
+      ],
+      "loss_interval_db": [
+        0.1,
+        0.4
+      ]
+    }
+  ],
+  "end_to_end_power_intervals": [
+    {
+      "path": "R1",
+      "launch_dbm": 0.0,
+      "received_interval_dbm": [
+        -2.51,
+        -1.81
+      ],
+      "pathloss_interval_db": [
+        1.81,
+        2.51
+      ]
+    },
+    {
+      "path": "R2",
+      "launch_dbm": 0.0,
+      "received_interval_dbm": [
+        -5.7,
+        -5.0
+      ],
+      "pathloss_interval_db": [
+        5.0,
+        5.7
+      ]
+    }
+  ]
+}

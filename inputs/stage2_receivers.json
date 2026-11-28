@@ -1,0 +1,13 @@
+{
+  "_comment": "维护依据签发后，接入台才收到的两台接收器参数（基线情形）。",
+  "R1": {
+    "role": "档案室接收器",
+    "sensitivity_dbm": -4.0,
+    "recovery_slots": 1
+  },
+  "R2": {
+    "role": "访客接收器",
+    "sensitivity_dbm": -11.6,
+    "recovery_slots": 1
+  }
+}

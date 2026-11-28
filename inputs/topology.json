@@ -1,0 +1,26 @@
+{
+  "fiber_loss_db_per_km": 0.4,
+  "splitter_loss_db": 3.2,
+  "joint_positions_km": {
+    "j1": 1.5,
+    "j2": 2.0,
+    "j3": 2.4,
+    "j4": 2.5
+  },
+  "path_fiber_km": {
+    "R1": 2.4,
+    "R2": 3.0
+  },
+  "path_joints": {
+    "R1": [
+      "j1",
+      "j2",
+      "j3"
+    ],
+    "R2": [
+      "j1",
+      "j2",
+      "j4"
+    ]
+  }
+}

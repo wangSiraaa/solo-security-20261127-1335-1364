@@ -1,0 +1,17 @@
+{
+  "_comment": "分支切换记录：与回波区间的 branch_state 字段对应。",
+  "events": [
+    {
+      "window": "patrol-1",
+      "state": "on"
+    },
+    {
+      "window": "patrol-2",
+      "state": "off"
+    },
+    {
+      "window": "patrol-3",
+      "state": "on"
+    }
+  ]
+}

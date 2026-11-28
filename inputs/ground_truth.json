@@ -1,0 +1,13 @@
+{
+  "_comment": "虚构光路的隐藏真值：只有观测生成器 tools/make_observations.py 与最终核验 verify.py 允许读取。维护分析流程只能消费 *_observations.json 中的区间。",
+  "true_splice_loss_db": {
+    "j1": 0.25,
+    "j2": 0.40,
+    "j3": 0.55,
+    "j4": 0.30
+  },
+  "otdr_interval_halfwidth_db": 0.15,
+  "patrol_power_halfwidth_db": 0.35,
+  "training_halfwidth_db": 0.20,
+  "patrol_launch_dbm": 0.0
+}
