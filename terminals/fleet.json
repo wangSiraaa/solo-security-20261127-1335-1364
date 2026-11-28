@@ -1,0 +1,32 @@
+{
+  "west": {
+    "decode_level_when_locked": false,
+    "installed_generation": 2,
+    "locked_through": 7,
+    "mute_through": 4
+  },
+  "east": {
+    "decode_level_when_locked": true,
+    "installed_generation": 2,
+    "locked_through": 7,
+    "mute_through": 4
+  },
+  "limited_west": {
+    "mute_through": 7
+  },
+  "view_contract": {
+    "locked_public_line": "有急件",
+    "known_only_by_terminals": [
+      "display_when_unlocked"
+    ],
+    "ordinary_receipt": {
+      "notice": "u2",
+      "version": 2,
+      "tick": 9,
+      "destinations": [
+        "west",
+        "east"
+      ]
+    }
+  }
+}

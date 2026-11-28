@@ -1,0 +1,47 @@
+{
+  "packets": [
+    {
+      "notice": "u1",
+      "version": 1,
+      "target": "west",
+      "generation": 2,
+      "level": "urgent",
+      "publish_level": true,
+      "display_when_unlocked": "候诊者松石，请往 3 室",
+      "tick": 5,
+      "until": 8
+    },
+    {
+      "notice": "u3",
+      "version": 1,
+      "target": "east",
+      "generation": 2,
+      "level": "urgent",
+      "publish_level": false,
+      "display_when_unlocked": "候诊者青石，请往 5 室",
+      "tick": 5,
+      "until": 8
+    },
+    {
+      "notice": "u2",
+      "version": 2,
+      "target": "both",
+      "generation": 2,
+      "level": "routine",
+      "publish_level": false,
+      "display_when_unlocked": "普通值班自检完成",
+      "tick": 9,
+      "until": 12
+    }
+  ],
+  "amendments": {
+    "public_revoked": {
+      "notice": "u1",
+      "publish_level": false
+    },
+    "replace_target": {
+      "notice": "u1",
+      "generation": 3
+    }
+  }
+}
