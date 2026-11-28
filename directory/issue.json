@@ -1,0 +1,28 @@
+{
+  "default_sequence": 2,
+  "amended_sequence": 3,
+  "ordinary_tick": 6,
+  "offline_outer_window": [
+    5,
+    7
+  ],
+  "snapshots": [
+    {
+      "sequence": 2,
+      "delivered": 4,
+      "expires_after": 8
+    },
+    {
+      "sequence": 3,
+      "delivered": 8,
+      "expires_after": 12
+    }
+  ],
+  "ordinary_seen_by_depot": [
+    2
+  ],
+  "change_seen_by_depot": [
+    2,
+    3
+  ]
+}

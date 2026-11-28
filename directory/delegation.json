@@ -1,0 +1,59 @@
+{
+  "query": "intake.parts.depot.fixture",
+  "public_observers": {
+    "public-root": [
+      "depot.fixture"
+    ],
+    "depot-registrar": [
+      "parts.depot.fixture"
+    ]
+  },
+  "authoritative_last": {
+    "relay-A": {
+      "zone": "parts.depot.fixture",
+      "valid": [
+        1,
+        8
+      ],
+      "records": {
+        "intake.parts.depot.fixture": {
+          "station": "station-A",
+          "family": "F4"
+        }
+      }
+    },
+    "relay-B": {
+      "zone": "parts.depot.fixture",
+      "valid": [
+        5,
+        12
+      ],
+      "records": {
+        "intake.parts.depot.fixture": {
+          "station": "station-B",
+          "family": "F6"
+        }
+      }
+    }
+  },
+  "depot_registration": [
+    {
+      "zone": "parts.depot.fixture",
+      "seq": 2,
+      "next": "relay-A",
+      "valid": [
+        1,
+        8
+      ]
+    },
+    {
+      "zone": "parts.depot.fixture",
+      "seq": 3,
+      "next": "relay-B",
+      "valid": [
+        5,
+        12
+      ]
+    }
+  ]
+}

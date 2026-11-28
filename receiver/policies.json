@@ -1,0 +1,22 @@
+{
+  "parts-east": {
+    "station-A": [
+      "F4"
+    ],
+    "station-B": [
+      "F6"
+    ]
+  },
+  "current_receiver_families": [
+    "F4"
+  ],
+  "receiver_families_amended": [
+    "F6"
+  ],
+  "parts-east_delivery_window": [
+    4,
+    9
+  ],
+  "payload_digest": "a3b893e5288eb55f2986eda7c5f9ea5eddf401ec27cc22a43ad7fd23ea3fe14e",
+  "manifest_id": "part-A"
+}
