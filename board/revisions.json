@@ -1,0 +1,22 @@
+{
+  "R29": {
+    "observe_no_clear": true,
+    "registers": {
+      "R": {
+        "bit0": "W1C",
+        "bit1": "RC",
+        "bit2": "RW"
+      }
+    }
+  },
+  "R19": {
+    "observe_no_clear": false,
+    "registers": {
+      "R": {
+        "bit0": "W1C",
+        "bit1": "RC",
+        "bit2": "RW"
+      }
+    }
+  }
+}

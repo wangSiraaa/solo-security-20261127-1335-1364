@@ -1,0 +1,21 @@
+{
+  "jobs": [
+    {
+      "label": "A-7",
+      "alarm": "A",
+      "generation": "G4",
+      "paper": 1,
+      "latest": 8
+    },
+    {
+      "label": "B-9",
+      "alarm": "B",
+      "generation": "G4",
+      "paper": 1,
+      "latest": 8
+    }
+  ],
+  "paper_units": 2,
+  "earliest_B": 6,
+  "alternate_latest_B": 5
+}

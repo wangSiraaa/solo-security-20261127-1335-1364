@@ -1,0 +1,26 @@
+{
+  "sample_descriptor": "R29",
+  "also_supported_descriptor": "R19",
+  "arrived": [
+    {
+      "name": "A",
+      "bit": 0,
+      "tick": 3,
+      "generation": "G4"
+    },
+    {
+      "name": "B",
+      "bit": 1,
+      "tick": 4,
+      "generation": "G4"
+    }
+  ],
+  "confirm": [
+    {
+      "name": "A",
+      "tick": 5
+    }
+  ],
+  "change_B_generation": "G3",
+  "one_reader": true
+}
