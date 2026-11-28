@@ -1,0 +1,18 @@
+{
+  "allocated": [],
+  "inventory_normal": 2,
+  "inventory_amended": 1,
+  "packs": [
+    {
+      "id": "box-L",
+      "station_group": "low",
+      "cells": 2,
+      "crew": "crew-red"
+    }
+  ],
+  "load_confirmation": {
+    "box": "box-L",
+    "crew": "crew-red",
+    "cells": 2
+  }
+}

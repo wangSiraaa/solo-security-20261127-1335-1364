@@ -1,0 +1,62 @@
+{
+  "checkpoints": [
+    "bay-1",
+    "bay-2"
+  ],
+  "batches": [
+    {
+      "id": "day-1",
+      "epoch": 2,
+      "station_group": "low",
+      "ids": [
+        "m1",
+        "m2"
+      ]
+    },
+    {
+      "id": "day-2",
+      "epoch": 2,
+      "station_group": "low",
+      "ids": [
+        "m3",
+        "m1"
+      ]
+    }
+  ],
+  "publish_required_fields": [
+    "station_group",
+    "covered_sites",
+    "needed_cells"
+  ],
+  "fixed_window_normal": {
+    "id": "late-watch",
+    "epoch": 2,
+    "station_group": "low",
+    "ids": [
+      "m1",
+      "m2",
+      "m3"
+    ],
+    "timing": "one watch, same acceptance window and all records delivered"
+  },
+  "multi_window_delayed": [
+    {
+      "id": "day-1",
+      "epoch": 2,
+      "station_group": "low",
+      "ids": [
+        "m1",
+        "m2"
+      ]
+    },
+    {
+      "id": "day-2",
+      "epoch": 2,
+      "station_group": "low",
+      "ids": [
+        "m3",
+        "m1"
+      ]
+    }
+  ]
+}

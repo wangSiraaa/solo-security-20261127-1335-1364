@@ -1,0 +1,37 @@
+{
+  "checkpoint": "bay-1",
+  "epoch": 2,
+  "minimum_minutes": 20,
+  "min_covered_sites": 3,
+  "reports": [
+    {
+      "receipt": "m1",
+      "minutes": 30,
+      "station_group": "low",
+      "needs": 1,
+      "issuer_verified": true
+    },
+    {
+      "receipt": "m2",
+      "minutes": 30,
+      "station_group": "low",
+      "needs": 0,
+      "issuer_verified": true
+    },
+    {
+      "receipt": "m3",
+      "minutes": 20,
+      "station_group": "low",
+      "needs": 1,
+      "issuer_verified": true
+    },
+    {
+      "receipt": "m3",
+      "minutes": 20,
+      "station_group": "low",
+      "needs": 1,
+      "issuer_verified": true
+    }
+  ],
+  "replacement_m2_minutes": 10
+}
