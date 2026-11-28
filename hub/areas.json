@@ -1,0 +1,26 @@
+{
+  "layers": {
+    "T": [
+      "桐",
+      "杉",
+      "榆"
+    ],
+    "U": [
+      "楠"
+    ]
+  },
+  "departures": {
+    "f1": "T",
+    "f2": "T",
+    "f3": "U"
+  },
+  "public_slots_per_member": 2,
+  "trusted_stewards": {
+    "杉": "M",
+    "桐": "M",
+    "榆": "N"
+  },
+  "amendment": {
+    "f2": "U"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "seats": [
+    {
+      "car": "f1",
+      "seat": "j1",
+      "time": 7,
+      "available": true
+    },
+    {
+      "car": "f2",
+      "seat": "i1",
+      "time": 9,
+      "available": false
+    },
+    {
+      "car": "f2",
+      "seat": "i2",
+      "time": 9,
+      "available": true
+    },
+    {
+      "car": "f3",
+      "seat": "k1",
+      "time": 9,
+      "available": true
+    }
+  ],
+  "replacement": {
+    "car": "f2",
+    "seat": "i2",
+    "available": false
+  },
+  "cancelled": [
+    "f1"
+  ],
+  "destination_window": [
+    7,
+    10
+  ],
+  "open_before": {
+    "booking": "r1",
+    "issued_tick": 3,
+    "accepted_tick": 4,
+    "assigned_car": "f1",
+    "assigned_seat": "j1",
+    "support": "山语"
+  },
+  "cancel_event": {
+    "car": "f1",
+    "tick": 6
+  },
+  "next_submit": {
+    "booking": "r1",
+    "tick": 7,
+    "requests_substitute": true
+  }
+}

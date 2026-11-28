@@ -1,0 +1,26 @@
+{
+  "common": {
+    "lang": "山语",
+    "close": 8,
+    "from_area": "T",
+    "steward_accepts": true
+  },
+  "alternatives": [
+    {
+      "origin": "杉",
+      "booking": "r1"
+    },
+    {
+      "origin": "桐",
+      "booking": "r2"
+    },
+    {
+      "origin": "榆",
+      "booking": "r3"
+    }
+  ],
+  "steward_down": [
+    5,
+    6
+  ]
+}
