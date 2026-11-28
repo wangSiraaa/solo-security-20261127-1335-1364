@@ -1,0 +1,172 @@
+{
+  "fixed": {
+    "mode": "fixed",
+    "reason": "ok",
+    "config": [
+      "sealed",
+      "sealed"
+    ],
+    "seats": [
+      "A1",
+      "B1"
+    ],
+    "offset_beats": 0,
+    "band_alloc": {
+      "A": 4,
+      "B": 5
+    },
+    "predicted_margin_db": 12.88,
+    "measured": {
+      "A": {
+        "own_snr": 37.56,
+        "detect": -21.89,
+        "n_own": 2,
+        "n_src": 2
+      },
+      "B": {
+        "own_snr": 38.91,
+        "detect": -19.54,
+        "n_own": 2,
+        "n_src": 2
+      }
+    },
+    "contract_ok": true,
+    "extra": {
+      "bias_db": 2.0,
+      "buffer_db": 1.0
+    },
+    "tracks": {
+      "A": "out/fixed/track_A.wav",
+      "B": "out/fixed/track_B.wav"
+    }
+  },
+  "onsite": {
+    "mode": "onsite",
+    "reason": "ok",
+    "config": [
+      "sealed",
+      "sealed"
+    ],
+    "seats": [
+      "A1",
+      "B1"
+    ],
+    "offset_beats": 0,
+    "band_alloc": {
+      "A": 0,
+      "B": 3
+    },
+    "predicted_margin_db": 0.342,
+    "measured": {
+      "A": {
+        "own_snr": 24.14,
+        "detect": -15.18,
+        "n_own": 2,
+        "n_src": 2
+      },
+      "B": {
+        "own_snr": 34.56,
+        "detect": -5.21,
+        "n_own": 2,
+        "n_src": 2
+      }
+    },
+    "contract_ok": true,
+    "extra": {
+      "bias_db": 1.0,
+      "buffer_db": 0.0
+    },
+    "tracks": {
+      "A": "out/onsite/track_A.wav",
+      "B": "out/onsite/track_B.wav"
+    }
+  },
+  "perturb_tail": {
+    "perturbation": "board_tail_lengthened",
+    "old_required_gap_beats": 2,
+    "new_required_gap_beats": 3,
+    "early_class_needs_extra_beat": true,
+    "still_feasible": true,
+    "new_plan": {
+      "config": [
+        "sealed",
+        "sealed"
+      ],
+      "seats": [
+        "A1",
+        "B1"
+      ],
+      "offset_beats": 0,
+      "band_alloc": {
+        "A": 4,
+        "B": 5
+      },
+      "predicted_margin_db": 11.647,
+      "measured": {
+        "A": {
+          "own_snr": 35.75,
+          "detect": -23.7,
+          "n_own": 2,
+          "n_src": 2
+        },
+        "B": {
+          "own_snr": 37.1,
+          "detect": -21.35,
+          "n_own": 2,
+          "n_src": 2
+        }
+      },
+      "contract_ok": true
+    }
+  },
+  "perturb_seat_wide": {
+    "perturbation": "seat_change",
+    "old_seat_b": "B1",
+    "new_seat_b": "B2",
+    "original_slot_still_ok": true,
+    "measured": {
+      "A": {
+        "own_snr": 37.55701156964879,
+        "detect": -21.886856234232926,
+        "n_own": 2,
+        "n_src": 2
+      },
+      "B": {
+        "own_snr": 37.11731189695704,
+        "detect": -16.647565207845215,
+        "n_own": 2,
+        "n_src": 2
+      }
+    },
+    "ok_own": true,
+    "ok_leak": true,
+    "mix_consistent": true,
+    "same_beat_layout": true,
+    "note": "audio certified for the new seat"
+  },
+  "perturb_seat_narrow": {
+    "perturbation": "seat_change",
+    "old_seat_b": "B1",
+    "new_seat_b": "B2",
+    "original_slot_still_ok": false,
+    "measured": {
+      "A": {
+        "own_snr": 24.14471350473299,
+        "detect": -15.18437534919579,
+        "n_own": 2,
+        "n_src": 2
+      },
+      "B": {
+        "own_snr": 30.298791727494173,
+        "detect": 0.028688985123118016,
+        "n_own": 2,
+        "n_src": 2
+      }
+    },
+    "ok_own": true,
+    "ok_leak": false,
+    "mix_consistent": true,
+    "same_beat_layout": true,
+    "note": "audio must be re-certified for the new seat"
+  }
+}
