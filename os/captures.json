@@ -1,0 +1,71 @@
+{
+  "normal": [
+    {
+      "source": "mic",
+      "page": "A",
+      "start": 1,
+      "stop": 4
+    },
+    {
+      "source": "mic",
+      "page": "B",
+      "start": 3,
+      "stop": 7
+    },
+    {
+      "source": "desk",
+      "page": "C",
+      "start": 1,
+      "stop": 3
+    }
+  ],
+  "change_B_stop": 5,
+  "events": [
+    {
+      "tick": 1,
+      "action": "acquire",
+      "page": "A",
+      "source": "mic"
+    },
+    {
+      "tick": 1,
+      "action": "acquire",
+      "page": "C",
+      "source": "desk"
+    },
+    {
+      "tick": 3,
+      "action": "acquire",
+      "page": "B",
+      "source": "mic"
+    },
+    {
+      "tick": 3,
+      "action": "release",
+      "page": "C",
+      "source": "desk"
+    },
+    {
+      "tick": 4,
+      "action": "release",
+      "page": "A",
+      "source": "mic"
+    },
+    {
+      "tick": 7,
+      "action": "release",
+      "page": "B",
+      "source": "mic"
+    }
+  ],
+  "actual_samples": {
+    "mic": "ABCDEFG",
+    "desk": "aabbcdd"
+  },
+  "fake_lamp_test": {
+    "page": "Free-demo",
+    "alleges": "mic lit",
+    "tick": 1,
+    "trusted_by_os": false
+  }
+}

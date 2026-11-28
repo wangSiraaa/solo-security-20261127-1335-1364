@@ -1,0 +1,19 @@
+{
+  "lesson": {
+    "id": "L",
+    "listen_from": [
+      "mic"
+    ],
+    "time_window": [
+      4,
+      7
+    ],
+    "change_start": 5
+  },
+  "analysis": {
+    "start_inclusive": true,
+    "stop_exclusive": true,
+    "sample_index_origin": 0
+  },
+  "reader_keeps_gap_cells": true
+}

@@ -1,0 +1,29 @@
+{
+  "classroom-modern": {
+    "faceplate": [
+      "mic",
+      "desk"
+    ],
+    "central_approval": true,
+    "parallel_guardian": true
+  },
+  "old-mic": {
+    "faceplate": [],
+    "central_approval": true
+  },
+  "emergency": {
+    "need": [
+      "mic",
+      "desk"
+    ],
+    "start_tick": 2,
+    "central_available_starts": [
+      2,
+      3
+    ],
+    "guardian_start_slots": [
+      2,
+      2
+    ]
+  }
+}
