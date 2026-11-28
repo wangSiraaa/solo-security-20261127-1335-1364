@@ -1,0 +1,30 @@
+{
+  "reset_kind": "local_aux",
+  "round_gen": "gen1",
+  "starts": {
+    "aux": 1
+  },
+  "write_tick": 3,
+  "writes": {
+    "aux_cal": 808
+  },
+  "windows": [
+    {
+      "at": 3,
+      "window": "port1",
+      "want": [
+        "main_public_meas"
+      ],
+      "mode": "fixed"
+    },
+    {
+      "at": 3,
+      "window": "port2",
+      "want": [
+        "main_public_meas",
+        "aux_cal"
+      ],
+      "mode": "fixed"
+    }
+  ]
+}

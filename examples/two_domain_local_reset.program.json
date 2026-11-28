@@ -1,0 +1,14 @@
+{
+  "reset_kind": "power_on",
+  "round_gen": "gen1",
+  "want": [
+    "left_cal",
+    "right_cal",
+    "retained_cal"
+  ],
+  "writes": {
+    "left_cal": 512,
+    "right_cal": 77,
+    "retained_cal": 100
+  }
+}

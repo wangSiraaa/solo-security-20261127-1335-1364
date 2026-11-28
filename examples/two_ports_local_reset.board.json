@@ -1,0 +1,65 @@
+{
+  "name": "two_ports_local_reset",
+  "domains": [
+    "main",
+    "aux"
+  ],
+  "cells": [
+    {
+      "name": "main_cal",
+      "domain": "main",
+      "kind": "public",
+      "clear_scope": [
+        "main"
+      ],
+      "retained": false,
+      "value": null,
+      "gen": null
+    },
+    {
+      "name": "aux_cal",
+      "domain": "aux",
+      "kind": "public",
+      "clear_scope": [
+        "aux"
+      ],
+      "retained": false,
+      "value": null,
+      "gen": null
+    },
+    {
+      "name": "main_public_meas",
+      "domain": "main",
+      "kind": "public",
+      "clear_scope": [],
+      "retained": true,
+      "value": 55,
+      "gen": "gen0"
+    }
+  ],
+  "wiring": [],
+  "links": [
+    {
+      "a": "main",
+      "b": "aux"
+    }
+  ],
+  "initial_rounds": {},
+  "reset_policy": {
+    "local_aux": {
+      "order": [
+        "aux"
+      ],
+      "max_stagger": 0,
+      "latency": 2
+    },
+    "power_on": {
+      "order": [
+        "main",
+        "aux"
+      ],
+      "max_stagger": 2,
+      "latency": 1
+    }
+  }
+}

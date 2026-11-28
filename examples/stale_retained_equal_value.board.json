@@ -1,0 +1,58 @@
+{
+  "name": "stale_retained_equal_value",
+  "domains": [
+    "a",
+    "b"
+  ],
+  "cells": [
+    {
+      "name": "a_cal",
+      "domain": "a",
+      "kind": "public",
+      "clear_scope": [
+        "a"
+      ],
+      "retained": false,
+      "value": null,
+      "gen": null
+    },
+    {
+      "name": "b_cal",
+      "domain": "b",
+      "kind": "public",
+      "clear_scope": [
+        "b"
+      ],
+      "retained": false,
+      "value": null,
+      "gen": null
+    },
+    {
+      "name": "carried_cal",
+      "domain": "b",
+      "kind": "public",
+      "clear_scope": [],
+      "retained": true,
+      "value": 900,
+      "gen": "gen0"
+    }
+  ],
+  "wiring": [],
+  "links": [
+    {
+      "a": "a",
+      "b": "b"
+    }
+  ],
+  "initial_rounds": {},
+  "reset_policy": {
+    "power_on": {
+      "order": [
+        "a",
+        "b"
+      ],
+      "max_stagger": 1,
+      "latency": 1
+    }
+  }
+}

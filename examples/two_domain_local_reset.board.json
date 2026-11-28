@@ -1,0 +1,89 @@
+{
+  "name": "two_domain_local_reset",
+  "domains": [
+    "left",
+    "right"
+  ],
+  "cells": [
+    {
+      "name": "left_cal",
+      "domain": "left",
+      "kind": "public",
+      "clear_scope": [
+        "left"
+      ],
+      "retained": false,
+      "value": null,
+      "gen": null
+    },
+    {
+      "name": "right_cal",
+      "domain": "right",
+      "kind": "public",
+      "clear_scope": [
+        "right"
+      ],
+      "retained": false,
+      "value": null,
+      "gen": null
+    },
+    {
+      "name": "retained_cal",
+      "domain": "right",
+      "kind": "public",
+      "clear_scope": [],
+      "retained": true,
+      "value": 100,
+      "gen": "gen0"
+    },
+    {
+      "name": "tenant_raw",
+      "domain": "left",
+      "kind": "raw",
+      "clear_scope": [],
+      "retained": true,
+      "value": 424242,
+      "gen": "gen0"
+    }
+  ],
+  "wiring": [],
+  "links": [
+    {
+      "a": "left",
+      "b": "right"
+    }
+  ],
+  "initial_rounds": {},
+  "reset_policy": {
+    "power_on": {
+      "order": [
+        "left",
+        "right"
+      ],
+      "max_stagger": 2,
+      "latency": 1
+    },
+    "warm": {
+      "order": [
+        "left",
+        "right"
+      ],
+      "max_stagger": 1,
+      "latency": 1
+    },
+    "local_power_loss": {
+      "order": [
+        "left"
+      ],
+      "max_stagger": 0,
+      "latency": 1
+    },
+    "local_right": {
+      "order": [
+        "right"
+      ],
+      "max_stagger": 0,
+      "latency": 1
+    }
+  }
+}

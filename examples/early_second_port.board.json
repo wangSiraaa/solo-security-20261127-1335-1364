@@ -1,0 +1,49 @@
+{
+  "name": "early_second_port",
+  "domains": [
+    "fast",
+    "slow"
+  ],
+  "cells": [
+    {
+      "name": "fast_cal",
+      "domain": "fast",
+      "kind": "public",
+      "clear_scope": [
+        "fast"
+      ],
+      "retained": false,
+      "value": null,
+      "gen": null
+    },
+    {
+      "name": "slow_cal",
+      "domain": "slow",
+      "kind": "public",
+      "clear_scope": [
+        "slow"
+      ],
+      "retained": false,
+      "value": null,
+      "gen": null
+    }
+  ],
+  "wiring": [],
+  "links": [
+    {
+      "a": "fast",
+      "b": "slow"
+    }
+  ],
+  "initial_rounds": {},
+  "reset_policy": {
+    "power_on": {
+      "order": [
+        "fast",
+        "slow"
+      ],
+      "max_stagger": 1,
+      "latency": 2
+    }
+  }
+}
