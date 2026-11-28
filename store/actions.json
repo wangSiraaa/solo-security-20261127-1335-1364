@@ -1,0 +1,46 @@
+[
+  {
+    "tick": 1,
+    "action": "begin",
+    "txn": "y"
+  },
+  {
+    "tick": 2,
+    "action": "savepoint",
+    "name": "p"
+  },
+  {
+    "tick": 3,
+    "action": "set",
+    "control": "A",
+    "enabled": false
+  },
+  {
+    "tick": 4,
+    "action": "rollback_to",
+    "name": "p"
+  },
+  {
+    "tick": 5,
+    "action": "set",
+    "control": "B",
+    "enabled": false
+  },
+  {
+    "tick": 6,
+    "action": "set",
+    "control": "A",
+    "enabled": false
+  },
+  {
+    "tick": 7,
+    "action": "set",
+    "control": "B",
+    "enabled": true
+  },
+  {
+    "tick": 8,
+    "action": "commit",
+    "rev": 21
+  }
+]

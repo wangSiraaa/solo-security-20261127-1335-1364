@@ -1,0 +1,22 @@
+{
+  "one": {
+    "offered": [
+      "A"
+    ],
+    "inbox": "one-local"
+  },
+  "two": {
+    "offered": [
+      "A",
+      "B"
+    ],
+    "inbox": "two-local"
+  },
+  "change_two_offered": [
+    "B"
+  ],
+  "duplicate_observation_after_restart": {
+    "revision": 21,
+    "receipt": "same-as-original"
+  }
+}

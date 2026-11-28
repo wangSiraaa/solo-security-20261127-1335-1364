@@ -1,0 +1,15 @@
+{
+  "baseline_mode": {
+    "tx_audit_hook": true,
+    "signed_checkpoint": true
+  },
+  "old_book": {
+    "tx_audit_hook": false,
+    "signed_checkpoint": true
+  },
+  "lagged_observation": {
+    "read_complete_at": 11,
+    "contract_ceiling_for_urgent": 9,
+    "contract_ceiling_standard": 12
+  }
+}

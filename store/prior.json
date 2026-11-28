@@ -1,0 +1,11 @@
+{
+  "rev": 20,
+  "controls": {
+    "A": true,
+    "B": true
+  },
+  "retained_state_after_next_scan": {
+    "scan_tick": 11,
+    "receipt_for": "after-t8"
+  }
+}
