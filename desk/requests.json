@@ -1,0 +1,15 @@
+[
+  {
+    "exam": "练春",
+    "room": "南一",
+    "alias": "LN-4",
+    "reader": "r1",
+    "initial": [
+      "question_view"
+    ],
+    "second_step": {
+      "right": "timer",
+      "reader": "r2"
+    }
+  }
+]

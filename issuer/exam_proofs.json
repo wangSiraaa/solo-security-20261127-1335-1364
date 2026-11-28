@@ -1,0 +1,46 @@
+{
+  "active": "练春",
+  "old": "练冬",
+  "sessions": [
+    {
+      "exam": "练春",
+      "alias": "LN-4",
+      "rights": [
+        "question_view",
+        "timer"
+      ],
+      "room": "南一"
+    },
+    {
+      "exam": "练冬",
+      "alias": "LN-4",
+      "rights": [
+        "question_view"
+      ],
+      "room": "南一"
+    }
+  ],
+  "single_use": [
+    {
+      "item": "AQ",
+      "exam": "练春",
+      "alias": "LN-4",
+      "right": "question_view",
+      "reader": "r1"
+    },
+    {
+      "item": "AT",
+      "exam": "练春",
+      "alias": "LN-4",
+      "right": "timer",
+      "reader": "r2"
+    },
+    {
+      "item": "AX",
+      "exam": "练冬",
+      "alias": "LN-4",
+      "right": "question_view",
+      "reader": "r1"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "r1": {
+    "width": 4,
+    "capabilities": [
+      "question_view"
+    ],
+    "test_room": "南一"
+  },
+  "r2": {
+    "width": 4,
+    "capabilities": [
+      "timer"
+    ],
+    "test_room": "南一"
+  },
+  "alternate": {
+    "width": 3,
+    "capabilities": [
+      "question_view"
+    ],
+    "test_room": "南一"
+  }
+}
