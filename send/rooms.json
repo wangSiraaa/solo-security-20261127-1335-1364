@@ -1,0 +1,51 @@
+{
+  "epochs": [
+    {
+      "room": "A",
+      "epoch": 1,
+      "own_dictionary": "MINT",
+      "pages": [
+        "MINT",
+        "MINT"
+      ]
+    },
+    {
+      "room": "B",
+      "epoch": 2,
+      "own_dictionary": "ABCD",
+      "pages": [
+        "ABCD",
+        "ABCD"
+      ]
+    }
+  ],
+  "ready_at": {
+    "B": 4
+  },
+  "example_wire_cost": {
+    "isolated_continuation": [
+      4,
+      2
+    ],
+    "public_per_block": [
+      4,
+      5
+    ]
+  },
+  "public_dictionary_reviewed": true,
+  "example_payload_hex": {
+    "B_continuation": [
+      "41424344",
+      "8000"
+    ],
+    "B_that_resets": [
+      "41424344",
+      "0041424344"
+    ],
+    "A_continuation": [
+      "4d494e54",
+      "8000"
+    ]
+  },
+  "transport": "metadata carried in independent control line, budget counts payload only"
+}

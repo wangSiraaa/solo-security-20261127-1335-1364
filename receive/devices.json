@@ -1,0 +1,29 @@
+{
+  "restart_device": {
+    "room": "B",
+    "epoch": 2,
+    "has_first": false,
+    "has_approved_public": true,
+    "good_sequence": [
+      2
+    ]
+  },
+  "complete_device": {
+    "room": "B",
+    "epoch": 2,
+    "has_first": true,
+    "good_sequence": [
+      1,
+      2
+    ]
+  },
+  "old_delayed": {
+    "room": "A",
+    "epoch": 1,
+    "sequence": 2
+  },
+  "paper_normal": 8,
+  "paper_amended": 6,
+  "link_narrow": 6,
+  "link_normal": 12
+}
