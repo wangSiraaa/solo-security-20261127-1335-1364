@@ -1,0 +1,24 @@
+{
+  "P": {
+    "base": "N",
+    "release": "s4",
+    "local_mode": false,
+    "destination": null
+  },
+  "Q": {
+    "base": "N",
+    "release": "s4",
+    "local_mode": true,
+    "destination": null
+  },
+  "S": {
+    "base": "N",
+    "release": "s4",
+    "local_mode": false,
+    "destination": ""
+  },
+  "alternate": {
+    "queue": "Q",
+    "local_mode": false
+  }
+}

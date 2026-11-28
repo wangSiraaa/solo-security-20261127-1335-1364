@@ -1,0 +1,34 @@
+{
+  "destination_space": {
+    "local": 8,
+    "desk-clean": 4,
+    "export": 5
+  },
+  "permissions": {
+    "P": [
+      "local",
+      "desk-clean"
+    ],
+    "Q": [
+      "local",
+      "desk-clean"
+    ],
+    "S": [
+      "local"
+    ]
+  },
+  "alternate": {
+    "P": [
+      "local"
+    ]
+  },
+  "stations": {
+    "H-old": [
+      "legacy-interpreter"
+    ],
+    "H-new": [
+      "compiled",
+      "legacy-interpreter"
+    ]
+  }
+}

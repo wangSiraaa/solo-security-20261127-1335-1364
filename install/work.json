@@ -1,0 +1,23 @@
+[
+  {
+    "key": "P-1",
+    "queue": "P",
+    "visible": "流程状态通过",
+    "private": "合成内部标签P",
+    "contains_private": true
+  },
+  {
+    "key": "Q-1",
+    "queue": "Q",
+    "visible": "回放完成",
+    "private": "",
+    "contains_private": false
+  },
+  {
+    "key": "S-1",
+    "queue": "S",
+    "visible": "回放待核",
+    "private": "合成内部标签S",
+    "contains_private": true
+  }
+]

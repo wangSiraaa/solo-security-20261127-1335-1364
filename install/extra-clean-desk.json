@@ -1,0 +1,11 @@
+{
+  "ticket": "P-3",
+  "queue": "P",
+  "wanted": "new-dedicated-clean",
+  "writable_by": [
+    "P"
+  ],
+  "target_space": 3,
+  "supported_runtime": "compiled",
+  "legacy_firmware_cannot_name_it": true
+}

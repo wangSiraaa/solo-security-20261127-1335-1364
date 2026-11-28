@@ -1,0 +1,33 @@
+{
+  "old": {
+    "revision": "s4",
+    "default": {
+      "destination": "local",
+      "rooms": {
+        "diagnostic": "desk-clean"
+      }
+    },
+    "inherit": [
+      {
+        "name": "N",
+        "release": "s4",
+        "destination": "desk-clean"
+      },
+      {
+        "name": "N",
+        "release": "s5",
+        "destination": "export"
+      }
+    ]
+  },
+  "new": {
+    "revision": "s5",
+    "default": {
+      "destination": "export"
+    },
+    "fields": {
+      "mode": "compute-from-effective",
+      "rooms": "independent"
+    }
+  }
+}
